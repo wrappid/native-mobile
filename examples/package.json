@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@wrappid/styles": "^0.0.1",
+    "core-js": "^3.30.0",
     "react": "18.2.0",
     "react-native": "0.71.6",
     "react-native-paper": "^5.2.0",
@@ -21,8 +22,11 @@
     "styled-components": "^5.3.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0",
-    "@babel/preset-env": "^7.20.0",
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.0",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
     "@babel/runtime": "^7.20.0",
     "@react-native-community/eslint-config": "^3.2.0",
     "@tsconfig/react-native": "^2.0.2",
