@@ -1,11 +1,12 @@
-import styled from 'styled-components';
-import CoreClasses from '../../styles/CoreClasses';
-import {getEffectiveStyle} from '../../styles/CoreUtil';
+import React from 'react';
+import styled from 'styled-components/native';
+import {Text} from 'react-native-paper';
+import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
 
 const defaultStyleClasses = [CoreClasses.SC.DATA_DISPLAY.ICON];
 
 export const SCIcon = styled(
-  Icon,
+  Text,
   {},
 )(props => ({
   ...getEffectiveStyle([

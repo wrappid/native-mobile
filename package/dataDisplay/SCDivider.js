@@ -1,7 +1,7 @@
+import React from 'react';
+import styled from 'styled-components/native';
 import {Divider} from 'react-native-paper';
-import styled from 'styled-components';
-import CoreClasses from '../../styles/CoreClasses';
-import {getEffectiveStyle} from '../../styles/CoreUtil';
+import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
 
 const defaultStyleClasses = [CoreClasses.SC.DATA_DISPLAY.DIVIDER];
 

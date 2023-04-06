@@ -1,7 +1,7 @@
+import React from 'react';
 import {View as Box} from 'react-native';
-import styled from 'styled-components';
-import CoreClasses from '../../styles/CoreClasses';
-import {getEffectiveStyle} from '../../styles/CoreUtil';
+import styled from 'styled-components/native';
+import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
 
 const defaultStyleClasses = [CoreClasses.SC.LAYOUTS.BOX];
 

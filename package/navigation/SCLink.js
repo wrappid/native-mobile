@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import React from 'react';
+import styled from 'styled-components/native';
 import {Text as Link} from 'react-native-paper';
-import CoreClasses from '../../styles/CoreClasses';
-import {getEffectiveStyle} from '../../styles/CoreUtil';
+import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
 
 const defaultStyleClasses = [CoreClasses.SC.NAVIGATION.LINK];
 

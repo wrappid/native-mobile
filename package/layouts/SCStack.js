@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import React from 'react';
+import styled from 'styled-components/native';
 import {View as Stack} from 'react-native';
-import CoreClasses from '../../styles/CoreClasses';
-import {getEffectiveStyle} from '../../styles/CoreUtil';
+import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
 
 const defaultStyleClasses = [CoreClasses.SC.LAYOUTS.STACK];
 
