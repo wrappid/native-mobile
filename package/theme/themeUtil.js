@@ -1,11 +1,10 @@
-import { createTheme } from "@mui/material";
 import { theme as coreTheme } from "../theme";
 
 const WEB_PLATFORM = "web";
 const APP_PLATFORM = "web";
 
 function createWebTheme(customThemme) {
-  return createTheme({ ...coreTheme, ...customThemme });
+  return { ...coreTheme, ...customThemme };
 }
 
 function createNativeTheme(customThemme) {

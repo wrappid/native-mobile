@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Paper } from "@mui/material";
+import { View as Paper } from "react-native";
 import { getEffectiveStyle, CoreClasses } from "@wrappid/styles";
 
 const defaultStyleClasses = [CoreClasses.SC.SURFACES.PAPER];

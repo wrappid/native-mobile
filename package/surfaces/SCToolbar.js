@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Toolbar } from "@mui/material";
+import { View as Toolbar } from "react-native-paper";
 import { getEffectiveStyle, CoreClasses } from "@wrappid/styles";
 
 const defaultStyleClasses = [CoreClasses.SC.SURFACES.TOOLBAR];
