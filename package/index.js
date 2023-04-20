@@ -1,3 +1,12 @@
+/**
+ * NATIVE COMPONENTS
+ */
+import NativeFormContainer from './nativeComponents/forms/NativeFormContainer'
+
+/**
+ * SC COMPONENTS
+ */
+
 import {SCAvatar} from './dataDisplay/SCAvatar';
 import {SCBadge} from './dataDisplay/SCBadge';
 import {SCChip} from './dataDisplay/SCChip';
@@ -150,4 +159,10 @@ export {
   SCFade,
   SCModal,
   SCPopover,
+
+  /**
+   * NATIVE EXPORTS
+   */
+
+  NativeFormContainer,
 };
