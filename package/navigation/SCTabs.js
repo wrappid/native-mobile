@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components/native';
-import {View as Tabs} from 'react-native';
 import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import {Tabs} from 'react-native-paper-tabs';
 
 const defaultStyleClasses = [CoreClasses.NAVIGATION.TABS];
 

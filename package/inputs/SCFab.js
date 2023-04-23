@@ -1,12 +1,11 @@
-import React from 'react';
 import styled from 'styled-components/native';
-import {Fab} from 'react-native-paper';
 import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import {FAB} from 'react-native-paper';
 
 const defaultStyleClasses = [CoreClasses.SC.INPUTS.FAB];
 
 export const SCFab = styled(
-  Fab,
+  FAB,
   {},
 )(props => ({
   ...getEffectiveStyle([

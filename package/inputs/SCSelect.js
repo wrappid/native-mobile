@@ -1,12 +1,11 @@
-import React from 'react';
 import styled from 'styled-components/native';
-import {Text} from 'react-native-paper';
 import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import DropDown from 'react-native-paper-dropdown';
 
 const defaultStyleClasses = [CoreClasses.SC.INPUTS.SELECT];
 
 export const SCSelect = styled(
-  Text,
+  DropDown,
   {},
 )(props => ({
   ...getEffectiveStyle([

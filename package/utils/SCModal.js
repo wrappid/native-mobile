@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components/native';
-import {View as Modal} from 'react-native';
 import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import {Modal} from 'react-native';
 
 const defaultStyleClasses = [CoreClasses.SC.UTILS.MODAL];
 

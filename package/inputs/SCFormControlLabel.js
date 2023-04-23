@@ -3,9 +3,9 @@ import styled from 'styled-components/native';
 import {Text} from 'react-native-paper';
 import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
 
-const defaultStyleClasses = [CoreClasses.SC.INPUTS.FORM_CONTROL_LABEL];
+const defaultStyleClasses = [CoreClasses.SC.FORM.FORM_CONTROL_LABEL];
 
-export const SCFormControlLabel = styled(
+export const SCFormGroup = styled(
   Text,
   {},
 )(props => ({

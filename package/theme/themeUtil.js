@@ -1,23 +1,22 @@
-import { theme as coreTheme } from "../theme";
+import React from 'react';
+import {theme as coreTheme} from '../theme/theme';
+import {ThemeProvider as NativeThemeProvider} from 'react-native-paper';
 
-const WEB_PLATFORM = "web";
-const APP_PLATFORM = "web";
+const WEB_PLATFORM = 'web';
+const APP_PLATFORM = 'web';
 
-function createWebTheme(customThemme) {
-  return { ...coreTheme, ...customThemme };
-}
-
-function createNativeTheme(customThemme) {
-  return { ...coreTheme, ...customThemme };
+function nativeCreateTheme(data) {
+  return data;
 }
 
 export function detectPlatform(document, navigator) {
-  if (typeof document !== "undefined") {
+  console.log('platform detection', document, navigator);
+  if (typeof document !== 'undefined') {
     // I'm on the web!
     return WEB_PLATFORM;
   } else if (
-    typeof navigator !== "undefined" &&
-    navigator.product === "ReactNative"
+    typeof navigator !== 'undefined' &&
+    navigator.product === 'ReactNative'
   ) {
     // I'm in react-native
     return APP_PLATFORM;
@@ -27,32 +26,24 @@ export function detectPlatform(document, navigator) {
   }
 }
 
-export function getCoreTheme(customThemme) {
-  let runTime = detectPlatform(document, navigator);
-  if (runTime === WEB_PLATFORM) {
-    return createWebTheme(customThemme);
-  } else if (runTime === APP_PLATFORM) {
-    return createNativeTheme(customThemme);
-  } else {
-    throw "Undefined platform";
-  }
-}
-
 let theme = null;
 
 try {
-  let config = require(__dirname + "../../../" + "config.json");
+  let p = '../../../../src/config.json';
+  let config = require(p);
   if (config?.theme) {
-    theme = getCoreTheme(config?.theme);
+    theme = nativeCreateTheme({...coreTheme, ...config?.theme});
   } else {
-    console.warn("No custom theme provided in config.json");
-    theme = getCoreTheme({});
+    console.warn('No custom theme provided in config.json');
+    theme = nativeCreateTheme(coreTheme);
   }
 } catch (err) {
-  console.warn("No custom config provided");
-  theme = getCoreTheme({});
+  console.warn('No custom config provided');
+  theme = nativeCreateTheme(coreTheme);
 }
 
-console.log("THEME", theme);
+console.log('THEME', theme);
 
 export default theme;
+
+export {NativeThemeProvider, nativeCreateTheme};

@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components/native';
 import {Tooltip} from 'react-native-paper';
 import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';

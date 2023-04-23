@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components/native';
-import {View as Card} from 'react-native';
 import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import {Card} from 'react-native-paper';
 
 const defaultStyleClasses = [CoreClasses.SC.SURFACES.CARD];
 

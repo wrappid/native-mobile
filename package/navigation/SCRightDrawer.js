@@ -6,8 +6,5 @@ import {theme} from '../theme/theme';
 
 const defaultStyleClasses = [CoreClasses.SC.NAVIGATION.DRAWER];
 
-export const SCDrawer = styled(Drawer, {
-  shouldForwardProp: prop => prop !== 'open',
-})(({open}) => ({
-  ...closedMixin(theme),
+export const SCRightDrawer = styled(Drawer.Section, {})(props => ({
 }));

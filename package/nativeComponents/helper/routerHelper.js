@@ -2,6 +2,14 @@ import {
   Routes as NativeDomRoutes,
   Route as NativeDomRoute,
   Navigate as NativeDomNavigate,
-} from "react-router-native";
+  useNavigate as nativeUseNavigate,
+  useLocation as nativeUseLocation,
+} from 'react-router-native';
 
-export { NativeDomRoutes, NativeDomRoute, NativeDomNavigate };
+export {
+  nativeUseNavigate,
+  nativeUseLocation,
+  NativeDomRoutes,
+  NativeDomRoute,
+  NativeDomNavigate,
+};

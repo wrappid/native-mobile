@@ -1,12 +1,11 @@
-import React from 'react';
 import styled from 'styled-components/native';
-import {Text} from 'react-native-paper';
 import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import {DataTable} from 'react-native-paper';
 
 const defaultStyleClasses = [CoreClasses.SC.DATA_DISPLAY.TABLE];
 
 export const SCTable = styled(
-  Text,
+  DataTable,
   {},
 )(props => ({
   ...getEffectiveStyle([

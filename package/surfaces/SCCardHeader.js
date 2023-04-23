@@ -1,12 +1,12 @@
-import React from 'react';
 import styled from 'styled-components/native';
-import {View as CardHeader} from 'react-native';
 import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import {Card} from 'react-native-paper';
 
-const defaultStyleClasses = [CoreClasses.SC.SURFACES.CARD_HEADER];
+const defaultStyleClasses = [];
+// const defaultStyleClasses = [CoreClasses.SC.SURFACES.CARD_HEADER];
 
 export const SCCardHeader = styled(
-  CardHeader,
+  Card.Title,
   {},
 )(props => ({
   ...getEffectiveStyle([

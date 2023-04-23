@@ -1,12 +1,11 @@
-import React from 'react';
-import {View as Box} from 'react-native';
 import styled from 'styled-components/native';
 import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import {View} from 'react-native';
 
 const defaultStyleClasses = [CoreClasses.SC.LAYOUTS.APP_DIV];
 
 export const SCAppDiv = styled(
-  Box,
+  View,
   {},
 )(props => ({
   ...getEffectiveStyle([

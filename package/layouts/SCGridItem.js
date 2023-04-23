@@ -1,11 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import {View as Paper } from "react-native";
-import { getEffectiveStyle, CoreClasses } from "@wrappid/styles";
+import styled from 'styled-components/native';
+import {View as Grid} from 'react-native';
+import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
 
-const defaultStyleClasses = [CoreClasses.SC.LAYOUTS.GRID_ITEM];
+const defaultStyleClasses = [CoreClasses.SC.LAYOUTS.GRID];
+// const rnpStyleClasses = [CoreClasses.SC.RNP.LAYOUTS.GRID];
 
-export const SCGridItem = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(1),
-  ...getEffectiveStyle([...defaultStyleClasses]),
+export const SCGridItem = styled(
+  Grid,
+  {},
+)(({styleClasses}) => ({
+  ...getEffectiveStyle([...defaultStyleClasses, ...(styleClasses || [])]),
 }));

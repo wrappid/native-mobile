@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components/native';
 import {View as Box} from 'react-native';
 import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
