@@ -4,6 +4,7 @@ import {SCInput} from '../../inputs/SCInput';
 
 export default function NativeInput(props) {
   // const {NativeId = getUUID()} = props;
+  // console.log("NATIVE INPUT PROPS", props);
   return (
     <SCInput
       id={props.id}
@@ -12,7 +13,12 @@ export default function NativeInput(props) {
       styleClasses={[...(props.styleClasses || [])]}
       value={props.value || ''}
       secureTextEntry={props.secureTextEntry}
-      onChangeText={props.onChange}
+      onChangeText={(text)=>{
+        props.formik?
+        props.formik.setFieldValue(props.id, text)
+        :
+        props.handleChange(text)
+      }}
       required={props.formik ? false : props.required}
       placeholder={props.placeholder}
       disable={props.disabled || props.readOnly}
