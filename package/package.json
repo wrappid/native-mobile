@@ -1,6 +1,6 @@
 {
   "name": "@wrappid/sc-mobile",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This repository is combined packages of all the Styled Components for react-native hybrid mobile project.",
   "main": "index.js",
   "scripts": {
@@ -11,8 +11,7 @@
     "type": "git",
     "url": "git+https://techoneel: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@github.com/wrappid/sc-mobile.git"
   },
-  "peerDependencies": {
-    "@wrappid/styles": "^0.0.1",
+  "dependencies": {
     "core-js": "^3.30.0",
     "react": "18.2.0",
     "react-native": "0.71.6",
@@ -22,6 +21,9 @@
     "react-native-vector-icons": "^9.2.0",
     "react-router-native": "^6.9.0",
     "styled-components": "^5.3.9"
+  },
+  "peerDependencies": {
+    "@wrappid/styles": "^0.0.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
