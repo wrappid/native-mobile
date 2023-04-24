@@ -14,7 +14,6 @@
     "url": "git+https://techoneel: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@github.com/wrappid/sc-mobile.git"
   },
   "dependencies": {
-    "@wrappid/styles": "^0.0.3",
     "core-js": "^3.30.0",
     "react": "18.2.0",
     "react-native": "0.71.6",
