@@ -1,14 +1,14 @@
 {
   "name": "@wrappid/sc-mobile",
-  "version": "0.0.4",
+  "version": "0.0.4-alpha.0",
   "description": "This repository is combined packages of all the Styled Components for react-native hybrid mobile project.",
   "main": "index.js",
   "scripts": {
     "test": "echo 'testing not yet implemented'",
     "build": "npx babel package --out-dir dist --copy-files",
     "build-app": "npx babel package --out-dir ../test/wrappid-mobile/node_modules/@wrappid/styled-components --copy-files",
-    "publish": "npm publish ./package --registry=https://npm.pkg.github.com --scope=@wrappid",
-    "publish-old": "npm publish ./dist --registry=https://npm.pkg.github.com --scope=@wrappid"
+    "publish-old": "npm publish ./package --registry=https://npm.pkg.github.com --scope=@wrappid",
+    "publish": "npm publish ./dist --registry=https://npm.pkg.github.com --scope=@wrappid"
   },
   "repository": {
     "type": "git",
