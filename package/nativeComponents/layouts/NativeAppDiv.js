@@ -1,6 +1,14 @@
-import React from 'react';
-import {SCAppDiv} from '../../layouts/SCAppDiv';
+import React from "react";
+import { SCAppDiv } from "../../layouts/SCAppDiv";
+import { ScrollView } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function NativeAppDiv(props) {
-  return <SCAppDiv {...props}>{props.children}</SCAppDiv>;
+  return (
+    <SafeAreaProvider>
+      <ScrollView>
+        <SCAppDiv {...props}>{props.children}</SCAppDiv>
+      </ScrollView>
+    </SafeAreaProvider>
+  );
 }
