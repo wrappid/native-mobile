@@ -1,6 +1,6 @@
-import React from 'react';
-import {SCBox} from '../../layouts/SCBox';
-import NativeTypography from '../dataDisplay/NativeTypography';
+import React from "react";
+import { SCBox } from "../../styledComponents/layouts/SCBox";
+import NativeTypography from "../dataDisplay/NativeTypography";
 
 export default function NativeSpan(props) {
   return (
