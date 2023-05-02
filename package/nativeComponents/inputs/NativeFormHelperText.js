@@ -1,9 +1,9 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
-import {SCFormHelperText} from '../../inputs/SCFormHelperText';
+import React from "react";
+import { useSelector } from "react-redux";
+import { SCFormHelperText } from "../../styledComponents/inputs/SCFormHelperText";
 
 export default function NativeFormHelperText(props) {
-  const {showHelperText = true} = useSelector(state => state.forms);
+  const { showHelperText = true } = useSelector((state) => state.forms);
   return (
     <SCFormHelperText {...props}>
       {showHelperText && props.children}

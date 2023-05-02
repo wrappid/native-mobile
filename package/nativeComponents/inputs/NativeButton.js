@@ -1,14 +1,14 @@
-import React from 'react';
-import {SCButton} from '../../inputs/SCButton';
+import React from "react";
+import { SCButton } from "../../styledComponents/inputs/SCButton";
 
 export default function NativeButton(props) {
   const {
-    label = 'LABEL NOT PROVIDED',
+    label = "LABEL NOT PROVIDED",
     OnClick,
     variant,
     innerRef,
     type,
-    size = 'small',
+    size = "small",
     ...restProps
   } = props;
 
@@ -18,14 +18,15 @@ export default function NativeButton(props) {
 
   return (
     <SCButton
-      type={type ? type : 'button'}
+      type={type ? type : "button"}
       ref={innerRef}
-      mode={variant ? variant : 'contained'}
+      mode={variant ? variant : "contained"}
       size={size}
-      onPress={e => {
+      onPress={(e) => {
         UserActionLogging();
         OnClick(e);
-      }}>
+      }}
+    >
       {label}
     </SCButton>
   );

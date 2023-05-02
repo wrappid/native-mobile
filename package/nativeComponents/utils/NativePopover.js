@@ -1,11 +1,11 @@
-import React from 'react';
-import {SCPopover} from '../../utils/SCPopover';
+import React from "react";
+import { SCPopover } from "../../styledComponents/utils/SCPopover";
 
 export default function NativePopover(props) {
-  const {open, onClose, ...restProps} = props;
+  const { open, onClose, ...restProps } = props;
 
-  console.log('open', open);
-  console.log('restPorps', restProps);
+  console.log("open", open);
+  console.log("restPorps", restProps);
 
   return (
     <SCPopover
@@ -13,7 +13,8 @@ export default function NativePopover(props) {
       onDismiss={() => {
         onClose;
       }}
-      {...restProps}>
+      {...restProps}
+    >
       {restProps.children}
     </SCPopover>
   );

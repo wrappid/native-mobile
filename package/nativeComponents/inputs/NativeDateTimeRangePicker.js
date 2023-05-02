@@ -1,18 +1,18 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import moment from 'moment';
-import NativeBox from '../layouts/NativeBox';
-import NativeOutlinedButton from './NativeOutlinedButton';
-import NativeTypographyBody1 from '../dataDisplay/paragraph/NativeTypographyBody1';
-import {NativeInput} from './NativeInput';
-import {SCInput} from '../../inputs/SCInput';
-import {SCDatePicker} from '../../inputs/SCDatePicker';
-import {SCTimePicker} from '../../inputs/SCTimePicker';
+import React, { useCallback, useEffect, useState } from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import moment from "moment";
+import NativeBox from "../layouts/NativeBox";
+import NativeOutlinedButton from "./NativeOutlinedButton";
+import NativeTypographyBody1 from "../dataDisplay/paragraph/NativeTypographyBody1";
+import { NativeInput } from "./NativeInput";
+import { SCInput } from "../../styledComponents/inputs/SCInput";
+import { SCDatePicker } from "../../styledComponents/inputs/SCDatePicker";
+import { SCTimePicker } from "../../styledComponents/inputs/SCTimePicker";
 
 export default function NativeDateTimeRangePicker(props) {
   const {
     value,
-    label = 'Pick Date Time Range',
+    label = "Pick Date Time Range",
     onChange,
     id,
     formik,
@@ -21,23 +21,23 @@ export default function NativeDateTimeRangePicker(props) {
   } = props;
 
   const [startDate, setStartDate] = useState(
-    value?.startDate ? new Date(value.startDate.split(' ')[0]) : null,
+    value?.startDate ? new Date(value.startDate.split(" ")[0]) : null
   );
   const [startTime, setStartTime] = useState(
-    value?.startDate ? new Date(value.startDate.split(' ')[1]) : null,
+    value?.startDate ? new Date(value.startDate.split(" ")[1]) : null
   );
   const [endDate, setEndDate] = useState(
-    value?.endDate ? new Date(value.endDate.split(' ')[0]) : null,
+    value?.endDate ? new Date(value.endDate.split(" ")[0]) : null
   );
   const [endTime, setEndTime] = useState(
-    value?.endDate ? new Date(value.endDate.split(' ')[1]) : null,
+    value?.endDate ? new Date(value.endDate.split(" ")[1]) : null
   );
 
-  const startHours = startTime ? startTime.split(':')[0] : null;
-  const startMinutes = startTime ? startTime.split(':')[1] : null;
+  const startHours = startTime ? startTime.split(":")[0] : null;
+  const startMinutes = startTime ? startTime.split(":")[1] : null;
 
-  const endHours = endTime ? endTime.split(':')[0] : null;
-  const endMinutes = endTime ? endTime.split(':')[1] : null;
+  const endHours = endTime ? endTime.split(":")[0] : null;
+  const endMinutes = endTime ? endTime.split(":")[1] : null;
 
   const [visibleStartDate, setVisibleStartDate] = useState(false);
   const [visibleStartTime, setVisibleStartTime] = useState(false);
@@ -48,13 +48,13 @@ export default function NativeDateTimeRangePicker(props) {
   useEffect(() => {
     if (startDate && startTime && endDate && endTime) {
       formik?.setFieldValue(id, {
-        startDate: startDate + ' ' + startTime,
-        endDate: endDate + ' ' + endTime,
+        startDate: startDate + " " + startTime,
+        endDate: endDate + " " + endTime,
       });
       if (onChange) {
         onChange({
-          startDate: startDate + ' ' + startTime,
-          endDate: endDate + ' ' + endTime,
+          startDate: startDate + " " + startTime,
+          endDate: endDate + " " + endTime,
         });
       }
     }
@@ -65,14 +65,14 @@ export default function NativeDateTimeRangePicker(props) {
   }, [setVisibleStartDate]);
 
   const onConfirmStartDate = useCallback(
-    params => {
+    (params) => {
       setVisibleStartDate(false);
       setStartDate(
-        params?.date ? moment(params.date).format('YYYY-MM-DD') : null,
+        params?.date ? moment(params.date).format("YYYY-MM-DD") : null
       );
       setVisibleStartTime(true);
     },
-    [setVisibleStartDate],
+    [setVisibleStartDate]
   );
 
   const onDismissStartTime = useCallback(() => {
@@ -80,12 +80,12 @@ export default function NativeDateTimeRangePicker(props) {
   }, [setVisibleStartTime]);
 
   const onConfirmStartTime = useCallback(
-    params => {
+    (params) => {
       setVisibleStartTime(false);
-      setStartTime(params?.hours + ':' + params?.minutes);
+      setStartTime(params?.hours + ":" + params?.minutes);
       setVisibleEndDate(true);
     },
-    [setVisibleStartTime],
+    [setVisibleStartTime]
   );
 
   const onDismissEndDate = useCallback(() => {
@@ -93,14 +93,14 @@ export default function NativeDateTimeRangePicker(props) {
   }, [setVisibleEndDate]);
 
   const onConfirmEndDate = useCallback(
-    params => {
+    (params) => {
       setVisibleEndDate(false);
       setEndDate(
-        params?.date ? moment(params.date).format('YYYY-MM-DD') : null,
+        params?.date ? moment(params.date).format("YYYY-MM-DD") : null
       );
       setVisibleEndTime(true);
     },
-    [setVisibleEndDate],
+    [setVisibleEndDate]
   );
 
   const onDismissEndTime = useCallback(() => {
@@ -108,11 +108,11 @@ export default function NativeDateTimeRangePicker(props) {
   }, [setVisibleEndTime]);
 
   const onConfirmEndTime = useCallback(
-    params => {
+    (params) => {
       setVisibleEndTime(false);
-      setEndTime(params?.hours + ':' + params?.minutes);
+      setEndTime(params?.hours + ":" + params?.minutes);
     },
-    [setVisibleEndTime],
+    [setVisibleEndTime]
   );
 
   return (
@@ -122,7 +122,7 @@ export default function NativeDateTimeRangePicker(props) {
           onChange={onChange}
           value={
             startDate && endDate && startTime && endTime
-              ? startDate + ' ' + startTime + ' - ' + endDate + ' ' + endTime
+              ? startDate + " " + startTime + " - " + endDate + " " + endTime
               : null
           }
           right={

@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import DocumentPicker from 'react-native-document-picker';
-import {NativeInput} from './NativeInput';
-import {SCInput} from '../../inputs/SCInput';
+import React, { useEffect, useState } from "react";
+import DocumentPicker from "react-native-document-picker";
+import { NativeInput } from "./NativeInput";
+import { SCInput } from "../../styledComponents/inputs/SCInput";
 
 export default function NativeFilePicker(props) {
-  const {label = 'Pick Document', formik, id, onChange} = props;
+  const { label = "Pick Document", formik, id, onChange } = props;
 
   const [value, setValue] = useState();
 
@@ -27,11 +27,11 @@ export default function NativeFilePicker(props) {
         DocumentPicker.types.pdf,
       ],
     })
-      .then(file => {
+      .then((file) => {
         setValue(file);
       })
-      .catch(err => {
-        console.log('Error to pick document', err);
+      .catch((err) => {
+        console.log("Error to pick document", err);
       });
   };
 

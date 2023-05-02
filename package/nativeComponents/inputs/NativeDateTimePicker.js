@@ -1,12 +1,12 @@
-import React, {useEffect} from 'react';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import NativeBox from '../layouts/NativeBox';
-import {SCInput} from '../../inputs/SCInput';
-import {SCDatePicker} from '../../inputs/SCDatePicker';
-import {SCTimePicker} from '../../inputs/SCTimePicker';
+import React, { useEffect } from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import NativeBox from "../layouts/NativeBox";
+import { SCInput } from "../../styledComponents/inputs/SCInput";
+import { SCDatePicker } from "../../styledComponents/inputs/SCDatePicker";
+import { SCTimePicker } from "../../styledComponents/inputs/SCTimePicker";
 
-import moment from 'moment';
-import {NativeInput} from './NativeInput';
+import moment from "moment";
+import { NativeInput } from "./NativeInput";
 
 export default function NativeDateTimePicker(props) {
   const {
@@ -15,26 +15,26 @@ export default function NativeDateTimePicker(props) {
     id,
     formik,
     value,
-    label = 'Pick Date Time',
+    label = "Pick Date Time",
     ...restProps
   } = props;
 
   const [date, setDate] = React.useState(
-    value ? new Date(value.split(' ')[0]) : null,
+    value ? new Date(value.split(" ")[0]) : null
   );
-  const [time, setTime] = React.useState(value ? value.split(' ')[1] : null);
+  const [time, setTime] = React.useState(value ? value.split(" ")[1] : null);
 
-  const hours = time ? time.split(':')[0] : null;
-  const minutes = time ? time.split(':')[1] : null;
+  const hours = time ? time.split(":")[0] : null;
+  const minutes = time ? time.split(":")[1] : null;
 
   const [openDate, setOpenDate] = React.useState(false);
   const [visibleTime, setVisibleTime] = React.useState(false);
 
   useEffect(() => {
     if (date && time) {
-      formik?.setFieldValue(id, date + ' ' + time);
+      formik?.setFieldValue(id, date + " " + time);
       if (onChange) {
-        onChange(date + ' ' + time);
+        onChange(date + " " + time);
       }
     }
   }, [date, time]);
@@ -44,12 +44,12 @@ export default function NativeDateTimePicker(props) {
   }, [setOpenDate]);
 
   const onConfirmDate = React.useCallback(
-    params => {
+    (params) => {
       setOpenDate(false);
-      setDate(params?.date ? moment(params.date).format('YYYY-MM-DD') : null);
+      setDate(params?.date ? moment(params.date).format("YYYY-MM-DD") : null);
       setVisibleTime(true);
     },
-    [setOpenDate],
+    [setOpenDate]
   );
 
   const onDismissTime = React.useCallback(() => {
@@ -57,13 +57,13 @@ export default function NativeDateTimePicker(props) {
   }, [setVisibleTime]);
 
   const onConfirmTime = React.useCallback(
-    params => {
+    (params) => {
       setVisibleTime(false);
       //   formik?.setFieldValue(id, hours + ':' + minutes);
       //   onChange(hours + ':' + minutes);
-      setTime(params?.hours + ':' + params?.minutes);
+      setTime(params?.hours + ":" + params?.minutes);
     },
-    [setVisibleTime],
+    [setVisibleTime]
   );
 
   return (
@@ -72,7 +72,7 @@ export default function NativeDateTimePicker(props) {
         <NativeInput
           onChange={onChange}
           value={
-            date && hours && minutes ? date + ' ' + hours + ':' + minutes : null
+            date && hours && minutes ? date + " " + hours + ":" + minutes : null
           }
           right={
             <SCInput.Icon

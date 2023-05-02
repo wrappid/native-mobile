@@ -1,6 +1,6 @@
-import React from 'react';
-import {variantMap} from '../../helper/componentPropsUtils';
-import {SCTypography} from '../../dataDisplay/SCTypography';
+import React from "react";
+import { variantMap } from "../../helper/componentPropsUtils";
+import { SCTypography } from "../../styledComponents/dataDisplay/SCTypography";
 
 export default function NativeTypography(props) {
   //Do not use this directly use NativeParagraph
@@ -8,7 +8,8 @@ export default function NativeTypography(props) {
     <SCTypography
       {...props}
       component={props.component}
-      variant={variantMap[props.variant]}>
+      variant={variantMap[props.variant]}
+    >
       {props.children}
     </SCTypography>
   );

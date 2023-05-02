@@ -1,7 +1,7 @@
-import React from 'react';
-import {SCTabs} from '../../navigation/SCTabs';
-import NativeBox from '../layouts/NativeBox';
-import {CoreClasses} from '@wrappid/styles';
+import React from "react";
+import { SCTabs } from "../../styledComponents/navigation/SCTabs";
+import NativeBox from "../layouts/NativeBox";
+import { CoreClasses } from "@wrappid/styles";
 
 export default function NativeTabs(props) {
   return (

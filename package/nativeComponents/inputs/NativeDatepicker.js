@@ -1,13 +1,13 @@
-import React, {useEffect} from 'react';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {SCDatePicker} from '../../inputs/SCDatePicker';
-import NativeBox from '../layouts/NativeBox';
-import moment from 'moment';
-import {NativeInput} from './NativeInput';
-import {SCInput} from '../../inputs/SCInput';
+import React, { useEffect } from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { SCDatePicker } from "../../styledComponents/inputs/SCDatePicker";
+import NativeBox from "../layouts/NativeBox";
+import moment from "moment";
+import { NativeInput } from "./NativeInput";
+import { SCInput } from "../../styledComponents/inputs/SCInput";
 
 export default function NativeDatepicker(props) {
-  const {id, formik, onChange, value, ...restProps} = props;
+  const { id, formik, onChange, value, ...restProps } = props;
 
   const [date, setDate] = React.useState(value ? new Date(value) : null);
   const [open, setOpen] = React.useState(false);
@@ -17,18 +17,18 @@ export default function NativeDatepicker(props) {
   }, [setOpen]);
 
   const onConfirmSingle = React.useCallback(
-    params => {
+    (params) => {
       setOpen(false);
-      setDate(params?.date ? moment(params.date).format('YYYY-MM-DD') : null);
+      setDate(params?.date ? moment(params.date).format("YYYY-MM-DD") : null);
     },
-    [setOpen, setDate],
+    [setOpen, setDate]
   );
 
   useEffect(() => {
     if (date) {
       formik?.setFieldValue(
         id,
-        date ? moment(date).format('YYYY-MM-DD') : null,
+        date ? moment(date).format("YYYY-MM-DD") : null
       );
       if (onChange) {
         onChange(date);

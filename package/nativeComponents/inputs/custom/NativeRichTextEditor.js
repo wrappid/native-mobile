@@ -1,7 +1,7 @@
-import React from 'react';
-import {useRef} from 'react';
-import {SCRichTextEditor} from '../../../inputs/custom/SCRichTextEditor';
-import NativeInputLabel from '../NativeInputLabel';
+import React from "react";
+import { useRef } from "react";
+import { SCRichTextEditor } from "../../../styledComponents/inputs/custom/SCRichTextEditor";
+import NativeInputLabel from "../NativeInputLabel";
 
 export default function NativeRichTextEditor(props) {
   const ref = useRef(null);
@@ -13,7 +13,8 @@ export default function NativeRichTextEditor(props) {
         error={
           props.touched && props.error && props.error.length > 0 ? true : false
         }
-        htmlFor={props.id}>
+        htmlFor={props.id}
+      >
         {props.label}
       </NativeInputLabel>
       <SCRichTextEditor
@@ -23,7 +24,7 @@ export default function NativeRichTextEditor(props) {
             ? props.formik?.values[props.id]
             : props.value
             ? props.value
-            : ''
+            : ""
         }
         onChange={props.onChange}
         ref={props.ref || ref}
@@ -31,7 +32,7 @@ export default function NativeRichTextEditor(props) {
         onBlur={
           props.onBlur
             ? props.onBlur
-            : v => {
+            : (v) => {
                 props.formik?.setFieldValue(props.id, v);
               }
         }

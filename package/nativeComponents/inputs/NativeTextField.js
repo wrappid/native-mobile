@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 // import {getUUID} from '../../../utils/appUtils';
-import {SCInput} from '../../inputs/SCInput';
+import { SCInput } from "../../styledComponents/inputs/SCInput";
 
 export default function NativeTextField(props) {
   // const {NativeId = getUUID()} = props;
@@ -10,7 +10,7 @@ export default function NativeTextField(props) {
       label={props.label}
       type={props.type}
       styleClasses={[...(props.styleClasses || [])]}
-      value={props.value || ''}
+      value={props.value || ""}
       secureTextEntry={props.secureTextEntry}
       onChangeText={props.onChange}
       required={props.formik ? false : props.required}
@@ -32,11 +32,11 @@ export default function NativeTextField(props) {
       onFocus={
         props.onFormFocus && props.editId && props.readOnly
           ? () => {
-              console.log('CLICKED');
+              console.log("CLICKED");
               props.onFormFocus(props.editId);
             }
           : () => {
-              console.log('CLICKED else');
+              console.log("CLICKED else");
             }
       }
       {...props}

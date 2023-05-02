@@ -1,13 +1,13 @@
-import React, {useEffect} from 'react';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import NativeBox from '../layouts/NativeBox';
-import {SCTimePicker} from '../../inputs/SCTimePicker';
-import {NativeInput} from './NativeInput';
-import {SCInput} from '../../inputs/SCInput';
+import React, { useEffect } from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import NativeBox from "../layouts/NativeBox";
+import { SCTimePicker } from "../../styledComponents/inputs/SCTimePicker";
+import { NativeInput } from "./NativeInput";
+import { SCInput } from "../../styledComponents/inputs/SCInput";
 
 export default function NativeTimeRangePicker(props) {
   const {
-    label = 'Pick Time Range',
+    label = "Pick Time Range",
     ampm,
     onChange,
     value,
@@ -22,15 +22,15 @@ export default function NativeTimeRangePicker(props) {
   const [startTime, setStartTime] = React.useState(value?.startTime);
   const [endTime, setEndTime] = React.useState(value?.endTime);
 
-  const startHours = startTime ? startTime.split(':')[0] : null;
-  const startMinutes = startTime ? startTime.split(':')[1] : null;
+  const startHours = startTime ? startTime.split(":")[0] : null;
+  const startMinutes = startTime ? startTime.split(":")[1] : null;
 
-  const endHours = endTime ? endTime.split(':')[0] : null;
-  const endMinutes = endTime ? endTime.split(':')[1] : null;
+  const endHours = endTime ? endTime.split(":")[0] : null;
+  const endMinutes = endTime ? endTime.split(":")[1] : null;
 
   useEffect(() => {
     if (startTime && endTime) {
-      onChange({startTime: startTime, endTime: endTime});
+      onChange({ startTime: startTime, endTime: endTime });
     }
   }, [startTime, endTime]);
 
@@ -39,15 +39,15 @@ export default function NativeTimeRangePicker(props) {
   }, [setVisibleStart]);
 
   const onConfirmStart = React.useCallback(
-    ({hours, minutes}) => {
+    ({ hours, minutes }) => {
       setVisibleStart(false);
-      formik?.setFieldValue(id, hours + ':' + minutes);
+      formik?.setFieldValue(id, hours + ":" + minutes);
       if (onChange) {
-        setStartTime(hours + ':' + minutes);
+        setStartTime(hours + ":" + minutes);
       }
       setVisibleEnd(true);
     },
-    [setVisibleStart],
+    [setVisibleStart]
   );
 
   const onDismissEnd = React.useCallback(() => {
@@ -55,14 +55,14 @@ export default function NativeTimeRangePicker(props) {
   }, [setVisibleEnd]);
 
   const onConfirmEnd = React.useCallback(
-    ({hours, minutes}) => {
+    ({ hours, minutes }) => {
       setVisibleEnd(false);
-      formik?.setFieldValue(id, hours + ':' + minutes);
+      formik?.setFieldValue(id, hours + ":" + minutes);
       if (onChange) {
-        setEndTime(hours + ':' + minutes);
+        setEndTime(hours + ":" + minutes);
       }
     },
-    [setVisibleEnd],
+    [setVisibleEnd]
   );
 
   return (
@@ -73,11 +73,11 @@ export default function NativeTimeRangePicker(props) {
           value={
             startHours && startMinutes && endHours && endMinutes
               ? startHours +
-                ':' +
+                ":" +
                 startMinutes +
-                ' - ' +
+                " - " +
                 endHours +
-                ':' +
+                ":" +
                 endMinutes
               : null
           }

@@ -1,12 +1,12 @@
-import React from 'react';
-import {SCIcon} from '../../dataDisplay/SCIcon';
+import React from "react";
+import { SCIcon } from "../../styledComponents/dataDisplay/SCIcon";
 
 export const __IconTypes = {
-  MATERIAL_ICON: 'MATERIAL_ICON', // Default support of MUI
-  MATERIAL_OUTLINED_ICON: 'MATERIAL_OUTLINED_ICON',
-  FONTAWESOME_V5_SOLID_ICON: 'FONTAWESOME_V5_SOLID_ICON',
-  FONTAWESOME_V5_REGULAR_ICON: 'FONTAWESOME_V5_REGULAR_ICON',
-  RXICON_V1_REGULAR_ICON: 'RXICON_V1_REGULAR_ICON',
+  MATERIAL_ICON: "MATERIAL_ICON", // Default support of MUI
+  MATERIAL_OUTLINED_ICON: "MATERIAL_OUTLINED_ICON",
+  FONTAWESOME_V5_SOLID_ICON: "FONTAWESOME_V5_SOLID_ICON",
+  FONTAWESOME_V5_REGULAR_ICON: "FONTAWESOME_V5_REGULAR_ICON",
+  RXICON_V1_REGULAR_ICON: "RXICON_V1_REGULAR_ICON",
 };
 
 /**
@@ -17,16 +17,16 @@ export const __IconTypes = {
  * @returns
  */
 export default function NativeIcon(props) {
-  const {type, icon, options, sx, ...restProps} = props;
+  const { type, icon, options, sx, ...restProps } = props;
 
   const renderNativeIcon = () => {
     let tmpType = type || options?.type || __IconTypes.MATERIAL_ICON;
-    let tmpIcon = props.children || icon || options?.icon || '';
+    let tmpIcon = props.children || icon || options?.icon || "";
     switch (tmpType) {
       case __IconTypes.RXICON_V1_REGULAR_ICON:
         return (
           <SCIcon
-            sx={{...sx, overflow: 'unset'}}
+            sx={{ ...sx, overflow: "unset" }}
             baseClassName="rxi"
             className={tmpIcon}
             size="small"
@@ -36,7 +36,7 @@ export default function NativeIcon(props) {
       case __IconTypes.FONTAWESOME_V5_REGULAR_ICON:
         return (
           <SCIcon
-            sx={{...sx, overflow: 'unset'}}
+            sx={{ ...sx, overflow: "unset" }}
             baseClassName="far"
             className={tmpIcon}
             size="small"
@@ -46,7 +46,7 @@ export default function NativeIcon(props) {
       case __IconTypes.FONTAWESOME_V5_SOLID_ICON:
         return (
           <SCIcon
-            sx={{...sx, overflow: 'unset'}}
+            sx={{ ...sx, overflow: "unset" }}
             baseClassName="fas"
             className={tmpIcon}
             size="small"
@@ -59,7 +59,8 @@ export default function NativeIcon(props) {
             baseClassName="material-icons-outlined"
             sx={sx}
             size="small"
-            {...restProps}>
+            {...restProps}
+          >
             {tmpIcon}
           </SCIcon>
         );

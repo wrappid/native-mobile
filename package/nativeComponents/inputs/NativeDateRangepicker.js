@@ -1,13 +1,13 @@
-import React from 'react';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import NativeBox from '../layouts/NativeBox';
-import {SCDatePicker} from '../../inputs/SCDatePicker';
-import moment from 'moment';
-import {NativeInput} from './NativeInput';
-import {SCInput} from '../../inputs/SCInput';
+import React from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import NativeBox from "../layouts/NativeBox";
+import { SCDatePicker } from "../../styledComponents/inputs/SCDatePicker";
+import moment from "moment";
+import { NativeInput } from "./NativeInput";
+import { SCInput } from "../../styledComponents/inputs/SCInput";
 
 export default function NativeDateRangepicker(props) {
-  const {value, onChange, ...restProps} = props;
+  const { value, onChange, ...restProps } = props;
 
   const [range, setRange] = React.useState({
     startDate: value?.startDate ? new Date(value.startDate) : undefined,
@@ -20,17 +20,17 @@ export default function NativeDateRangepicker(props) {
   }, [setOpen]);
 
   const onConfirm = React.useCallback(
-    ({startDate, endDate}) => {
+    ({ startDate, endDate }) => {
       setOpen(false);
-      setRange({startDate, endDate});
+      setRange({ startDate, endDate });
       onChange({
         startDate: startDate
-          ? moment(startDate).format('YYYY-MM-DD')
+          ? moment(startDate).format("YYYY-MM-DD")
           : undefined,
-        endDate: endDate ? moment(endDate).format('YYYY-MM-DD') : undefined,
+        endDate: endDate ? moment(endDate).format("YYYY-MM-DD") : undefined,
       });
     },
-    [setOpen, setRange],
+    [setOpen, setRange]
   );
 
   return (
@@ -40,9 +40,9 @@ export default function NativeDateRangepicker(props) {
           onChange={onChange}
           value={
             range?.startDate && range?.endDate
-              ? moment(range?.startDate).format('YYYY-MM-DD') +
-                ' to ' +
-                moment(range?.endDate).format('YYYY-MM-DD')
+              ? moment(range?.startDate).format("YYYY-MM-DD") +
+                " to " +
+                moment(range?.endDate).format("YYYY-MM-DD")
               : null
           }
           right={

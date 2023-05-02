@@ -1,5 +1,5 @@
-import React from 'react';
-import {SCSwitch} from '../../inputs/SCSwitch';
+import React from "react";
+import { SCSwitch } from "../../styledComponents/inputs/SCSwitch";
 
 export default function NativeSwitch(props) {
   const {
@@ -26,7 +26,8 @@ export default function NativeSwitch(props) {
       {...restProps}
       disabled={disabled}
       value={checked}
-      onValueChange={onChange}>
+      onValueChange={onChange}
+    >
       {restProps.children}
     </SCSwitch>
   );

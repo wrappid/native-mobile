@@ -1,7 +1,7 @@
-import React from 'react';
-import {SCBadge} from '../../dataDisplay/SCBadge';
+import React from "react";
+import { SCBadge } from "../../styledComponents/dataDisplay/SCBadge";
 
 export default function NativeBadge(props) {
-  const {badgeContent, ...restProps} = props;
+  const { badgeContent, ...restProps } = props;
   return <SCBadge {...props}>{badgeContent}</SCBadge>;
 }

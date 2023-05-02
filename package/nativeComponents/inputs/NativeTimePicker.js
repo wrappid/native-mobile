@@ -1,12 +1,12 @@
-import React from 'react';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import NativeBox from '../layouts/NativeBox';
-import {SCTimePicker} from '../../inputs/SCTimePicker';
-import {NativeInput} from './NativeInput';
-import {SCInput} from '../../inputs/SCInput';
+import React from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import NativeBox from "../layouts/NativeBox";
+import { SCTimePicker } from "../../styledComponents/inputs/SCTimePicker";
+import { NativeInput } from "./NativeInput";
+import { SCInput } from "../../styledComponents/inputs/SCInput";
 
 export default function NativeTimePicker(props) {
-  const {ampm, onChange, value, id, formik, ...restProps} = props;
+  const { ampm, onChange, value, id, formik, ...restProps } = props;
 
   const [visible, setVisible] = React.useState(false);
   const onDismiss = React.useCallback(() => {
@@ -14,23 +14,23 @@ export default function NativeTimePicker(props) {
   }, [setVisible]);
 
   const onConfirm = React.useCallback(
-    ({hours, minutes}) => {
+    ({ hours, minutes }) => {
       setVisible(false);
-      formik?.setFieldValue(id, hours + ':' + minutes);
-      onChange(hours + ':' + minutes);
+      formik?.setFieldValue(id, hours + ":" + minutes);
+      onChange(hours + ":" + minutes);
     },
-    [setVisible],
+    [setVisible]
   );
 
-  const hours = value ? value.split(':')[0] : null;
-  const minutes = value ? value.split(':')[1] : null;
+  const hours = value ? value.split(":")[0] : null;
+  const minutes = value ? value.split(":")[1] : null;
 
   return (
     <SafeAreaProvider>
       <NativeBox>
         <NativeInput
           onChange={onChange}
-          value={hours && minutes ? hours + ':' + minutes : null}
+          value={hours && minutes ? hours + ":" + minutes : null}
           right={
             <SCInput.Icon
               icon="clock"
