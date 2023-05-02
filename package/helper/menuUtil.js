@@ -1,15 +1,12 @@
-import React from 'react';
-import {CoreClasses} from '@wrappid/styles';
-import {isJson} from './stringUtils';
-import NativeDivider from '../nativeComponents/dataDisplay/NativeDivider';
-import NativeLink from '../nativeComponents/navigation/NativeLink';
-import NativeMenuItem from '../nativeComponents/navigation/NativeMenuItem';
-import NativeListItemIcon from '../nativeComponents/dataDisplay/NativeListItemIcon';
-import NativeIcon from '../nativeComponents/dataDisplay/NativeIcon';
-import NativeListItemText from '../nativeComponents/dataDisplay/NativeListItemText';
-import NativeIconButton from '../nativeComponents/inputs/NativeIconButton';
+import React from "react";
+import { CoreClasses } from "@wrappid/styles";
+import NativeDivider from "../nativeComponents/dataDisplay/NativeDivider";
+import NativeLink from "../nativeComponents/navigation/NativeLink";
+import NativeListItemText from "../nativeComponents/dataDisplay/NativeListItemText";
+import { TouchableOpacity } from "react-native";
+import NativeMenuItem from "../nativeComponents/navigation/NativeMenuItem";
 
-export default function getMenuItem(
+export default function getNativeMenuItem(
   menuItem,
   level,
   OnMenuClick,
@@ -19,7 +16,7 @@ export default function getMenuItem(
   setSelectedID,
   locationPathname,
   theme,
-  allTypes,
+  allTypes
 ) {
   // console.log("OPEN", open);
   /**
@@ -27,115 +24,43 @@ export default function getMenuItem(
    */
   return menuItem.type === allTypes?.MENU_SEPERATOR ? (
     <NativeDivider />
-  ) : open ? (
+  ) : (
     <NativeLink
       href={
         menuItem?.type === allTypes?.MENU_ITEM && menuItem?.link
           ? menuItem?.link
-          : ''
-      }>
+          : ""
+      }
+    >
       <NativeMenuItem
-        sx={{
-          height: 34,
+        style={{
           paddingLeft: level * 8,
           backgroundColor:
             menuItem?.type === allTypes?.MENU_ITEM &&
             locationPathname === menuItem?.link &&
             theme.palette.secondary.light,
         }}
-        key={menuItem.id}
-        disablePadding
-        title={menuItem.label}
-        onClick={e => {
+        onPress={(e) => {
+          console.log(
+            "CLICKING",
+            menuItem?.type,
+            menuItem?.link,
+            allTypes?.MENU_ITEM,
+            window.innerWidth
+          );
           // setSelectedID(menuItem?.name);
-          OnMenuClick(menuItem);
-        }}>
-        <NativeListItemIcon
-          styleClasses={
-            miniDrawer
-              ? [
-                  CoreClasses.MENU.MINI_DRAWER_LIST_ITEM_ICON,
-                  ...getTypeWiseStyle(
-                    menuItem,
-                    allTypes?.MENU_ITEM_ICON,
-                    allTypes,
-                  ),
-                ]
-              : [
-                  CoreClasses.MENU.LIST_ITEM_ICON,
-                  ...getTypeWiseStyle(
-                    menuItem,
-                    allTypes?.MENU_ITEM_ICON,
-                    allTypes,
-                  ),
-                ]
-          }>
-          <NativeIcon
-            options={
-              typeof menuItem?.icon === 'object'
-                ? menuItem?.icon
-                : typeof menuItem?.icon === 'string' && isJson(menuItem?.icon)
-                ? JSON.parse(menuItem?.icon)
-                : {icon: menuItem?.icon}
-            }
-            sx={{
-              color: `${
-                menuItem?.type === allTypes?.MENU_ITEM &&
-                locationPathname === menuItem?.link
-                  ? theme.palette.primary.light
-                  : theme.palette.secondary.dark
-              }`,
-            }}
-          />
-        </NativeListItemIcon>
+          OnMenuClick(menuItem, true);
+        }}
+      >
         <NativeListItemText
-          disableTypography
           styleClasses={[
             CoreClasses.NAVIGATION.APP_DRAWER_TEXT,
             ...getTypeWiseStyle(menuItem, allTypes?.MENU_ITEM_TEXT, allTypes),
           ]}
-          primary={menuItem.label}
-          style={{
-            color: `${
-              menuItem?.type === allTypes?.MENU_ITEM &&
-              locationPathname === menuItem?.link
-                ? theme.palette.primary.light
-                : theme.palette.secondary.dark
-            }`,
-          }}
-        />
+        >
+          {menuItem.label}
+        </NativeListItemText>
       </NativeMenuItem>
-    </NativeLink>
-  ) : (
-    <NativeLink
-      href={
-        menuItem?.type === allTypes?.MENU_ITEM && menuItem?.link
-          ? menuItem?.link
-          : ''
-      }>
-      <NativeIconButton
-        title={menuItem?.label}
-        titlePlacement={'right'}
-        onClick={e => {
-          setSelectedID(menuItem?.name);
-          OnMenuClick(menuItem);
-        }}>
-        <NativeIcon
-          options={
-            isJson(menuItem?.icon)
-              ? JSON.parse(menuItem?.icon)
-              : {icon: menuItem?.icon}
-          }
-          style={{
-            color: `${
-              menuItem?.type === allTypes?.MENU_ITEM &&
-              locationPathname === menuItem?.link
-                ? theme.palette.primary.light
-                : theme.palette.secondary.dark
-            }`,
-          }}
-        />
-      </NativeIconButton>
     </NativeLink>
   );
 }
