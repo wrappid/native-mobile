@@ -1,6 +1,6 @@
-import React from 'react';
-import {SCStack} from '../../layouts/SCStack';
-import {CoreClasses} from '@wrappid/styles';
+import React from "react";
+import { SCStack } from "../../styledComponents/layouts//SCStack";
+import { CoreClasses } from "@wrappid/styles";
 
 export default function NativeStack(props) {
   // direction
@@ -17,7 +17,7 @@ export default function NativeStack(props) {
   // | string
 
   const {
-    direction = 'column',
+    direction = "column",
     divider,
     spacing,
     styleClasses,
@@ -26,7 +26,7 @@ export default function NativeStack(props) {
 
   const preparedStyleClasses = [
     ...(styleClasses || []),
-    CoreClasses.FLEX[`DIRECTION_${direction.replace('-', '_').toUpperCase()}`],
+    CoreClasses.FLEX[`DIRECTION_${direction.replace("-", "_").toUpperCase()}`],
   ];
 
   return (

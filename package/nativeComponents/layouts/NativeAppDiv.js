@@ -1,5 +1,5 @@
 import React from "react";
-import { SCAppDiv } from "../../layouts/SCAppDiv";
+import { SCAppDiv } from "../../styledComponents/layouts/SCAppDiv";
 import { ScrollView } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
