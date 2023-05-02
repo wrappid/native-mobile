@@ -5,7 +5,7 @@ TOKEN=$1
 # Set variables
 ORG="wrappid"
 PACKAGE_TYPE="npm"
-PACKAGE_NAME="sc-mobile"
+PACKAGE_NAME="native-mobile"
 OUTPUT_FILE="package_details.json"
 
 # Set API endpoint
