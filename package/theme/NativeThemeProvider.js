@@ -24,11 +24,15 @@ export default function NativeThemeProvider(props) {
         background: props.theme.palette.background.default,
         onBackground: props.theme.palette.background.default,
         surface: props.theme.palette.background.default,
-        onSurface: props.theme.palette.background.default,
+        // onSurface: props.theme.palette.background.default,
         error: props.theme.palette.error.main,
         onError: props.theme.palette.error.contrastText,
         errorContainer: props.theme.palette.error.light,
         onErrorContainer: props.theme.palette.error.dark,
+        elevation: {
+          ...DefaultTheme.colors.elevation,
+          level1: props.theme.palette.background.default,
+        },
       },
     };
     setPaperTheme(transformedThemeObject);
