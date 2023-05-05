@@ -1,6 +1,5 @@
-import { Provider } from "react-native-paper";
+import { Provider, MD3LightTheme as DefaultTheme } from "react-native-paper";
 import React from "react";
-import { View } from "react-native";
 
 export default function NativeThemeProvider(props) {
   const [paperTheme, setPaperTheme] = React.useState({});
@@ -8,10 +7,12 @@ export default function NativeThemeProvider(props) {
   const setPaperThemeObject = () => {
     console.log("%%%%%%%%%%%%%%%%%THEME%%%%%%%%%%%%%%%%%", props.theme);
     let transformedThemeObject = {
+      ...DefaultTheme,
       roundness: props.theme.shape.borderRadius
         ? props.theme.shape.borderRadius / 4
         : 1,
       colors: {
+        ...DefaultTheme.colors,
         primary: props.theme.palette.primary.main,
         onPrimary: props.theme.palette.primary.contrastText,
         primaryContainer: props.theme.palette.primary.light,
