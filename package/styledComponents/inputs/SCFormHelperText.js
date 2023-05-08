@@ -1,14 +1,14 @@
-import React from 'react';
-import styled from 'styled-components/native';
-import {Text} from 'react-native-paper';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import React from "react";
+import styled from "styled-components/native";
+import { Text } from "react-native-paper";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
 
-const defaultStyleClasses = [CoreClasses.SC.INPUTS.FORM_HELPER_TEXT];
+const defaultStyleClasses = [StyledComponentsClasses.INPUTS.FORM_HELPER_TEXT];
 
 export const SCFormHelperText = styled(
   Text,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

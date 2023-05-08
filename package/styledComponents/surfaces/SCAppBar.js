@@ -1,12 +1,12 @@
-import styled from 'styled-components/native';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
-import {Appbar} from 'react-native-paper';
+import styled from "styled-components/native";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
+import { Appbar } from "react-native-paper";
 
-const defaultStyleClasses = [CoreClasses.SC.SURFACES.APP_BAR];
+const defaultStyleClasses = [StyledComponentsClasses.SURFACES.APP_BAR];
 
 export const SCAppBar = styled(Appbar.Header, {
   // shouldForwardProp: (prop) => prop !== "open",
-})(props => ({
+})((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

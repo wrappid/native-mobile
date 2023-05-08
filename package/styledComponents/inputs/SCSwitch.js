@@ -1,13 +1,13 @@
-import styled from 'styled-components/native';
-import {Switch} from 'react-native-paper';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import styled from "styled-components/native";
+import { Switch } from "react-native-paper";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
 
-const defaultStyleClasses = [CoreClasses.SC.INPUTS.SWITCH];
+const defaultStyleClasses = [StyledComponentsClasses.INPUTS.SWITCH];
 
 export const SCSwitch = styled(
   Switch,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

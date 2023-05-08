@@ -1,13 +1,13 @@
-import styled from 'styled-components/native';
-import {Tooltip} from 'react-native-paper';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import styled from "styled-components/native";
+import { Tooltip } from "react-native-paper";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
 
-const defaultStyleClasses = [CoreClasses.SC.DATA_DISPLAY.TOOLTIP];
+const defaultStyleClasses = [StyledComponentsClasses.DATA_DISPLAY.TOOLTIP];
 
 export const SCTooltip = styled(
   Tooltip,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

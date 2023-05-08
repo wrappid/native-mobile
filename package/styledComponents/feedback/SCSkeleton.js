@@ -1,13 +1,13 @@
-import styled from 'styled-components/native';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
-import { View } from 'react-native';
+import styled from "styled-components/native";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
+import { View } from "react-native";
 
-const defaultStyleClasses = [CoreClasses.SC.FEEDBACK.SKELETON];
+const defaultStyleClasses = [StyledComponentsClasses.FEEDBACK.SKELETON];
 
 export const SCSkeleton = styled(
   View,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

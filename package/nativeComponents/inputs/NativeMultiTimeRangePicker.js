@@ -1,16 +1,16 @@
-import React from 'react';
-import NativeFormHelperText from './NativeFormHelperText';
-import {CoreClasses} from '@wrappid/styles';
-import NativeBox from '../layouts/NativeBox';
-import NativeLabel from '../dataDisplay/paragraph/NativeLabel';
-import NativeGrid from '../layouts/NativeGrid';
-import moment from 'moment';
-import NativeIconButton from './NativeIconButton';
-import NativeIcon from '../dataDisplay/NativeIcon';
-import NativeTimePicker from './NativeTimePicker';
+import React from "react";
+import NativeFormHelperText from "./NativeFormHelperText";
+import { UtilityClasses } from "@wrappid/styles";
+import NativeBox from "../layouts/NativeBox";
+import NativeLabel from "../dataDisplay/paragraph/NativeLabel";
+import NativeGrid from "../layouts/NativeGrid";
+import moment from "moment";
+import NativeIconButton from "./NativeIconButton";
+import NativeIcon from "../dataDisplay/NativeIcon";
+import NativeTimePicker from "./NativeTimePicker";
 
 export default function NativeMultiTimeRangePicker(props) {
-  const {id, label, onChange, value, formik, ampm} = props;
+  const { id, label, onChange, value, formik, ampm } = props;
   const [timeRanges, setTimeRanges] = React.useState([
     {
       startTime: null,
@@ -36,7 +36,7 @@ export default function NativeMultiTimeRangePicker(props) {
     setTimeRanges(x);
   };
 
-  const deleteRange = i => {
+  const deleteRange = (i) => {
     var x = [...timeRanges];
     let y = x.slice(0, i).concat(x.slice(i + 1));
     setTimeRanges(y);
@@ -44,7 +44,7 @@ export default function NativeMultiTimeRangePicker(props) {
 
   const _handleChange = (i, v, type) => {
     var x = [...timeRanges];
-    x[i][type] = v.format('LLL');
+    x[i][type] = v.format("LLL");
     formik.setFieldValue(props.id, x);
   };
 
@@ -60,12 +60,12 @@ export default function NativeMultiTimeRangePicker(props) {
             gridProps={{
               gridSize: 5,
             }}
-            label={props.startTimeLabel ? props.startTimeLabel : 'Start Time'}
-            inputFormat={props.ampm ? 'hh:mm' : 'HH:MM'}
+            label={props.startTimeLabel ? props.startTimeLabel : "Start Time"}
+            inputFormat={props.ampm ? "hh:mm" : "HH:MM"}
             ampm={props.ampm ? true : false}
             value={timeRange.startTime ? moment(timeRange.startTime) : null}
-            onChange={v => {
-              _handleChange(i, v, 'startTime');
+            onChange={(v) => {
+              _handleChange(i, v, "startTime");
             }}
             touched={props.touched}
             error={props.error}
@@ -75,12 +75,12 @@ export default function NativeMultiTimeRangePicker(props) {
             gridProps={{
               gridSize: 5,
             }}
-            label={props.endTimeLabel ? props.endTimeLabel : 'End Time'}
-            inputFormat={props.ampm ? 'hh:mm' : 'HH:MM'}
+            label={props.endTimeLabel ? props.endTimeLabel : "End Time"}
+            inputFormat={props.ampm ? "hh:mm" : "HH:MM"}
             ampm={props.ampm ? true : false}
             value={timeRange.endTime ? moment(timeRange.endTime) : null}
-            onChange={v => {
-              _handleChange(i, v, 'endTime');
+            onChange={(v) => {
+              _handleChange(i, v, "endTime");
             }}
             touched={props.touched}
             error={props.error}
@@ -90,7 +90,8 @@ export default function NativeMultiTimeRangePicker(props) {
               gridProps={{
                 gridSize: 2,
               }}
-              onClick={addRange}>
+              onClick={addRange}
+            >
               <NativeIcon>add</NativeIcon>
             </NativeIconButton>
           ) : (
@@ -100,13 +101,14 @@ export default function NativeMultiTimeRangePicker(props) {
               }}
               onClick={() => {
                 deleteRange(i);
-              }}>
+              }}
+            >
               <NativeIcon>delete_outline</NativeIcon>
             </NativeIconButton>
           )}
         </NativeGrid>
       ))}
-      <NativeFormHelperText styleClasses={[CoreClasses.LAYOUT.NO_MARGIN_P]}>
+      <NativeFormHelperText styleClasses={[UtilityClasses.LAYOUT.NO_MARGIN_P]}>
         {props.helperText}
       </NativeFormHelperText>
     </NativeBox>

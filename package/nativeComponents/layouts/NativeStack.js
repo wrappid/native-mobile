@@ -1,6 +1,6 @@
 import React from "react";
 import { SCStack } from "../../styledComponents/layouts//SCStack";
-import { CoreClasses } from "@wrappid/styles";
+import { UtilityClasses } from "@wrappid/styles";
 
 export default function NativeStack(props) {
   // direction
@@ -26,7 +26,9 @@ export default function NativeStack(props) {
 
   const preparedStyleClasses = [
     ...(styleClasses || []),
-    CoreClasses.FLEX[`DIRECTION_${direction.replace("-", "_").toUpperCase()}`],
+    UtilityClasses.FLEX[
+      `DIRECTION_${direction.replace("-", "_").toUpperCase()}`
+    ],
   ];
 
   return (

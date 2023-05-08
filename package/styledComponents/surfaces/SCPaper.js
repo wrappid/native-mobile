@@ -1,13 +1,13 @@
-import styled from 'styled-components';
-import {View as Paper} from 'react-native';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import styled from "styled-components";
+import { View as Paper } from "react-native";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
 
-const defaultStyleClasses = [CoreClasses.SC.SURFACES.PAPER];
+const defaultStyleClasses = [StyledComponentsClasses.SURFACES.PAPER];
 
 export const SCPaper = styled(
   Paper,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

@@ -1,12 +1,12 @@
-import styled from 'styled-components/native';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
-import {View} from 'react-native';
+import styled from "styled-components/native";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
+import { View } from "react-native";
 
-const defaultStyleClasses = [CoreClasses.SC.INPUTS.INPUT];
+const defaultStyleClasses = [StyledComponentsClasses.INPUTS.INPUT];
 export const SCMenuList = styled(
   View,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

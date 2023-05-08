@@ -1,13 +1,13 @@
-import styled from 'styled-components/native';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
-import {View} from 'react-native';
+import styled from "styled-components/native";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
+import { View } from "react-native";
 
-const defaultStyleClasses = [CoreClasses.SC.FORM.FORM_GROUP];
+const defaultStyleClasses = [StyledComponentsClasses.FORM.FORM_GROUP];
 
 export const SCFormGroup = styled(
   View,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

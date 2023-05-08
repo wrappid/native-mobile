@@ -1,13 +1,13 @@
-import styled from 'styled-components/native';
-import {View as Stack} from 'react-native';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import styled from "styled-components/native";
+import { View as Stack } from "react-native";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
 
-const defaultStyleClasses = [CoreClasses.SC.LAYOUTS.STACK];
+const defaultStyleClasses = [StyledComponentsClasses.LAYOUTS.STACK];
 
 export const SCStack = styled(
   Stack,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

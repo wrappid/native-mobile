@@ -1,13 +1,15 @@
-import styled from 'styled-components/native';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
-import {DataTable} from 'react-native-paper';
+import styled from "styled-components/native";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
+import { DataTable } from "react-native-paper";
 
-const defaultStyleClasses = [CoreClasses.SC.DATA_DISPLAY.TABLE_PAGINATION];
+const defaultStyleClasses = [
+  StyledComponentsClasses.DATA_DISPLAY.TABLE_PAGINATION,
+];
 
 export const SCTablePagination = styled(
   DataTable.Pagination,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

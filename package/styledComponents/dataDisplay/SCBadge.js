@@ -1,14 +1,14 @@
-import React from 'react';
-import styled from 'styled-components/native';
-import {Badge} from 'react-native-paper';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import React from "react";
+import styled from "styled-components/native";
+import { Badge } from "react-native-paper";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
 
-const defaultStyleClasses = [CoreClasses.SC.DATA_DISPLAY.BADGE];
+const defaultStyleClasses = [StyledComponentsClasses.DATA_DISPLAY.BADGE];
 
 export const SCBadge = styled(
   Badge,
-  {},
-)(({props}) => ({
+  {}
+)(({ props }) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

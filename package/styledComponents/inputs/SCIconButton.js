@@ -1,14 +1,14 @@
-import React from 'react';
-import styled from 'styled-components/native';
-import {IconButton} from 'react-native-paper';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import React from "react";
+import styled from "styled-components/native";
+import { IconButton } from "react-native-paper";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
 
-const defaultStyleClasses = [CoreClasses.SC.INPUTS.ICON_BUTTON];
+const defaultStyleClasses = [StyledComponentsClasses.INPUTS.ICON_BUTTON];
 
 export const SCIconButton = styled(
   IconButton,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

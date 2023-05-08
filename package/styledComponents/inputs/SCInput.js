@@ -1,12 +1,12 @@
-import styled from 'styled-components/native';
-import {TextInput as Input} from 'react-native-paper';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import styled from "styled-components/native";
+import { TextInput as Input } from "react-native-paper";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
 
-const defaultStyleClasses = [CoreClasses.SC.INPUTS.INPUT];
+const defaultStyleClasses = [StyledComponentsClasses.INPUTS.INPUT];
 export const SCInput = styled(
   Input,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

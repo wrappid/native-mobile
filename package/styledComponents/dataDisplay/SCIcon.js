@@ -1,14 +1,14 @@
-import React from 'react';
-import styled from 'styled-components/native';
-import {Text} from 'react-native-paper';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import React from "react";
+import styled from "styled-components/native";
+import { Text } from "react-native-paper";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
 
-const defaultStyleClasses = [CoreClasses.SC.DATA_DISPLAY.ICON];
+const defaultStyleClasses = [StyledComponentsClasses.DATA_DISPLAY.ICON];
 
 export const SCIcon = styled(
   Text,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

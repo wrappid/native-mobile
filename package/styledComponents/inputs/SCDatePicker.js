@@ -1,13 +1,13 @@
-import styled from 'styled-components/native';
-import {DatePickerModal as DesktopDatePicker} from 'react-native-paper-dates';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import styled from "styled-components/native";
+import { DatePickerModal as DesktopDatePicker } from "react-native-paper-dates";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
 
-const defaultStyleClasses = [CoreClasses.SC.INPUTS.DATE_PICKER];
+const defaultStyleClasses = [StyledComponentsClasses.INPUTS.DATE_PICKER];
 
 export const SCDatePicker = styled(
   DesktopDatePicker,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

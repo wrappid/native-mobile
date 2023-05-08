@@ -1,13 +1,13 @@
-import styled from 'styled-components/native';
-import {Text as Link} from 'react-native-paper';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import styled from "styled-components/native";
+import { Text as Link } from "react-native-paper";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
 
-const defaultStyleClasses = [CoreClasses.SC.NAVIGATION.LINK];
+const defaultStyleClasses = [StyledComponentsClasses.NAVIGATION.LINK];
 
 export const SCLink = styled(
   Link,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

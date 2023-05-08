@@ -1,14 +1,14 @@
-import React from 'react';
-import styled from 'styled-components/native';
-import {TextInput as Input} from 'react-native-paper';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import React from "react";
+import styled from "styled-components/native";
+import { TextInput as Input } from "react-native-paper";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
 
-const defaultStyleClasses = [CoreClasses.SC.INPUTS.TEXT_FIELD];
+const defaultStyleClasses = [StyledComponentsClasses.INPUTS.TEXT_FIELD];
 
 export const SCTextField = styled(
   Input,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

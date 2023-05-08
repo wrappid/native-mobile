@@ -1,13 +1,13 @@
-import styled from 'styled-components/native';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
-import {Modal} from 'react-native';
+import styled from "styled-components/native";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
+import { Modal } from "react-native";
 
-const defaultStyleClasses = [CoreClasses.SC.UTILS.MODAL];
+const defaultStyleClasses = [StyledComponentsClasses.UTILS.MODAL];
 
 export const SCModal = styled(
   Modal,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

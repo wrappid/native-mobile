@@ -1,14 +1,14 @@
-import React from 'react';
-import styled from 'styled-components/native';
-import {Chip} from 'react-native-paper';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import React from "react";
+import styled from "styled-components/native";
+import { Chip } from "react-native-paper";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
 
-const defaultStyleClasses = [CoreClasses.SC.DATA_DISPLAY.CHIP];
+const defaultStyleClasses = [StyledComponentsClasses.DATA_DISPLAY.CHIP];
 
 export const SCChip = styled(
   Chip,
-  {},
-)(({props}) => ({
+  {}
+)(({ props }) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

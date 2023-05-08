@@ -1,13 +1,13 @@
-import styled from 'styled-components/native';
-import {View as Popover} from 'react-native';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import styled from "styled-components/native";
+import { View as Popover } from "react-native";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
 
-const defaultStyleClasses = [CoreClasses.SC.UTILS.POPOVER];
+const defaultStyleClasses = [StyledComponentsClasses.UTILS.POPOVER];
 
 export const SCToolbar = styled(
   Popover,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

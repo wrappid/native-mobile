@@ -1,13 +1,15 @@
-import styled from 'styled-components/native';
-import {ActivityIndicator} from 'react-native-paper';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import styled from "styled-components/native";
+import { ActivityIndicator } from "react-native-paper";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
 
-const defaultStyleClasses = [CoreClasses.SC.FEEDBACK.CIRCULAR_PROGRESS];
+const defaultStyleClasses = [
+  StyledComponentsClasses.FEEDBACK.CIRCULAR_PROGRESS,
+];
 
 export const SCCircularProgress = styled(
   ActivityIndicator,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

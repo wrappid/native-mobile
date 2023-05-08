@@ -1,22 +1,22 @@
-import {CoreClasses} from '@wrappid/styles';
-import {__EntityStatus, __TableDensity} from '../config/constants';
-import {DATA_TABLE_CONST} from '../config/dataTableConstants';
-import {getLabel, isJson} from './stringUtils';
+import { UtilityClasses } from "@wrappid/styles";
+import { __EntityStatus, __TableDensity } from "../config/constants";
+import { DATA_TABLE_CONST } from "../config/dataTableConstants";
+import { getLabel, isJson } from "./stringUtils";
 
 export const __TableLeftPanelGridSize = 4;
 export const __TableRightPanelGridSize = 8;
-export const isStringsArray = arr => arr.every(i => typeof i === 'string');
+export const isStringsArray = (arr) => arr.every((i) => typeof i === "string");
 
-export const getStatusColor = status => {
+export const getStatusColor = (status) => {
   switch (status) {
     case __EntityStatus.ACTIVE:
-      return 'success';
+      return "success";
     case __EntityStatus.INACTIVE:
-      return 'warning';
+      return "warning";
     case __EntityStatus.DELETED:
-      return 'error';
+      return "error";
     default:
-      return 'secondary';
+      return "secondary";
   }
 };
 
@@ -32,13 +32,13 @@ export const prepareTableAPIQuery = (
     pagesToCache: DATA_TABLE_CONST.PAGES_TO_CACHE,
     _order: {},
     _filter: {},
-    _searchValue: '',
+    _searchValue: "",
   },
   filterQuery = {
     order: {},
     filter: {},
   },
-  totalRecords = 0,
+  totalRecords = 0
 ) => {
   const {
     currentRows = 0,
@@ -47,9 +47,9 @@ export const prepareTableAPIQuery = (
     pagesToCache = DATA_TABLE_CONST.PAGES_TO_CACHE,
     _order = {},
     _filter = {},
-    _searchValue = '',
+    _searchValue = "",
   } = query;
-  const {order = {}, filter = {}} = filterQuery;
+  const { order = {}, filter = {} } = filterQuery;
 
   let offset = notifyFilterChange ? 0 : currentRows;
   let limit = maxRowInPage * pagesToCache;
@@ -63,10 +63,10 @@ export const prepareTableAPIQuery = (
     // length: maxRowInPage * pagesToCache,
     offset: offset,
     limit: limit,
-    _order: '',
-    _filter: '',
-    _defaultFilter: '',
-    _searchValue: '',
+    _order: "",
+    _filter: "",
+    _defaultFilter: "",
+    _searchValue: "",
   };
 
   // if (filtering) {
@@ -78,33 +78,33 @@ export const prepareTableAPIQuery = (
 
   let orderOb = {};
   if (_order) {
-    Object.keys(_order).forEach(eachOrder => {
-      console.log('Each order' + eachOrder);
+    Object.keys(_order).forEach((eachOrder) => {
+      console.log("Each order" + eachOrder);
       orderOb[eachOrder.toString()] = _order[eachOrder];
     });
   }
   if (orderOb && Object.keys(orderOb).length > 0) {
-    console.log('------------------------------------');
+    console.log("------------------------------------");
     console.log(encodeURIComponent(JSON.stringify(orderOb)));
-    console.log('------------------------------------');
+    console.log("------------------------------------");
     _query._order = encodeURIComponent(JSON.stringify(orderOb));
   }
 
   let filterOb = {};
   if (filterQuery?.filter) {
-    Object.keys(filterQuery?.filter).forEach(eachFilter => {
-      console.log('Each Filter' + eachFilter);
+    Object.keys(filterQuery?.filter).forEach((eachFilter) => {
+      console.log("Each Filter" + eachFilter);
       filterOb[eachFilter.toString()] = filterQuery?.filter[eachFilter];
     });
   }
   if (filterOb && Object.keys(filterOb).length > 0) {
-    console.log('------------------------------------');
+    console.log("------------------------------------");
     console.log(encodeURIComponent(JSON.stringify(filterOb)));
-    console.log('------------------------------------');
+    console.log("------------------------------------");
     _query._defaultFilter = encodeURIComponent(JSON.stringify(filterOb));
   }
 
-  if (_searchValue && _searchValue !== '') {
+  if (_searchValue && _searchValue !== "") {
     _query._searchValue = _searchValue;
   }
 
@@ -160,7 +160,7 @@ export const prepareColumns = (entityStateData, data) => {
  */
 function prepareColumnsObjectFromTableData(tableData = []) {
   return prepareColumnsObject(
-    tableData && tableData.length > 0 ? Object.keys(tableData[0]) : [],
+    tableData && tableData.length > 0 ? Object.keys(tableData[0]) : []
   );
 }
 
@@ -173,9 +173,9 @@ function prepareColumnsObjectFromTableData(tableData = []) {
 function prepareColumnsObject(columns = []) {
   console.log(`prepareColumnsObject = ${columns}`);
   if (columns && Array.isArray(columns) && columns.length > 0) {
-    if (typeof columns[0] === 'string') {
-      return columns.map(col => {
-        return {id: col, label: getLabel(col)};
+    if (typeof columns[0] === "string") {
+      return columns.map((col) => {
+        return { id: col, label: getLabel(col) };
       });
     } else {
       return columns;
@@ -196,7 +196,7 @@ export function descendingComparator(a, b, orderBy) {
 }
 
 export function getComparator(order, orderBy) {
-  return order === 'desc'
+  return order === "desc"
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
@@ -213,7 +213,7 @@ export function stableSort(array, comparator) {
     }
     return a[1] - b[1];
   });
-  return stabilizedThis.map(el => el[0]);
+  return stabilizedThis.map((el) => el[0]);
 }
 
 export function filterProcessing(tableFilters) {
@@ -230,42 +230,42 @@ export function filterProcessing(tableFilters) {
 /**
  * renderer methods
  */
-export const getTableDensityIconName = tableDensity => {
+export const getTableDensityIconName = (tableDensity) => {
   switch (tableDensity) {
     case __TableDensity.COMFORTABLE:
-      return 'density_large';
+      return "density_large";
     case __TableDensity.STANDARD:
-      return 'density_medium';
+      return "density_medium";
     case __TableDensity.COMPACT:
     default:
-      return 'density_small';
+      return "density_small";
   }
 };
-export const getTableDensityPaddingValue = tableDensity => {
+export const getTableDensityPaddingValue = (tableDensity) => {
   switch (tableDensity) {
     case __TableDensity.COMFORTABLE:
-      return '16px 0px';
+      return "16px 0px";
     case __TableDensity.STANDARD:
-      return '8px 0px';
+      return "8px 0px";
     case __TableDensity.COMPACT:
     default:
-      return '6px 0px';
-  }
-};
-
-export const getTableDensityValue = tableDensity => {
-  switch (tableDensity) {
-    case __TableDensity.COMFORTABLE:
-      return 'medium';
-    case __TableDensity.STANDARD:
-      return 'medium';
-    case __TableDensity.COMPACT:
-    default:
-      return 'small';
+      return "6px 0px";
   }
 };
 
-export const getStatusTextColorClass = status => {
+export const getTableDensityValue = (tableDensity) => {
+  switch (tableDensity) {
+    case __TableDensity.COMFORTABLE:
+      return "medium";
+    case __TableDensity.STANDARD:
+      return "medium";
+    case __TableDensity.COMPACT:
+    default:
+      return "small";
+  }
+};
+
+export const getStatusTextColorClass = (status) => {
   // DEFAULT: "active", - secondary
   // UNKNOWN: "unknown", - secondary
   // NEW: "new", - info
@@ -275,15 +275,15 @@ export const getStatusTextColorClass = status => {
 
   switch (status) {
     case __EntityStatus.NEW:
-      return CoreClasses.COLOR.TEXT_INFO;
+      return UtilityClasses.COLOR.TEXT_INFO;
     case __EntityStatus.ACTIVE:
-      return CoreClasses.COLOR.TEXT_SUCCESS;
+      return UtilityClasses.COLOR.TEXT_SUCCESS;
     case __EntityStatus.INACTIVE:
-      return CoreClasses.COLOR.TEXT_WARNING;
+      return UtilityClasses.COLOR.TEXT_WARNING;
     case __EntityStatus.DELETED:
-      return CoreClasses.COLOR.TEXT_ERROR;
+      return UtilityClasses.COLOR.TEXT_ERROR;
     default:
-      return CoreClasses.COLOR.TEXT_SECONDARY;
+      return UtilityClasses.COLOR.TEXT_SECONDARY;
   }
 };
 
@@ -306,7 +306,7 @@ export const setPriorityBasedData = (
   setPriority2Data,
   setPriority3Data,
   setPriority4Data,
-  setPriority5Data,
+  setPriority5Data
 ) => {
   switch (defaultCol.priority) {
     case -2:
@@ -351,33 +351,33 @@ export const prepareData = (
   rowData,
   tableColumn,
   defaultCol,
-  allowDefaultValue,
+  allowDefaultValue
 ) => {
   return rowData[tableColumn.id]
     ? {
         data: getData(rowData, tableColumn),
-        column: {...tableColumn, priority: defaultCol.priority},
+        column: { ...tableColumn, priority: defaultCol.priority },
       }
     : allowDefaultValue
     ? {
         data: DATA_TABLE_CONST.DEFAULT_DATA[defaultCol.priority],
-        column: {...tableColumn, priority: defaultCol.priority},
+        column: { ...tableColumn, priority: defaultCol.priority },
       }
     : null;
 };
 
-export const getColumnLabel = column => {
+export const getColumnLabel = (column) => {
   return column?.label
-    ? column.label + ': '
+    ? column.label + ": "
     : column?.id
-    ? column?.id.toUpperCase() + ': '
-    : '';
+    ? column?.id.toUpperCase() + ": "
+    : "";
 };
 export const getData = (rowData, columnData) => {
   // tableColumnsToShow[2] && rowData[tableColumnsToShow[2]?.id];
-  return columnData?.type === 'BOOLEAN'
+  return columnData?.type === "BOOLEAN"
     ? rowData[columnData?.id] === true
-      ? 'True'
-      : 'False'
-    : rowData[columnData?.id] || 'No data';
+      ? "True"
+      : "False"
+    : rowData[columnData?.id] || "No data";
 };

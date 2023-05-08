@@ -1,13 +1,13 @@
-import styled from 'styled-components/native';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
-import {Card} from 'react-native-paper';
+import styled from "styled-components/native";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
+import { Card } from "react-native-paper";
 
-const defaultStyleClasses = [CoreClasses.SC.SURFACES.CARD_MEDIA];
+const defaultStyleClasses = [StyledComponentsClasses.SURFACES.CARD_MEDIA];
 
 export const SCCardMedia = styled(
   Card.Cover,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

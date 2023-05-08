@@ -1,11 +1,11 @@
 import React from "react";
 import { SCTabs } from "../../styledComponents/navigation/SCTabs";
 import NativeBox from "../layouts/NativeBox";
-import { CoreClasses } from "@wrappid/styles";
+import { UtilityClasses } from "@wrappid/styles";
 
 export default function NativeTabs(props) {
   return (
-    <NativeBox styleClasses={[CoreClasses.HEIGHT.H_25]}>
+    <NativeBox styleClasses={[UtilityClasses.HEIGHT.H_25]}>
       <SCTabs>{props.children}</SCTabs>
     </NativeBox>
   );

@@ -1,13 +1,13 @@
-import styled from 'styled-components/native';
-import {View as Grid} from 'react-native';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
+import styled from "styled-components/native";
+import { View as Grid } from "react-native";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
 
-const defaultStyleClasses = [CoreClasses.SC.LAYOUTS.GRID];
-// const rnpStyleClasses = [CoreClasses.SC.RNP.LAYOUTS.GRID];
+const defaultStyleClasses = [StyledComponentsClasses.LAYOUTS.GRID];
+// const rnpStyleClasses = [StyledComponentsClasses.RNP.LAYOUTS.GRID];
 
 export const SCGridItem = styled(
   Grid,
-  {},
-)(({styleClasses}) => ({
+  {}
+)(({ styleClasses }) => ({
   ...getEffectiveStyle([...defaultStyleClasses, ...(styleClasses || [])]),
 }));

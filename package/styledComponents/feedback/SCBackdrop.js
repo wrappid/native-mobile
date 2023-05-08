@@ -1,13 +1,13 @@
-import styled from 'styled-components/native';
-import {getEffectiveStyle, CoreClasses} from '@wrappid/styles';
-import {Modal} from 'react-native';
+import styled from "styled-components/native";
+import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
+import { Modal } from "react-native";
 
-const defaultStyleClasses = [CoreClasses.SC.FEEDBACK.BACKDROP];
+const defaultStyleClasses = [StyledComponentsClasses.FEEDBACK.BACKDROP];
 
 export const SCBackdrop = styled(
   Modal,
-  {},
-)(props => ({
+  {}
+)((props) => ({
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),
