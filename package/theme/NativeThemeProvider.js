@@ -24,6 +24,7 @@ export default function NativeThemeProvider(props) {
         background: props.theme.palette.background.default,
         onBackground: props.theme.palette.background.default,
         surface: props.theme.palette.background.default,
+        surfaceVariant: props.theme.palette.background.default,
         // onSurface: props.theme.palette.background.default,
         error: props.theme.palette.error.main,
         onError: props.theme.palette.error.contrastText,
