@@ -48,6 +48,7 @@ export default function NativeGrid(props) {
       key={containerId}
       container={props?.container || true}
       item={props?.item || false}
+      styleClasses={props?.styleClasses || []}
     >
       {props.children &&
         Children.toArray(props.children).map((child, index) => (
