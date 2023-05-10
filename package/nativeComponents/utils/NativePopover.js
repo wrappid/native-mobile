@@ -11,7 +11,7 @@ export default function NativePopover(props) {
     <SCPopover
       visible={open}
       onDismiss={() => {
-        onClose;
+        onClose && onClose();
       }}
       {...restProps}
     >

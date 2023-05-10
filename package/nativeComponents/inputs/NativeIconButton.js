@@ -12,10 +12,16 @@ export default function NativeIconButton(props) {
             mode="outlined"
             onPress={restProps.onClick}
             size={size}
+            icon={(iconProps) => props.children}
           />
         </NativeTooltip>
       ) : (
-        <SCIconButton mode="outlined" onPress={restProps.onClick} size={size} />
+        <SCIconButton
+          mode="outlined"
+          onPress={restProps.onClick}
+          size={size}
+          icon={(iconProps) => props.children}
+        />
       )}
     </>
   );

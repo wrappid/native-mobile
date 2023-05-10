@@ -4,5 +4,5 @@ import { SCAvatar } from "../../styledComponents/dataDisplay/SCAvatar";
 export default function NativeAvatar(props) {
   const { src } = props;
 
-  return <SCAvatar source={{ uri: src }} />;
+  return <SCAvatar {...props} source={{ uri: src }} />;
 }
