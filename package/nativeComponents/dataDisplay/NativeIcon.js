@@ -28,8 +28,8 @@ export default function NativeIcon(props) {
           <SCIcon
             sx={{ ...sx, overflow: "unset" }}
             baseClassName="rxi"
-            className={tmpIcon}
-            size="small"
+            name={tmpIcon}
+            size={24}
             {...restProps}
           />
         );
@@ -38,8 +38,8 @@ export default function NativeIcon(props) {
           <SCIcon
             sx={{ ...sx, overflow: "unset" }}
             baseClassName="far"
-            className={tmpIcon}
-            size="small"
+            name={tmpIcon}
+            size={24}
             {...restProps}
           />
         );
@@ -48,8 +48,8 @@ export default function NativeIcon(props) {
           <SCIcon
             sx={{ ...sx, overflow: "unset" }}
             baseClassName="fas"
-            className={tmpIcon}
-            size="small"
+            name={tmpIcon}
+            size={24}
             {...restProps}
           />
         );
@@ -58,19 +58,14 @@ export default function NativeIcon(props) {
           <SCIcon
             baseClassName="material-icons-outlined"
             sx={sx}
-            size="small"
+            size={24}
+            name={tmpIcon}
             {...restProps}
-          >
-            {tmpIcon}
-          </SCIcon>
+          />
         );
       case __IconTypes.MATERIAL_ICON:
       default:
-        return (
-          <SCIcon sx={sx} size="small" {...restProps}>
-            {tmpIcon}
-          </SCIcon>
-        );
+        return <SCIcon sx={sx} size={24} name={tmpIcon} {...restProps} />;
     }
   };
 
