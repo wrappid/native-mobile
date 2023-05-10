@@ -1,31 +1,35 @@
 import React from "react";
-import { SCDrawer } from "../../navigation/SCDrawer";
+import { SCDrawer } from "../../styledComponents/navigation/SCDrawer";
 import NativeBox from "../layouts/NativeBox";
 import { ScrollView } from "react-native";
+import { UtilityClasses } from "@wrappid/styles";
 
 export default function NativeDrawer(props) {
   return (
     props.open && (
       <NativeBox
+        styleClasses={[
+          UtilityClasses?.DISPLAY?.FLEX,
+          UtilityClasses?.POSITION?.FIXED_TOP,
+          UtilityClasses?.POSITION?.FIXED_BOTTOM,
+        ]}
+        // @todo should be removed if background color opacity support
+        // can be given in styleclasses
         style={{
-          flex: 1,
-          position: "absolute",
-          backgroundColor: "rgba(0,0,0,0.5)",
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-          zIndex: 1200,
+          backgroundColor: "rgba(0,0,0,0.3)",
         }}
       >
         <NativeBox
-          style={{
-            backgroundColor: "white",
-            opacity: 1,
-            width: "60%",
-          }}
+          styleClasses={[
+            UtilityClasses?.DISPLAY?.FLEX,
+            UtilityClasses?.OPACITY?.OPACITY_100,
+            UtilityClasses?.WIDTH?.W_75,
+            UtilityClasses?.BG?.BG_WHITE,
+          ]}
         >
-          <ScrollView>{props.children}</ScrollView>
+          <SCDrawer styleClasses={[UtilityClasses?.DISPLAY?.FLEX]}>
+            <ScrollView>{props.children}</ScrollView>
+          </SCDrawer>
         </NativeBox>
       </NativeBox>
     )
