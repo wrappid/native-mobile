@@ -6,5 +6,9 @@ import { SCAppBar } from "../../styledComponents/surfaces/SCAppBar";
 // import NativeImage from "../dataDisplay/NativeImage";
 
 export default function NativeAppBar(props) {
-  return <SCAppBar {...props}>{props.children}</SCAppBar>;
+  return (
+    <SCAppBar {...props} style={{ flex: 1 }}>
+      {props.children}
+    </SCAppBar>
+  );
 }
