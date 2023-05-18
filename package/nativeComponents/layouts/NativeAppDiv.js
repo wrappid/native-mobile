@@ -7,7 +7,9 @@ import { UtilityClasses } from "@wrappid/styles";
 export default function NativeAppDiv(props) {
   return (
     <SafeAreaProvider>
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <ScrollView
+        contentContainerStyle={props.uid ? { flexGrow: 1 } : { flexGrow: 0 }}
+      >
         <SCAppDiv
           {...props}
           styleClasses={[
