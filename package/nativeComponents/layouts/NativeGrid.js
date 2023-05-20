@@ -1,6 +1,6 @@
 import React, { Children } from "react";
-import { SCGrid } from "../../styledComponents/layouts//SCGrid";
-import { SCGridItem } from "../../styledComponents/layouts//SCGridItem";
+import { SCGrid } from "../../styledComponents/layouts/SCGrid";
+import { SCGridItem } from "../../styledComponents/layouts/SCGridItem";
 import { getUUID } from "../../helper/appUtils";
 import { getGridSizeProps } from "../../helper/componentUtil";
 import { Dimensions } from "react-native";
@@ -12,13 +12,14 @@ import {
 } from "../../helper/constants";
 
 export default function NativeGrid(props) {
-  let _uuid = getUUID();
+  let _uuid = null;
+  React.useEffect(() => {
+    _uuid = getUUID();
+  }, []);
+
   var containerId = props?.coreId ? "gc_" + props.coreId : "gc_" + _uuid;
 
   let windowWidth = Dimensions.get("window").width;
-
-  // gridProps={gridSize:3}
-  // gridProps={gridSize:{xs:2,sm:2,md:2,lg:2,xl:2}}
 
   const gridToWidth = (gridProps) => {
     const sizeProps = getGridSizeProps(gridProps);
