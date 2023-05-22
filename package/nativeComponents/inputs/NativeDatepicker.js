@@ -3,7 +3,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { SCDatePicker } from "../../styledComponents/inputs/SCDatePicker";
 import NativeBox from "../layouts/NativeBox";
 import moment from "moment";
-import { NativeInput } from "./NativeInput";
+import NativeInput from "./NativeInput";
 import { SCInput } from "../../styledComponents/inputs/SCInput";
 
 export default function NativeDatepicker(props) {
