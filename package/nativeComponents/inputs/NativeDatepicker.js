@@ -9,7 +9,8 @@ import { SCInput } from "../../styledComponents/inputs/SCInput";
 export default function NativeDatepicker(props) {
   const { id, formik, onChange, value, ...restProps } = props;
 
-  const [date, setDate] = React.useState(value ? new Date(value) : null);
+  const [date, setDate] = React.useState(undefined);
+  const [dateString, setDateString] = React.useState("");
   const [open, setOpen] = React.useState(false);
 
   const onDismissSingle = React.useCallback(() => {
@@ -19,22 +20,29 @@ export default function NativeDatepicker(props) {
   const onConfirmSingle = React.useCallback(
     (params) => {
       setOpen(false);
-      setDate(params?.date ? moment(params.date).format("YYYY-MM-DD") : null);
+      setDate(params?.date);
     },
     [setOpen, setDate]
   );
 
   useEffect(() => {
     if (date) {
-      formik?.setFieldValue(
-        id,
-        date ? moment(date).format("YYYY-MM-DD") : null
-      );
-      if (onChange) {
+      let dateS = moment(date).format("YYYY-MM-DD");
+      setDateString(dateS);
+      if (formik) {
+        formik?.setFieldValue(id, dateS);
+      } else if (onChange) {
         onChange(date);
       }
     }
   }, [date]);
+
+  useEffect(() => {
+    if (value) {
+      setDateString(value);
+      setDate(new Date(value));
+    }
+  }, []);
 
   return (
     <SafeAreaProvider>
@@ -42,7 +50,7 @@ export default function NativeDatepicker(props) {
         <NativeInput
           onChange={onChange}
           disabled
-          value={date}
+          value={dateString}
           right={
             <SCInput.Icon
               icon="calendar"

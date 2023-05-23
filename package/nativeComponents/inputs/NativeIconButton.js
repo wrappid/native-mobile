@@ -1,28 +1,15 @@
 import React from "react";
 import { SCIconButton } from "../../styledComponents/inputs/SCIconButton";
-import NativeTooltip from "../dataDisplay/NativeTooltip";
+import { DEFAULT_ICON_SIZE, sizeMap } from "../dataDisplay/NativeIcon";
 
 export default function NativeIconButton(props) {
-  const { title, titlePlacement = "bottom", size = 24, ...restProps } = props;
+  const { title, titlePlacement = "bottom", size, mode, ...restProps } = props;
   return (
-    <>
-      {title ? (
-        <NativeTooltip title={title} arrow placement={titlePlacement}>
-          <SCIconButton
-            mode="outlined"
-            onPress={restProps.onClick}
-            size={size}
-            icon={(iconProps) => props.children}
-          />
-        </NativeTooltip>
-      ) : (
-        <SCIconButton
-          mode="outlined"
-          onPress={restProps.onClick}
-          size={size}
-          icon={(iconProps) => props.children}
-        />
-      )}
-    </>
+    <SCIconButton
+      mode={mode || "default"}
+      onPress={restProps.onClick}
+      size={isNaN(size) ? sizeMap[size] || sizeMap.small : size}
+      icon={(iconProps) => props.children}
+    />
   );
 }

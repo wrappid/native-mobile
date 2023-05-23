@@ -31,15 +31,15 @@ function iconFlavour(name) {
   return name;
 }
 
+export const DEFAULT_ICON_SIZE = 16;
+export const sizeMap = {
+  small: DEFAULT_ICON_SIZE,
+  large: 64,
+  medium: 128,
+};
+
 export default function NativeIcon(props) {
   const { type, name, styleClasses, size } = props;
-
-  const sizeMap = {
-    small: 32,
-    large: 64,
-    medium: 128,
-  };
-  const DEFAULT_ICON_SIZE = 24;
 
   return (
     <SCIcon
