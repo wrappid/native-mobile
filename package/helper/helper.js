@@ -1,15 +1,15 @@
 function getFullName(data) {
-  var n = '';
+  var n = "";
   if (data?.firstName) {
     n += data?.firstName;
   }
   if (data?.middleName) {
-    n += ' ' + data?.middleName;
+    n += " " + data?.middleName;
   }
   if (data?.lastName) {
-    n += ' ' + data?.lastName;
+    n += " " + data?.lastName;
   }
-  return n && n.length > 0 ? n : 'Unnamed';
+  return n && n.length > 0 ? n : "Unnamed";
 }
 
 function queryBuilder(url, query) {
@@ -19,7 +19,7 @@ function queryBuilder(url, query) {
     Object.keys(query).length > 0 /* &&
     Object.values(query).find((v) => v && v !== "") */
   ) {
-    newUrl += '?';
+    newUrl += "?";
     var keys = Object.keys(query);
     for (var index = 0; index < keys.length; index++) {
       var q = keys[index];
@@ -29,14 +29,14 @@ function queryBuilder(url, query) {
       // although 0 should be as a parameter value for api query params
       /* if (query[q]) {
       } */
-      if (index > 0 && newUrl.charAt(newUrl.length - 1) !== '?') {
+      if (index > 0 && newUrl.charAt(newUrl.length - 1) !== "?") {
         newUrl +=
-          '&' +
+          "&" +
           q +
-          '=' +
-          (typeof query[q] === 'object' ? JSON.stringify(query[q]) : query[q]);
+          "=" +
+          (typeof query[q] === "object" ? JSON.stringify(query[q]) : query[q]);
       } else {
-        newUrl += q + '=' + query[q];
+        newUrl += q + "=" + query[q];
       }
     }
   }
@@ -52,11 +52,11 @@ function createFormData(files, body) {
     data.append(file.name, file.data);
   }
   //console.log("IN form data", data);
-  Object.keys(body).forEach(key => {
+  Object.keys(body).forEach((key) => {
     //console.log(body[key]);
     data.append(key, body[key]);
   });
-  console.log('data inside foreach', data);
+  console.log("data inside foreach", data);
   return data;
 }
 
@@ -68,14 +68,14 @@ function clearValidatePhoneEmail(text) {
     t = t.toLowerCase();
   }
   var f = String(t).match(
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   );
 
   if (f) {
     return f;
   } else if (!f) {
     f = String(t).match(
-      /((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}/,
+      /((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}/
     );
 
     return f;
@@ -84,11 +84,28 @@ function clearValidatePhoneEmail(text) {
   return f;
 }
 
-function nativeFilterOptions(data) {
+function nativeFilterOptions(options, params) {
   /**
    * @todo have to build async select filtering function
    */
-  return data;
+  console.log("OPTIONS:", options, params);
+  let filteredOptions = options;
+  if (params?.inputValue && params?.inputValue?.length > 0) {
+    if (params?.getOptionLabel) {
+      filteredOptions = options.filter((op) =>
+        params?.getOptionLabel(op)?.includes(params?.inputValue)
+      );
+    } else if (options && options[0] && options[0].label) {
+      filteredOptions = options.filter((op) =>
+        op?.label?.includes(params?.inputValue)
+      );
+    } else if (options && options[0] && options[0].name) {
+      filteredOptions = options.filter((op) =>
+        op?.name?.includes(params?.inputValue)
+      );
+    }
+  }
+  return filteredOptions;
 }
 
 export {
