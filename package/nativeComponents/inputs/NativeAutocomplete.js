@@ -157,41 +157,6 @@ function NativeAutocomplete(props) {
                       {}
                     )
                   )}
-                  {filtereredOptions?.map((option) =>
-                    renderOption(
-                      { OnClick: onChange, option, onClose },
-                      option,
-                      {}
-                    )
-                  )}
-                  {filtereredOptions?.map((option) =>
-                    renderOption(
-                      { OnClick: onChange, option, onClose },
-                      option,
-                      {}
-                    )
-                  )}
-                  {filtereredOptions?.map((option) =>
-                    renderOption(
-                      { OnClick: onChange, option, onClose },
-                      option,
-                      {}
-                    )
-                  )}
-                  {filtereredOptions?.map((option) =>
-                    renderOption(
-                      { OnClick: onChange, option, onClose },
-                      option,
-                      {}
-                    )
-                  )}
-                  {filtereredOptions?.map((option) =>
-                    renderOption(
-                      { OnClick: onChange, option, onClose },
-                      option,
-                      {}
-                    )
-                  )}
                 </ScrollView>
               </NativeBox>
             </NativeBox>
