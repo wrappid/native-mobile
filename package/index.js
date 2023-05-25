@@ -55,6 +55,7 @@ import NativeTableBodyCell from "./nativeComponents/dataDisplay/NativeTableBodyC
 import NativeTableHeadCell from "./nativeComponents/dataDisplay/NativeTableHeadCell";
 import NativeTableContainer from "./nativeComponents/dataDisplay/NativeTableContainer";
 import NativeTableCell from "./nativeComponents/dataDisplay/NativeTableCell";
+import NativeTableHeadRow from "./nativeComponents/dataDisplay/NativeTableHeadRow";
 import NativeImage from "./nativeComponents/dataDisplay/NativeImage";
 import NativeTableBody from "./nativeComponents/dataDisplay/NativeTableBody";
 import NativeH3 from "./nativeComponents/dataDisplay/heading/NativeH3";
@@ -267,4 +268,5 @@ export {
   NativeCssBaseline,
   NativeCollapse,
   nativeStorage,
+  NativeTableHeadRow,
 };

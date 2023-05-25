@@ -1,6 +1,6 @@
 import React from "react";
-import NativeTableCell from "./NativeTableCell";
+import { SCTableHeadCell } from "../../styledComponents/dataDisplay/SCTableHeadCell";
 
 export default function NativeTableHeadCell(props) {
-  return <NativeTableCell {...props}>{props.children}</NativeTableCell>;
+  return <SCTableHeadCell {...props}>{props.children}</SCTableHeadCell>;
 }

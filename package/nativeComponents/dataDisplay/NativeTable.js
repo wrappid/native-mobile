@@ -1,5 +1,6 @@
-import React from 'react';
+import React from "react";
+import { SCTable } from "../../styledComponents/dataDisplay/SCTable";
 
 export default function NativeTable(props) {
-  return <div>NativeTable</div>;
+  return <SCTable {...props}>{props.children}</SCTable>;
 }
