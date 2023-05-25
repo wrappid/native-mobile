@@ -118,6 +118,7 @@ import NativeCheckbox from "./nativeComponents/inputs/NativeCheckbox";
 import DevNativeDataTable from "./nativeComponents/dataTable/DevNativeDataTable";
 import NativeFormContainer from "./nativeComponents/inputs/NativeFormContainer";
 import getNativeMenuItem from "./helper/menuUtil";
+import NativeDialog from "./nativeComponents/feedback/NativeDialog";
 import {
   NativeDomRoutes,
   NativeDomRoute,
@@ -137,6 +138,7 @@ export {
   /**
    * NATIVE EXPORTS
    */
+  NativeDialog,
   NativeNavigation,
   NativeModal,
   NativePopover,
