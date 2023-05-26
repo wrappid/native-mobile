@@ -31,11 +31,11 @@ function iconFlavour(name) {
   return name;
 }
 
-export const DEFAULT_ICON_SIZE = 16;
+export const DEFAULT_ICON_SIZE = 24;
 export const sizeMap = {
   small: DEFAULT_ICON_SIZE,
-  large: 64,
-  medium: 128,
+  large: 128,
+  medium: 64,
 };
 
 export default function NativeIcon(props) {

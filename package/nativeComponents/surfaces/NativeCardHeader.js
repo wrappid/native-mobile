@@ -7,7 +7,7 @@ export default function NativeCardHeader(props) {
       {...props}
       title={props?.title}
       subtitle={props?.subheader}
-      right={props.action}
+      right={() => props.action}
     />
   );
 }

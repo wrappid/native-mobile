@@ -1,9 +1,14 @@
 import React from "react";
 import { SCIconButton } from "../../styledComponents/inputs/SCIconButton";
-import { DEFAULT_ICON_SIZE, sizeMap } from "../dataDisplay/NativeIcon";
 
 export default function NativeIconButton(props) {
   const { title, titlePlacement = "bottom", size, mode, ...restProps } = props;
+  const sizeMap = {
+    small: 8,
+    large: 48,
+    medium: 24,
+  };
+
   return (
     <SCIconButton
       mode={mode || "default"}

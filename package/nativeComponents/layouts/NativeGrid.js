@@ -49,6 +49,7 @@ export default function NativeGrid(props) {
       key={containerId}
       container={props?.container || true}
       item={props?.item || false}
+      style={{ flexDirection: "row", flexWrap: "wrap" }}
       styleClasses={props?.styleClasses || []}
     >
       {props.children &&
