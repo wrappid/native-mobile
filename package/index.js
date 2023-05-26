@@ -120,6 +120,7 @@ import DevNativeDataTable from "./nativeComponents/dataTable/DevNativeDataTable"
 import NativeFormContainer from "./nativeComponents/inputs/NativeFormContainer";
 import getNativeMenuItem from "./helper/menuUtil";
 import NativeDialog from "./nativeComponents/feedback/NativeDialog";
+import NativeGoogleButton from "./nativeComponents/inputs/custom/NativeGoogleButton";
 import {
   NativeDomRoutes,
   NativeDomRoute,
@@ -140,6 +141,7 @@ export {
    * NATIVE EXPORTS
    */
   NativeDialog,
+  NativeGoogleButton,
   NativeNavigation,
   NativeModal,
   NativePopover,
