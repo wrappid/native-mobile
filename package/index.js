@@ -137,7 +137,7 @@ import { nativeStorage } from "./nativeComponents/helper/storeHelper";
 import NativeThemeProvider from "./theme/NativeThemeProvider";
 import NativeDataTableDetailsPaneContainer from "./nativeComponents/dataTable/NativeDataTableDetailsPaneContainer";
 import NativeFlatList from "./nativeComponents/dataDisplay/NativeFlatList";
-
+import NativeCustomTabs from "./nativeComponents/navigation/NativeCustomTabs";
 export {
   /**
    * NATIVE EXPORTS
@@ -152,6 +152,8 @@ export {
   // NativeGridItem,
   NativeSpan,
   NativeBox,
+  //Native Tabs
+  NativeCustomTabs,
   // NativeContainer,
   NativeSection,
   NativeAppDiv,
