@@ -1,6 +1,7 @@
 import React from "react";
 import { nativeUseLocation } from "../helper/routerHelper";
 import NativeTab from "./NativeTab";
+import NativeTabs from "./NativeTabs";
 
 export default function NativeCustomTabs(props) {
   const location = nativeUseLocation();
