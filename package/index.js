@@ -127,6 +127,7 @@ import {
   NativeDomNavigate,
   nativeUseNavigate,
   nativeUseLocation,
+  nativeUseParams,
 } from "./nativeComponents/helper/routerHelper";
 import { nativeFilterOptions } from "./helper/helper";
 import { nativeUseScrollTrigger } from "./helper/componentUtil";
@@ -267,6 +268,7 @@ export {
   NativeDomNavigate,
   nativeUseNavigate,
   nativeUseLocation,
+  nativeUseParams,
   nativeFilterOptions,
   nativeUseScrollTrigger,
   nativeCreateTheme,
