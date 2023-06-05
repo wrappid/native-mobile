@@ -1,5 +1,6 @@
 import React from "react";
+import NativeTableRow from "./NativeTableRow";
 
 export default function NativeTableHeadRow(props) {
-  return <>{props.children}</>;
+  return <NativeTableRow {...props}>{props.children}</NativeTableRow>;
 }
