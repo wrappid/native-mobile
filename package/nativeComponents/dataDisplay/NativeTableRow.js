@@ -1,11 +1,19 @@
-import React from "react";
-import { SCTableRow } from "../../styledComponents/dataDisplay/SCTableRow";
-import { TouchableOpacity } from "react-native";
+import React from 'react';
+import { SCTableRow } from '../../styledComponents/dataDisplay/SCTableRow';
+import { TouchableOpacity } from 'react-native';
+import NativeTypographyBody1 from './paragraph/NativeTypographyBody1';
 
 export default function NativeTableRow(props) {
   return (
-    <TouchableOpacity onPress={props.onClick ? props.onClick : () => {}}>
-      <SCTableRow {...props}>{props.children}</SCTableRow>;
+    <TouchableOpacity onPress={props.onClick ? props.onClick : () => { }}>
+      {typeof children === "string" ? (
+        <SCTableRow {...props}>
+          <NativeTypographyBody1> {props.children} </NativeTypographyBody1>
+        </SCTableRow>
+      ) : (
+        <SCTableRow {...props}>{props.children}</SCTableRow>
+      )
+      }
     </TouchableOpacity>
   );
 }
