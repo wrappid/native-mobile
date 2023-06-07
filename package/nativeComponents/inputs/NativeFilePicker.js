@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DocumentPicker from "react-native-document-picker";
-import { NativeInput } from "./NativeInput";
+import NativeInput from "./NativeInput";
 import { SCInput } from "../../styledComponents/inputs/SCInput";
 
 export default function NativeFilePicker(props) {

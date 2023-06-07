@@ -5,7 +5,7 @@ import { SCDialogTitle } from "../../styledComponents/feedback/SCDialogTitle";
 import { SCDialogContent } from "../../styledComponents/feedback/SCDialogContent";
 import { SCDialogContentText } from "../../styledComponents/feedback/SCDialogContentText";
 import { SCDialogActions } from "../../styledComponents/feedback/SCDialogActions";
-import NativeButton from "../inputs/NativeButton";
+import NativeTextButton from "../inputs/NativeTextButton";
 
 export default function NativeDialog(props) {
   const { dialogInitValue, DialogContext } = props;
@@ -25,22 +25,22 @@ export default function NativeDialog(props) {
           <SCDialogContentText>{dialog?.subtitle || ""}</SCDialogContentText>
         </SCDialogContent>
         <SCDialogActions>
-          <NativeButton
-            onPress={() => {
+          <NativeTextButton label="Cancel"
+            OnClick={() => {
               dialog.cancelButton();
               setDialog(dialogInitValue);
             }}
           >
             {dialog?.cancelButtonLabel || "Cancel"}
-          </NativeButton>
-          <NativeButton
-            onPress={() => {
+          </NativeTextButton>
+          <NativeTextButton label="Done"
+            OnClick={() => {
               dialog.doneButton();
               setDialog(dialogInitValue);
             }}
           >
             {dialog?.doneButtonLabel || "Done"}
-          </NativeButton>
+          </NativeTextButton>
         </SCDialogActions>
       </SCDialog>
     </Portal>
