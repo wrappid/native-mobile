@@ -1,11 +1,11 @@
 import styled from "styled-components/native";
 import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
-import { TabScreen } from "react-native-paper-tabs";
+import { View } from "react-native";
 
 const defaultStyleClasses = [StyledComponentsClasses.NAVIGATION.TAB];
 
 export const SCTab = styled(
-  TabScreen,
+  View,
   {}
 )((props) => ({
   ...getEffectiveStyle([
