@@ -8,7 +8,7 @@ const AVATAR_SMALL = "avatarSmall";
 const AVATAR_XLARGE = "avatarXLarge";
 const AVATAR_XXLARGE = "avatarXXLarge";
 
-const DEFAULT_AVATAR_SIZE = 40;
+const DEFAULT_AVATAR_SIZE = 62;
 let SIZE_MAP = {
   [AVATAR]: DEFAULT_AVATAR_SIZE,
   [AVATAR_SMALL]: 20,
