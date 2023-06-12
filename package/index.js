@@ -121,6 +121,7 @@ import NativeFormContainer from "./nativeComponents/inputs/NativeFormContainer";
 import getNativeMenuItem from "./helper/menuUtil";
 import NativeDialog from "./nativeComponents/feedback/NativeDialog";
 import NativeGoogleButton from "./nativeComponents/inputs/custom/NativeGoogleButton";
+import NativeMedicineSelector from "./nativeComponents/inputs/custom/NativeMedicineSelector";
 import {
   NativeDomRoutes,
   NativeDomRoute,
@@ -279,4 +280,5 @@ export {
   NativeTableHeadRow,
   NativeFlatList,
   NativeDataTableDetailsPaneContainer,
+  NativeMedicineSelector,
 };
