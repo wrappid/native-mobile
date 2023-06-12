@@ -22,8 +22,8 @@ export default function NativeTimePicker(props) {
     [setVisible]
   );
 
-  const hours = value ? value?.split(":")[0] : null;
-  const minutes = value ? value?.split(":")[1] : null;
+  const hours = String(value) ? String(value).split(":")[0] : null;
+  const minutes = String(value) ? String(value).split(":")[1] : null;
 
   return (
     <SafeAreaProvider>
