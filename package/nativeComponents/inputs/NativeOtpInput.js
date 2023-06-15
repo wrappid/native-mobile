@@ -1,12 +1,10 @@
-import React, {useRef} from 'react';
-import OtpInputs from 'react-native-otp-inputs';
+import React from "react";
+import OtpInputs from "react-native-otp-inputs";
 
 export default function NativeOtpInput(props) {
-  const {onChange, formik, numInputs = 6, id, ...restProps} = props;
+  const { onChange, formik, numInputs = 6, id, ...restProps } = props;
 
-  const ref = useRef();
-
-  const handleChange = otpValue => {
+  const handleChange = (otpValue) => {
     formik?.setFieldValue(id, otpValue);
     if (onChange) {
       onChange(otpValue);
@@ -15,13 +13,13 @@ export default function NativeOtpInput(props) {
 
   return (
     <OtpInputs
-      ref={ref}
-      handleChange={otpValue => {
+      handleChange={(otpValue) => {
+        console.log(`otpValue=${otpValue}`);
         handleChange(otpValue);
       }}
-      otp={1234}
+      otp={otpValue}
       numberOfInputs={numInputs}
-      inputStyles={{borderColor: 'black', borderWidth: 1, borderRadius: 8}}
+      inputStyles={{ borderColor: "black", borderWidth: 1, borderRadius: 8 }}
       {...restProps}
     />
   );
