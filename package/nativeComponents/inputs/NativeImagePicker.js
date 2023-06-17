@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import NativeOutlinedButton from './NativeOutlinedButton';
+import React, { useEffect, useState } from "react";
+import NativeOutlinedButton from "./NativeOutlinedButton";
 // import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
-import ImagePicker from 'react-native-image-crop-picker';
-import NativeModal from '../utils/NativeModal';
-import NativeTextButton from './NativeTextButton';
-import NativeBox from '../layouts/NativeBox';
+import { TouchableOpacity } from "react-native";
+import ImagePicker from "react-native-image-crop-picker";
+import NativeModal from "../utils/NativeModal";
+import NativeTextButton from "./NativeTextButton";
+import NativeBox from "../layouts/NativeBox";
+import NativeAvatar from "../dataDisplay/NativeAvatar";
 
 export default function NativeImagePicker(props) {
   const { onChange, id, formik, value } = props;
@@ -42,14 +44,14 @@ export default function NativeImagePicker(props) {
   //   }
   // };
 
-  const pickImage = async (type = 'camera') => {
+  const pickImage = async (type = "camera") => {
     setModalOpen(false);
-    if (type === 'camera') {
+    if (type === "camera") {
       ImagePicker.openCamera({
         width: 300,
         height: 400,
         cropping: true,
-      }).then(image => {
+      }).then((image) => {
         console.log(image);
       });
     } else {
@@ -57,15 +59,20 @@ export default function NativeImagePicker(props) {
         width: 300,
         height: 400,
         cropping: true,
-      }).then(image => {
+      }).then((image) => {
         console.log(image);
       });
     }
   };
 
   return (
-    <NativeBox>
-      <NativeModal
+    <TouchableOpacity
+      onPress={() => {
+        // setModalOpen(true);
+        pickImage("gallery");
+      }}
+    >
+      {/* <NativeModal
         open={modalOpen}
         onClose={() => {
           setModalOpen(false);
@@ -82,14 +89,24 @@ export default function NativeImagePicker(props) {
             pickImage('gallery');
           }}
         />
-      </NativeModal>
-      <NativeOutlinedButton
-        label="Pick Image"
+      </NativeModal> */}
+      {/* <NativeOutlinedButton
+        // label="Pick Image"
         OnClick={() => {
           // setModalOpen(true);
           pickImage('gallery');
         }}
+      > 
+    </NativeOutlinedButton> */}
+      <NativeAvatar
+        src={
+          props.value
+            ? typeof props.value === "string"
+              ? props.value
+              : URL.createObjectURL(props.value)
+            : "no_image.png"
+        }
       />
-    </NativeBox>
+    </TouchableOpacity>
   );
 }
