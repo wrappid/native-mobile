@@ -45,16 +45,20 @@ export default function NativeImagePicker(props) {
   const pickImage = async (type = 'camera') => {
     setModalOpen(false);
     if (type === 'camera') {
-      ImagePicker.launchCamera({}, response => {
-        if (!response.didCancel) {
-          setLocalvalue(response.assets[0]);
-        }
+      ImagePicker.openCamera({
+        width: 300,
+        height: 400,
+        cropping: true,
+      }).then(image => {
+        console.log(image);
       });
     } else {
-      ImagePicker.launchImageLibrary({}, response => {
-        if (!response.didCancel) {
-          setLocalvalue(response.assets[0]);
-        }
+      ImagePicker.openPicker({
+        width: 300,
+        height: 400,
+        cropping: true,
+      }).then(image => {
+        console.log(image);
       });
     }
   };
@@ -69,11 +73,11 @@ export default function NativeImagePicker(props) {
         <NativeTextButton
           label="Camera"
           OnClick={() => {
-            pickImage('camera');
+           // pickImage('camera');
           }}
         />
         <NativeTextButton
-          label="Gallery"
+          label="Pick Image"
           OnClick={() => {
             pickImage('gallery');
           }}
@@ -82,7 +86,8 @@ export default function NativeImagePicker(props) {
       <NativeOutlinedButton
         label="Pick Image"
         OnClick={() => {
-          setModalOpen(true);
+          // setModalOpen(true);
+          pickImage('gallery');
         }}
       />
     </NativeBox>
