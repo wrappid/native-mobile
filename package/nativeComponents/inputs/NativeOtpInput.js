@@ -25,6 +25,7 @@ export default function NativeOtpInput(props) {
         marginHorizontal: 6,
         fontSize: 20,
         justifyContent: 'center',
+        alignItems: 'center',
         letterSpacing: 5,
         borderTopColor: "transparent",
         borderLeftColor: "transparent",
