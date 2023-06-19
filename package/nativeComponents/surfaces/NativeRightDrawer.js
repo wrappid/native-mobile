@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { SCRightDrawer } from "../../styledComponents/navigation/SCRightDrawer";
-import { SCRightDrawer } from "../../styledComponents/navigation/SCRightDrawer";
 import NativeFullModal from "../utils/NativeFullModal";
 
 export default function NativeRightDrawer(props) {
