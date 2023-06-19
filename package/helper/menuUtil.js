@@ -1,7 +1,6 @@
 import React from "react";
 import { StyledComponentsClasses } from "@wrappid/styles";
 import NativeDivider from "../nativeComponents/dataDisplay/NativeDivider";
-import NativeLink from "../nativeComponents/navigation/NativeLink";
 import NativeListItemText from "../nativeComponents/dataDisplay/NativeListItemText";
 import NativeListItemIcon from "../nativeComponents/dataDisplay/NativeListItemIcon";
 import NativeIcon from "../nativeComponents/dataDisplay/NativeIcon";
@@ -27,96 +26,89 @@ export default function getNativeMenuItem(
   return menuItem.type === allTypes?.MENU_SEPERATOR ? (
     <NativeDivider />
   ) : (
-    <NativeLink
-      href={
-        menuItem?.type === allTypes?.MENU_ITEM && menuItem?.link
-          ? menuItem?.link
-          : ""
-      }
+    <NativeMenuItem
+      style={{
+        flex: 1,
+        flexWrap: "nowrap",
+        flexDirection: "row",
+        paddingLeft: level * 16,
+        margin: 5,
+        backgroundColor:
+          menuItem?.type === allTypes?.MENU_ITEM &&
+          locationPathname === menuItem?.link &&
+          theme.palette.secondary.light,
+      }}
+      onPress={(e) => {
+        console.log(
+          "CLICKING",
+          menuItem?.type,
+          menuItem?.link,
+          allTypes?.MENU_ITEM,
+          window.innerWidth
+        );
+        // setSelectedID(menuItem?.name);
+        OnMenuClick(menuItem, true);
+      }}
     >
-      <NativeMenuItem
-        style={{
-          flexDirection: "row",
-          // justifyContent: 'space-around',
-          paddingLeft: level * 16,
-          margin: 5,
-          backgroundColor:
-            menuItem?.type === allTypes?.MENU_ITEM &&
-            locationPathname === menuItem?.link &&
-            theme.palette.secondary.light,
-        }}
-        onPress={(e) => {
-          console.log(
-            "CLICKING",
-            menuItem?.type,
-            menuItem?.link,
-            allTypes?.MENU_ITEM,
-            window.innerWidth
-          );
-          // setSelectedID(menuItem?.name);
-          OnMenuClick(menuItem, true);
-        }}
+      <NativeListItemIcon
+        style={{ flex: 1 }}
+        styleClasses={
+          miniDrawer
+            ? [
+                StyledComponentsClasses.MENU.MINI_DRAWER_LIST_ITEM_ICON,
+                ...getTypeWiseStyle(
+                  menuItem,
+                  allTypes?.MENU_ITEM_ICON,
+                  allTypes
+                ),
+              ]
+            : [
+                StyledComponentsClasses.MENU.LIST_ITEM_ICON,
+                ...getTypeWiseStyle(
+                  menuItem,
+                  allTypes?.MENU_ITEM_ICON,
+                  allTypes
+                ),
+              ]
+        }
       >
-        <NativeListItemIcon
-          style={{ flex: 1 }}
-          styleClasses={
-            miniDrawer
-              ? [
-                  StyledComponentsClasses.MENU.MINI_DRAWER_LIST_ITEM_ICON,
-                  ...getTypeWiseStyle(
-                    menuItem,
-                    allTypes?.MENU_ITEM_ICON,
-                    allTypes
-                  ),
-                ]
-              : [
-                  StyledComponentsClasses.MENU.LIST_ITEM_ICON,
-                  ...getTypeWiseStyle(
-                    menuItem,
-                    allTypes?.MENU_ITEM_ICON,
-                    allTypes
-                  ),
-                ]
+        {/* @todo may have to correct this */}
+        <NativeIcon
+          name={
+            typeof menuItem?.icon === "object"
+              ? menuItem?.icon?.name
+              : typeof menuItem?.icon === "string" && isJson(menuItem?.icon)
+              ? JSON.parse(menuItem?.icon)?.name
+              : menuItem?.icon
           }
-        >
-          {/* @todo may have to correct this */}
-          <NativeIcon
-            name={
-              typeof menuItem?.icon === "object"
-                ? menuItem?.icon?.name
-                : typeof menuItem?.icon === "string" && isJson(menuItem?.icon)
-                ? JSON.parse(menuItem?.icon)?.name
-                : menuItem?.icon
-            }
-            type={
-              typeof menuItem?.icon === "object"
-                ? menuItem?.icon?.type || "material-icon"
-                : typeof menuItem?.icon === "string" && isJson(menuItem?.icon)
-                ? JSON.parse(menuItem?.icon)?.type
-                : "material-icon"
-            }
-            childrenFlag={
-              typeof menuItem?.icon === "object"
-                ? menuItem?.icon?.type == "material-icon" ||
-                  menuItem?.icon?.type == "material-outlined-icon"
-                : typeof menuItem?.icon === "string" && isJson(menuItem?.icon)
-                ? JSON.parse(menuItem?.icon)?.type == "material-icon" ||
-                  JSON.parse(menuItem?.icon)?.type == "material-outlined-icon"
-                : true
-            }
-          />
-        </NativeListItemIcon>
-        <NativeListItemText
-          style={{ flex: 5 }}
-          styleClasses={[
-            StyledComponentsClasses?.NAVIGATION?.APP_DRAWER_TEXT,
-            ...getTypeWiseStyle(menuItem, allTypes?.MENU_ITEM_TEXT, allTypes),
-          ]}
-        >
-          {menuItem.label}
-        </NativeListItemText>
-      </NativeMenuItem>
-    </NativeLink>
+          type={
+            typeof menuItem?.icon === "object"
+              ? menuItem?.icon?.type || "material-icon"
+              : typeof menuItem?.icon === "string" && isJson(menuItem?.icon)
+              ? JSON.parse(menuItem?.icon)?.type
+              : "material-icon"
+          }
+          childrenFlag={
+            typeof menuItem?.icon === "object"
+              ? menuItem?.icon?.type == "material-icon" ||
+                menuItem?.icon?.type == "material-outlined-icon"
+              : typeof menuItem?.icon === "string" && isJson(menuItem?.icon)
+              ? JSON.parse(menuItem?.icon)?.type == "material-icon" ||
+                JSON.parse(menuItem?.icon)?.type == "material-outlined-icon"
+              : true
+          }
+        />
+      </NativeListItemIcon>
+      <NativeListItemText
+        style={{ flex: 5 }}
+        styleClasses={[
+          StyledComponentsClasses?.NAVIGATION?.APP_DRAWER_TEXT,
+          ...getTypeWiseStyle(menuItem, allTypes?.MENU_ITEM_TEXT, allTypes),
+        ]}
+      >
+        {menuItem.label}
+      </NativeListItemText>
+    </NativeMenuItem>
   );
 }
 

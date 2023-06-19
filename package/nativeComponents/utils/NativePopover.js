@@ -16,16 +16,23 @@ export default function NativePopover(props) {
         styleClasses={[
           UtilityClasses?.DISPLAY?.FLEX,
           UtilityClasses?.POSITION?.FIXED_TOP,
-          UtilityClasses?.POSITION?.FIXED_BOTTOM,
         ]}
         // @todo should be removed if background color opacity support
         // can be given in styleclasses
         style={{
           backgroundColor: "rgba(0,0,0,0.3)",
+          zIndex: 100,
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
         }}
       >
         <NativeBox
-          style={{marginTop: 300, marginBottom: 320, marginLeft: 50 }}
+          // style={{marginTop: 300, marginBottom: 320, marginLeft: 50}}
+          style={{
+            position: "absolute",
+            top: 200,
+          }}
           styleClasses={[
             UtilityClasses?.DISPLAY?.FLEX,
             UtilityClasses?.OPACITY?.OPACITY_100,
@@ -33,23 +40,27 @@ export default function NativePopover(props) {
           ]}
         >
           <NativeBox
-            styleClasses={[
-              UtilityClasses?.ALIGNMENT?.ALIGN_ITEMS_END,
-              UtilityClasses?.MARGIN?.MB4,
-            ]}
-          >
-            <NativeIconButton onClick={() => onClose && onClose()}>
-              <NativeIcon name="close" type="material-icon">
-                close
-              </NativeIcon>
-            </NativeIconButton>
-          </NativeBox>
-          <NativeBox
+            style={{ flex: 1, zIndex: 200 }}
             styleClasses={[
               UtilityClasses?.BG?.BG_WHITE,
               UtilityClasses?.PADDING?.P3,
             ]}
           >
+            <NativeBox
+              style={{
+                marginTop: -25,
+              }}
+              styleClasses={[
+                UtilityClasses.DISPLAY?.FLEX,
+                UtilityClasses.ALIGNMENT?.ALIGN_ITEMS_END,
+              ]}
+            >
+              <NativeIconButton onClick={() => onClose && onClose()}>
+                <NativeIcon name="close" type="material-icon">
+                  close
+                </NativeIcon>
+              </NativeIconButton>
+            </NativeBox>
             {props.children}
           </NativeBox>
         </NativeBox>
