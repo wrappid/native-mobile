@@ -5,24 +5,40 @@ import NativeContainedButton from "../inputs/NativeContainedButton";
 import { UtilityClasses } from "@wrappid/styles";
 
 export default function NativeTab(props) {
-  const { label, value, icon, disabled, onPress, currentTab } = props;
+  const {
+    label,
+    value,
+    icon,
+    disabled,
+    onPress,
+    currentTab,
+    tabIndex,
+    tabRef,
+  } = props;
+
+  const onTabChange = () => {
+    console.log("TAB REF", tabRef, tabIndex);
+    tabRef?.current?.scrollToIndex({
+      index: tabIndex,
+      animated: true,
+      viewPosition: 0.2,
+    });
+    onPress({}, value);
+  };
+
   return (
     <SCTab styleClasses={[UtilityClasses.MARGIN.MR2]}>
       {currentTab === value ? (
         <NativeContainedButton
           disabled={disabled}
           label={label}
-          OnClick={() => {
-            handleChange({}, value);
-          }}
+          OnClick={onTabChange}
         />
       ) : (
         <NativeTextButton
           disabled={disabled}
           label={label}
-          OnClick={() => {
-            onPress({}, value);
-          }}
+          OnClick={onTabChange}
         />
       )}
     </SCTab>

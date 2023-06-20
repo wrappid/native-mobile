@@ -1,5 +1,6 @@
 import React from "react";
 import { SCFlatList } from "../../styledComponents/dataDisplay/SCFlatList";
+
 const END_REACH_THRESHOLD = 3;
 
 export default function NativeFlatList(props) {
@@ -11,6 +12,7 @@ export default function NativeFlatList(props) {
     onEndReached,
     page,
     horizontal,
+    listRef,
   } = props;
 
   return (
@@ -29,6 +31,7 @@ export default function NativeFlatList(props) {
           : null
       }
       onEndReachedThreshold={END_REACH_THRESHOLD}
+      ref={listRef}
     />
   );
 }
