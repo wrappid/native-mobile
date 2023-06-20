@@ -10,7 +10,7 @@ export default function NativeTab(props) {
     value,
     icon,
     disabled,
-    onPress,
+    onClick,
     currentTab,
     tabIndex,
     tabRef,
@@ -23,7 +23,7 @@ export default function NativeTab(props) {
       animated: true,
       viewPosition: 0.2,
     });
-    onPress({}, value);
+    onClick({}, value);
   };
 
   return (
