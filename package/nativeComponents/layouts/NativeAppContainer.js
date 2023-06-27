@@ -1,21 +1,17 @@
 import React from "react";
 import NativeBox from "./NativeBox";
-import { UtilityClasses } from "@wrappid/styles";
 
 export default function NativeAppContainer(props) {
-  const { appBar, leftDrawer, coreClasses } = props;
+  const { appBar, leftDrawer, coreClasses, uid } = props;
   return (
-    <NativeBox styleClasses={[UtilityClasses.DISPLAY.FLEX]}>
-      {appBar()}
+    <>
+      {uid && appBar()}
 
-      <NativeBox
-        component="main"
-        styleClasses={[coreClasses?.LAYOUT?.LOGGED_OUT_CONTENT_CONTAINER]}
-      >
+      <NativeBox style={uid && { height: "100%" }}>
         {leftDrawer()}
 
         {props.children}
       </NativeBox>
-    </NativeBox>
+    </>
   );
 }
