@@ -142,6 +142,9 @@ import NativeThemeProvider from "./theme/NativeThemeProvider";
 import NativeDataTableDetailsPaneContainer from "./nativeComponents/dataTable/NativeDataTableDetailsPaneContainer";
 import NativeFlatList from "./nativeComponents/dataDisplay/NativeFlatList";
 import NativeCustomTabs from "./nativeComponents/navigation/NativeCustomTabs";
+import NativeAppContainer from "./nativeComponents/layouts/NativeAppContainer";
+import NativePageContainer from "./nativeComponents/layouts/NativePageContainer";
+
 export {
   /**
    * NATIVE EXPORTS
@@ -286,4 +289,6 @@ export {
   NativeMedicineSelector,
   NativeReactSelectInput,
   nativeUseTheme,
+  NativeAppContainer,
+  NativePageContainer,
 };
