@@ -118,6 +118,8 @@ import NativeFormControl from "./nativeComponents/inputs/NativeFormControl";
 import NativeButton from "./nativeComponents/inputs/NativeButton";
 import NativeCheckbox from "./nativeComponents/inputs/NativeCheckbox";
 import DevNativeDataTable from "./nativeComponents/dataTable/DevNativeDataTable";
+import NativeDataTableToolPopover from "./nativeComponents/dataTable/NativeDataTableToolPopover";
+import NativeDataTableToolbar from "./nativeComponents/dataTable/NativeDataTableToolbar";
 import NativeFormContainer from "./nativeComponents/inputs/NativeFormContainer";
 import getNativeMenuItem from "./helper/menuUtil";
 import NativeDialog from "./nativeComponents/feedback/NativeDialog";
@@ -291,4 +293,6 @@ export {
   nativeUseTheme,
   NativeAppContainer,
   NativePageContainer,
+  NativeDataTableToolbar,
+  NativeDataTableToolPopover,
 };
