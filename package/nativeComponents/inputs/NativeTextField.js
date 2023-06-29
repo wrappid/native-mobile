@@ -1,9 +1,22 @@
 import React from "react";
 // import {getUUID} from '../../../utils/appUtils';
 import { SCInput } from "../../styledComponents/inputs/SCInput";
+import { Menu, TextInput } from "react-native-paper";
+import NativeIcon from "../dataDisplay/NativeIcon";
+import NativeIconButton from "./NativeIconButton";
 
 export default function NativeTextField(props) {
   // const {NativeId = getUUID()} = props;
+  const endAdornment = props?.InputProps?.endAdornment;
+  const { noAdornment } = props;
+  const [visible, setVisible] = React.useState(false);
+
+  const openMenu = () => setVisible(true);
+
+  const closeMenu = () => setVisible(false);
+
+  console.log("NATIVE TEXTFIELD", endAdornment?.props?.children);
+
   return (
     <SCInput
       id={props.id}
@@ -39,6 +52,35 @@ export default function NativeTextField(props) {
               console.log("CLICKED else");
             }
       }
+      right={
+        endAdornment?.props?.children?.length > 0 ? (
+          <TextInput.Icon
+            icon={() =>
+              endAdornment?.props?.children?.length > 1 ? (
+                <Menu
+                  visible={visible}
+                  onDismiss={closeMenu}
+                  anchorPosition="bottom"
+                  anchor={
+                    <NativeIconButton onClick={openMenu}>
+                      <NativeIcon name="keyboard-arrow-down" />
+                    </NativeIconButton>
+                  }
+                >
+                  {endAdornment?.props?.children}
+                </Menu>
+              ) : (
+                endAdornment?.props?.children
+              )
+            }
+          />
+        ) : null
+      }
+      // right={
+      //   endAdornment?.props?.children?.length > 1
+      //     ? endAdornment?.props?.children[1]
+      //     : null
+      // }
       {...props}
     />
     //   <NativeFormErrorText>{props.touched && props.error}</NativeFormErrorText>
