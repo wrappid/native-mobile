@@ -5,7 +5,7 @@ export default function NativeDataTableToolPopover(props) {
   const { open, onClose } = props;
 
   return (
-    <NativeFullModal onClose={onClose} open={open}>
+    <NativeFullModal onClose={onClose} open={open} searchBox={false}>
       {props.children}
     </NativeFullModal>
   );

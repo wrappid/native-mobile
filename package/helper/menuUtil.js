@@ -47,58 +47,72 @@ export default function getNativeMenuItem(
           window.innerWidth
         );
         // setSelectedID(menuItem?.name);
-        OnMenuClick(menuItem, true);
+        menuItem?.onClick ? menuItem?.onClick() : OnMenuClick(menuItem, true);
       }}
     >
-      <NativeListItemIcon
-        style={{ flex: 1 }}
-        styleClasses={
-          miniDrawer
-            ? [
-                StyledComponentsClasses.MENU.MINI_DRAWER_LIST_ITEM_ICON,
-                ...getTypeWiseStyle(
-                  menuItem,
-                  allTypes?.MENU_ITEM_ICON,
-                  allTypes
-                ),
-              ]
-            : [
-                StyledComponentsClasses.MENU.LIST_ITEM_ICON,
-                ...getTypeWiseStyle(
-                  menuItem,
-                  allTypes?.MENU_ITEM_ICON,
-                  allTypes
-                ),
-              ]
-        }
-      >
-        {/* @todo may have to correct this */}
-        <NativeIcon
-          name={
-            typeof menuItem?.icon === "object"
-              ? menuItem?.icon?.name
-              : typeof menuItem?.icon === "string" && isJson(menuItem?.icon)
-              ? JSON.parse(menuItem?.icon)?.name
-              : menuItem?.icon
+      {menuItem.comp ? (
+        typeof menuItem.comp === "function" ? (
+          menuItem.propsApp ? (
+            menuItem.comp(propsApp)
+          ) : menuItem.props ? (
+            menuItem.comp(props)
+          ) : (
+            menuItem.comp()
+          )
+        ) : (
+          menuItem.comp
+        )
+      ) : (
+        <NativeListItemIcon
+          style={{ flex: 1 }}
+          styleClasses={
+            miniDrawer
+              ? [
+                  StyledComponentsClasses.MENU.MINI_DRAWER_LIST_ITEM_ICON,
+                  ...getTypeWiseStyle(
+                    menuItem,
+                    allTypes?.MENU_ITEM_ICON,
+                    allTypes
+                  ),
+                ]
+              : [
+                  StyledComponentsClasses.MENU.LIST_ITEM_ICON,
+                  ...getTypeWiseStyle(
+                    menuItem,
+                    allTypes?.MENU_ITEM_ICON,
+                    allTypes
+                  ),
+                ]
           }
-          type={
-            typeof menuItem?.icon === "object"
-              ? menuItem?.icon?.type || "material-icon"
-              : typeof menuItem?.icon === "string" && isJson(menuItem?.icon)
-              ? JSON.parse(menuItem?.icon)?.type
-              : "material-icon"
-          }
-          childrenFlag={
-            typeof menuItem?.icon === "object"
-              ? menuItem?.icon?.type == "material-icon" ||
-                menuItem?.icon?.type == "material-outlined-icon"
-              : typeof menuItem?.icon === "string" && isJson(menuItem?.icon)
-              ? JSON.parse(menuItem?.icon)?.type == "material-icon" ||
-                JSON.parse(menuItem?.icon)?.type == "material-outlined-icon"
-              : true
-          }
-        />
-      </NativeListItemIcon>
+        >
+          {/* @todo may have to correct this */}
+          <NativeIcon
+            name={
+              typeof menuItem?.icon === "object"
+                ? menuItem?.icon?.name
+                : typeof menuItem?.icon === "string" && isJson(menuItem?.icon)
+                ? JSON.parse(menuItem?.icon)?.name
+                : menuItem?.icon
+            }
+            type={
+              typeof menuItem?.icon === "object"
+                ? menuItem?.icon?.type || "material-icon"
+                : typeof menuItem?.icon === "string" && isJson(menuItem?.icon)
+                ? JSON.parse(menuItem?.icon)?.type
+                : "material-icon"
+            }
+            childrenFlag={
+              typeof menuItem?.icon === "object"
+                ? menuItem?.icon?.type == "material-icon" ||
+                  menuItem?.icon?.type == "material-outlined-icon"
+                : typeof menuItem?.icon === "string" && isJson(menuItem?.icon)
+                ? JSON.parse(menuItem?.icon)?.type == "material-icon" ||
+                  JSON.parse(menuItem?.icon)?.type == "material-outlined-icon"
+                : true
+            }
+          />
+        </NativeListItemIcon>
+      )}
       <NativeListItemText
         style={{ flex: 5 }}
         styleClasses={[
