@@ -54,7 +54,7 @@ export default function NativeTextField(props) {
             }
       }
       right={
-        endAdornment?.props?.children?.length > 0 ? (
+        endAdornment && !noAdornment?.props?.children?.length > 0 ? (
           <TextInput.Icon
             icon={() =>
               endAdornment?.props?.children?.length > 1 ? (
