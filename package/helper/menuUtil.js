@@ -53,9 +53,9 @@ export default function getNativeMenuItem(
       {menuItem.comp ? (
         typeof menuItem.comp === "function" ? (
           menuItem.propsApp ? (
-            menuItem.comp(propsApp)
+            menuItem.comp(menuItem.propsApp)
           ) : menuItem.props ? (
-            menuItem.comp(props)
+            menuItem.comp(menuItem.props)
           ) : (
             menuItem.comp()
           )
