@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import NativeBox from "../layouts/NativeBox";
 import NativeIconButton from "../inputs/NativeIconButton";
 import NativeIcon from "../dataDisplay/NativeIcon";
-import { Menu } from "react-native-paper";
 import { View } from "react-native";
+import NativeDropDown from "../utils/NativeDropDown";
 
 export default function NativeDataTableToolbar(props) {
   const { allTools, styleClasses, menuRenderFunction } = props;
@@ -52,7 +52,7 @@ export default function NativeDataTableToolbar(props) {
           {row?.rightPanel &&
             !row?.rightPanel?.hideInApp &&
             row?.rightPanel?.stacks && (
-              <Menu
+              <NativeDropDown
                 visible={open}
                 onDismiss={onMore}
                 noNavigation={true}
@@ -64,7 +64,7 @@ export default function NativeDataTableToolbar(props) {
                 }
               >
                 {row?.rightPanel?.stacks?.map((stack) => showStack(stack))}
-              </Menu>
+              </NativeDropDown>
             )}
         </View>
       )}

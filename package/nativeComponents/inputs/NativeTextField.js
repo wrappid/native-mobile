@@ -1,9 +1,10 @@
 import React from "react";
 // import {getUUID} from '../../../utils/appUtils';
 import { SCInput } from "../../styledComponents/inputs/SCInput";
-import { Menu, TextInput } from "react-native-paper";
+import { TextInput } from "react-native-paper";
 import NativeIcon from "../dataDisplay/NativeIcon";
 import NativeIconButton from "./NativeIconButton";
+import NativeDropDown from "../utils/NativeDropDown";
 
 export default function NativeTextField(props) {
   // const {NativeId = getUUID()} = props;
@@ -57,7 +58,7 @@ export default function NativeTextField(props) {
           <TextInput.Icon
             icon={() =>
               endAdornment?.props?.children?.length > 1 ? (
-                <Menu
+                <NativeDropDown
                   visible={visible}
                   onDismiss={closeMenu}
                   anchorPosition="bottom"
@@ -68,7 +69,7 @@ export default function NativeTextField(props) {
                   }
                 >
                   {endAdornment?.props?.children}
-                </Menu>
+                </NativeDropDown>
               ) : (
                 endAdornment?.props?.children
               )
@@ -76,11 +77,6 @@ export default function NativeTextField(props) {
           />
         ) : null
       }
-      // right={
-      //   endAdornment?.props?.children?.length > 1
-      //     ? endAdornment?.props?.children[1]
-      //     : null
-      // }
       {...props}
     />
     //   <NativeFormErrorText>{props.touched && props.error}</NativeFormErrorText>
