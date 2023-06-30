@@ -6,7 +6,7 @@ import {
   UtilityClasses,
 } from "@wrappid/styles";
 
-const defaultStyleClasses = [];
+const defaultStyleClasses = [StyledComponentsClasses.INPUTS.BUTTON];
 
 export const SCButton = styled(
   Button,
