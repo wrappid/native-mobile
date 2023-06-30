@@ -33,41 +33,45 @@ export default function NativeDataTableToolbar(props) {
     }
   };
 
-  return allTools?.map((row) => (
-    <NativeBox
-      styleClasses={styleClasses}
-      style={{ flex: 1, flexDirection: "row" }}
-    >
-      {!row.hideInApp && (
-        <NativeBox style={{ flex: 5, flexDirection: "row" }}>
-          {row?.leftPanel &&
-            !row?.leftPanel?.hideInApp &&
-            row?.leftPanel?.stacks &&
-            row?.leftPanel?.stacks?.map((stack) => showStack(stack))}
-        </NativeBox>
-      )}
+  return (
+    <NativeBox>
+      {allTools?.map((row) => (
+        <NativeBox
+          styleClasses={styleClasses}
+          style={{ flex: 1, flexDirection: "row" }}
+        >
+          {!row.hideInApp && (
+            <NativeBox style={{ flex: 5, flexDirection: "row" }}>
+              {row?.leftPanel &&
+                !row?.leftPanel?.hideInApp &&
+                row?.leftPanel?.stacks &&
+                row?.leftPanel?.stacks?.map((stack) => showStack(stack))}
+            </NativeBox>
+          )}
 
-      {!row.hideInApp && (
-        <View style={{ flex: 1, flexDirection: "row" }}>
-          {row?.rightPanel &&
-            !row?.rightPanel?.hideInApp &&
-            row?.rightPanel?.stacks && (
-              <NativeDropDown
-                visible={open}
-                onDismiss={onMore}
-                noNavigation={true}
-                anchorPosition="bottom"
-                anchor={
-                  <NativeIconButton size="large" onClick={onMore}>
-                    <NativeIcon name="more-vert" size={32} />
-                  </NativeIconButton>
-                }
-              >
-                {row?.rightPanel?.stacks?.map((stack) => showStack(stack))}
-              </NativeDropDown>
-            )}
-        </View>
-      )}
+          {!row.hideInApp && (
+            <View style={{ flex: 1, flexDirection: "row" }}>
+              {row?.rightPanel &&
+                !row?.rightPanel?.hideInApp &&
+                row?.rightPanel?.stacks && (
+                  <NativeDropDown
+                    visible={open}
+                    onDismiss={onMore}
+                    noNavigation={true}
+                    anchorPosition="bottom"
+                    anchor={
+                      <NativeIconButton size="large" onClick={onMore}>
+                        <NativeIcon name="more-vert" size={32} />
+                      </NativeIconButton>
+                    }
+                  >
+                    {row?.rightPanel?.stacks?.map((stack) => showStack(stack))}
+                  </NativeDropDown>
+                )}
+            </View>
+          )}
+        </NativeBox>
+      ))}
     </NativeBox>
-  ));
+  );
 }
