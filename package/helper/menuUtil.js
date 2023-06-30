@@ -96,18 +96,18 @@ export default function getNativeMenuItem(
             }
             type={
               typeof menuItem?.icon === "object"
-                ? menuItem?.icon?.type || "material-icon"
+                ? menuItem?.icon?.type || "material-icons"
                 : typeof menuItem?.icon === "string" && isJson(menuItem?.icon)
                 ? JSON.parse(menuItem?.icon)?.type
-                : "material-icon"
+                : "material-icons"
             }
             childrenFlag={
               typeof menuItem?.icon === "object"
-                ? menuItem?.icon?.type == "material-icon" ||
-                  menuItem?.icon?.type == "material-outlined-icon"
+                ? menuItem?.icon?.type == "material-icons" ||
+                  menuItem?.icon?.type == "material-icons-outlined"
                 : typeof menuItem?.icon === "string" && isJson(menuItem?.icon)
-                ? JSON.parse(menuItem?.icon)?.type == "material-icon" ||
-                  JSON.parse(menuItem?.icon)?.type == "material-outlined-icon"
+                ? JSON.parse(menuItem?.icon)?.type == "material-icons" ||
+                  JSON.parse(menuItem?.icon)?.type == "material-icons-outlined"
                 : true
             }
           />
