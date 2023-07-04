@@ -13,6 +13,7 @@ export default function NativeLink(props) {
         <NativeTooltip title={title} arrow placement={titlePlacement}>
           <Link to={props.href} {...restProps} underline="none">
             <NativeTypographyCaption
+              style={{ fontSize: 13 }}
               styleClasses={[CoreClasses.TEXT.TEXT_WEIGHT_BOLD]}
             >
               {restProps.children}
@@ -22,6 +23,7 @@ export default function NativeLink(props) {
       ) : (
         <Link to={props.href} {...restProps} underline="none">
           <NativeTypographyCaption
+            style={{ fontSize: 13 }}
             styleClasses={[CoreClasses.TEXT.TEXT_WEIGHT_BOLD]}
           >
             {restProps.children}
