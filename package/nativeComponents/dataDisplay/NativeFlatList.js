@@ -1,6 +1,6 @@
 import React from "react";
 import { SCFlatList } from "../../styledComponents/dataDisplay/SCFlatList";
-import { NativeBox } from "../layouts/NativeBox";
+import NativeBox from "../layouts/NativeBox";
 
 const END_REACH_THRESHOLD = 3;
 
