@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import NativeSpan from "../../layouts/NativeSpan";
 import NativeTypography from "../NativeTypography";
 import NativeLink from "../../navigation/NativeLink";
