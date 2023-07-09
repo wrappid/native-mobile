@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import { UtilityClasses } from "@wrappid/styles";
 import NativeSpan from "../../layouts/NativeSpan";
 import NativeLink from "../../navigation/NativeLink";

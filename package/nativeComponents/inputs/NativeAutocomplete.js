@@ -3,21 +3,20 @@ import {
   Modal,
   StyleSheet,
   useWindowDimensions,
-  View,
   Platform,
   StatusBar,
   TouchableOpacity,
-  ScrollView,
 } from "react-native";
 
 import { useTheme } from "react-native-paper";
 import NativeInput from "./NativeInput";
 import NativeTextButton from "./NativeTextButton";
 import NativeChip from "../dataDisplay/NativeChip";
-import NativeLabel from "../dataDisplay/paragraph/NativeLabel";
 import NativeTypographyBody1 from "../dataDisplay/paragraph/NativeTypographyBody1";
 import NativeBox from "../layouts/NativeBox";
-import { nativeFilterOptions } from "@wrappid/styled-components";
+import NativeFlatList from "../dataDisplay/NativeFlatList";
+import NativeTypographyBody2 from "../dataDisplay/paragraph/NativeTypographyBody2";
+import { nativeFilterOptions } from "../../helper/helper";
 import { UtilityClasses } from "@wrappid/styles";
 
 function NativeAutocomplete(props) {
@@ -40,7 +39,9 @@ function NativeAutocomplete(props) {
     value,
     multiple,
     getOptionLabel,
+    getOptionValue,
     _topLabel,
+    _optionComp,
     ...rest
   } = props;
   const animationTypeCalculated = Platform.select({
@@ -60,40 +61,70 @@ function NativeAutocomplete(props) {
         nativeFilterOptions(options, {
           inputValue: _inputValue,
           getOptionLabel,
+          getOptionValue,
+          value,
         })
       );
     }
   }, [_inputValue]);
+
+  React.useEffect(() => {
+    if (options) {
+      setFilteredOptions(
+        nativeFilterOptions(options, {
+          inputValue: _inputValue,
+          getOptionLabel,
+          getOptionValue,
+          value,
+        })
+      );
+    }
+  }, [value]);
 
   console.log("FILTER", filtereredOptions);
   return (
     <>
       {/* View like input element with text */}
       <TouchableOpacity
-        style={{
-          // height: 75,
-          borderBottom: 1,
-          borderStyle: "solid",
-          borderBottomWidth: 0.5,
-          paddingBottom: 5,
-          paddingLeft: 10,
-          marginBottom: 10,
-        }}
+        style={
+          value
+            ? {
+                // height: 75,
+                borderBottom: 1,
+                borderStyle: "solid",
+                borderBottomWidth: 0.5,
+                paddingBottom: 5,
+                paddingLeft: 16,
+                marginBottom: 10,
+              }
+            : { marginBottom: 10 }
+        }
         onPress={onOpen}
       >
-        <NativeLabel>{_topLabel}</NativeLabel>
         {value ? (
-          multiple && Array.isArray(value) ? (
-            value?.map((v) => (
-              <NativeChip mode="flat">{getOptionLabel(v)}</NativeChip>
-            ))
-          ) : (
-            <NativeTypographyBody1 style={{ fontSize: 16 }}>
-              {getOptionLabel(value)}
-            </NativeTypographyBody1>
-          )
+          <>
+            {/* <NativeLabel>{_topLabel}</NativeLabel> */}
+            <NativeTypographyBody2 style={{ fontSize: 16, marginBottom: 8 }}>
+              {_topLabel}
+            </NativeTypographyBody2>
+            {multiple && Array.isArray(value) ? (
+              <NativeFlatList
+                tableData={value}
+                horizontal={true}
+                renderItem={(rowData, rowIndex) => {
+                  return (
+                    <NativeChip mode="flat" label={getOptionLabel(rowData)} />
+                  );
+                }}
+              />
+            ) : (
+              <NativeTypographyBody1>
+                {getOptionLabel(value)}
+              </NativeTypographyBody1>
+            )}
+          </>
         ) : renderInput ? (
-          renderInput({ disabled: true, value: value })
+          renderInput({ readOnly: true, value: value })
         ) : null}
       </TouchableOpacity>
 
@@ -149,15 +180,49 @@ function NativeAutocomplete(props) {
                   value={_inputValue}
                   handleChange={(v) => onInputChange({}, v)}
                 />
-                <ScrollView>
-                  {filtereredOptions?.map((option) =>
-                    renderOption(
-                      { OnClick: onChange, option, onClose },
-                      option,
-                      {}
-                    )
-                  )}
-                </ScrollView>
+                <NativeFlatList
+                  tableData={filtereredOptions}
+                  renderItem={(option, rowIndex) => {
+                    return _optionComp ? (
+                      <TouchableOpacity
+                        onPress={() => {
+                          onChange({}, option);
+                        }}
+                      >
+                        {renderOption(
+                          {
+                            OnClick: () => {
+                              onChange(
+                                {},
+                                multiple ? [...(value || []), option] : option
+                              );
+                            },
+                            option,
+                            onClose,
+                          },
+                          option,
+                          {}
+                        )}
+                      </TouchableOpacity>
+                    ) : (
+                      renderOption(
+                        {
+                          OnClick: () => {
+                            let v = multiple
+                              ? [...(value || []), option]
+                              : option;
+                            console.log("VALUE", v);
+                            onChange({}, v);
+                          },
+                          option,
+                          onClose,
+                        },
+                        option,
+                        {}
+                      )
+                    );
+                  }}
+                />
               </NativeBox>
             </NativeBox>
           </>

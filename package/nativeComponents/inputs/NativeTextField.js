@@ -68,7 +68,7 @@ export default function NativeTextField(props) {
                     </NativeIconButton>
                   }
                 >
-                  {endAdornment?.props?.children}
+                  {endAdornment?.props?.children?.filter((elem) => elem)}
                 </NativeDropDown>
               ) : (
                 endAdornment?.props?.children
