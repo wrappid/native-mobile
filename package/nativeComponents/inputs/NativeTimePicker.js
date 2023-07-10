@@ -2,11 +2,11 @@ import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import NativeBox from "../layouts/NativeBox";
 import { SCTimePicker } from "../../styledComponents/inputs/SCTimePicker";
-import  NativeInput from "./NativeInput";
+import NativeInput from "./NativeInput";
 import { SCInput } from "../../styledComponents/inputs/SCInput";
 
 export default function NativeTimePicker(props) {
-  const { ampm, onChange, value, id, formik, ...restProps } = props;
+  const { ampm, onChange, value, id, formik, label, ...restProps } = props;
 
   const [visible, setVisible] = React.useState(false);
   const onDismiss = React.useCallback(() => {
@@ -29,6 +29,7 @@ export default function NativeTimePicker(props) {
     <SafeAreaProvider>
       <NativeBox>
         <NativeInput
+          label={label}
           onChange={onChange}
           value={hours && minutes ? hours + ":" + minutes : null}
           right={

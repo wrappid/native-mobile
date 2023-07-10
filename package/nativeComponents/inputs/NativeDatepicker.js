@@ -7,7 +7,7 @@ import NativeInput from "./NativeInput";
 import { SCInput } from "../../styledComponents/inputs/SCInput";
 
 export default function NativeDatepicker(props) {
-  const { id, formik, onChange, value, ...restProps } = props;
+  const { id, formik, label, onChange, value, ...restProps } = props;
 
   const [date, setDate] = React.useState(undefined);
   const [dateString, setDateString] = React.useState("");
@@ -49,6 +49,7 @@ export default function NativeDatepicker(props) {
       <NativeBox>
         <NativeInput
           onChange={onChange}
+          label={label}
           disabled
           value={dateString}
           right={
