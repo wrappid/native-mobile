@@ -51,6 +51,7 @@ export default function NativeInput(props) {
       }
       readOnly={props.readOnly}
       keyboardType={typeMap[props.type]}
+      right={props?.right || props.endAdornment}
     />
   );
 
