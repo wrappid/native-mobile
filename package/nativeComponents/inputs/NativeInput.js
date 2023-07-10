@@ -1,11 +1,19 @@
 import React from "react";
 // import {getUUID} from '../../../utils/appUtils';
 import { SCInput } from "../../styledComponents/inputs/SCInput";
+import { TouchableOpacity } from "react-native";
 
 export default function NativeInput(props) {
   // const {NativeId = getUUID()} = props;
-  // console.log("NATIVE INPUT PROPS", props);
-  return (
+  console.log("NATIVE INPUT PROPS", props);
+  const typeMap = {
+    number: "numeric",
+    text: "text",
+    email: "email",
+    phone: "tel",
+  };
+
+  const inputComponent = (
     <SCInput
       id={props.id}
       label={props.label}
@@ -20,16 +28,13 @@ export default function NativeInput(props) {
       }}
       required={props.formik ? false : props.required}
       placeholder={props.placeholder}
-      disable={props.disabled || props.readOnly}
+      disable={props.disabled}
       max={props.max}
       min={props.min}
-      readOnly={props.readOnly}
       onBlur={props?.formik?.handleBlur}
-      inputProps={props.inputProps ? props.inputProps : {}}
       error={
         props.touched && props.error && props.error.length > 0 ? true : false
       }
-      endAdornment={props.endAdornment ? props.endAdornment : null}
       multiline={props.multiline ? props.multiline : false}
       rows={props.rows}
       maxRows={props.maxRows}
@@ -44,10 +49,20 @@ export default function NativeInput(props) {
               console.log("CLICKED else");
             }
       }
-      {...props}
+      readOnly={props.readOnly}
+      keyboardType={typeMap[props.type]}
     />
-    //   <NativeFormErrorText>{props.touched && props.error}</NativeFormErrorText>
-    //   <NativeFormHelperText>{props.helperText}</NativeFormHelperText>
-    // </NativeFormControl>
+  );
+
+  return props.onFormFocus && props.editId && props.readOnly ? (
+    <TouchableOpacity
+      onPress={() => {
+        props.onFormFocus(props.editId);
+      }}
+    >
+      {inputComponent}
+    </TouchableOpacity>
+  ) : (
+    inputComponent
   );
 }

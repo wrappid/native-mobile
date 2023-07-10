@@ -9,6 +9,7 @@ export default function NativeButton(props) {
     innerRef,
     type,
     size = "small",
+    disabled,
     ...restProps
   } = props;
 
@@ -22,6 +23,7 @@ export default function NativeButton(props) {
       ref={innerRef}
       mode={variant ? variant : "contained"}
       size={size}
+      disabled={disabled}
       onPress={(e) => {
         UserActionLogging();
         OnClick(e);

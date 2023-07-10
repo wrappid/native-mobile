@@ -18,6 +18,7 @@ import NativeFlatList from "../dataDisplay/NativeFlatList";
 import NativeTypographyBody2 from "../dataDisplay/paragraph/NativeTypographyBody2";
 import { nativeFilterOptions } from "../../helper/helper";
 import { UtilityClasses } from "@wrappid/styles";
+import { NativeLabel } from "@wrappid/styled-components";
 
 function NativeAutocomplete(props) {
   const theme = useTheme();
@@ -42,6 +43,11 @@ function NativeAutocomplete(props) {
     getOptionValue,
     _topLabel,
     _optionComp,
+    readOnly,
+    _editId,
+    _onFormFocus,
+    onFocus,
+    _getEndAdornment,
     ...rest
   } = props;
   const animationTypeCalculated = Platform.select({
@@ -54,7 +60,7 @@ function NativeAutocomplete(props) {
 
   console.log("NAIVE AUTO COMPLETE", props);
 
-  let [filtereredOptions, setFilteredOptions] = React.useState(options);
+  let [filteredOptions, setFilteredOptions] = React.useState(options);
   React.useEffect(() => {
     if (options) {
       setFilteredOptions(
@@ -81,47 +87,89 @@ function NativeAutocomplete(props) {
     }
   }, [value]);
 
-  console.log("FILTER", filtereredOptions);
+  const checkValue = () => {
+    if (multiple) {
+      if (value && Array.isArray(value) && value.length > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    } else if (value) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const getStyle = () => {
+    const commonStyle = {
+      borderBottom: 1,
+      borderStyle: "solid",
+      borderBottomWidth: 0.5,
+      marginBottom: 10,
+    };
+    const withValueStyle = { ...commonStyle };
+    const withoutValueStyle = {
+      ...commonStyle,
+      paddingBottom: 5,
+      paddingLeft: 16,
+      marginBottom: 10,
+    };
+    if (checkValue()) {
+      return withValueStyle;
+    } else if (multiple) {
+      return withoutValueStyle;
+    } else {
+      return { marginBottom: 16 };
+    }
+  };
+
+  console.log("FILTER", filteredOptions);
   return (
     <>
       {/* View like input element with text */}
       <TouchableOpacity
-        style={
-          value
-            ? {
-                // height: 75,
-                borderBottom: 1,
-                borderStyle: "solid",
-                borderBottomWidth: 0.5,
-                paddingBottom: 5,
-                paddingLeft: 16,
-                marginBottom: 10,
-              }
-            : { marginBottom: 10 }
-        }
-        onPress={onOpen}
+        style={getStyle()}
+        disabled={readOnly ? (_onFormFocus && _editId ? false : true) : false}
+        onPress={() => {
+          onOpen();
+          onFocus();
+        }}
       >
         {value ? (
           <>
-            {/* <NativeLabel>{_topLabel}</NativeLabel> */}
-            <NativeTypographyBody2 style={{ fontSize: 16, marginBottom: 8 }}>
-              {_topLabel}
-            </NativeTypographyBody2>
-            {multiple && Array.isArray(value) ? (
-              <NativeFlatList
-                tableData={value}
-                horizontal={true}
-                renderItem={(rowData, rowIndex) => {
-                  return (
-                    <NativeChip mode="flat" label={getOptionLabel(rowData)} />
-                  );
-                }}
-              />
+            {checkValue() ? (
+              <NativeLabel>{_topLabel}</NativeLabel>
             ) : (
-              <NativeTypographyBody1>
-                {getOptionLabel(value)}
-              </NativeTypographyBody1>
+              <NativeTypographyBody2 style={{ fontSize: 16, marginBottom: 8 }}>
+                {_topLabel}
+              </NativeTypographyBody2>
             )}
+            <NativeBox styleClasses={[UtilityClasses?.FLEX?.DIRECTION_ROW]}>
+              <NativeBox style={{ flex: 5 }}>
+                {multiple && Array.isArray(value) ? (
+                  <NativeFlatList
+                    tableData={value}
+                    horizontal={true}
+                    renderItem={(rowData, rowIndex) => {
+                      return (
+                        <NativeChip
+                          mode="flat"
+                          label={getOptionLabel(rowData)}
+                        />
+                      );
+                    }}
+                  />
+                ) : (
+                  <NativeTypographyBody1>
+                    {getOptionLabel(value)}
+                  </NativeTypographyBody1>
+                )}
+              </NativeBox>
+              <NativeBox style={{ flex: 1, flexDirection: "row" }}>
+                {_getEndAdornment()}
+              </NativeBox>
+            </NativeBox>
           </>
         ) : renderInput ? (
           renderInput({ readOnly: true, value: value })
@@ -181,7 +229,7 @@ function NativeAutocomplete(props) {
                   handleChange={(v) => onInputChange({}, v)}
                 />
                 <NativeFlatList
-                  tableData={filtereredOptions}
+                  tableData={filteredOptions}
                   renderItem={(option, rowIndex) => {
                     return _optionComp ? (
                       <TouchableOpacity

@@ -28,6 +28,8 @@ function iconFlavour(name) {
   name = name?.includes("-none") ? name.replace("-none", "") : name;
   name = name?.includes("-note") ? name.replace("-note", "") : name;
 
+  name = name?.includes("fa-") ? name.replace("fa-", "") : name;
+
   return name;
 }
 
