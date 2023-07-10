@@ -9,6 +9,9 @@ export const SCChip = styled(
   Chip,
   {}
 )(({ props }) => ({
+  backgroundColor: "rgba(0,0,0,0.08)",
+  color: "black",
+  borderRadius: 16,
   ...getEffectiveStyle([
     ...defaultStyleClasses,
     ...(props?.styleClasses || []),

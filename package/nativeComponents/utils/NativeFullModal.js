@@ -13,8 +13,23 @@ import NativeTextButton from "../inputs/NativeTextButton";
 import NativeLabel from "../dataDisplay/paragraph/NativeLabel";
 import NativeBox from "../layouts/NativeBox";
 import { UtilityClasses } from "@wrappid/styles";
+import NativeTypographyBody2 from "@wrappid/styled-components/nativeComponents/dataDisplay/paragraph/NativeTypographyBody2";
 
 export default function NativeFullModal(props) {
+  const {
+    label,
+    onOpen,
+    onClose,
+    inputValue,
+    _onInputChange,
+    viewInput,
+    searchBox,
+    open,
+    onFocus,
+    multiple,
+    value,
+  } = props;
+
   const theme = useTheme();
   const dimensions = useWindowDimensions();
 
@@ -29,33 +44,60 @@ export default function NativeFullModal(props) {
   const isLight = false;
   const headerBackgroundColor = theme?.colors?.onPrimary;
 
-  const {
-    label,
-    onOpen,
-    onClose,
-    inputValue,
-    _onInputChange,
-    viewInput,
-    searchBox,
-    open,
-  } = props;
+  const checkValue = () => {
+    if (multiple) {
+      if (value && Array.isArray(value) && value.length > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    } else if (value) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const getStyle = () => {
+    const commonStyle = {
+      borderBottom: 1,
+      borderStyle: "solid",
+      borderBottomWidth: 0.5,
+      marginBottom: 10,
+    };
+    const withValueStyle = { ...commonStyle };
+    const withoutValueStyle = {
+      ...commonStyle,
+      paddingBottom: 5,
+      paddingLeft: 16,
+      marginBottom: 10,
+    };
+    if (checkValue()) {
+      return withValueStyle;
+    } else if (multiple) {
+      return withoutValueStyle;
+    } else {
+      return { marginBottom: 16 };
+    }
+  };
 
   return (
     <>
       {viewInput && (
         <TouchableOpacity
-          style={{
-            // height: 75,
-            borderBottom: 1,
-            borderStyle: "solid",
-            borderBottomWidth: 0.5,
-            paddingBottom: 5,
-            paddingLeft: 10,
-            marginBottom: 10,
+          style={getStyle()}
+          onPress={() => {
+            if (onOpen) onOpen();
+            if (onFocus) onFocus();
           }}
-          onPress={onOpen}
         >
-          <NativeLabel>{label}</NativeLabel>
+          {checkValue() ? (
+            <NativeLabel>{label}</NativeLabel>
+          ) : (
+            <NativeTypographyBody2 style={{ fontSize: 16, marginBottom: 8 }}>
+              {label}
+            </NativeTypographyBody2>
+          )}
           {viewInput()}
         </TouchableOpacity>
       )}

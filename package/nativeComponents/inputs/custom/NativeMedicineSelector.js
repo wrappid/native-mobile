@@ -7,6 +7,9 @@ import NativeFullModal from "../../utils/NativeFullModal";
 import NativeBox from "../../layouts/NativeBox";
 import NativeIconButton from "../../inputs/NativeIconButton";
 import NativeIcon from "../../dataDisplay/NativeIcon";
+import NativeGrid from "../../layouts/NativeGrid";
+import { UtilityClasses } from "@wrappid/styles";
+import { CoreClasses } from "@wrappid/core";
 
 export default function NativeMedicineSelector(props) {
   const {
@@ -22,6 +25,7 @@ export default function NativeMedicineSelector(props) {
     inputValue,
     onInputChange,
     onFinalAddMed,
+    getMedicineMask,
   } = props;
 
   const [filtereredOptions, setFilteredOptions] = useState([]);
@@ -57,11 +61,18 @@ export default function NativeMedicineSelector(props) {
 
   const renderMedicineOb = (data, index) => {
     return (
-      <NativeChip
-        style={{ margin: 10, padding: 10 }}
-        mode="flat"
-        label={data.label}
-      />
+      <NativeBox
+        styleClasses={[CoreClasses?.MARGIN?.MR1, CoreClasses?.MARGIN?.MY1]}
+      >
+        <NativeChip
+          label={data.label}
+          closeIcon="close-circle"
+          onClose={() => {
+            let items = value?.filter((v, i) => i !== index);
+            onChange(items);
+          }}
+        />
+      </NativeBox>
     );
   };
 
@@ -81,7 +92,7 @@ export default function NativeMedicineSelector(props) {
           //   components?.Option(option)
           // )
           // :
-          <NativeTypographyBody1 style={{ padding: 10 }}>
+          <NativeTypographyBody1 styleClasses={[UtilityClasses.PADDING.P1]}>
             {option?.label}
           </NativeTypographyBody1>
         }
@@ -97,7 +108,13 @@ export default function NativeMedicineSelector(props) {
 
   const viewInput = () => {
     if (value && Array.isArray(value)) {
-      return value?.map((v) => renderMedicineOb(v));
+      return (
+        <NativeFlatList
+          tableData={value}
+          renderItem={renderMedicineOb}
+          horizontal={true}
+        />
+      );
     } else {
       return null;
     }
@@ -119,11 +136,13 @@ export default function NativeMedicineSelector(props) {
       _onInputChange={_onInputChange}
       inputValue={inputValue}
       viewInput={viewInput}
+      multiple={true}
+      value={value}
     >
       {/* Current medicine components */}
 
-      <NativeBox>
-        <NativeBox>
+      <NativeGrid>
+        <NativeBox gridProps={{ gridSize: 10 }}>
           <NativeFlatList
             horizontal={true}
             tableData={value}
@@ -132,13 +151,17 @@ export default function NativeMedicineSelector(props) {
           />
         </NativeBox>
         {value && Array.isArray(value) && value.length == 7 && (
-          <NativeBox>
+          <NativeBox
+            styleClasses={[UtilityClasses.FLEX.DIRECTION_ROW]}
+            gridProps={{ gridSize: 2 }}
+          >
             <NativeIconButton onClick={addMed} size="medium">
               <NativeIcon name="check_circle" />
             </NativeIconButton>
           </NativeBox>
         )}
-      </NativeBox>
+      </NativeGrid>
+      {getMedicineMask()}
 
       {/* All options like medicines */}
       {/* <NativeBox> */}

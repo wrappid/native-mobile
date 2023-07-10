@@ -18,7 +18,8 @@ import NativeFlatList from "../dataDisplay/NativeFlatList";
 import NativeTypographyBody2 from "../dataDisplay/paragraph/NativeTypographyBody2";
 import { nativeFilterOptions } from "../../helper/helper";
 import { UtilityClasses } from "@wrappid/styles";
-import { NativeLabel } from "@wrappid/styled-components";
+import NativeGrid from "../layouts/NativeGrid";
+import NativeLabel from "../dataDisplay/paragraph/NativeLabel";
 
 function NativeAutocomplete(props) {
   const theme = useTheme();
@@ -145,18 +146,31 @@ function NativeAutocomplete(props) {
                 {_topLabel}
               </NativeTypographyBody2>
             )}
-            <NativeBox styleClasses={[UtilityClasses?.FLEX?.DIRECTION_ROW]}>
-              <NativeBox style={{ flex: 5 }}>
+            <NativeGrid>
+              <NativeBox gridProps={{ gridSize: 10 }}>
                 {multiple && Array.isArray(value) ? (
                   <NativeFlatList
                     tableData={value}
                     horizontal={true}
                     renderItem={(rowData, rowIndex) => {
                       return (
-                        <NativeChip
-                          mode="flat"
-                          label={getOptionLabel(rowData)}
-                        />
+                        <NativeBox styleClasses={[UtilityClasses?.MARGIN?.MY1]}>
+                          <NativeChip
+                            mode="flat"
+                            label={getOptionLabel(rowData)}
+                            closeIcon="close-circle"
+                            onClose={
+                              multiple
+                                ? () => {
+                                    let v = value?.filter(
+                                      (item, index) => index !== rowIndex
+                                    );
+                                    onChange({}, v);
+                                  }
+                                : () => {}
+                            }
+                          />
+                        </NativeBox>
                       );
                     }}
                   />
@@ -166,10 +180,13 @@ function NativeAutocomplete(props) {
                   </NativeTypographyBody1>
                 )}
               </NativeBox>
-              <NativeBox style={{ flex: 1, flexDirection: "row" }}>
+              <NativeBox
+                styleClasses={[UtilityClasses.FLEX.DIRECTION_ROW]}
+                gridProps={{ gridSize: 2 }}
+              >
                 {_getEndAdornment()}
               </NativeBox>
-            </NativeBox>
+            </NativeGrid>
           </>
         ) : renderInput ? (
           renderInput({ readOnly: true, value: value })
