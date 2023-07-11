@@ -28,6 +28,7 @@ export default function NativeFullModal(props) {
     onFocus,
     multiple,
     value,
+    searchLabel,
   } = props;
 
   const theme = useTheme();
@@ -146,6 +147,7 @@ export default function NativeFullModal(props) {
                   styleClasses={[UtilityClasses?.MARGIN?.MB4]}
                   value={inputValue}
                   handleChange={_onInputChange}
+                  label={searchLabel || "Search here"}
                 />
               )}
               {props.children}

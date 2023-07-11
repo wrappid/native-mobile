@@ -160,7 +160,9 @@ function NativeAutocomplete(props) {
                             label={getOptionLabel(rowData)}
                             closeIcon="close-circle"
                             onClose={
-                              multiple
+                              readOnly
+                                ? null
+                                : multiple
                                 ? () => {
                                     let v = value?.filter(
                                       (item, index) => index !== rowIndex
@@ -181,7 +183,10 @@ function NativeAutocomplete(props) {
                 )}
               </NativeBox>
               <NativeBox
-                styleClasses={[UtilityClasses.FLEX.DIRECTION_ROW]}
+                styleClasses={[
+                  UtilityClasses.FLEX.DIRECTION_ROW,
+                  UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_FLEX_END,
+                ]}
                 gridProps={{ gridSize: 2 }}
               >
                 {_getEndAdornment()}
@@ -244,6 +249,7 @@ function NativeAutocomplete(props) {
                   styleClasses={[UtilityClasses?.MARGIN?.MB4]}
                   value={_inputValue}
                   handleChange={(v) => onInputChange({}, v)}
+                  label="Search here"
                 />
                 <NativeFlatList
                   tableData={filteredOptions}

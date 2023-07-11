@@ -2,7 +2,15 @@ import React from "react";
 import { SCCheckbox } from "../../styledComponents/inputs/SCCheckbox";
 
 export default function NativeCheckbox(props) {
-  const { id, styleClasses = [], formik, onChange, label, value } = props;
+  const {
+    id,
+    styleClasses = [],
+    formik,
+    onChange,
+    label,
+    value,
+    disabled,
+  } = props;
 
   const checked = formik ? value : props.checked;
   return (
@@ -10,6 +18,7 @@ export default function NativeCheckbox(props) {
       id={id}
       label={label}
       status={checked ? "checked" : "unchecked"}
+      disabled={disabled}
       styleClasses={[...(styleClasses || [])]}
       onPress={
         onChange && !formik
