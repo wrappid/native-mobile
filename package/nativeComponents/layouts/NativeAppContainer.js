@@ -7,7 +7,7 @@ export default function NativeAppContainer(props) {
     <>
       {uid && appBar()}
 
-      <NativeBox style={uid && { height: "100%" }}>
+      <NativeBox style={uid && { height: "80%" }}>
         {leftDrawer()}
 
         {props.children}

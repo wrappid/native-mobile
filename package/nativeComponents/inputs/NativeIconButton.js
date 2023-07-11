@@ -15,6 +15,8 @@ export default function NativeIconButton(props) {
       onPress={restProps.onClick}
       size={isNaN(size) ? sizeMap[size] || sizeMap.small : size}
       icon={(iconProps) => props.children}
+      styleClasses={restProps?.styleClasses}
+      style={restProps?.style}
     />
   );
 }

@@ -7,6 +7,14 @@ import {
   useParams as nativeUseParams,
   useSearchParams as nativeUseSearchParams,
 } from "react-router-native";
+import { Linking } from "react-native";
+
+async function nativeOpenUrl(url) {
+  Linking.openURL(url).catch((err) => {
+    console.error("Failed opening page because: ", err);
+    alert("Failed to open page");
+  });
+}
 
 export {
   nativeUseNavigate,
@@ -16,4 +24,5 @@ export {
   NativeDomNavigate,
   nativeUseParams,
   nativeUseSearchParams,
+  nativeOpenUrl,
 };
