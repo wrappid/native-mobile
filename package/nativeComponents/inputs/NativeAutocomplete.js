@@ -29,6 +29,7 @@ function NativeAutocomplete(props) {
   const disableStatusBarPadding = false;
 
   const {
+    id,
     open,
     onOpen,
     onClose,
@@ -49,6 +50,7 @@ function NativeAutocomplete(props) {
     _onFormFocus,
     onFocus,
     _getEndAdornment,
+    _formik,
     ...rest
   } = props;
   const animationTypeCalculated = Platform.select({
@@ -258,11 +260,17 @@ function NativeAutocomplete(props) {
                       <TouchableOpacity
                         onPress={() => {
                           onChange({}, option);
+                          if (_formik) {
+                            _formik.setFieldTouched(id, true, true);
+                          }
                         }}
                       >
                         {renderOption(
                           {
                             OnClick: () => {
+                              if (_formik) {
+                                _formik.setFieldTouched(id, true, true);
+                              }
                               onChange(
                                 {},
                                 multiple ? [...(value || []), option] : option
@@ -279,6 +287,9 @@ function NativeAutocomplete(props) {
                       renderOption(
                         {
                           OnClick: () => {
+                            if (_formik) {
+                              _formik.setFieldTouched(id, true, true);
+                            }
                             let v = multiple
                               ? [...(value || []), option]
                               : option;
