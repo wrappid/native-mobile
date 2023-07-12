@@ -3,7 +3,7 @@ import NativeBox from "./NativeBox";
 import { ScrollView, Dimensions, KeyboardAvoidingView } from "react-native";
 
 export default function NativePageContainer(props) {
-  const { coreClasses } = props;
+  const { coreClasses, uid } = props;
   /**
    * @todo scroll view is used in page container should be removed
    * when flatlist used but this is causing children in pages being
@@ -16,7 +16,7 @@ export default function NativePageContainer(props) {
   return (
     <NativeBox
       style={{
-        height: windowHeight - DEFAULT_APP_BAR_HEIGHT,
+        height: uid ? windowHeight - DEFAULT_APP_BAR_HEIGHT : windowHeight,
         position: "absolute",
       }}
       styleClasses={[coreClasses?.LAYOUT?.PAGE_CONTAINER]}
