@@ -2,5 +2,7 @@ import React from "react";
 import { SCTooltip } from "../../styledComponents/dataDisplay/SCTooltip";
 
 export default function NativeTooltip(props) {
-  return <SCTooltip {...props}>{props.children}</SCTooltip>;
+  const {children, ...restProps} = props;
+
+  return <SCTooltip props>{children}</SCTooltip>;
 }
