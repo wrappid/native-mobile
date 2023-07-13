@@ -43,7 +43,7 @@ export default function NativePopover(props) {
             style={{ flex: 1, zIndex: 200 }}
             styleClasses={[
               UtilityClasses?.BG?.BG_WHITE,
-              UtilityClasses?.PADDING?.P3,
+              UtilityClasses?.PADDING?.PY2,
             ]}
           >
             <NativeBox
