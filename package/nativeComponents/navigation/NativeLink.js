@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import NativeTooltip from "../dataDisplay/NativeTooltip";
 import NativeTypographyCaption from "../dataDisplay/paragraph/NativeTypographyCaption";
 import { Link } from "react-router-native";
-import { CoreClasses } from "@wrappid/core";
+import { UtilityClasses } from "@wrappid/styles";
 import { Linking, TouchableOpacity } from "react-native";
 
 export default function NativeLink(props) {
@@ -32,39 +32,21 @@ export default function NativeLink(props) {
     <>
       {supported ? (
         <TouchableOpacity onPress={OpenURLButton}>
-          <NativeTypographyCaption
-            style={{ fontSize: 13 }}
-            styleClasses={[
-              CoreClasses.COLOR.TEXT_PRIMARY,
-              CoreClasses.TEXT.TEXT_WEIGHT_BOLD,
-            ]}
-          >
+          <NativeTypographyCaption styleClasses={[UtilityClasses?.LINK?.MUI]}>
             {restProps.children}
           </NativeTypographyCaption>
         </TouchableOpacity>
       ) : title ? (
         <NativeTooltip title={title} arrow placement={titlePlacement}>
           <Link to={props.href} {...restProps} underline="none">
-            <NativeTypographyCaption
-              style={{ fontSize: 13 }}
-              styleClasses={[
-                CoreClasses.COLOR.TEXT_PRIMARY,
-                CoreClasses.TEXT.TEXT_WEIGHT_BOLD,
-              ]}
-            >
+            <NativeTypographyCaption styleClasses={[UtilityClasses?.LINK?.MUI]}>
               {restProps.children}
             </NativeTypographyCaption>
           </Link>
         </NativeTooltip>
       ) : (
         <Link to={props.href} {...restProps} underline="none">
-          <NativeTypographyCaption
-            style={{ fontSize: 13 }}
-            styleClasses={[
-              CoreClasses.COLOR.TEXT_PRIMARY,
-              CoreClasses.TEXT.TEXT_WEIGHT_BOLD,
-            ]}
-          >
+          <NativeTypographyCaption styleClasses={[UtilityClasses?.LINK?.MUI]}>
             {restProps.children}
           </NativeTypographyCaption>
         </Link>
