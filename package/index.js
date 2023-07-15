@@ -148,8 +148,13 @@ import NativeFlatList from "./nativeComponents/dataDisplay/NativeFlatList";
 import NativeCustomTabs from "./nativeComponents/navigation/NativeCustomTabs";
 import NativeAppContainer from "./nativeComponents/layouts/NativeAppContainer";
 import NativePageContainer from "./nativeComponents/layouts/NativePageContainer";
+import { getNativeDeviceDetails } from "./nativeComponents/utils/device.utils";
 
 export {
+  /**
+   * DEVICE UTIL(s)
+   */
+  getNativeDeviceDetails,
   /**
    * NATIVE EXPORTS
    */
