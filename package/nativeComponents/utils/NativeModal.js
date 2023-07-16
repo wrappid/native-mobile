@@ -10,7 +10,7 @@ import { UtilityClasses, StyledComponentsClasses } from "@wrappid/styles";
 export default function NativeModal(props) {
   const { /*open, onClose, */ ...restProps } = props;
   const dispatch = useDispatch();
-  const open = useSelector((state) => state.modal.modalOpen);
+  const open = useSelector((state) => state.modal?.modalOpen || false);
   const modalData = useSelector((state) => state.modal.modalData);
   const modalStyle = useSelector((state) => state.modal.modalStyle);
   const modalClose = useSelector((state) => state.modal.modalClose);
