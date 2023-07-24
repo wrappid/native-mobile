@@ -64,7 +64,7 @@ export default function getNativeMenuItem(
         )
       ) : (
         <NativeListItemIcon
-          style={{ flex: 1 }}
+          style={{ flex: 1, paddingLeft: 10 }}
           styleClasses={
             miniDrawer
               ? [
