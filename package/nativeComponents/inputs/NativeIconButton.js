@@ -11,9 +11,9 @@ export default function NativeIconButton(props) {
     ...restProps
   } = props;
   const sizeMap = {
-    small: 16,
+    small: 24,
     large: 48,
-    medium: 24,
+    medium: 32,
   };
 
   const childrenWithProps = childProps =>
@@ -34,7 +34,7 @@ export default function NativeIconButton(props) {
       onPress={restProps.onClick}
       size={isNaN(size) ? sizeMap[size] || sizeMap.small : size}
       icon={iconProps =>
-        childrenWithProps({iconProps})
+        childrenWithProps({...iconProps, styleClasses: restProps.styleClasses})
       }
       styleClasses={restProps?.styleClasses}
       style={restProps?.style}
