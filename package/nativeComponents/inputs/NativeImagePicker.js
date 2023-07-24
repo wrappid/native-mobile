@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NativeOutlinedButton from "./NativeOutlinedButton";
 // import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, PermissionsAndroid } from "react-native";
 import ImagePicker from "react-native-image-crop-picker";
 import NativeModal from "../utils/NativeModal";
 import NativeTextButton from "./NativeTextButton";
@@ -22,6 +22,103 @@ export default function NativeImagePicker(props) {
       }
     }
   }, [localValue]);
+
+  useEffect(() => {
+    requestCameraPermission()
+    requestImagePermission()
+  }, []);
+
+  const requestCameraPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+        {
+          title: 'Allow Camera Permission',
+          message:
+            'Allow access to your camera ' +
+            'so you can take awesome pictures.',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('You can use the camera');
+      } else {
+        console.log('Camera permission denied');
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  };
+  
+  const requestImagePermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.READ_MEDIA_IMAGES,
+        {
+          title: 'Allow images Permission',
+          message:
+            'Allow needs access to your camera ' +
+            'so you can take awesome pictures.',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('You can use the images');
+      } else {
+        console.log('images permission denied');
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+        {
+          title: 'Allow images Permission',
+          message:
+            'Allow needs access to your camera ' +
+            'so you can take awesome pictures.',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('You can use the images');
+      } else {
+        console.log('images permission denied');
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+        {
+          title: 'Allow files Permission',
+          message:
+            'Allow needs access to your files ' +
+            'so you can take awesome files.',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('You can use the files');
+      } else {
+        console.log('files permission denied');
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  };
 
   // const pickImage = async (type = 'camera') => {
   //   setModalOpen(false);
