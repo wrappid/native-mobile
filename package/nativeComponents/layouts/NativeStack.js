@@ -1,5 +1,5 @@
-import React from "react";
-import { SCStack } from "../../styledComponents/layouts//SCStack";
+import React, { useEffect, useState } from "react";
+import { SCStack } from "../../styledComponents/layouts/SCStack";
 import { UtilityClasses } from "@wrappid/styles";
 
 export default function NativeStack(props) {
@@ -19,7 +19,7 @@ export default function NativeStack(props) {
   const {
     direction = "column",
     divider,
-    spacing,
+    spacing = 0,
     styleClasses,
     ...restProps
   } = props;
@@ -29,7 +29,20 @@ export default function NativeStack(props) {
     UtilityClasses.FLEX[
       `DIRECTION_${direction.replace("-", "_").toUpperCase()}`
     ],
+    spacing && UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
+    UtilityClasses.PADDING[`P${spacing.toString()}`]
   ];
+
+  // const [rowGap, setRowGap] = useState(0);
+  // const [columnGap, setColumnGap] = useState(0);
+
+  // useEffect(() => {
+  //   if(direction.includes("row")) {
+  //     setRowGap(spacing * 8);
+  //   } else {
+  //     setColumnGap(spacing * 8);
+  //   }
+  // }, [direction, spacing]);
 
   return (
     <SCStack {...restProps} styleClasses={preparedStyleClasses}>
