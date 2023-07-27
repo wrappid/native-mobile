@@ -6,7 +6,7 @@ export default function NativeImage(props) {
 
   return (
     <SCImage
-      style={{ height, width }}
+      style={height&&width?{ height, width }:{}}
       source={
         src
           ? typeof src === "string" && src.includes("http")
