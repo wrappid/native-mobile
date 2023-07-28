@@ -1,31 +1,32 @@
-import React, { useState } from "react";
-import NativeBox from "../layouts/NativeBox";
-import NativeIconButton from "../inputs/NativeIconButton";
-import NativeIcon from "../dataDisplay/NativeIcon";
-import { View } from "react-native";
-import NativeDropDown from "../utils/NativeDropDown";
+import React, {useState} from 'react';
+import NativeBox from '../layouts/NativeBox';
+import NativeIconButton from '../inputs/NativeIconButton';
+import NativeIcon from '../dataDisplay/NativeIcon';
+import NativeDropDown from '../utils/NativeDropDown';
+import {useTheme} from 'react-native-paper';
 
 export default function NativeDataTableToolbar(props) {
-  const { allTools, styleClasses, menuRenderFunction } = props;
+  const {allTools, styleClasses, menuRenderFunction} = props;
 
   const [open, setPopover] = useState(false);
+  const theme = useTheme();
 
   const onMore = () => {
     setPopover(!open);
   };
 
-  const showStack = (stack) => {
+  const showStack = stack => {
     if (!stack.hideInApp) {
       if (menuRenderFunction) {
-        let visibleItems = stack?.filter((element) => !element.hideInApp);
+        let visibleItems = stack?.filter(element => !element.hideInApp);
         return menuRenderFunction(visibleItems);
       } else {
-        return stack?.map((element) =>
+        return stack?.map(element =>
           element?.comp && !element.hideInApp
-            ? typeof element?.comp === "function"
+            ? typeof element?.comp === 'function'
               ? element.comp(element.propsApp)
               : element.comp
-            : null
+            : null,
         );
       }
     } else {
@@ -34,23 +35,38 @@ export default function NativeDataTableToolbar(props) {
   };
 
   return (
-    <NativeBox>
-      {allTools?.map((row) => (
+    <>
+      {allTools?.map(row => (
         <NativeBox
           styleClasses={styleClasses}
-          style={{ flex: 1, flexDirection: "row" }}
-        >
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            marginTop: -24,
+            marginRight: -32,
+            marginLeft: -24,
+            borderBottomWidth: 1,
+            borderStyle: 'solid',
+            borderColor: theme.colors.onSurfaceDisabled,
+          }}>
           {!row.hideInApp && (
-            <NativeBox style={{ flex: 5, flexDirection: "row" }}>
+            <NativeBox style={{flex: 5, flexDirection: 'row'}}>
               {row?.leftPanel &&
                 !row?.leftPanel?.hideInApp &&
                 row?.leftPanel?.stacks &&
-                row?.leftPanel?.stacks?.map((stack) => showStack(stack))}
+                row?.leftPanel?.stacks?.map(stack => showStack(stack))}
             </NativeBox>
           )}
 
           {!row.hideInApp && (
-            <View style={{ flex: 1, flexDirection: "row" }}>
+            <NativeBox
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                marginLeft: -24,
+                paddingTop: 16,
+                paddingLeft: 24,
+              }}>
               {row?.rightPanel &&
                 !row?.rightPanel?.hideInApp &&
                 row?.rightPanel?.stacks && (
@@ -60,18 +76,17 @@ export default function NativeDataTableToolbar(props) {
                     noNavigation={true}
                     anchorPosition="bottom"
                     anchor={
-                      <NativeIconButton size="large" onClick={onMore}>
-                        <NativeIcon name="more-vert" size={32} />
+                      <NativeIconButton onClick={onMore}>
+                        <NativeIcon name="more-vert" />
                       </NativeIconButton>
-                    }
-                  >
-                    {row?.rightPanel?.stacks?.map((stack) => showStack(stack))}
+                    }>
+                    {row?.rightPanel?.stacks?.map(stack => showStack(stack))}
                   </NativeDropDown>
                 )}
-            </View>
+            </NativeBox>
           )}
         </NativeBox>
       ))}
-    </NativeBox>
+    </>
   );
 }
