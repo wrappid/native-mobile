@@ -36,8 +36,8 @@ function iconFlavour(name) {
 export const DEFAULT_ICON_SIZE = 24;
 export const sizeMap = {
   small: DEFAULT_ICON_SIZE,
-  large: 128,
-  medium: 64,
+  large: 64,
+  medium: 48,
 };
 
 export default function NativeIcon(props) {

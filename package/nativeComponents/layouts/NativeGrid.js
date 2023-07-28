@@ -57,7 +57,11 @@ export default function NativeGrid(props) {
           <SCGridItem
             item
             key={index}
-            style={gridToWidth(child?.props?.gridProps?.gridSize)}
+            style={{
+              ...(gridToWidth(child?.props?.gridProps?.gridSize)||{}),
+              paddingLeft: props.spacing? props.spacing * 8 : 8,
+              paddingTop: props.spacing? props.spacing * 8 : 8
+            }}
           >
             {child}
           </SCGridItem>
