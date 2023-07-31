@@ -16,6 +16,7 @@ import NativeStack from "./nativeComponents/layouts/NativeStack";
 import NativeGrid from "./nativeComponents/layouts/NativeGrid";
 // import NativeGridItem from './nativeComponents/layouts/NativeGridItem';
 import NativeListItem from "./nativeComponents/layouts/NativeListItem";
+import NativeImageBackground from "./nativeComponents/layouts/NativeImageBackground";
 import NativeLinearProgress from "./nativeComponents/feedback/NativeLinearProgress";
 import NativeBackdrop from "./nativeComponents/feedback/NativeBackdrop";
 import NativeSnackbar from "./nativeComponents/feedback/NativeSnackbar";
@@ -177,6 +178,7 @@ export {
   NativeList,
   NativeStack,
   NativeListItem,
+  NativeImageBackground,
   NativeLinearProgress,
   NativeBackdrop,
   NativeSnackbar,
