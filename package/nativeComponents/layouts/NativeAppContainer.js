@@ -11,7 +11,7 @@ export default function NativeAppContainer(props) {
 
       <NativeBox
         style={
-          uid ? { height: "92%" } : { backgroundColor: theme.colors.background }
+          uid ? { height: "92%" } : { backgroundColor: theme.colors.onPrimaryContainer }
         }
       >
         {leftDrawer()}
