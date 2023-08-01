@@ -1,11 +1,11 @@
-import { Provider, MD3LightTheme as DefaultTheme } from "react-native-paper";
-import React from "react";
+import {Provider, MD3LightTheme as DefaultTheme} from 'react-native-paper';
+import React from 'react';
 
 export default function NativeThemeProvider(props) {
   const [paperTheme, setPaperTheme] = React.useState({});
 
   const setPaperThemeObject = () => {
-    console.log("%%%%%%%%%%%%%%%%%THEME%%%%%%%%%%%%%%%%%", props.theme);
+    console.log('%%%%%%%%%%%%%%%%%THEME%%%%%%%%%%%%%%%%%', props.theme);
     let transformedThemeObject = {
       ...DefaultTheme,
       roundness: props.theme.shape.borderRadius
@@ -24,8 +24,9 @@ export default function NativeThemeProvider(props) {
         background: props.theme.palette.background.default,
         onBackground: props.theme.palette.background.default,
         surface: props.theme.palette.background.default,
-        surfaceVariant: props.theme.palette.background.default,
-        // onSurface: props.theme.palette.background.default,
+        surfaceVariant: 'transparent',
+        onSurface: props.theme.palette.primary.main,
+        onSurfaceVariant: props.theme.palette.primary.main,
         error: props.theme.palette.error.main,
         onError: props.theme.palette.error.contrastText,
         errorContainer: props.theme.palette.error.light,
