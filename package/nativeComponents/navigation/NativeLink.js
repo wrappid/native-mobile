@@ -4,7 +4,7 @@ import NativeTooltip from '../dataDisplay/NativeTooltip';
 import NativeTypographyCaption from '../dataDisplay/paragraph/NativeTypographyCaption';
 import {Link} from 'react-router-native';
 import {UtilityClasses} from '@wrappid/styles';
-import {Linking, TouchableOpacity} from 'react-native';
+import {Linking, Pressable, TouchableOpacity} from 'react-native';
 
 export default function NativeLink(props) {
   const {title, href, titlePlacement = 'top', ...restProps} = props;
@@ -31,7 +31,7 @@ export default function NativeLink(props) {
   return (
     <>
       {supported ? (
-        <TouchableOpacity onPress={OpenURLButton}>
+        <Pressable onPress={OpenURLButton}>
           <NativeTypographyCaption
             styleClasses={[
               UtilityClasses?.LINK?.MUI,
@@ -39,7 +39,7 @@ export default function NativeLink(props) {
             ]}>
             {restProps.children}
           </NativeTypographyCaption>
-        </TouchableOpacity>
+        </Pressable>
       ) : title ? (
         <NativeTooltip title={title} arrow placement={titlePlacement}>
           <Link to={props.href} {...restProps} underline="none">
