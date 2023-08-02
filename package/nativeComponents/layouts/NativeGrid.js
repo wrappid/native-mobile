@@ -51,7 +51,7 @@ export default function NativeGrid(props) {
       key={containerId}
       container={props?.container || true}
       item={props?.item || false}
-      style={{flexDirection: 'row', flexWrap: 'wrap'}}
+      style={{flexDirection: 'row', flexWrap: 'wrap', marginLeft: -1 * padding}}
       styleClasses={props?.styleClasses || []}>
       {props.children &&
         Children.toArray(props.children).map((child, index) => (
