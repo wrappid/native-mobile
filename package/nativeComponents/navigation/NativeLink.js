@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-native';
 import {Linking, Pressable} from 'react-native';
+import NativeTypography from '../dataDisplay/NativeTypography';
 
 export default function NativeLink(props) {
   const {title, href, titlePlacement = 'top', ...restProps} = props;
@@ -24,15 +25,25 @@ export default function NativeLink(props) {
     if (href) await Linking.openURL(href);
   };
 
+  const getLinkString = () => {
+    if (typeof restProps.children === 'string') {
+      return (
+        <NativeTypography styleClasses={[restProps.styleClasses]}>
+          {restProps.children}
+        </NativeTypography>
+      );
+    } else {
+      return restProps.children;
+    }
+  };
+
   return (
     <>
       {supported ? (
-        <Pressable onPress={OpenURLButton}>
-          {restProps.children}
-        </Pressable>
+        <Pressable onPress={OpenURLButton}>{getLinkString()}</Pressable>
       ) : (
         <Link to={props.href} {...restProps} underline="none">
-          {restProps.children}
+          {getLinkString()}
         </Link>
       )}
     </>
