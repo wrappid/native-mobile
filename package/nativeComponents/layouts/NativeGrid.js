@@ -1,4 +1,4 @@
-import React, {Children} from 'react';
+import React, {Children, useState, useEffect} from 'react';
 import {SCGrid} from '../../styledComponents/layouts/SCGrid';
 import {SCGridItem} from '../../styledComponents/layouts/SCGridItem';
 import {getUUID} from '../../helper/appUtils';
@@ -14,12 +14,14 @@ import {
 export default function NativeGrid(props) {
   const {spacing} = props;
   let padding = spacing !== null && spacing !== undefined ? spacing * 4 : 4;
-  let _uuid = null;
-  React.useEffect(() => {
-    _uuid = getUUID();
-  }, []);
 
-  var containerId = props?.coreId ? 'gc_' + props.coreId : 'gc_' + _uuid;
+  const [_uuid, setUuid] = useState(null)
+  const [containerId, setContainerId] = useState(null)
+
+  useEffect(()=>{
+    setUuid(getUUID());
+    setContainerId(props?.coreId ? 'gc_' + props.coreId : 'gc_' + _uuid)
+  },[])
 
   let windowWidth = Dimensions.get('window').width;
 
