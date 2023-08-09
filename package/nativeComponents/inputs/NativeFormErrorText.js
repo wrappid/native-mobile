@@ -14,7 +14,7 @@ export default function NativeFormErrorText(props) {
         style={{color: theme.colors.primary}}
         styleClasses={[UtilityClasses.MARGIN.MR1]}
         type={__IconTypes.MATERIAL_ICON}
-        name="error"
+        name="warning"
       />
       <NativeFormHelperText error {...props}>
         {props.children}
