@@ -5,7 +5,6 @@ export default function NativeThemeProvider(props) {
   const [paperTheme, setPaperTheme] = React.useState({});
 
   const setPaperThemeObject = () => {
-    console.log('%%%%%%%%%%%%%%%%%THEME%%%%%%%%%%%%%%%%%', props.theme);
     let transformedThemeObject = {
       ...DefaultTheme,
       roundness: props.theme.shape.borderRadius
@@ -25,7 +24,7 @@ export default function NativeThemeProvider(props) {
         onBackground: props.theme.palette.background.default,
         surface: props.theme.palette.background.default,
         surfaceVariant: 'transparent',
-        onSurface: props.theme.palette.primary.main,
+        onSurface: props.theme.palette.text.primary,
         onSurfaceVariant: props.theme.palette.primary.main,
         error: props.theme.palette.error.main,
         onError: props.theme.palette.error.contrastText,
