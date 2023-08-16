@@ -11,7 +11,7 @@ const AVATAR_XXLARGE = 'avatarXXLarge';
 const DEFAULT_AVATAR_SIZE = 62;
 let SIZE_MAP = {
   [AVATAR]: DEFAULT_AVATAR_SIZE,
-  [AVATAR_SMALL]: 20,
+  [AVATAR_SMALL]: 25,
   [AVATAR_MEDIUM]: DEFAULT_AVATAR_SIZE,
   [AVATAR_LARGE]: 70,
   [AVATAR_XLARGE]: 80,
@@ -26,7 +26,9 @@ export default function NativeAvatar(props) {
 
   if (styleClasses?.includes(AVATAR)) {
     size = SIZE_MAP[AVATAR];
-    newStyleclasses = props.styleClasses?.filter(styleClass => !styleClass.includes(AVATAR));
+    newStyleclasses = props.styleClasses?.filter(
+      styleClass => !styleClass.includes(AVATAR),
+    );
   } else if (styleClasses?.includes(AVATAR_SMALL)) {
     size = SIZE_MAP[AVATAR_SMALL];
     newStyleclasses = props.styleClasses?.filter(
