@@ -19,7 +19,7 @@ export default function NativeInput(props) {
       label={props.label}
       type={props.type}
       styleClasses={[...(props.styleClasses || [])]}
-      value={props.value || ''}
+      value={props.value? String(props.value) : ''}
       secureTextEntry={props.secureTextEntry}
       onChangeText={text => {
         props.formik
