@@ -1,8 +1,9 @@
 import React from "react";
 import NativeBox from "../layouts/NativeBox";
 import NativeIcon from "../dataDisplay/NativeIcon";
+import NativeIconButton from "../inputs/NativeIconButton";
+
 import { UtilityClasses } from "@wrappid/styles";
-import { NativeIconButton } from "@wrappid/styled-components";
 
 export default function NativePopover(props) {
   const { open, onClose, ...restProps } = props;

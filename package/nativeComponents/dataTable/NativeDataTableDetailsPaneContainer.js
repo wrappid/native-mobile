@@ -1,4 +1,4 @@
-import NativeFullModal from '@wrappid/styled-components/nativeComponents/utils/NativeFullModal';
+import NativeFullModal from '../../nativeComponents/utils/NativeFullModal';
 import React from 'react';
 
 function NativeDataTableDetailsPaneContainer(props) {
