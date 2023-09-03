@@ -20,7 +20,7 @@ let SIZE_MAP = {
 };
 
 export default function NativeAvatar(props) {
-  const { src = "", label, styleClasses } = props;
+  const { src = "", label, children, styleClasses } = props;
 
   let newStyleclasses = [];
   let size = SIZE_MAP.avatar;
@@ -57,8 +57,13 @@ export default function NativeAvatar(props) {
     );
   }
 
-  return props?.label ? (
-    <SCAvatarText {...props} styleClasses={newStyleclasses} size={size} />
+  return label || children ? (
+    <SCAvatarText
+      {...props}
+      label={label || children}
+      styleClasses={newStyleclasses}
+      size={size}
+    />
   ) : (
     <SCAvatar
       {...props}
