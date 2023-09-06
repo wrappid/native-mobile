@@ -6,12 +6,12 @@ const variantMap = {
   h5: 'headlineMedium',
   h6: 'headlineSmall',
 
-  body1: 'titleLarge',
+  body1: 'bodyLarge',
+  body2: 'bodyMedium',
+  caption: 'bodySmall',
   subtitle1: 'titleMedium',
   subtitle2: 'titleSmall',
   button: 'bodyLarge',
-  body2: 'bodyMedium',
-  caption: 'bodySmall',
   overline: 'labelLarge',
 
   //For chip
