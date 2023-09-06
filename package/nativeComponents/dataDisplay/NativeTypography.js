@@ -1,27 +1,17 @@
-import React from "react";
-import { variantMap } from "../../helper/componentPropsUtils";
-import { SCTypography } from "../../styledComponents/dataDisplay/SCTypography";
-import NativeBox from  "../layouts/NativeBox"
+import React from 'react';
+import {variantMap} from '../../helper/componentPropsUtils';
+import {SCTypography} from '../../styledComponents/dataDisplay/SCTypography';
 
 export default function NativeTypography(props) {
-  const {variant, component} = props
+  const {variant, component, children, ...restProps} = props;
   //Do not use this directly use NativeParagraph
 
-  const getTextComponent=()=>{
-    return <SCTypography
-      {...props}
-      component={component}
-      variant={variantMap[variant]}
-    >
-      {props.children}
-    </SCTypography>
-  }
   return (
-    variant?.includes('body')?
-    <NativeBox>
-      {getTextComponent()}
-    </NativeBox>
-    :
-    getTextComponent()
+    <SCTypography
+      {...restProps}
+      component={component}
+      variant={variantMap[variant]}>
+      {children}
+    </SCTypography>
   );
 }
