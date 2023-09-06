@@ -1,14 +1,22 @@
-import React, {useEffect, useState} from 'react';
-import {Link} from 'react-router-native';
-import {Linking, Pressable} from 'react-native';
-import NativeTypography from '../dataDisplay/NativeTypography';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-native";
+import { Linking, Pressable } from "react-native";
+import NativeTypography from "../dataDisplay/NativeTypography";
 
 export default function NativeLink(props) {
-  const {title, href, titlePlacement = 'top', ...restProps} = props;
+  const {
+    href,
+    size = "small",
+    title,
+    titlePlacement = "top",
+    ...restProps
+  } = props;
+  const newTabFlag = restProps?.href?.includes("http") ? true : false;
+
   const [supported, setSpecialLink] = useState(false);
 
   const checkUrl = async () => {
-    if (href) {
+    if (href && newTabFlag) {
       // Checking if the link is supported for links with custom URL scheme.
       const isSupported = await Linking.canOpenURL(href);
       setSpecialLink(isSupported);
@@ -26,7 +34,7 @@ export default function NativeLink(props) {
   };
 
   const getLinkString = () => {
-    if (typeof restProps.children === 'string') {
+    if (typeof restProps.children === "string") {
       return (
         <NativeTypography styleClasses={[restProps.styleClasses]}>
           {restProps.children}

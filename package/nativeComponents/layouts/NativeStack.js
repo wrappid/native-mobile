@@ -25,12 +25,12 @@ export default function NativeStack(props) {
   } = props;
 
   const preparedStyleClasses = [
-    ...(styleClasses || []),
     UtilityClasses.FLEX[
       `DIRECTION_${direction.replace("-", "_").toUpperCase()}`
     ],
-    spacing && UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN,
-    UtilityClasses.PADDING[`P${spacing.toString()}`]
+    spacing && UtilityClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START,
+    UtilityClasses.PADDING[`P${Math.round(spacing / 2).toString()}`],
+    ...(styleClasses || []),
   ];
 
   // const [rowGap, setRowGap] = useState(0);
