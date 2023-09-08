@@ -57,6 +57,7 @@ export default function NativePopover(props) {
               <NativeBox
                 style={{
                   marginTop: -25,
+                  marginBottom: -20,
                 }}
                 styleClasses={[
                   UtilityClasses.DISPLAY?.FLEX,
