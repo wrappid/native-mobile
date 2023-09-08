@@ -35,9 +35,9 @@ export default function NativeLink(props) {
       return (
         <NativeTypography
           styleClasses={[
-            restProps.styleClasses,
             StyledComponentsClasses.NAVIGATION.LINK,
             UtilityClasses?.TEXT?.TEXT_WEIGHT_BOLD,
+            restProps.styleClasses,
           ]}>
           {restProps.children}
         </NativeTypography>
