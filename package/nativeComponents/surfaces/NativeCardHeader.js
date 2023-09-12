@@ -6,7 +6,7 @@ import NativeGrid from '../layouts/NativeGrid';
 import {UtilityClasses} from '@wrappid/styles';
 
 export default function NativeCardHeader(props) {
-  const {title, subheader, action, avatar, styleClasses} = props;
+  const {title, subheader, action, avatar, _tableAction, styleClasses} = props;
   const childrenWithProps = (child, childProps) => {
     // Checking isValidElement is the safe way and avoids a
     // typescript error too.
@@ -19,10 +19,14 @@ export default function NativeCardHeader(props) {
 
   return (
     <NativeGrid
-      styleClasses={[
-        UtilityClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER,
-        UtilityClasses?.MARGIN?.MB1,
-      ]}>
+      styleClasses={
+        _tableAction
+          ? [UtilityClasses?.MARGIN?.MB1]
+          : [
+              UtilityClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER,
+              UtilityClasses?.MARGIN?.MB1,
+            ]
+      }>
       {avatar && (
         <NativeBox gridProps={{gridSize: 2}}>
           {childrenWithProps(avatar, {
@@ -31,8 +35,13 @@ export default function NativeCardHeader(props) {
         </NativeBox>
       )}
       <NativeBox
+        styleClasses={
+          _tableAction && [UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_CENTER]
+        }
         gridProps={
-          avatar
+          _tableAction
+            ? {gridSize: 3}
+            : avatar
             ? action
               ? {gridSize: 8}
               : {gridSize: 10}
@@ -52,7 +61,7 @@ export default function NativeCardHeader(props) {
             UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_FLEX_END,
             UtilityClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER,
           ]}
-          gridProps={{gridSize: 2}}>
+          gridProps={_tableAction ? {gridSize: 9} : {gridSize: 2}}>
           {childrenWithProps(action, {
             styleClasses: styleClasses,
           })}
