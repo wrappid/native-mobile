@@ -75,6 +75,9 @@ export default function NativeDataTableToolbar(props) {
                     onDismiss={onMore}
                     noNavigation={true}
                     anchorPosition="bottom"
+                    contentStyle={{
+                      minWidth: 200,
+                    }}
                     anchor={
                       <NativeIconButton onClick={onMore}>
                         <NativeIcon name="more-vert" />

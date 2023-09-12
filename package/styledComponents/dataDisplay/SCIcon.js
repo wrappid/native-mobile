@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import styled from 'styled-components/native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
 import {getEffectiveStyle, StyledComponentsClasses} from '@wrappid/styles';
 // import { createIconSetFromIcoMoon } from "react-native-vector-icons";
@@ -25,6 +26,7 @@ export function SCIcon(props) {
     [__IconTypes.MATERIAL_OUTLINED_ICON]: MaterialIcon,
     [__IconTypes.FONTAWESOME_V5_SOLID_ICON]: FontAwesomeIcon,
     [__IconTypes.FONTAWESOME_V5_REGULAR_ICON]: FontAwesomeIcon,
+    'material-community-icon': MaterialCommunityIcons,
     ...overrideCustomIcons(customIcons),
     // [__IconTypes.RXICON_V1_REGULAR_ICON]: createIconSetFromIcoMoon(rxIconJson),
   };

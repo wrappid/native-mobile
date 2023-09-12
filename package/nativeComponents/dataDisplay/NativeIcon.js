@@ -15,6 +15,11 @@ function iconFlavour(name) {
     return name;
   }
 
+  if (name === 'male' || name === 'female') {
+    name = 'gender-' + name;
+    return name;
+  }
+
   name = name?.includes('_') ? name.replace('_', '-') : name;
 
   name = name?.includes('-outlined')
@@ -45,7 +50,11 @@ export default function NativeIcon(props) {
 
   return (
     <SCIcon
-      iconType={type}
+      iconType={
+        name === 'male' || name === 'female' || name === 'sort'
+          ? 'material-community-icon'
+          : type
+      }
       name={iconFlavour(name)}
       size={isNaN(size) ? sizeMap[size] || DEFAULT_ICON_SIZE : size}
       styleClasses={styleClasses || []}
