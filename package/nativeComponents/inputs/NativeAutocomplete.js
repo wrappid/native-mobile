@@ -1,4 +1,5 @@
-import React from "react";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React, {useEffect} from 'react';
 import {
   Modal,
   StyleSheet,
@@ -6,20 +7,20 @@ import {
   Platform,
   StatusBar,
   TouchableOpacity,
-} from "react-native";
+} from 'react-native';
 
-import { useTheme } from "react-native-paper";
-import NativeInput from "./NativeInput";
-import NativeTextButton from "./NativeTextButton";
-import NativeChip from "../dataDisplay/NativeChip";
-import NativeTypographyBody1 from "../dataDisplay/paragraph/NativeTypographyBody1";
-import NativeBox from "../layouts/NativeBox";
-import NativeFlatList from "../dataDisplay/NativeFlatList";
-import NativeTypographyBody2 from "../dataDisplay/paragraph/NativeTypographyBody2";
-import { nativeFilterOptions } from "../../helper/helper";
-import { UtilityClasses } from "@wrappid/styles";
-import NativeGrid from "../layouts/NativeGrid";
-import NativeLabel from "../dataDisplay/paragraph/NativeLabel";
+import {useTheme} from 'react-native-paper';
+import NativeInput from './NativeInput';
+import NativeTextButton from './NativeTextButton';
+import NativeChip from '../dataDisplay/NativeChip';
+import NativeTypographyBody1 from '../dataDisplay/paragraph/NativeTypographyBody1';
+import NativeBox from '../layouts/NativeBox';
+import NativeFlatList from '../dataDisplay/NativeFlatList';
+import NativeTypographyBody2 from '../dataDisplay/paragraph/NativeTypographyBody2';
+import {nativeFilterOptions} from '../../helper/helper';
+import {UtilityClasses} from '@wrappid/styles';
+import NativeGrid from '../layouts/NativeGrid';
+import NativeLabel from '../dataDisplay/paragraph/NativeLabel';
 
 function NativeAutocomplete(props) {
   const theme = useTheme();
@@ -54,39 +55,56 @@ function NativeAutocomplete(props) {
     ...rest
   } = props;
   const animationTypeCalculated = Platform.select({
-    web: "none",
-    default: "slide",
+    web: 'none',
+    default: 'slide',
   });
 
   const isLight = false;
   const headerBackgroundColor = theme?.colors?.onPrimary;
 
-  console.log("NAIVE AUTO COMPLETE", props);
+  console.log('NAIVE AUTO COMPLETE', props);
 
   let [filteredOptions, setFilteredOptions] = React.useState(options);
-  React.useEffect(() => {
+
+  useEffect(() => {
     if (options) {
-      setFilteredOptions(
-        nativeFilterOptions(options, {
-          inputValue: _inputValue,
-          getOptionLabel,
-          getOptionValue,
-          value,
-        })
-      );
+      let filteredOps = nativeFilterOptions(options, {
+        inputValue: _inputValue,
+        getOptionLabel,
+        getOptionValue,
+        value,
+      });
+      setFilteredOptions(filteredOps);
+    } else {
+      console.log('NO options found mount', options);
+    }
+  }, [options]);
+
+  useEffect(() => {
+    if (options) {
+      let filteredOps = nativeFilterOptions(options, {
+        inputValue: _inputValue,
+        getOptionLabel,
+        getOptionValue,
+        value,
+      });
+      setFilteredOptions(filteredOps);
+    } else {
+      console.log('NO options found input change', filteredOps);
     }
   }, [_inputValue]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (options) {
-      setFilteredOptions(
-        nativeFilterOptions(options, {
-          inputValue: _inputValue,
-          getOptionLabel,
-          getOptionValue,
-          value,
-        })
-      );
+      let filteredOps = nativeFilterOptions(options, {
+        inputValue: _inputValue,
+        getOptionLabel,
+        getOptionValue,
+        value,
+      });
+      setFilteredOptions(filteredOps);
+    } else {
+      console.log('NO options found value change', options);
     }
   }, [value]);
 
@@ -107,15 +125,14 @@ function NativeAutocomplete(props) {
   const getStyle = () => {
     const commonStyle = {
       borderBottom: 1,
-      borderStyle: "solid",
+      borderStyle: 'solid',
       borderBottomWidth: 0.5,
       marginBottom: 10,
     };
-    const withValueStyle = { ...commonStyle };
+    const withValueStyle = {...commonStyle};
     const withoutValueStyle = {
       ...commonStyle,
       paddingBottom: 5,
-      paddingLeft: 16,
       marginBottom: 10,
     };
     if (checkValue()) {
@@ -123,11 +140,11 @@ function NativeAutocomplete(props) {
     } else if (multiple) {
       return withoutValueStyle;
     } else {
-      return { marginBottom: 16 };
+      return {marginBottom: 16};
     }
   };
 
-  console.log("FILTER", filteredOptions);
+  console.log('FILTER', filteredOptions, options);
   return (
     <>
       {/* View like input element with text */}
@@ -137,19 +154,18 @@ function NativeAutocomplete(props) {
         onPress={() => {
           onOpen();
           onFocus();
-        }}
-      >
+        }}>
         {value ? (
           <>
             {checkValue() ? (
               <NativeLabel>{_topLabel}</NativeLabel>
             ) : (
-              <NativeTypographyBody2 style={{ fontSize: 16, marginBottom: 8 }}>
+              <NativeTypographyBody2 style={{fontSize: 16, marginBottom: 8}}>
                 {_topLabel}
               </NativeTypographyBody2>
             )}
             <NativeGrid>
-              <NativeBox gridProps={{ gridSize: 10 }}>
+              <NativeBox gridProps={{gridSize: 10}}>
                 {multiple && Array.isArray(value) ? (
                   <NativeFlatList
                     tableData={value}
@@ -167,7 +183,7 @@ function NativeAutocomplete(props) {
                                 : multiple
                                 ? () => {
                                     let v = value?.filter(
-                                      (item, index) => index !== rowIndex
+                                      (item, index) => index !== rowIndex,
                                     );
                                     onChange({}, v);
                                   }
@@ -189,14 +205,13 @@ function NativeAutocomplete(props) {
                   UtilityClasses.FLEX.DIRECTION_ROW,
                   UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_FLEX_END,
                 ]}
-                gridProps={{ gridSize: 2 }}
-              >
+                gridProps={{gridSize: 2}}>
                 {_getEndAdornment()}
               </NativeBox>
             </NativeGrid>
           </>
         ) : renderInput ? (
-          renderInput({ readOnly: true, value: value })
+          renderInput({readOnly: true, value: value})
         ) : null}
       </TouchableOpacity>
 
@@ -210,25 +225,22 @@ function NativeAutocomplete(props) {
           presentationStyle="overFullScreen"
           supportedOrientations={supportedOrientations}
           //@ts-ignore
-          statusBarTranslucent={true}
-        >
+          statusBarTranslucent={true}>
           <>
             <NativeBox
               style={[StyleSheet.absoluteFill, styles.modalRoot]}
-              pointerEvents="box-none"
-            >
+              pointerEvents="box-none">
               <NativeBox
                 styleClasses={[UtilityClasses?.PADDING?.P1]}
                 style={[
                   styles.modalContent,
-                  { backgroundColor: theme.colors.surface },
+                  {backgroundColor: theme.colors.surface},
                   dimensions.width > 650 ? styles.modalContentBig : null,
-                ]}
-              >
+                ]}>
                 {disableStatusBar ? null : (
                   <StatusBar
                     translucent={true}
-                    barStyle={isLight ? "dark-content" : "light-content"}
+                    barStyle={isLight ? 'dark-content' : 'light-content'}
                   />
                 )}
                 {disableStatusBarPadding ? null : (
@@ -241,7 +253,7 @@ function NativeAutocomplete(props) {
                     ]}
                   />
                 )}
-                <NativeTextButton label={"Close"} OnClick={onClose} />
+                <NativeTextButton label={'Close'} OnClick={onClose} />
 
                 {/* <NativeIconButton OnClick={onClose}>
                   <NativeIcon name="close" childrenFlag={true} />
@@ -250,7 +262,7 @@ function NativeAutocomplete(props) {
                 <NativeInput
                   styleClasses={[UtilityClasses?.MARGIN?.MB4]}
                   value={_inputValue}
-                  handleChange={(v) => onInputChange({}, v)}
+                  handleChange={v => onInputChange({}, v)}
                   label="Search here"
                 />
                 <NativeFlatList
@@ -263,8 +275,7 @@ function NativeAutocomplete(props) {
                           if (_formik) {
                             _formik.setFieldTouched(id, true, true);
                           }
-                        }}
-                      >
+                        }}>
                         {renderOption(
                           {
                             OnClick: () => {
@@ -273,14 +284,14 @@ function NativeAutocomplete(props) {
                               }
                               onChange(
                                 {},
-                                multiple ? [...(value || []), option] : option
+                                multiple ? [...(value || []), option] : option,
                               );
                             },
                             option,
                             onClose,
                           },
                           option,
-                          {}
+                          {},
                         )}
                       </TouchableOpacity>
                     ) : (
@@ -293,14 +304,14 @@ function NativeAutocomplete(props) {
                             let v = multiple
                               ? [...(value || []), option]
                               : option;
-                            console.log("VALUE", v);
+                            console.log('VALUE', v);
                             onChange({}, v);
                           },
                           option,
                           onClose,
                         },
                         option,
-                        {}
+                        {},
                       )
                     );
                   }}
@@ -314,17 +325,17 @@ function NativeAutocomplete(props) {
   );
 }
 const supportedOrientations = [
-  "portrait",
-  "portrait-upside-down",
-  "landscape",
-  "landscape-left",
-  "landscape-right",
+  'portrait',
+  'portrait-upside-down',
+  'landscape',
+  'landscape-left',
+  'landscape-right',
 ];
 
 const styles = StyleSheet.create({
   modalRoot: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     flex: 1,
   },
   modalBackground: {
@@ -332,14 +343,14 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     flex: 1,
-    width: "100%",
+    width: '100%',
   },
   modalContentBig: {
     maxWidth: 600,
     maxHeight: 800,
     borderRadius: 10,
-    width: "100%",
-    overflow: "hidden",
+    width: '100%',
+    overflow: 'hidden',
   },
 });
 
