@@ -1,15 +1,19 @@
 import styled from "styled-components/native";
 import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
-import { View } from "react-native";
+import { TouchableOpacity } from "react-native";
 
-const defaultStyleClasses = [StyledComponentsClasses.NAVIGATION.TAB];
+const defaultStyleClasses = [StyledComponentsClasses.NAVIGATION.TAB_MOBILE];
+const defaultStyleClassesActive = [
+  StyledComponentsClasses.NAVIGATION.TAB_MOBILE_ACTIVE,
+];
 
 export const SCTab = styled(
-  View,
+  TouchableOpacity,
   {}
 )((props) => ({
-  ...getEffectiveStyle([
-    ...defaultStyleClasses,
-    ...(props?.styleClasses || []),
-  ]),
+  ...getEffectiveStyle(
+    props?.active
+      ? [...defaultStyleClassesActive, ...(props?.styleClasses || [])]
+      : [...defaultStyleClasses, ...(props?.styleClasses || [])]
+  ),
 }));

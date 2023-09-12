@@ -42,12 +42,9 @@ export default function NativeDataTableToolbar(props) {
           style={{
             flex: 1,
             flexDirection: 'row',
-            marginTop: -24,
-            marginRight: -32,
-            marginLeft: -24,
             borderBottomWidth: 1,
             borderStyle: 'solid',
-            borderColor: theme.colors.onSurfaceDisabled,
+            borderColor: theme.colors.primary,
           }}>
           {!row.hideInApp && (
             <NativeBox style={{flex: 5, flexDirection: 'row'}}>
@@ -63,9 +60,8 @@ export default function NativeDataTableToolbar(props) {
               style={{
                 flex: 1,
                 flexDirection: 'row',
-                marginLeft: -24,
-                paddingTop: 16,
-                paddingLeft: 24,
+                alignItems: 'center',
+                justifyContent: 'center',
               }}>
               {row?.rightPanel &&
                 !row?.rightPanel?.hideInApp &&
