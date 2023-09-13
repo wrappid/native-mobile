@@ -4,6 +4,8 @@ import NativeIconButton from '../inputs/NativeIconButton';
 import NativeIcon from '../dataDisplay/NativeIcon';
 import NativeDropDown from '../utils/NativeDropDown';
 import {useTheme} from 'react-native-paper';
+import NativeGrid from '../layouts/NativeGrid';
+import {UtilityClasses, StyledComponentsClasses} from '@wrappid/styles';
 
 export default function NativeDataTableToolbar(props) {
   const {allTools, styleClasses, menuRenderFunction} = props;
@@ -37,17 +39,13 @@ export default function NativeDataTableToolbar(props) {
   return (
     <>
       {allTools?.map(row => (
-        <NativeBox
-          styleClasses={styleClasses}
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            borderBottomWidth: 1,
-            borderStyle: 'solid',
-            borderColor: theme.colors.primary,
-          }}>
+        <NativeGrid
+          styleClasses={[
+            ...(styleClasses || []),
+            StyledComponentsClasses.DATA_DISPLAY.MOBILE_TABLE_TOOLBAR,
+          ]}>
           {!row.hideInApp && (
-            <NativeBox style={{flex: 5, flexDirection: 'row'}}>
+            <NativeBox gridProps={{gridSize: 11}}>
               {row?.leftPanel &&
                 !row?.leftPanel?.hideInApp &&
                 row?.leftPanel?.stacks &&
@@ -57,12 +55,12 @@ export default function NativeDataTableToolbar(props) {
 
           {!row.hideInApp && (
             <NativeBox
-              style={{
-                flex: 1,
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
+              gridProps={{gridSize: 1}}
+              styleClasses={[
+                UtilityClasses?.FLEX?.DIRECTION_ROW,
+                UtilityClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER,
+                UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_CENTER,
+              ]}>
               {row?.rightPanel &&
                 !row?.rightPanel?.hideInApp &&
                 row?.rightPanel?.stacks && (
@@ -84,7 +82,7 @@ export default function NativeDataTableToolbar(props) {
                 )}
             </NativeBox>
           )}
-        </NativeBox>
+        </NativeGrid>
       ))}
     </>
   );
