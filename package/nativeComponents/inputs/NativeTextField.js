@@ -86,6 +86,7 @@ export default function NativeTextField(props) {
         ) : null
       }
       {...props}
+      style={{ ...(props.style||{}), paddingHorizontal: 0}}
     />
     //   <NativeFormErrorText>{props.touched && props.error}</NativeFormErrorText>
     //   <NativeFormHelperText>{props.helperText}</NativeFormHelperText>

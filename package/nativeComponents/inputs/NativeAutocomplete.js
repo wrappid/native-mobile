@@ -211,7 +211,7 @@ function NativeAutocomplete(props) {
             </NativeGrid>
           </>
         ) : renderInput ? (
-          renderInput({readOnly: true, value: value})
+          renderInput({readOnly: true, value: value, noAdornment: true})
         ) : null}
       </TouchableOpacity>
 

@@ -52,7 +52,7 @@ export default function NativeInput(props) {
       readOnly={props.readOnly}
       keyboardType={typeMap[props.type]}
       right={props?.right || props.endAdornment}
-      style={{paddingHorizontal: 0}}
+      style={{ ...(props.style||{}), paddingHorizontal: 0}}
     />
   );
 
