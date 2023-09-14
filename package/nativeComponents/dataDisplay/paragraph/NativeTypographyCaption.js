@@ -14,7 +14,7 @@ export default function NativeTypographyCaption(props) {
 
   return limitChars ? (
     <NativeTypography {...props} variant="caption" gutterBottom>
-      <NativeSpan>
+      <NativeSpan styleClasses={[...(styleClasses || [])]}>
         {typeof props?.children === "string" && seeMore
           ? limitChars > props?.children?.length
             ? props?.children

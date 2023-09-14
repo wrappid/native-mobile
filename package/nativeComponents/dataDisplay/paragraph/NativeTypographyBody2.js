@@ -5,7 +5,7 @@ import NativeLink from "../../navigation/NativeLink";
 import NativeTypography from "../NativeTypography";
 
 export default function NativeTypographyBody2(props) {
-  const { hideSeeMore = false, limitChars } = props;
+  const { hideSeeMore = false, limitChars, styleClasses } = props;
 
   const [seeMore, setSeeMore] = useState(true);
   const toggleSeeMore = () => {
@@ -14,7 +14,7 @@ export default function NativeTypographyBody2(props) {
 
   return limitChars ? (
     <NativeTypography {...props} variant="body2" gutterBottom>
-      <NativeSpan>
+      <NativeSpan styleClasses={[...(styleClasses || [])]}>
         {typeof props?.children === "string" && seeMore
           ? limitChars > props?.children?.length
             ? props?.children

@@ -13,7 +13,7 @@ function NativeTypographyBody1(props) {
 
   return props?.limitChars ? (
     <NativeTypography {...props} variant="body1" gutterBottom>
-      <NativeSpan>
+      <NativeSpan styleClasses={[...(styleClasses || [])]}>
         {typeof props?.children === "string" && seeMore
           ? limitChars > props?.children?.length
             ? props?.children

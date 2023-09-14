@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {isValidElement, useEffect, useState} from 'react';
 import {Linking, Pressable} from 'react-native';
 import NativeTypography from '../dataDisplay/NativeTypography';
 import {StyledComponentsClasses, UtilityClasses} from '@wrappid/styles';
@@ -26,6 +26,12 @@ export default function NativeLink(props) {
     if (href) await Linking.openURL(href);
   };
 
+  const linkStyles = [
+    StyledComponentsClasses.NAVIGATION.LINK,
+    UtilityClasses?.TEXT?.TEXT_WEIGHT_BOLD,
+  ];
+
+
   const getLinkString = () => {
     /**
      * used because sc link or react router native link do not take
@@ -34,16 +40,39 @@ export default function NativeLink(props) {
     if (typeof restProps.children === 'string') {
       return (
         <NativeTypography
-          styleClasses={[
-            StyledComponentsClasses.NAVIGATION.LINK,
-            UtilityClasses?.TEXT?.TEXT_WEIGHT_BOLD,
-            restProps.styleClasses,
-          ]}>
+          styleClasses={[...linkStyles, restProps.styleClasses]}>
           {restProps.children}
         </NativeTypography>
       );
     } else {
-      return restProps.children;
+      /** 
+       * copying styleclasses to child like typography
+       */
+      if (restProps.children && Array.isArray(restProps.children)) {
+        return restProps.children?.map(child => {
+          if (isValidElement(child)) {
+            return React.cloneElement(child, {
+              ...(child.props || {}),
+              styleClasses: [
+                ...(child?.props?.styleClasses | []),
+                ...linkStyles,
+              ],
+            });
+          } else {
+            return child;
+          }
+        });
+      } else if (isValidElement(restProps.children)) {
+        return React.cloneElement(restProps.children, {
+          ...(restProps?.children?.props || {}),
+          styleClasses: [
+            ...(restProps.children?.props?.styleClasses || []),
+            ...linkStyles,
+          ],
+        });
+      } else {
+        return restProps.children;
+      }
     }
   };
 
