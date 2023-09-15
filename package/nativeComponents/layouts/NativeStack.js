@@ -3,6 +3,7 @@ import {SCStack} from '../../styledComponents/layouts/SCStack';
 import {UtilityClasses} from '@wrappid/styles';
 import NativeDivider from '../dataDisplay/NativeDivider';
 import {CoreBox} from '@wrappid/core';
+import NativeBox from './NativeBox';
 
 export default function NativeStack(props) {
   // direction
@@ -49,30 +50,25 @@ export default function NativeStack(props) {
       marginClasses.push(UtilityClasses?.MARGIN[marginString]);
     }
 
-    console.log('MARGIN', marginClasses);
-
     let newChildren =
       children &&
       Array.isArray(children) &&
       children?.map((child, index) => {
         if (child && isValidElement(child)) {
-          const {styleClasses, ...restChildProps} = child?.props;
           let childStyleClasses =
             index > 0
-              ? [...(styleClasses || []), ...marginClasses]
-              : styleClasses;
-          let newChild = cloneElement(child, {
-            ...restChildProps,
-            styleClasses: childStyleClasses,
-          });
+              ? [marginClasses]
+              : [];
           return (
             <>
-              {newChild}
-              {divider && (
+              <NativeBox styleClasses={childStyleClasses}>
+                {newChild}
+              </NativeBox>
+              {divider && index < children?.length - 1 && (
                 <CoreBox styleClasses={marginClasses}>
                   <NativeDivider
                     orientation={
-                      direction === 'column' ? 'horizontal' : 'vetical'
+                      direction === 'column' ? 'horizontal' : 'vertical'
                     }
                   />
                 </CoreBox>

@@ -1,5 +1,6 @@
 import React from 'react';
 import {SCIconButton} from '../../styledComponents/inputs/SCIconButton';
+import NativeTooltip from '../dataDisplay/NativeTooltip';
 
 export default function NativeIconButton(props) {
   const {
@@ -28,16 +29,27 @@ export default function NativeIconButton(props) {
       return child;
     });
 
-  return (
-    <SCIconButton
-      mode={mode || 'default'}
-      onPress={restProps.onClick}
-      size={isNaN(size) ? sizeMap[size] || sizeMap.small : size}
-      icon={iconProps =>
-        childrenWithProps({...iconProps, styleClasses: restProps.styleClasses})
-      }
-      styleClasses={restProps?.styleClasses}
-      style={restProps?.style}
-    />
+  const getIconButton = () => {
+    return (
+      <SCIconButton
+        mode={mode || 'default'}
+        onPress={restProps.onClick}
+        size={isNaN(size) ? sizeMap[size] || sizeMap.small : size}
+        icon={iconProps =>
+          childrenWithProps({
+            ...iconProps,
+            styleClasses: restProps.styleClasses,
+          })
+        }
+        styleClasses={restProps?.styleClasses}
+        style={restProps?.style}
+      />
+    );
+  };
+
+  return title ? (
+    <NativeTooltip title={title}>{getIconButton()}</NativeTooltip>
+  ) : (
+    getIconButton()
   );
 }

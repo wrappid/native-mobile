@@ -4,5 +4,5 @@ import { SCTooltip } from "../../styledComponents/dataDisplay/SCTooltip";
 export default function NativeTooltip(props) {
   const {children, ...restProps} = props;
 
-  return <SCTooltip props>{children}</SCTooltip>;
+  return <SCTooltip {...restProps}>{children}</SCTooltip>;
 }

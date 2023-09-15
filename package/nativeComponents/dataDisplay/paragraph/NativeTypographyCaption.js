@@ -5,7 +5,7 @@ import NativeLink from "../../navigation/NativeLink";
 import { UtilityClasses } from "@wrappid/styles";
 
 export default function NativeTypographyCaption(props) {
-  const { hideSeeMore = false, limitChars } = props;
+  const { hideSeeMore = false, limitChars, styleClasses } = props;
 
   const [seeMore, setSeeMore] = useState(true);
   const toggleSeeMore = () => {
