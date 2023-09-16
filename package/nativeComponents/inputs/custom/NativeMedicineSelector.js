@@ -1,26 +1,17 @@
-import React, { useState } from "react";
-import { TouchableOpacity } from "react-native";
-import NativeChip from "../../dataDisplay/NativeChip";
-import NativeTypographyBody1 from "../../dataDisplay/paragraph/NativeTypographyBody1";
-import NativeFlatList from "../../dataDisplay/NativeFlatList";
-import NativeFullModal from "../../utils/NativeFullModal";
-import NativeBox from "../../layouts/NativeBox";
-import NativeIconButton from "../../inputs/NativeIconButton";
-import NativeIcon from "../../dataDisplay/NativeIcon";
-import NativeGrid from "../../layouts/NativeGrid";
-import { UtilityClasses } from "@wrappid/styles";
-import { CoreClasses } from "@wrappid/core";
+import React, {useRef, useState} from 'react';
+import {TouchableOpacity} from 'react-native';
+import NativeChip from '../../dataDisplay/NativeChip';
+import NativeTypographyBody1 from '../../dataDisplay/paragraph/NativeTypographyBody1';
+import NativeFlatList from '../../dataDisplay/NativeFlatList';
+import NativeFullModal from '../../utils/NativeFullModal';
+import NativeBox from '../../layouts/NativeBox';
+import {UtilityClasses} from '@wrappid/styles';
+import {CoreClasses} from '@wrappid/core';
 
 export default function NativeMedicineSelector(props) {
   const {
-    components,
-    customStyle,
-    placeholder,
     onChange,
-    isMulti,
     loadOptions,
-    onKeyDown,
-    defaultOptions,
     value,
     inputValue,
     onInputChange,
@@ -30,8 +21,7 @@ export default function NativeMedicineSelector(props) {
 
   const [filtereredOptions, setFilteredOptions] = useState([]);
   const [open, setOpen] = useState([]);
-
-  console.log("NAIVE AUTO COMPLETE", props);
+  const scrollRef = useRef(null);
 
   React.useEffect(() => {
     reloadOption(inputValue);
@@ -39,9 +29,25 @@ export default function NativeMedicineSelector(props) {
 
   React.useEffect(() => {
     reloadOption(inputValue);
-  }, [inputValue, value]);
+  }, [inputValue]);
 
-  const reloadOption = async (v) => {
+  React.useEffect(() => {
+    reloadOption(inputValue);
+    if (scrollRef?.current) {
+      try {
+        scrollRef?.current?.scrollToEnd({
+          animated: true,
+        });
+      } catch (err) {
+        console.log('Not scrolling');
+      }
+    }
+    if (value?.length === 7) {
+      addMed();
+    }
+  }, [value]);
+
+  const reloadOption = async v => {
     let ops = await loadOptions(v);
     setFilteredOptions(ops);
   };
@@ -54,7 +60,7 @@ export default function NativeMedicineSelector(props) {
     setOpen(false);
   };
 
-  const _onInputChange = async (_inputValue) => {
+  const _onInputChange = async _inputValue => {
     reloadOption(_inputValue);
     onInputChange(_inputValue);
   };
@@ -62,8 +68,7 @@ export default function NativeMedicineSelector(props) {
   const renderMedicineOb = (data, index) => {
     return (
       <NativeBox
-        styleClasses={[CoreClasses?.MARGIN?.MR1, CoreClasses?.MARGIN?.MY1]}
-      >
+        styleClasses={[CoreClasses?.MARGIN?.MR1, CoreClasses?.MARGIN?.MY1]}>
         <NativeChip
           label={data.label}
           closeIcon="close-circle"
@@ -76,7 +81,7 @@ export default function NativeMedicineSelector(props) {
     );
   };
 
-  const getKey = (data) => {
+  const getKey = data => {
     return data?.id;
   };
 
@@ -84,9 +89,9 @@ export default function NativeMedicineSelector(props) {
     return (
       <TouchableOpacity
         onPress={() => {
-          onChange([...value, option]);
-        }}
-      >
+          let newValue = [...value, option];
+          onChange(newValue);
+        }}>
         {
           // components?.Option ? (
           //   components?.Option(option)
@@ -100,11 +105,11 @@ export default function NativeMedicineSelector(props) {
     );
   };
 
-  const getKeyOption = (data) => {
+  const getKeyOption = data => {
     return data?.id;
   };
 
-  const onEndReached = (page) => {};
+  const onEndReached = page => {};
 
   const viewInput = () => {
     if (value && Array.isArray(value)) {
@@ -112,7 +117,7 @@ export default function NativeMedicineSelector(props) {
         <NativeFlatList
           tableData={value}
           renderItem={renderMedicineOb}
-          horizontal={true}
+          horiz77ontal={true}
         />
       );
     } else {
@@ -125,8 +130,6 @@ export default function NativeMedicineSelector(props) {
     onClose();
   };
 
-  console.log("OPtions", filtereredOptions, value);
-
   return (
     <NativeFullModal
       label="Add medicine"
@@ -137,34 +140,21 @@ export default function NativeMedicineSelector(props) {
       inputValue={inputValue}
       viewInput={viewInput}
       multiple={true}
-      value={value}
-    >
+      value={value}>
       {/* Current medicine components */}
 
-      <NativeGrid>
-        <NativeBox gridProps={{ gridSize: 10 }}>
-          <NativeFlatList
-            horizontal={true}
-            tableData={value}
-            renderItem={renderMedicineOb}
-            keyExtractor={getKey}
-          />
-        </NativeBox>
-        {value && Array.isArray(value) && value.length == 7 && (
-          <NativeBox
-            styleClasses={[UtilityClasses.FLEX.DIRECTION_ROW]}
-            gridProps={{ gridSize: 2 }}
-          >
-            <NativeIconButton onClick={addMed} size="medium">
-              <NativeIcon name="check_circle" />
-            </NativeIconButton>
-          </NativeBox>
-        )}
-      </NativeGrid>
+      <NativeBox>
+        <NativeFlatList
+          horizontal={true}
+          tableData={value}
+          renderItem={renderMedicineOb}
+          keyExtractor={getKey}
+          listRef={scrollRef}
+        />
+      </NativeBox>
       {getMedicineMask()}
 
       {/* All options like medicines */}
-      {/* <NativeBox> */}
       {filtereredOptions && (
         <NativeFlatList
           horizontal={false}
@@ -174,7 +164,6 @@ export default function NativeMedicineSelector(props) {
           onEndReached={onEndReached}
         />
       )}
-      {/* </NativeBox> */}
     </NativeFullModal>
   );
 }
