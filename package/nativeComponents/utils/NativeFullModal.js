@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from 'react';
 import {
   Modal,
   StyleSheet,
   useWindowDimensions,
   Platform,
-  StatusBar,
   TouchableOpacity,
   ScrollView,
   KeyboardAvoidingView,
   Keyboard,
-} from "react-native";
-import { useTheme } from "react-native-paper";
-import NativeInput from "../inputs/NativeInput";
-import NativeTextButton from "../inputs/NativeTextButton";
-import NativeLabel from "../dataDisplay/paragraph/NativeLabel";
-import NativeBox from "../layouts/NativeBox";
-import { UtilityClasses } from "@wrappid/styles";
-import NativeTypographyBody2 from "../dataDisplay/paragraph/NativeTypographyBody2";
+} from 'react-native';
+import {useTheme} from 'react-native-paper';
+import NativeInput from '../inputs/NativeInput';
+import NativeLabel from '../dataDisplay/paragraph/NativeLabel';
+import NativeBox from '../layouts/NativeBox';
+import {UtilityClasses} from '@wrappid/styles';
+import NativeTypographyBody2 from '../dataDisplay/paragraph/NativeTypographyBody2';
+import {NativeIcon, NativeIconButton} from '@wrappid/native';
 
 export default function NativeFullModal(props) {
   const {
     label,
     onOpen,
     onClose,
+    noClose,
     inputValue,
     _onInputChange,
     viewInput,
@@ -39,10 +39,10 @@ export default function NativeFullModal(props) {
   const [keyboardStatus, setKeyboardStatus] = useState(false);
 
   useEffect(() => {
-    const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
+    const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
       setKeyboardStatus(true);
     });
-    const hideSubscription = Keyboard.addListener("keyboardDidHide", () => {
+    const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
       setKeyboardStatus(false);
     });
 
@@ -52,16 +52,10 @@ export default function NativeFullModal(props) {
     };
   }, []);
 
-  const disableStatusBar = false;
-  const disableStatusBarPadding = false;
-
   const animationTypeCalculated = Platform.select({
-    web: "none",
-    default: "slide",
+    web: 'none',
+    default: 'slide',
   });
-
-  const isLight = false;
-  const headerBackgroundColor = theme?.colors?.onPrimary;
 
   const checkValue = () => {
     if (multiple) {
@@ -80,11 +74,11 @@ export default function NativeFullModal(props) {
   const getStyle = () => {
     const commonStyle = {
       borderBottom: 1,
-      borderStyle: "solid",
+      borderStyle: 'solid',
       borderBottomWidth: 0.5,
       marginBottom: 10,
     };
-    const withValueStyle = { ...commonStyle };
+    const withValueStyle = {...commonStyle};
     const withoutValueStyle = {
       ...commonStyle,
       paddingBottom: 5,
@@ -96,7 +90,7 @@ export default function NativeFullModal(props) {
     } else if (multiple) {
       return withoutValueStyle;
     } else {
-      return { marginBottom: 16 };
+      return {marginBottom: 16};
     }
   };
 
@@ -108,12 +102,11 @@ export default function NativeFullModal(props) {
           onPress={() => {
             if (onOpen) onOpen();
             if (onFocus) onFocus();
-          }}
-        >
+          }}>
           {checkValue() ? (
             <NativeLabel>{label}</NativeLabel>
           ) : (
-            <NativeTypographyBody2 style={{ fontSize: 16, marginBottom: 8 }}>
+            <NativeTypographyBody2 style={{fontSize: 16, marginBottom: 8}}>
               {label}
             </NativeTypographyBody2>
           )}
@@ -128,50 +121,40 @@ export default function NativeFullModal(props) {
           onRequestClose={onClose}
           presentationStyle="overFullScreen"
           supportedOrientations={supportedOrientations}
-          statusBarTranslucent={true}
-        >
+          statusBarTranslucent={true}>
           <NativeBox
             style={[StyleSheet.absoluteFill, styles.modalRoot]}
-            pointerEvents="box-none"
-          >
+            pointerEvents="box-none">
             <NativeBox
               styleClasses={[UtilityClasses?.PADDING?.P1]}
               style={[
                 styles.modalContent,
-                { backgroundColor: theme.colors.surface },
+                {backgroundColor: theme.colors.surface},
                 dimensions.width > 650 ? styles.modalContentBig : null,
-              ]}
-            >
-              {disableStatusBar ? null : (
-                <StatusBar
-                  translucent={true}
-                  barStyle={isLight ? "dark-content" : "light-content"}
-                />
+              ]}>
+              {!noClose && (
+                <NativeBox style={{alignItems: 'flex-end'}}>
+                  <NativeIconButton onClick={onClose}>
+                    <NativeIcon
+                      iconType="material-icons"
+                      name="close"
+                      childrenFlag={true}
+                    />
+                  </NativeIconButton>
+                </NativeBox>
               )}
-              {disableStatusBarPadding ? null : (
-                <NativeBox
-                  style={[
-                    {
-                      height: StatusBar.currentHeight,
-                      backgroundColor: headerBackgroundColor,
-                    },
-                  ]}
-                />
-              )}
-              <NativeTextButton label={"Close"} OnClick={onClose} />
 
               {searchBox !== false && (
                 <NativeInput
                   styleClasses={[UtilityClasses?.MARGIN?.MB4]}
                   value={inputValue}
                   handleChange={_onInputChange}
-                  label={searchLabel || "Search here"}
+                  label={searchLabel || 'Search here'}
                 />
               )}
               <ScrollView>
                 <KeyboardAvoidingView
-                  behavior={keyboardStatus ? "padding" : ""}
-                >
+                  behavior={keyboardStatus ? 'padding' : ''}>
                   {props.children}
                 </KeyboardAvoidingView>
               </ScrollView>
@@ -184,31 +167,32 @@ export default function NativeFullModal(props) {
 }
 
 const supportedOrientations = [
-  "portrait",
-  "portrait-upside-down",
-  "landscape",
-  "landscape-left",
-  "landscape-right",
+  'portrait',
+  'portrait-upside-down',
+  'landscape',
+  'landscape-left',
+  'landscape-right',
 ];
 
 const styles = StyleSheet.create({
   modalRoot: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     flex: 1,
+    top: 110,
   },
   modalBackground: {
     flex: 1,
   },
   modalContent: {
     flex: 1,
-    width: "100%",
+    width: '100%',
   },
   modalContentBig: {
     maxWidth: 600,
     maxHeight: 800,
     borderRadius: 10,
-    width: "100%",
-    overflow: "hidden",
+    width: '100%',
+    overflow: 'hidden',
   },
 });

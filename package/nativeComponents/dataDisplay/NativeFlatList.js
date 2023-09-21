@@ -15,6 +15,7 @@ export default function NativeFlatList(props) {
     horizontal,
     listRef,
     boundingBox,
+    listHeight
   } = props;
 
   const flatList = () => {
@@ -45,7 +46,7 @@ export default function NativeFlatList(props) {
    */
 
   return boundingBox ? (
-    <NativeBox style={{ height: 600 }}>{flatList()}</NativeBox>
+    <NativeBox style={{ height: listHeight || 600 }}>{flatList()}</NativeBox>
   ) : (
     flatList()
   );

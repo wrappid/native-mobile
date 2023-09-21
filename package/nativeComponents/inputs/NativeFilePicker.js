@@ -10,9 +10,13 @@ export default function NativeFilePicker(props) {
 
   useEffect(() => {
     if (value) {
-      formik?.setFieldValue(id, value);
-      if (onChange) {
-        onChange(value);
+      if(formik){
+        formik?.setFieldValue(id, value);
+      }
+      else{
+        if (onChange) {
+          onChange(value);
+        }
       }
     }
   }, [value]);

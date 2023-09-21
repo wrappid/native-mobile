@@ -47,9 +47,10 @@ export default function NativeIconButton(props) {
     );
   };
 
-  return title ? (
-    <NativeTooltip title={title}>{getIconButton()}</NativeTooltip>
-  ) : (
-    getIconButton()
-  );
+  /**
+   * @todo native tooltip should be wrapped when title present
+   * but click is going away when tool tip is used
+   */
+  
+  return title ? getIconButton() : getIconButton();
 }

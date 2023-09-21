@@ -11,8 +11,9 @@ import {
 
 import {useTheme} from 'react-native-paper';
 import NativeInput from './NativeInput';
-import NativeTextButton from './NativeTextButton';
+import NativeIconButton from './NativeIconButton';
 import NativeChip from '../dataDisplay/NativeChip';
+import NativeIcon from '../dataDisplay/NativeIcon';
 import NativeTypographyBody1 from '../dataDisplay/paragraph/NativeTypographyBody1';
 import NativeBox from '../layouts/NativeBox';
 import NativeFlatList from '../dataDisplay/NativeFlatList';
@@ -237,27 +238,15 @@ function NativeAutocomplete(props) {
                   {backgroundColor: theme.colors.surface},
                   dimensions.width > 650 ? styles.modalContentBig : null,
                 ]}>
-                {disableStatusBar ? null : (
-                  <StatusBar
-                    translucent={true}
-                    barStyle={isLight ? 'dark-content' : 'light-content'}
-                  />
-                )}
-                {disableStatusBarPadding ? null : (
-                  <NativeBox
-                    style={[
-                      {
-                        height: StatusBar.currentHeight,
-                        backgroundColor: headerBackgroundColor,
-                      },
-                    ]}
-                  />
-                )}
-                <NativeTextButton label={'Close'} OnClick={onClose} />
-
-                {/* <NativeIconButton OnClick={onClose}>
-                  <NativeIcon name="close" childrenFlag={true} />
-                </NativeIconButton> */}
+                <NativeBox style={{alignItems: 'flex-end'}}>
+                  <NativeIconButton onClick={onClose}>
+                    <NativeIcon
+                      iconType="material-icons"
+                      name="close"
+                      childrenFlag={true}
+                    />
+                  </NativeIconButton>
+                </NativeBox>
 
                 <NativeInput
                   styleClasses={[UtilityClasses?.MARGIN?.MB4]}
@@ -337,6 +326,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
+    top: 110,
   },
   modalBackground: {
     flex: 1,

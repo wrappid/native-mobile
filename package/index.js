@@ -121,6 +121,7 @@ import NativeCheckbox from "./nativeComponents/inputs/NativeCheckbox";
 import DevNativeDataTable from "./nativeComponents/dataTable/DevNativeDataTable";
 import NativeDataTableToolPopover from "./nativeComponents/dataTable/NativeDataTableToolPopover";
 import NativeDataTableToolbar from "./nativeComponents/dataTable/NativeDataTableToolbar";
+import NativeDataTableDetailsPaneContainer from "./nativeComponents/dataTable/NativeDataTableDetailsPaneContainer";
 import NativeFormContainer from "./nativeComponents/inputs/NativeFormContainer";
 import getNativeMenuItem from "./helper/menuUtil";
 import NativeDialog from "./nativeComponents/feedback/NativeDialog";
@@ -303,5 +304,6 @@ export {
   NativePageContainer,
   NativeDataTableToolbar,
   NativeDataTableToolPopover,
+  NativeDataTableDetailsPaneContainer,
   nativeOpenUrl,
 };
