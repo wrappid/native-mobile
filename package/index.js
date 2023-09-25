@@ -128,6 +128,7 @@ import NativeDialog from "./nativeComponents/feedback/NativeDialog";
 import NativeGoogleButton from "./nativeComponents/inputs/custom/NativeGoogleButton";
 import NativeMedicineSelector from "./nativeComponents/inputs/custom/NativeMedicineSelector";
 import NativeReactSelectInput from "./nativeComponents/inputs/custom/NativeReactSelectInput";
+import NativeSpeechToText from "./nativeComponents/inputs/custom/NativeSpeechToText";
 import {
   NativeDomRoutes,
   NativeDomRoute,
@@ -306,4 +307,5 @@ export {
   NativeDataTableToolPopover,
   NativeDataTableDetailsPaneContainer,
   nativeOpenUrl,
+  NativeSpeechToText
 };

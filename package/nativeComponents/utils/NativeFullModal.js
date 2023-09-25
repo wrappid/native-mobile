@@ -32,6 +32,8 @@ export default function NativeFullModal(props) {
     multiple,
     value,
     searchLabel,
+    styleClasses,
+    top,
   } = props;
 
   const theme = useTheme();
@@ -123,15 +125,30 @@ export default function NativeFullModal(props) {
           supportedOrientations={supportedOrientations}
           statusBarTranslucent={true}>
           <NativeBox
-            style={[StyleSheet.absoluteFill, styles.modalRoot]}
+            styleClasses={styleClasses}
+            style={
+              top
+                ? [StyleSheet.absoluteFill, styles.modalRoot, {top}]
+                : [StyleSheet.absoluteFill, styles.modalRoot]
+            }
             pointerEvents="box-none">
             <NativeBox
-              styleClasses={[UtilityClasses?.PADDING?.P1]}
-              style={[
-                styles.modalContent,
-                {backgroundColor: theme.colors.surface},
-                dimensions.width > 650 ? styles.modalContentBig : null,
-              ]}>
+              styleClasses={[
+                UtilityClasses?.PADDING?.P1,
+                ...(styleClasses || []),
+              ]}
+              style={
+                !styleClasses
+                  ? [
+                      styles.modalContent,
+                      {backgroundColor: theme.colors.surface},
+                      dimensions.width > 650 ? styles.modalContentBig : null,
+                    ]
+                  : [
+                      styles.modalContent,
+                      dimensions.width > 650 ? styles.modalContentBig : null,
+                    ]
+              }>
               {!noClose && (
                 <NativeBox style={{alignItems: 'flex-end'}}>
                   <NativeIconButton onClick={onClose}>
