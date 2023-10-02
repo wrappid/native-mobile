@@ -86,11 +86,6 @@ const NativeSpeechToText = props => {
 
     setEnd(true);
     setStarted(false);
-    try {
-      await Voice.stop();
-    } catch (e) {
-      console.error(e);
-    }
     if (afterSpeechEnd && typeof afterSpeechEnd === 'function') {
       afterSpeechStart(e);
     }
