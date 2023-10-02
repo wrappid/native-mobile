@@ -29,7 +29,7 @@ const NativeSpeechToText = props => {
     buttonStyle,
     generateCoreForm,
     formData,
-    mode
+    mode,
   } = props;
 
   const [pitch, setPitch] = useState('');
@@ -38,6 +38,8 @@ const NativeSpeechToText = props => {
   const [started, setStarted] = useState(false);
   const [results, setResults] = useState([]);
   const [partialResults, setPartialResults] = useState([]);
+
+  const [open, setModal] = useState([]);
 
   useEffect(() => {
     //Setting callbacks for the process status
@@ -70,22 +72,25 @@ const NativeSpeechToText = props => {
   const onSpeechStart = e => {
     //Invoked when .start() is called without error
     console.log('onSpeechStart: ', e);
-    if (beforeSpeechStart && typeof beforeSpeechStart === 'function') {
-      beforeSpeechStart(e);
-    }
-    setStarted(true);
     if (afterSpeechStart && typeof afterSpeechStart === 'function') {
       afterSpeechStart(e);
     }
   };
 
-  const onSpeechEnd = e => {
+  const onSpeechEnd = async e => {
     //Invoked when SpeechRecognizer stops recognition
     console.log('onSpeechEnd: ', e);
     if (beforeSpeechEnd && typeof beforeSpeechEnd === 'function') {
       beforeSpeechStart(e);
     }
+
     setEnd(true);
+    setStarted(false);
+    try {
+      await Voice.stop();
+    } catch (e) {
+      console.error(e);
+    }
     if (afterSpeechEnd && typeof afterSpeechEnd === 'function') {
       afterSpeechStart(e);
     }
@@ -98,6 +103,7 @@ const NativeSpeechToText = props => {
       beforeSpeechError(e);
     }
     setError(JSON.stringify(e.error));
+    setEnd(false);
     if (afterSpeechError && typeof afterSpeechError === 'function') {
       afterSpeechError(e);
     }
@@ -154,22 +160,30 @@ const NativeSpeechToText = props => {
 
   const startRecognizing = async () => {
     //Starts listening for speech for a specific locale
+    console.log('Started');
     try {
+      setModal(true);
+      setEnd(false);
       setStarted(true);
-      await Voice.start(element?.speechToText?.locale || 'en-US');
       setPitch('');
       setError(null);
       setResults([]);
       setPartialResults([]);
-      setEnd(false);
+      if (beforeSpeechStart && typeof beforeSpeechStart === 'function') {
+        beforeSpeechStart();
+      }
+      await Voice.start(element?.speechToText?.locale || 'en-US');
     } catch (e) {
       console.error(e);
     }
   };
 
   const stopRecognizing = async () => {
+    console.log('Stopped');
     //Stops listening for speech
     try {
+      setStarted(false);
+      setEnd(false);
       await Voice.stop();
     } catch (e) {
       console.error(e);
@@ -187,18 +201,31 @@ const NativeSpeechToText = props => {
 
   const destroyRecognizer = async () => {
     //Destroys the current SpeechRecognizer instance
+    console.log('Destroyed');
+    setModal(false);
+    setPitch('');
+    setError(null);
+    setStarted(false);
+    setResults([]);
+    setPartialResults([]);
+    setEnd(false);
     try {
       await Voice.destroy();
-      setPitch('');
-      setError(null);
-      setStarted(false);
-      setResults([]);
-      setPartialResults([]);
-      setEnd(false);
     } catch (e) {
       console.error(e);
     }
   };
+
+  console.log(
+    'Started:',
+    started,
+    ', Ended',
+    end,
+    ', Results ',
+    results,
+    'Error',
+    error,
+  );
 
   return (
     <>
@@ -214,19 +241,17 @@ const NativeSpeechToText = props => {
         />
       </NativeIconButton>
       <NativeFullModal
-        open={started}
+        open={open}
         onClose={destroyRecognizer}
         top={50}
-        styleClasses={!mode || mode === "dark"?[
-          UtilityClasses?.BG?.BG_BLACK,
-          UtilityClasses?.OPACITY?.OPACITY_75,
-        ]
-        :
-        [
-          UtilityClasses?.BG?.BG_WHITE,
-        ]
-      
-      }
+        styleClasses={
+          !mode || mode === 'dark'
+            ? [
+                UtilityClasses?.BG?.BG_BLACK,
+                UtilityClasses?.OPACITY?.OPACITY_75,
+              ]
+            : [UtilityClasses?.BG?.BG_WHITE]
+        }
         searchBox={false}>
         <NativeBox
           style={{flex: 1}}
@@ -253,12 +278,12 @@ const NativeSpeechToText = props => {
               )}
               <NativeIconButton
                 size="large"
-                onClick={error || end ? startRecognizing : stopRecognizing}>
+                onClick={!started ? startRecognizing : stopRecognizing}>
                 <NativeIcon
                   styleClasses={[UtilityClasses?.COLOR?.TEXT_PRIMARY]}
                   size="large"
                   childrenFlag={true}
-                  name={error || end ? 'mic' : 'stop'}
+                  name={!started ? 'mic' : 'stop'}
                   type="material-icons"
                 />
               </NativeIconButton>
