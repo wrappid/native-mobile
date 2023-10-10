@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import DocumentPicker from "react-native-document-picker";
 import NativeInput from "./NativeInput";
 import { SCInput } from "../../styledComponents/inputs/SCInput";
+import {PermissionsAndroid} from 'react-native';
 
 export default function NativeFilePicker(props) {
   const { label = "Pick Document", formik, id, onChange } = props;

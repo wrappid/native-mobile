@@ -169,7 +169,7 @@ export default function NativeFullModal(props) {
                   label={searchLabel || 'Search here'}
                 />
               )}
-              <ScrollView>
+              <ScrollView keyboardShouldPersistTaps={'always'}>
                 <KeyboardAvoidingView
                   behavior={keyboardStatus ? 'padding' : ''}>
                   {props.children}

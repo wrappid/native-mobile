@@ -14,7 +14,7 @@ import {Modal as RNModal} from 'react-native';
 export default function NativeDialog(props) {
   const {dialogInitValue, DialogContext} = props;
   const {dialog, setDialog} = useContext(DialogContext);
-  console.log('dialog:', dialog, 'setDialog:', setDialog);
+  // console.log('dialog:', dialog, 'setDialog:', setDialog);
   return (
     <Portal>
       <RNModal visible={dialog?.showDialog || false} transparent={true}>
@@ -46,7 +46,7 @@ export default function NativeDialog(props) {
                 size="medium"
                 childrenFlag={true}
                 name="check-circle"
-                styleClasses={[UtilityClasses.COLOR.TEXT_]}
+                styleClasses={[UtilityClasses.COLOR.TEXT_SUCCESS]}
               />
             )}
           </NativeBox>

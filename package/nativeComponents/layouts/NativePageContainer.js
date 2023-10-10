@@ -26,7 +26,7 @@ export default function NativePageContainer(props) {
           : [coreClasses.LAYOUT.LOGGED_OUT_PAGE_CONTAINER]
       }
     >
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <ScrollView keyboardShouldPersistTaps={'always'} contentContainerStyle={{ flexGrow: 1 }}>
         {props.children}
       </ScrollView>
     </NativeBox>
