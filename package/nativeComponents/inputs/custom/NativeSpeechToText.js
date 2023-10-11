@@ -28,8 +28,8 @@ const NativeSpeechToText = props => {
     setProcessComplete,
     buttonStyle,
     generateCoreForm,
-    formData,
     mode,
+    children,
   } = props;
 
   const [pitch, setPitch] = useState('');
@@ -43,13 +43,6 @@ const NativeSpeechToText = props => {
 
   useEffect(() => {
     //Setting callbacks for the process status
-    Voice.onSpeechStart = onSpeechStart;
-    Voice.onSpeechEnd = onSpeechEnd;
-    Voice.onSpeechError = onSpeechError;
-    Voice.onSpeechResults = onSpeechResults;
-    Voice.onSpeechPartialResults = onSpeechPartialResults;
-    Voice.onSpeechVolumeChanged = onSpeechVolumeChanged;
-
     return () => {
       //destroy the process after switching the screen
       Voice.destroy().then(Voice.removeAllListeners);
@@ -65,7 +58,8 @@ const NativeSpeechToText = props => {
 
   useEffect(() => {
     if (results && results?.length > 0) {
-      generateCoreForm(element, results);
+      console.log('DYNAMIC FORM CALL', results);
+      generateCoreForm([...results]);
     }
   }, [results]);
 
@@ -156,6 +150,12 @@ const NativeSpeechToText = props => {
   const startRecognizing = async () => {
     //Starts listening for speech for a specific locale
     console.log('Started');
+    Voice.onSpeechStart = onSpeechStart;
+    Voice.onSpeechEnd = onSpeechEnd;
+    Voice.onSpeechError = onSpeechError;
+    Voice.onSpeechResults = onSpeechResults;
+    Voice.onSpeechPartialResults = onSpeechPartialResults;
+    Voice.onSpeechVolumeChanged = onSpeechVolumeChanged;
     try {
       setModal(true);
       setEnd(false);
@@ -211,17 +211,6 @@ const NativeSpeechToText = props => {
     }
   };
 
-  console.log(
-    'Started:',
-    started,
-    ', Ended',
-    end,
-    ', Results ',
-    results,
-    'Error',
-    error,
-  );
-
   return (
     <>
       <NativeIconButton
@@ -259,7 +248,11 @@ const NativeSpeechToText = props => {
               styleClasses={[UtilityClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER]}>
               <NativeTypographyBody1
                 styleClasses={[UtilityClasses?.TEXT?.TEXT_CENTER]}>
-                {error ? 'Try Again' : 'Listening...'}
+                {error
+                  ? 'Try Again'
+                  : started
+                  ? 'Listening...'
+                  : 'Tap to speak...'}
               </NativeTypographyBody1>
               <NativeTypographyBody1
                 styleClasses={[UtilityClasses?.TEXT?.TEXT_CENTER]}>
@@ -303,16 +296,16 @@ const NativeSpeechToText = props => {
               </NativeTypographyBody1>
             ))}
           </NativeBox>
-          {formData && end && (
+          {
             <NativeBox
               styleClasses={[
                 UtilityClasses?.HEIGHT?.H_75,
                 UtilityClasses?.PADDING?.P1,
               ]}
               style={{flex: 4}}>
-              {formData.form}
+              {children}
             </NativeBox>
-          )}
+          }
         </NativeBox>
       </NativeFullModal>
     </>
