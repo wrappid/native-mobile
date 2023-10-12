@@ -53,17 +53,15 @@ function NativeAutocomplete(props) {
     onFocus,
     _getEndAdornment,
     _formik,
+    loading,
+    freeSolo,
+    _missMatch,
     ...rest
   } = props;
   const animationTypeCalculated = Platform.select({
     web: 'none',
     default: 'slide',
   });
-
-  const isLight = false;
-  const headerBackgroundColor = theme?.colors?.onPrimary;
-
-  console.log('NAIVE AUTO COMPLETE', props);
 
   let [filteredOptions, setFilteredOptions] = React.useState(options);
 
@@ -145,13 +143,15 @@ function NativeAutocomplete(props) {
     }
   };
 
-  console.log('FILTER', filteredOptions, options);
+  console.log('NATIVE ASYNC SELECT', props);
   return (
     <>
       {/* View like input element with text */}
       <TouchableOpacity
         style={getStyle()}
-        disabled={readOnly ? (_onFormFocus && _editId ? false : true) : false}
+        disabled={
+          readOnly || loading ? (_onFormFocus && _editId ? false : true) : false
+        }
         onPress={() => {
           onOpen();
           onFocus();
@@ -195,6 +195,17 @@ function NativeAutocomplete(props) {
                       );
                     }}
                   />
+                ) : freeSolo && !loading && _missMatch ? (
+                  <NativeTypographyBody1>
+                    {getOptionLabel(value)}{' '}
+                    <NativeIcon
+                      name="info"
+                      type="material-icons"
+                      childrenFlag={true}
+                      size={16}
+                      styleClasses={[UtilityClasses?.COLOR?.TEXT_WARNING]}
+                    />
+                  </NativeTypographyBody1>
                 ) : (
                   <NativeTypographyBody1>
                     {getOptionLabel(value)}
@@ -215,6 +226,7 @@ function NativeAutocomplete(props) {
           renderInput({readOnly: true, value: value, noAdornment: true})
         ) : null}
       </TouchableOpacity>
+      {loading && <NativeLabel>Loading...</NativeLabel>}
 
       {/* View full screen modal for fields */}
       <NativeBox style={[StyleSheet.absoluteFill]} pointerEvents="box-none">
