@@ -4,7 +4,7 @@ import {useTheme} from 'react-native-paper';
 
 export default function NativeButton(props) {
   const {
-    label = 'LABEL NOT PROVIDED',
+    label,
     OnClick,
     variant,
     innerRef,
@@ -12,6 +12,7 @@ export default function NativeButton(props) {
     size = 'small',
     disabled,
     startIcon,
+    children,
     endIcon,
     ...restProps
   } = props;
@@ -48,7 +49,7 @@ export default function NativeButton(props) {
         UserActionLogging();
         OnClick(e);
       }}>
-      {label}
+      {label ? label : (children ? children : "LABEL NOT PROVIDED")}
     </SCButton>
   );
 }
