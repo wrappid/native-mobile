@@ -10,11 +10,13 @@ export default function NativeCheckbox(props) {
     label,
     value,
     disabled,
+    ...restProps
   } = props;
 
   const checked = formik ? value : props.checked;
   return (
     <SCCheckbox
+      {...restProps}
       id={id}
       label={label}
       status={checked ? "checked" : "unchecked"}
