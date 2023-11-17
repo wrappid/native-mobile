@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { Text as Link } from "react-native-paper";
+import { Link } from "react-router-native";
 import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
 
 const defaultStyleClasses = [StyledComponentsClasses.NAVIGATION.LINK];
