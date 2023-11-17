@@ -22,6 +22,7 @@
     "react-native-document-picker": "^8.2.0",
     "react-native-image-crop-picker": "^0.40.0",
     "react-native-otp-inputs": "^7.4.0",
+    "react-native-ratings": "^8.1.0",
     "react-native-paper": "^5.2.0",
     "react-native-paper-dates": "^0.15.1",
     "react-native-paper-dropdown": "^1.0.7",

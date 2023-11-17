@@ -152,6 +152,7 @@ import NativeCustomTabs from "./nativeComponents/navigation/NativeCustomTabs";
 import NativeAppContainer from "./nativeComponents/layouts/NativeAppContainer";
 import NativePageContainer from "./nativeComponents/layouts/NativePageContainer";
 import { getNativeDeviceDetails } from "./nativeComponents/utils/device.utils";
+import NativeRating from "./nativeComponents/inputs/NativeRating.js";
 
 export {
   /**
@@ -309,5 +310,6 @@ export {
   NativeDataTableToolPopover,
   NativeDataTableDetailsPaneContainer,
   nativeOpenUrl,
-  NativeSpeechToText
+  NativeSpeechToText,
+  NativeRating
 };

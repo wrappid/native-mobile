@@ -16,6 +16,7 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.18.1",
     "@react-native-clipboard/clipboard": "^1.11.2",
+    "@react-native-voice/voice": "^3.2.4",
     "core-js": "^3.30.0",
     "react": "18.2.0",
     "react-native": "0.71.6",
@@ -26,11 +27,11 @@
     "react-native-paper": "^5.2.0",
     "react-native-paper-dates": "^0.15.1",
     "react-native-paper-dropdown": "^1.0.7",
+    "react-native-ratings": "^8.1.0",
     "react-native-safe-area-context": "^4.5.1",
     "react-native-vector-icons": "^9.2.0",
     "react-router-native": "^6.9.0",
-    "styled-components": "^5.3.9",
-    "@react-native-voice/voice": "^3.2.4"
+    "styled-components": "^5.3.9"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
