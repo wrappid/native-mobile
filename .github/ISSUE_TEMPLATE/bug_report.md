@@ -20,6 +20,9 @@ Steps to reproduce the behavior:
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
+**Stack Trace**
+The stack trace of the bug if any.
+
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
