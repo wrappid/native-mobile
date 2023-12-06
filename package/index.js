@@ -153,6 +153,7 @@ import NativeAppContainer from "./nativeComponents/layouts/NativeAppContainer";
 import NativePageContainer from "./nativeComponents/layouts/NativePageContainer";
 import { getNativeDeviceDetails } from "./nativeComponents/utils/device.utils";
 import NativeRating from "./nativeComponents/inputs/NativeRating.js";
+import NativeAvatarGroup from "./nativeComponents/dataDisplay/NativeAvatarGroup.js";
 
 export {
   /**
@@ -311,5 +312,6 @@ export {
   NativeDataTableDetailsPaneContainer,
   nativeOpenUrl,
   NativeSpeechToText,
-  NativeRating
+  NativeRating,
+  NativeAvatarGroup
 };
