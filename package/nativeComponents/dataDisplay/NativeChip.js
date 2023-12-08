@@ -1,5 +1,5 @@
 import React from 'react';
-import {variantMap} from '../../helper/componentPropsUtils';
+import {variantMap} from '../../helper/componentUtil';
 import {SCChip} from '../../styledComponents/dataDisplay/SCChip';
 import {useTheme} from 'react-native-paper';
 

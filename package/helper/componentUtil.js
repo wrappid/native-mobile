@@ -78,3 +78,33 @@ function nativeUseScrollTrigger(e) {
 }
 
 export {nativeUseScrollTrigger};
+
+const variantMap = {
+  body1  : "bodyLarge",
+  body2  : "bodyMedium",
+  button : "bodyLarge",
+  caption: "bodySmall",
+  //For chip
+  flat   : "filled",
+  
+  h1: "displayLarge",
+  
+  h2: "displayMedium",
+  
+  h3: "displaySmall",
+  
+  h4: "headlineLarge",
+  
+  h5: "headlineMedium",
+  
+  h6: "headlineSmall",
+  
+  outlined: "outlined",
+  
+  overline: "labelLarge",
+  
+  subtitle1: "titleMedium",
+  subtitle2: "titleSmall",
+};
+
+export { variantMap };

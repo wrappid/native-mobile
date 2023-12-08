@@ -1,5 +1,5 @@
 import React from 'react';
-import {variantMap} from '../../helper/componentPropsUtils';
+import {variantMap} from '../../helper/componentUtil';
 import {SCTypography} from '../../styledComponents/dataDisplay/SCTypography';
 
 export default function NativeTypography(props) {
@@ -10,7 +10,7 @@ export default function NativeTypography(props) {
     <SCTypography
       {...restProps}
       component={component}
-      variant={variantMap[variant]}>
+      variant={variantMap ? variantMap[variant] : null}>
       {children}
     </SCTypography>
   );

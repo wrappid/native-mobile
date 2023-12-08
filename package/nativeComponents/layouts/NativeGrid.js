@@ -1,4 +1,4 @@
-import React, {Children, useState, useEffect} from 'react';
+import React, {Children, useState, useEffect, useContext} from 'react';
 import {SCGrid} from '../../styledComponents/layouts/SCGrid';
 import {SCGridItem} from '../../styledComponents/layouts/SCGridItem';
 import {getUUID} from '../../helper/appUtils';
@@ -10,6 +10,7 @@ import {
   SMALL_WINDOW_WIDTH,
   X_LARGE_WINDOW_WIDTH,
 } from '../../helper/constants';
+import {ThemeContext} from '@wrappid/styles'
 
 export default function NativeGrid(props) {
   const {spacing} = props;
@@ -17,6 +18,7 @@ export default function NativeGrid(props) {
 
   const [_uuid, setUuid] = useState(null)
   const [containerId, setContainerId] = useState(null)
+  const theme = useContext(ThemeContext)
 
   useEffect(()=>{
     setUuid(getUUID());
@@ -28,16 +30,16 @@ export default function NativeGrid(props) {
   const gridToWidth = gridProps => {
     const sizeProps = getGridSizeProps(gridProps);
     let gridSize = sizeProps.xs;
-    if (windowWidth >= SMALL_WINDOW_WIDTH) {
+    if (windowWidth >= theme?.breakpoints?.values?.sm) {
       gridSize = sizeProps.sm;
     }
-    if (windowWidth >= MEDIUM_WINDOW_WIDTH) {
+    if (windowWidth >= theme?.breakpoints?.values?.md) {
       gridSize = sizeProps.md;
     }
-    if (windowWidth >= LARGE_WINDOW_WIDTH) {
+    if (windowWidth >= theme?.breakpoints?.values?.lg) {
       gridSize = sizeProps.lg;
     }
-    if (windowWidth >= X_LARGE_WINDOW_WIDTH) {
+    if (windowWidth >= theme?.breakpoints?.values?.xl) {
       gridSize = sizeProps.xl;
     }
     let width_percent = gridSizeToPercentage(gridSize);

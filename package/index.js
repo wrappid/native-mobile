@@ -142,7 +142,6 @@ import {
 } from "./nativeComponents/helper/routerHelper";
 import { nativeFilterOptions } from "./helper/helper";
 import { nativeUseScrollTrigger } from "./helper/componentUtil";
-import { nativeCreateTheme, nativeUseTheme } from "./theme/themeUtil";
 import NativeCssBaseline from "./theme/NativeCssBaseline";
 import NativeCollapse from "./nativeComponents/surfaces/NativeCollapse";
 import { nativeStorage } from "./nativeComponents/helper/storeHelper";
@@ -294,7 +293,6 @@ export {
   nativeUseParams,
   nativeFilterOptions,
   nativeUseScrollTrigger,
-  nativeCreateTheme,
   NativeThemeProvider,
   NativeCssBaseline,
   NativeCollapse,
@@ -303,7 +301,6 @@ export {
   NativeFlatList,
   NativeMedicineSelector,
   NativeReactSelectInput,
-  nativeUseTheme,
   NativeAppContainer,
   NativePageContainer,
   NativeDataTableToolbar,

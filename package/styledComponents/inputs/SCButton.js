@@ -5,11 +5,12 @@ import {
   StyledComponentsClasses,
   UtilityClasses,
 } from "@wrappid/styles";
+import { View } from "react-native";
 
 const defaultStyleClasses = [StyledComponentsClasses.INPUTS.BUTTON];
 
 export const SCButton = styled(
-  Button,
+  View,
   {}
 )((props) => ({
   ...getEffectiveStyle([
