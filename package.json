@@ -6,12 +6,11 @@
   "scripts": {
     "test": "echo 'testing not yet implemented'",
     "build": "npx babel package --out-dir dist --copy-files",
-    "build-app": "npx babel package --out-dir ../wrappid-app/.wrappid/temp/mobile/node_modules/@wrappid/styled-components --copy-files",
     "publish": "npm publish ./dist --registry=https://npm.pkg.github.com --scope=@wrappid"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://techoneel: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@github.com/wrappid/native-mobile.git"
+    "url": "git+https://github.com/wrappid/native-mobile.git"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.18.1",
