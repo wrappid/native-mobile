@@ -10,7 +10,7 @@ import { View } from "react-native";
 const defaultStyleClasses = [StyledComponentsClasses.INPUTS.BUTTON];
 
 export const SCButton = styled(
-  View,
+  Button,
   {}
 )((props) => ({
   ...getEffectiveStyle([
