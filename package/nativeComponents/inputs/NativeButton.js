@@ -5,7 +5,7 @@ import { useTheme } from "react-native-paper";
 export default function NativeButton(props) {
   const {
     label,
-    OnClick,
+    onClick,
     variant,
     innerRef,
     type,
@@ -47,8 +47,8 @@ export default function NativeButton(props) {
       }
       onPress={(e) => {
         UserActionLogging();
-        if (OnClick && typeof OnClick === "function") {
-          OnClick(e);
+        if (onClick && typeof onClick === "function") {
+          onClick(e);
         }
       }}
     >
