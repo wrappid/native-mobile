@@ -9,8 +9,8 @@ const AVATAR_SMALL = "avatarSmall";
 const AVATAR_XLARGE = "avatarXLarge";
 const AVATAR_XXLARGE = "avatarXXLarge";
 
-const DEFAULT_AVATAR_SIZE = 50;
-let SIZE_MAP = {
+export const DEFAULT_AVATAR_SIZE = 50;
+export const AVATAR_SIZE_MAP = {
   [AVATAR]: DEFAULT_AVATAR_SIZE,
   [AVATAR_SMALL]: 25,
   [AVATAR_MEDIUM]: 60,
@@ -19,50 +19,59 @@ let SIZE_MAP = {
   [AVATAR_XXLARGE]: 90,
 };
 
-export default function NativeAvatar(props) {
-  const { src = "", label, children, styleClasses } = props;
-
+export const destructureAvatarSizeFromStyles = (styleClasses) => {
+  console.log("nativeAvatar---", styleClasses);
   let newStyleclasses = [];
-  let size = SIZE_MAP.avatar;
+  let size = AVATAR_SIZE_MAP.avatar;
 
   if (styleClasses?.includes(AVATAR)) {
-    size = SIZE_MAP[AVATAR];
-    newStyleclasses = props.styleClasses?.filter(
+    size = AVATAR_SIZE_MAP[AVATAR];
+    newStyleclasses = styleClasses?.filter(
       (styleClass) => !styleClass.includes(AVATAR)
     );
   } else if (styleClasses?.includes(AVATAR_SMALL)) {
-    size = SIZE_MAP[AVATAR_SMALL];
-    newStyleclasses = props.styleClasses?.filter(
+    size = AVATAR_SIZE_MAP[AVATAR_SMALL];
+    newStyleclasses = styleClasses?.filter(
       (styleClass) => !styleClass.includes(AVATAR_SMALL)
     );
   } else if (styleClasses?.includes(AVATAR_MEDIUM)) {
-    size = SIZE_MAP[AVATAR_MEDIUM];
-    newStyleclasses = props.styleClasses?.filter(
+    size = AVATAR_SIZE_MAP[AVATAR_MEDIUM];
+    newStyleclasses = styleClasses?.filter(
       (styleClass) => !styleClass.includes(AVATAR_MEDIUM)
     );
   } else if (styleClasses?.includes(AVATAR_LARGE)) {
-    size = SIZE_MAP[AVATAR_LARGE];
-    newStyleclasses = props.styleClasses?.filter(
+    size = AVATAR_SIZE_MAP[AVATAR_LARGE];
+    newStyleclasses = styleClasses?.filter(
       (styleClass) => !styleClass.includes(AVATAR_LARGE)
     );
   } else if (styleClasses?.includes(AVATAR_XLARGE)) {
-    size = SIZE_MAP[AVATAR_XLARGE];
-    newStyleclasses = props.styleClasses?.filter(
+    size = AVATAR_SIZE_MAP[AVATAR_XLARGE];
+    newStyleclasses = styleClasses?.filter(
       (styleClass) => !styleClass.includes(AVATAR_XLARGE)
     );
   } else if (styleClasses?.includes(AVATAR_XXLARGE)) {
-    size = SIZE_MAP[AVATAR_XXLARGE];
-    newStyleclasses = props.styleClasses?.filter(
+    size = AVATAR_SIZE_MAP[AVATAR_XXLARGE];
+    newStyleclasses = styleClasses?.filter(
       (styleClass) => !styleClass.includes(AVATAR_XXLARGE)
     );
+  } else {
+    newStyleclasses = styleClasses;
   }
+
+  return {
+    size,
+    styleClasses: newStyleclasses,
+  };
+};
+
+export default function NativeAvatar(props) {
+  const { src = "", label, children, styleClasses } = props;
 
   return label || children ? (
     <SCAvatarText
       {...props}
       label={label || children}
-      styleClasses={newStyleclasses}
-      size={size}
+      {...destructureAvatarSizeFromStyles(styleClasses)}
     />
   ) : (
     <SCAvatar
@@ -72,8 +81,7 @@ export default function NativeAvatar(props) {
           ? { uri: src }
           : src
       }
-      styleClasses={newStyleclasses}
-      size={size}
+      {...destructureAvatarSizeFromStyles(styleClasses)}
     />
   );
 }

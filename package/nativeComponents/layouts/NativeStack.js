@@ -1,8 +1,8 @@
-import React, {isValidElement, cloneElement} from 'react';
-import {SCStack} from '../../styledComponents/layouts/SCStack';
-import {UtilityClasses} from '@wrappid/styles';
-import NativeDivider from '../dataDisplay/NativeDivider';
-import {CoreBox} from '@wrappid/core';
+import React, { isValidElement, cloneElement } from "react";
+import { SCStack } from "../../styledComponents/layouts/SCStack";
+import { UtilityClasses } from "@wrappid/styles";
+import NativeDivider from "../dataDisplay/NativeDivider";
+import { CoreBox } from "@wrappid/core";
 
 export default function NativeStack(props) {
   // direction
@@ -19,9 +19,15 @@ export default function NativeStack(props) {
   // | string
 
   const {
-    direction = 'column',
+    component,
+    direction = "column",
     divider,
     spacing = 0,
+    /**
+     * @todo need to implment whenever it is required
+     */
+    // useFlexGap,
+    flexWrap,
     styleClasses,
     children,
     ...restProps
@@ -29,7 +35,7 @@ export default function NativeStack(props) {
 
   const preparedStyleClasses = [
     UtilityClasses.FLEX[
-      `DIRECTION_${direction.replace('-', '_').toUpperCase()}`
+      `DIRECTION_${direction.replace("-", "_").toUpperCase()}`
     ],
     UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_FLEX_START,
     UtilityClasses?.FLEX?.FLEX_WRAP_WRAP,
@@ -38,14 +44,14 @@ export default function NativeStack(props) {
 
   const childrenWithProps = () => {
     let marginClasses = [];
-    let marginString = 'M';
+    let marginString = "M";
 
-    if (direction === 'column') {
-      marginString += 'T' + spacing;
+    if (direction.includes("column")) {
+      marginString += "T" + spacing;
       marginString = marginString.toUpperCase();
       marginClasses.push(UtilityClasses?.MARGIN[marginString]);
     } else {
-      marginString += 'L' + spacing;
+      marginString += "L" + spacing;
       marginClasses.push(UtilityClasses?.MARGIN[marginString]);
     }
 
@@ -54,7 +60,7 @@ export default function NativeStack(props) {
       Array.isArray(children) &&
       children?.map((child, index) => {
         if (child && isValidElement(child)) {
-          const {styleClasses, ...restChildProps} = child?.props;
+          const { styleClasses, ...restChildProps } = child?.props;
           let childStyleClasses =
             index > 0
               ? [...(styleClasses || []), ...marginClasses]
@@ -70,7 +76,7 @@ export default function NativeStack(props) {
                 <CoreBox styleClasses={marginClasses}>
                   <NativeDivider
                     orientation={
-                      direction === 'column' ? 'horizontal' : 'vertical'
+                      direction === "column" ? "horizontal" : "vertical"
                     }
                   />
                 </CoreBox>
