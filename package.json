@@ -4,6 +4,7 @@
   "description": "This repository is combined packages of all the Styled Components for react-native hybrid mobile project.",
   "main": "index.js",
   "scripts": {
+    "prepare": "husky install",
     "test": "echo 'testing not yet implemented'",
     "build": "npx babel package --out-dir dist --copy-files",
     "publish": "npm publish ./dist --registry=https://npm.pkg.github.com --scope=@wrappid"
@@ -50,7 +51,8 @@
     "metro-react-native-babel-preset": "0.73.9",
     "prettier": "^2.4.1",
     "react-test-renderer": "18.2.0",
-    "typescript": "4.8.4"
+    "typescript": "4.8.4",
+    "husky": "^8.0.3"
   },
   "keywords": [
     "css-in-js",
