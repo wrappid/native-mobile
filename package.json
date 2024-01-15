@@ -31,8 +31,7 @@
     "react-native-safe-area-context": "^4.5.1",
     "react-native-vector-icons": "^9.2.0",
     "react-router-native": "^6.9.0",
-    "styled-components": "^5.3.9",
-    "husky": "^8.0.3"
+    "styled-components": "^5.3.9"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
@@ -52,7 +51,8 @@
     "metro-react-native-babel-preset": "0.73.9",
     "prettier": "^2.4.1",
     "react-test-renderer": "18.2.0",
-    "typescript": "4.8.4"
+    "typescript": "4.8.4",
+    "husky": "^8.0.3"
   },
   "keywords": [
     "css-in-js",
