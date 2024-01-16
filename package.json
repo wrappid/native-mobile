@@ -7,7 +7,9 @@
     "prepare": "husky install",
     "test": "echo 'testing not yet implemented'",
     "build": "npx babel package --out-dir dist --copy-files",
-    "publish": "npm publish ./dist --registry=https://npm.pkg.github.com --scope=@wrappid"
+    "publish": "npm publish ./dist --registry=https://npm.pkg.github.com --scope=@wrappid",
+    "code:lint": "echo 'Linting not implemented'",
+    "code:format": "npm run code:lint"
   },
   "repository": {
     "type": "git",
@@ -34,6 +36,9 @@
     "styled-components": "^5.3.9"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.5.0",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@commitlint/prompt-cli": "^17.5.0",
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.0",
     "@babel/polyfill": "^7.12.1",
