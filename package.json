@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky install",
+    "attributions:gen": "node ./scripts/attributions.gen.js",
     "test": "echo 'testing not yet implemented'",
     "build": "npx babel package --out-dir dist --copy-files",
     "publish": "npm publish ./dist --registry=https://npm.pkg.github.com --scope=@wrappid",
@@ -62,7 +63,10 @@
     "metro-react-native-babel-preset": "0.73.9",
     "prettier": "^2.4.1",
     "react-test-renderer": "18.2.0",
-    "typescript": "4.8.4"
+    "typescript": "4.8.4",
+    "format-package-json": "^0.2.0",
+    "git-contributors": "^0.2.5",
+    "license-checker": "^25.0.1"
   },
   "keywords": [
     "css-in-js",
