@@ -16,6 +16,20 @@
     "type": "git",
     "url": "git+https://github.com/wrappid/native-mobile.git"
   },
+  "keywords": [
+    "css-in-js",
+    "styled-components",
+    "react-native",
+    "react-native-paper",
+    "javascript"
+  ],
+  "license": "MIT",
+  "author": {
+  "name": "Wrappid",
+  "email": "wrappid.framework@gmail.com",
+  "url": "https://www.github.com/wrappid"
+  },
+  "homepage": "https://github.com/wrappid/native-mobile",
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.18.1",
     "@react-native-clipboard/clipboard": "^1.11.2",
@@ -67,17 +81,5 @@
     "format-package-json": "^0.2.0",
     "git-contributors": "^0.2.5",
     "license-checker": "^25.0.1"
-  },
-  "keywords": [
-    "css-in-js",
-    "styled-components",
-    "react-native",
-    "react-native-paper",
-    "javascript"
-  ],
-  "author": "wrappid",
-  "bugs": {
-    "url": "https://github.com/wrappid/native-mobile/issues"
-  },
-  "homepage": "https://github.com/wrappid/native-mobile#readme"
+  }
 }
