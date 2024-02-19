@@ -8,9 +8,10 @@
     "attributions:gen": "node ./scripts/attributions.gen.js",
     "test": "echo 'testing not yet implemented'",
     "build": "npx babel package --out-dir dist --copy-files",
-    "publish": "npm publish ./dist --registry=https://npm.pkg.github.com --scope=@wrappid",
     "code:lint": "eslint --ignore-path .gitignore ./package",
-    "code:format": "npm run code:lint -- --fix ./package"
+    "code:format": "npm run code:lint -- --fix ./package",
+    "release": "standard-version --bumpFiles ./package.json ./package/package.json ./package-lock.json ./package/package-lock.json",
+    "publish": "npm publish *.tgz --registry=https://npm.pkg.github.com --scope=@wrappid"
   },
   "repository": {
     "type": "git",
@@ -80,6 +81,7 @@
     "typescript": "4.8.4",
     "format-package-json": "^0.2.0",
     "git-contributors": "^0.2.5",
-    "license-checker": "^25.0.1"
+    "license-checker": "^25.0.1",
+    "standard-version": "^9.5.0"
   }
 }
