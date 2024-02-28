@@ -8,7 +8,7 @@ import NativePopover from "./nativeComponents/utils/NativePopover";
 import NativeFade from "./nativeComponents/utils/NativeFade";
 import NativeSpan from "./nativeComponents/layouts/NativeSpan";
 import NativeBox from "./nativeComponents/layouts/NativeBox";
-// import NativeContainer from "./nativeComponents/layouts/NativeContainer";
+import NativeContainer from "./nativeComponents/layouts/NativeContainer";
 import NativeSection from "./nativeComponents/layouts/NativeSection";
 import NativeAppDiv from "./nativeComponents/layouts/NativeAppDiv";
 import NativeList from "./nativeComponents/layouts/NativeList";
@@ -175,7 +175,7 @@ export {
   NativeBox,
   //Native Tabs
   NativeCustomTabs,
-  // NativeContainer,
+  NativeContainer,
   NativeSection,
   NativeAppDiv,
   NativeList,
