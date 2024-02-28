@@ -1,14 +1,13 @@
-import { Rating, AirbnbRating } from "react-native-ratings";
-import { View, Text } from "react-native";
-import React from "react";
-import NativeTypographyBody1 from "../dataDisplay/paragraph/NativeTypographyBody1";
+import { AirbnbRating } from "react-native-ratings";
 
 export default function NativeRating(props) {
   const { defaultValue, name } = props;
   const disabled = name === "disabled" ? true : false;
+  // eslint-disable-next-line no-unused-vars
   const ratingCompleted = (rating) => {
-    console.log("Rating is: " + rating);
+    // -- console.log("Rating is: " + rating);
   };
+
   return (
     <AirbnbRating
       count={11}

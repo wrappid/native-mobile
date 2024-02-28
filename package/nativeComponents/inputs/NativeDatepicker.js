@@ -1,13 +1,18 @@
 import React, { useEffect } from "react";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { SCDatePicker } from "../../styledComponents/inputs/SCDatePicker";
-import NativeBox from "../layouts/NativeBox";
+
+// eslint-disable-next-line import/no-unresolved
 import moment from "moment";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
 import NativeInput from "./NativeInput";
+import { SCDatePicker } from "../../styledComponents/inputs/SCDatePicker";
 import { SCInput } from "../../styledComponents/inputs/SCInput";
+import NativeBox from "../layouts/NativeBox";
 
 export default function NativeDatepicker(props) {
-  const { id, formik, label, onChange, value, ...restProps } = props;
+  const {
+    id, formik, label, onChange, value, ...restProps 
+  } = props;
 
   const [date, setDate] = React.useState(undefined);
   const [dateString, setDateString] = React.useState("");
@@ -28,6 +33,7 @@ export default function NativeDatepicker(props) {
   useEffect(() => {
     if (date) {
       let dateS = moment(date).format("YYYY-MM-DD");
+
       setDateString(dateS);
       if (formik) {
         formik?.setFieldValue(id, dateS);
@@ -61,6 +67,7 @@ export default function NativeDatepicker(props) {
             />
           }
         />
+
         <SCDatePicker
           {...restProps}
           locale="en"

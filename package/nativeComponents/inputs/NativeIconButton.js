@@ -1,20 +1,21 @@
-import React from 'react';
-import {SCIconButton} from '../../styledComponents/inputs/SCIconButton';
-import NativeTooltip from '../dataDisplay/NativeTooltip';
+import React from "react";
+
+import { SCIconButton } from "../../styledComponents/inputs/SCIconButton";
 
 export default function NativeIconButton(props) {
   const {
     title,
-    titlePlacement = 'bottom',
+    // eslint-disable-next-line no-unused-vars
+    titlePlacement = "bottom",
     size,
     mode,
     children,
     ...restProps
   } = props;
   const sizeMap = {
-    small: 24,
-    large: 48,
+    large : 48,
     medium: 32,
+    small : 24,
   };
 
   const childrenWithProps = childProps =>
@@ -23,7 +24,7 @@ export default function NativeIconButton(props) {
       // typescript error too.
       if (React.isValidElement(child)) {
         if (child?.props?.children)
-          return React.cloneElement(child, {...childProps});
+          return React.cloneElement(child, { ...childProps });
         else return React.cloneElement(child);
       }
       return child;
@@ -32,7 +33,7 @@ export default function NativeIconButton(props) {
   const getIconButton = () => {
     return (
       <SCIconButton
-        mode={mode || 'default'}
+        mode={mode || "default"}
         onPress={restProps.onClick}
         size={isNaN(size) ? sizeMap[size] || sizeMap.small : size}
         icon={iconProps =>

@@ -1,33 +1,37 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
-import React, {useEffect} from 'react';
+import React, { useEffect } from "react";
+
+// eslint-disable-next-line import/no-unresolved
+import { UtilityClasses } from "@wrappid/styles";
 import {
   Modal,
   StyleSheet,
   useWindowDimensions,
   Platform,
-  StatusBar,
-  TouchableOpacity,
-} from 'react-native';
+  TouchableOpacity
+  // eslint-disable-next-line import/namespace
+} from "react-native";
+import { useTheme } from "react-native-paper";
 
-import {useTheme} from 'react-native-paper';
-import NativeInput from './NativeInput';
-import NativeIconButton from './NativeIconButton';
-import NativeChip from '../dataDisplay/NativeChip';
-import NativeIcon from '../dataDisplay/NativeIcon';
-import NativeTypographyBody1 from '../dataDisplay/paragraph/NativeTypographyBody1';
-import NativeBox from '../layouts/NativeBox';
-import NativeFlatList from '../dataDisplay/NativeFlatList';
-import NativeTypographyBody2 from '../dataDisplay/paragraph/NativeTypographyBody2';
-import {nativeFilterOptions} from '../../helper/helper';
-import {UtilityClasses} from '@wrappid/styles';
-import NativeGrid from '../layouts/NativeGrid';
-import NativeLabel from '../dataDisplay/paragraph/NativeLabel';
+import NativeIconButton from "./NativeIconButton";
+import NativeInput from "./NativeInput";
+import { nativeFilterOptions } from "../../helper/helper";
+import NativeChip from "../dataDisplay/NativeChip";
+import NativeFlatList from "../dataDisplay/NativeFlatList";
+import NativeIcon from "../dataDisplay/NativeIcon";
+import NativeLabel from "../dataDisplay/paragraph/NativeLabel";
+import NativeTypographyBody1 from "../dataDisplay/paragraph/NativeTypographyBody1";
+import NativeTypographyBody2 from "../dataDisplay/paragraph/NativeTypographyBody2";
+import NativeBox from "../layouts/NativeBox";
+import NativeGrid from "../layouts/NativeGrid";
 
 function NativeAutocomplete(props) {
   const theme = useTheme();
   const dimensions = useWindowDimensions();
 
+  // eslint-disable-next-line no-unused-vars
   const disableStatusBar = false;
+  // eslint-disable-next-line no-unused-vars
   const disableStatusBarPadding = false;
 
   const {
@@ -56,11 +60,12 @@ function NativeAutocomplete(props) {
     loading,
     freeSolo,
     _missMatch,
+    // eslint-disable-next-line no-unused-vars
     ...rest
   } = props;
   const animationTypeCalculated = Platform.select({
-    web: 'none',
-    default: 'slide',
+    default: "slide",
+    web    : "none",
   });
 
   let [filteredOptions, setFilteredOptions] = React.useState(options);
@@ -68,42 +73,45 @@ function NativeAutocomplete(props) {
   useEffect(() => {
     if (options) {
       let filteredOps = nativeFilterOptions(options, {
-        inputValue: _inputValue,
         getOptionLabel,
         getOptionValue,
+        inputValue: _inputValue,
         value,
       });
+
       setFilteredOptions(filteredOps);
     } else {
-      console.log('NO options found mount', options);
+      // -- console.log("NO options found mount", options);
     }
   }, [options]);
 
   useEffect(() => {
     if (options) {
       let filteredOps = nativeFilterOptions(options, {
-        inputValue: _inputValue,
         getOptionLabel,
         getOptionValue,
+        inputValue: _inputValue,
         value,
       });
+
       setFilteredOptions(filteredOps);
     } else {
-      console.log('NO options found input change', filteredOps);
+      // -- console.log("NO options found input change", filteredOps);
     }
   }, [_inputValue]);
 
   useEffect(() => {
     if (options) {
       let filteredOps = nativeFilterOptions(options, {
-        inputValue: _inputValue,
         getOptionLabel,
         getOptionValue,
+        inputValue: _inputValue,
         value,
       });
+
       setFilteredOptions(filteredOps);
     } else {
-      console.log('NO options found value change', options);
+      // -- console.log("NO options found value change", options);
     }
   }, [value]);
 
@@ -123,27 +131,28 @@ function NativeAutocomplete(props) {
 
   const getStyle = () => {
     const commonStyle = {
-      borderBottom: 1,
-      borderStyle: 'solid',
+      borderBottom     : 1,
       borderBottomWidth: 0.5,
-      marginBottom: 10,
+      borderStyle      : "solid",
+      marginBottom     : 10,
     };
-    const withValueStyle = {...commonStyle};
+    const withValueStyle = { ...commonStyle };
     const withoutValueStyle = {
       ...commonStyle,
+      marginBottom : 10,
       paddingBottom: 5,
-      marginBottom: 10,
     };
+
     if (checkValue()) {
       return withValueStyle;
     } else if (multiple) {
       return withoutValueStyle;
     } else {
-      return {marginBottom: 16};
+      return { marginBottom: 16 };
     }
   };
 
-  console.log('NATIVE ASYNC SELECT', props);
+  // -- console.log("NATIVE ASYNC SELECT", props);
   return (
     <>
       {/* View like input element with text */}
@@ -161,12 +170,13 @@ function NativeAutocomplete(props) {
             {checkValue() ? (
               <NativeLabel>{_topLabel}</NativeLabel>
             ) : (
-              <NativeTypographyBody2 style={{fontSize: 16, marginBottom: 8}}>
+              <NativeTypographyBody2 style={{ fontSize: 16, marginBottom: 8 }}>
                 {_topLabel}
               </NativeTypographyBody2>
             )}
+
             <NativeGrid>
-              <NativeBox gridProps={{gridSize: 10}}>
+              <NativeBox gridProps={{ gridSize: 10 }}>
                 {multiple && Array.isArray(value) ? (
                   <NativeFlatList
                     tableData={value}
@@ -182,13 +192,14 @@ function NativeAutocomplete(props) {
                               readOnly
                                 ? null
                                 : multiple
-                                ? () => {
-                                    let v = value?.filter(
-                                      (item, index) => index !== rowIndex,
+                                  ? () => {
+                                    let val = value?.filter(
+                                      (item, index) => index !== rowIndex
                                     );
-                                    onChange({}, v);
+
+                                    onChange({}, val);
                                   }
-                                : () => {}
+                                  : () => {}
                             }
                           />
                         </NativeBox>
@@ -197,7 +208,8 @@ function NativeAutocomplete(props) {
                   />
                 ) : freeSolo && !loading && _missMatch ? (
                   <NativeTypographyBody1>
-                    {getOptionLabel(value)}{' '}
+                    {getOptionLabel(value)}{" "}
+
                     <NativeIcon
                       name="info"
                       type="material-icons"
@@ -212,20 +224,19 @@ function NativeAutocomplete(props) {
                   </NativeTypographyBody1>
                 )}
               </NativeBox>
+
               <NativeBox
-                styleClasses={[
-                  UtilityClasses.FLEX.DIRECTION_ROW,
-                  UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_FLEX_END,
-                ]}
-                gridProps={{gridSize: 2}}>
+                styleClasses={[UtilityClasses.FLEX.DIRECTION_ROW, UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_FLEX_END]}
+                gridProps={{ gridSize: 2 }}>
                 {_getEndAdornment()}
               </NativeBox>
             </NativeGrid>
           </>
         ) : renderInput ? (
-          renderInput({readOnly: true, value: value, noAdornment: true})
+          renderInput({ noAdornment: true, readOnly: true, value: value })
         ) : null}
       </TouchableOpacity>
+
       {loading && <NativeLabel>Loading...</NativeLabel>}
 
       {/* View full screen modal for fields */}
@@ -245,12 +256,8 @@ function NativeAutocomplete(props) {
               pointerEvents="box-none">
               <NativeBox
                 styleClasses={[UtilityClasses?.PADDING?.P1]}
-                style={[
-                  styles.modalContent,
-                  {backgroundColor: theme.colors.surface},
-                  dimensions.width > 650 ? styles.modalContentBig : null,
-                ]}>
-                <NativeBox style={{alignItems: 'flex-end'}}>
+                style={[styles.modalContent, { backgroundColor: theme.colors.surface }, dimensions.width > 650 ? styles.modalContentBig : null]}>
+                <NativeBox style={{ alignItems: "flex-end" }}>
                   <NativeIconButton onClick={onClose}>
                     <NativeIcon
                       iconType="material-icons"
@@ -263,11 +270,13 @@ function NativeAutocomplete(props) {
                 <NativeInput
                   styleClasses={[UtilityClasses?.MARGIN?.MB4]}
                   value={_inputValue}
-                  handleChange={v => onInputChange({}, v)}
+                  handleChange={val => onInputChange({}, val)}
                   label="Search here"
                 />
+
                 <NativeFlatList
                   tableData={filteredOptions}
+                  // eslint-disable-next-line no-unused-vars
                   renderItem={(option, rowIndex) => {
                     return _optionComp ? (
                       <TouchableOpacity
@@ -285,14 +294,14 @@ function NativeAutocomplete(props) {
                               }
                               onChange(
                                 {},
-                                multiple ? [...(value || []), option] : option,
+                                multiple ? [...(value || []), option] : option
                               );
                             },
-                            option,
                             onClose,
+                            option,
                           },
                           option,
-                          {},
+                          {}
                         )}
                       </TouchableOpacity>
                     ) : (
@@ -302,17 +311,18 @@ function NativeAutocomplete(props) {
                             if (_formik) {
                               _formik.setFieldTouched(id, true, true);
                             }
-                            let v = multiple
+                            let val = multiple
                               ? [...(value || []), option]
                               : option;
-                            console.log('VALUE', v);
-                            onChange({}, v);
+
+                            // -- console.log("VALUE", v);
+                            onChange({}, val);
                           },
-                          option,
                           onClose,
+                          option,
                         },
                         option,
-                        {},
+                        {}
                       )
                     );
                   }}
@@ -326,33 +336,31 @@ function NativeAutocomplete(props) {
   );
 }
 const supportedOrientations = [
-  'portrait',
-  'portrait-upside-down',
-  'landscape',
-  'landscape-left',
-  'landscape-right',
+  "portrait",
+  "portrait-upside-down",
+  "landscape",
+  "landscape-left",
+  "landscape-right",
 ];
 
 const styles = StyleSheet.create({
-  modalRoot: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-    top: 110,
-  },
-  modalBackground: {
-    flex: 1,
-  },
-  modalContent: {
-    flex: 1,
-    width: '100%',
+  modalBackground: { flex: 1 },
+  modalContent   : {
+    flex : 1,
+    width: "100%",
   },
   modalContentBig: {
-    maxWidth: 600,
-    maxHeight: 800,
     borderRadius: 10,
-    width: '100%',
-    overflow: 'hidden',
+    maxHeight   : 800,
+    maxWidth    : 600,
+    overflow    : "hidden",
+    width       : "100%",
+  },
+  modalRoot: {
+    alignItems    : "center",
+    flex          : 1,
+    justifyContent: "center",
+    top           : 110,
   },
 });
 

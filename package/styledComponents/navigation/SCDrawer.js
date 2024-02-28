@@ -1,17 +1,7 @@
-import React from "react";
-import styled from "styled-components/native";
+// eslint-disable-next-line import/no-unresolved
+import { getEffectiveStyle } from "@wrappid/styles";
 import { Drawer } from "react-native-paper";
-import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
-// import {theme} from '../theme/theme';
-
-// const defaultStyleClasses = [StyledComponentsClasses.NAVIGATION.DRAWER];
+import styled from "styled-components/native";
 const defaultStyleClasses = [];
 
-export const SCDrawer = styled(Drawer.Section, {
-  // shouldForwardProp: prop => prop !== 'open',
-})((props) => ({
-  ...getEffectiveStyle([
-    ...defaultStyleClasses,
-    ...(props?.styleClasses || []),
-  ]),
-}));
+export const SCDrawer = styled(Drawer.Section, {})((props) => ({ ...getEffectiveStyle([...defaultStyleClasses, ...(props?.styleClasses || [])]) }));

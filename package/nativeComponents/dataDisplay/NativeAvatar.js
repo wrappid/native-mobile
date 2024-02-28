@@ -1,4 +1,3 @@
-import React from "react";
 import { SCAvatar } from "../../styledComponents/dataDisplay/SCAvatar";
 import { SCAvatarText } from "../../styledComponents/dataDisplay/SCAvatarText";
 
@@ -11,16 +10,16 @@ const AVATAR_XXLARGE = "avatarXXLarge";
 
 export const DEFAULT_AVATAR_SIZE = 50;
 export const AVATAR_SIZE_MAP = {
-  [AVATAR]: DEFAULT_AVATAR_SIZE,
-  [AVATAR_SMALL]: 25,
-  [AVATAR_MEDIUM]: 60,
-  [AVATAR_LARGE]: 70,
-  [AVATAR_XLARGE]: 80,
+  [AVATAR]        : DEFAULT_AVATAR_SIZE,
+  [AVATAR_LARGE]  : 70,
+  [AVATAR_MEDIUM] : 60,
+  [AVATAR_SMALL]  : 25,
+  [AVATAR_XLARGE] : 80,
   [AVATAR_XXLARGE]: 90,
 };
 
 export const destructureAvatarSizeFromStyles = (styleClasses) => {
-  console.log("nativeAvatar---", styleClasses);
+  // -- console.log("nativeAvatar---", styleClasses);
   let newStyleclasses = [];
   let size = AVATAR_SIZE_MAP.avatar;
 

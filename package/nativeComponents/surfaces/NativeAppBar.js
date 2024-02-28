@@ -1,4 +1,3 @@
-import React from "react";
 import { SCAppBar } from "../../styledComponents/surfaces/SCAppBar";
 
 export default function NativeAppBar(props) {

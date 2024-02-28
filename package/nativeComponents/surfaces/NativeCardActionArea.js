@@ -1,4 +1,3 @@
-import React from "react";
 
 import { SCCardActionArea } from "../../styledComponents/surfaces/SCCardActionArea";
 

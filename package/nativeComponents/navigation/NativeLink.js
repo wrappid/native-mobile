@@ -1,17 +1,23 @@
-import React, {isValidElement, useEffect, useState} from 'react';
-import {Linking, Pressable} from 'react-native';
-import NativeTypography from '../dataDisplay/NativeTypography';
-import {StyledComponentsClasses, UtilityClasses} from '@wrappid/styles';
-import {SCLink} from '../../styledComponents/navigation/SCLink';
+import React, { isValidElement, useEffect, useState } from "react";
+
+// eslint-disable-next-line import/no-unresolved
+import { StyledComponentsClasses, UtilityClasses } from "@wrappid/styles";
+// eslint-disable-next-line import/namespace
+import { Linking, Pressable } from "react-native";
+
+import { SCLink } from "../../styledComponents/navigation/SCLink";
+import NativeTypography from "../dataDisplay/NativeTypography";
 
 export default function NativeLink(props) {
-  const {title, href, titlePlacement = 'top', onClick, ...restProps} = props;
+  // eslint-disable-next-line no-unused-vars
+  const { title, href, titlePlacement = "top", onClick, ...restProps } = props;
   const [supported, setSpecialLink] = useState(false);
 
   const checkUrl = async () => {
     if (href) {
       // Checking if the link is supported for links with custom URL scheme.
       const isSupported = await Linking.canOpenURL(href);
+
       setSpecialLink(isSupported);
     }
   };
@@ -26,18 +32,14 @@ export default function NativeLink(props) {
     if (href) await Linking.openURL(href);
   };
 
-  const linkStyles = [
-    StyledComponentsClasses.NAVIGATION.LINK,
-    UtilityClasses?.TEXT?.TEXT_WEIGHT_BOLD,
-  ];
-
+  const linkStyles = [StyledComponentsClasses.NAVIGATION.LINK, UtilityClasses?.TEXT?.TEXT_WEIGHT_BOLD];
 
   const getLinkString = () => {
     /**
      * used because sc link or react router native link do not take
      * string as child should be wrapped with text component
      */
-    if (typeof restProps.children === 'string') {
+    if (typeof restProps.children === "string") {
       return (
         <NativeTypography
           styleClasses={[...linkStyles, restProps.styleClasses]}>
@@ -53,10 +55,7 @@ export default function NativeLink(props) {
           if (isValidElement(child)) {
             return React.cloneElement(child, {
               ...(child.props || {}),
-              styleClasses: [
-                ...(child?.props?.styleClasses | []),
-                ...linkStyles,
-              ],
+              styleClasses: [...(child?.props?.styleClasses | []), ...linkStyles],
             });
           } else {
             return child;
@@ -65,10 +64,7 @@ export default function NativeLink(props) {
       } else if (isValidElement(restProps.children)) {
         return React.cloneElement(restProps.children, {
           ...(restProps?.children?.props || {}),
-          styleClasses: [
-            ...(restProps.children?.props?.styleClasses || []),
-            ...linkStyles,
-          ],
+          styleClasses: [...(restProps.children?.props?.styleClasses || []), ...linkStyles],
         });
       } else {
         return restProps.children;

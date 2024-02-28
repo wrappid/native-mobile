@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components/native";
-import { Chip } from "react-native-paper";
+// eslint-disable-next-line import/no-unresolved
 import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
+import { Chip } from "react-native-paper";
+import styled from "styled-components/native";
 
 const defaultStyleClasses = [StyledComponentsClasses.DATA_DISPLAY.CHIP];
 
@@ -10,10 +10,7 @@ export const SCChip = styled(
   {}
 )(({ props }) => ({
   backgroundColor: "rgba(0,0,0,0.08)",
-  color: "black",
-  borderRadius: 16,
-  ...getEffectiveStyle([
-    ...defaultStyleClasses,
-    ...(props?.styleClasses || []),
-  ]),
+  borderRadius   : 16,
+  color          : "black",
+  ...getEffectiveStyle([...defaultStyleClasses, ...(props?.styleClasses || [])]),
 }));

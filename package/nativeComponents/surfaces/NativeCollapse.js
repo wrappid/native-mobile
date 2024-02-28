@@ -1,4 +1,3 @@
-import React from "react";
 
 import { SCAccordion as SCCollapse } from "../../styledComponents/surfaces/SCAccordion";
 

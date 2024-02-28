@@ -1,4 +1,3 @@
-import React from "react";
 import { SCToolbar } from "../../styledComponents/surfaces/SCToolbar";
 
 export default function NativeToolbar(props) {

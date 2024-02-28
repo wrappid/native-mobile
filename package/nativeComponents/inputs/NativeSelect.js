@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
 import { SCSelect } from "../../styledComponents/inputs/SCSelect";
 
 export default function NativeSelect(props) {

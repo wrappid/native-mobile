@@ -1,8 +1,7 @@
-import React from 'react';
-import NativeBox from '../layouts/NativeBox';
+import NativeBox from "../layouts/NativeBox";
 
 export default function NativeTabPanel(props) {
-  const {children, value, index, ...other} = props;
+  const { children, value, index, ...other } = props;
 
   return (
     <NativeBox

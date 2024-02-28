@@ -1,5 +1,5 @@
-import React from "react";
 import { useRef } from "react";
+
 import { SCRichTextEditor } from "../../../styledComponents/inputs/custom/SCRichTextEditor";
 import NativeInputLabel from "../NativeInputLabel";
 
@@ -17,14 +17,15 @@ export default function NativeRichTextEditor(props) {
       >
         {props.label}
       </NativeInputLabel>
+
       <SCRichTextEditor
         id={props.id}
         value={
           props.formik?.values && props.formik?.values[props.id]
             ? props.formik?.values[props.id]
             : props.value
-            ? props.value
-            : ""
+              ? props.value
+              : ""
         }
         onChange={props.onChange}
         ref={props.ref || ref}
@@ -32,9 +33,9 @@ export default function NativeRichTextEditor(props) {
         onBlur={
           props.onBlur
             ? props.onBlur
-            : (v) => {
-                props.formik?.setFieldValue(props.id, v);
-              }
+            : (val) => {
+              props.formik?.setFieldValue(props.id, val);
+            }
         }
       />
     </>

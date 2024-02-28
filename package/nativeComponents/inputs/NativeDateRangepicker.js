@@ -1,17 +1,21 @@
 import React from "react";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import NativeBox from "../layouts/NativeBox";
-import { SCDatePicker } from "../../styledComponents/inputs/SCDatePicker";
+
+// eslint-disable-next-line import/no-unresolved
 import moment from "moment";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
+// eslint-disable-next-line import/named
 import { NativeInput } from "./NativeInput";
+import { SCDatePicker } from "../../styledComponents/inputs/SCDatePicker";
 import { SCInput } from "../../styledComponents/inputs/SCInput";
+import NativeBox from "../layouts/NativeBox";
 
 export default function NativeDateRangepicker(props) {
   const { value, onChange, ...restProps } = props;
 
   const [range, setRange] = React.useState({
+    endDate  : value?.endDate ? new Date(value.endDate) : undefined,
     startDate: value?.startDate ? new Date(value.startDate) : undefined,
-    endDate: value?.endDate ? new Date(value.endDate) : undefined,
   });
   const [open, setOpen] = React.useState(false);
 
@@ -22,12 +26,12 @@ export default function NativeDateRangepicker(props) {
   const onConfirm = React.useCallback(
     ({ startDate, endDate }) => {
       setOpen(false);
-      setRange({ startDate, endDate });
+      setRange({ endDate, startDate });
       onChange({
+        endDate  : endDate ? moment(endDate).format("YYYY-MM-DD") : undefined,
         startDate: startDate
           ? moment(startDate).format("YYYY-MM-DD")
           : undefined,
-        endDate: endDate ? moment(endDate).format("YYYY-MM-DD") : undefined,
       });
     },
     [setOpen, setRange]
@@ -54,6 +58,7 @@ export default function NativeDateRangepicker(props) {
             />
           }
         />
+
         <SCDatePicker
           {...restProps}
           locale="en"
