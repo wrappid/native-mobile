@@ -1,4 +1,3 @@
-import React from "react";
 import { SCImage } from "../../styledComponents/dataDisplay/SCImage";
 
 export default function NativeImage(props) {
@@ -6,7 +5,7 @@ export default function NativeImage(props) {
 
   return (
     <SCImage
-      style={height&&width?{ height, width }:{}}
+      style={height && width ? { height, width } : {}}
       source={
         src
           ? typeof src === "string" && src.includes("http")

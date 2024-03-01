@@ -1,5 +1,4 @@
-import React from 'react';
-import NativeTypography from '../NativeTypography';
+import NativeTypography from "../NativeTypography";
 
 export default function NativeH(props) {
   //DONT use this directly instead use NativeH1 to NativeH6

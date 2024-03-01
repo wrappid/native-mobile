@@ -1,4 +1,3 @@
-import React from "react";
 import { SCPaper } from "../../styledComponents/surfaces/SCPaper";
 
 export default function NativePaper(props) {

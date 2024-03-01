@@ -1,23 +1,22 @@
-// import DeviceInfo from 'react-native-device-info';
-
+/* eslint-disable etc/no-commented-out-code */
 export const getNativeDeviceDetails = () => {
-  let deviceOS = ""; // DeviceInfo.getBaseOs();
-  let deviceBrand = ""; // DeviceInfo.getBrand();
-  let device = ""; // DeviceInfo.getDevice();
-  let deviceName = ""; // DeviceInfo.getDeviceName();
-  let deviceId = ""; // DeviceInfo.getDeviceId();
-  let deviceOSVersion = ""; // DeviceInfo.getVersion();
-  let ipAdd = ""; // DeviceInfo.getIpAddress();
-  let model = ""; // DeviceInfo.getModel();
+  let deviceOS = ""; // DeviceInfo.getBaseOs()
+  let deviceBrand = ""; // DeviceInfo.getBrand()
+  let device = ""; // DeviceInfo.getDevice()
+  let deviceName = ""; // DeviceInfo.getDeviceName()
+  let deviceId = ""; // DeviceInfo.getDeviceId()
+  let deviceOSVersion = ""; // DeviceInfo.getVersion()
+  let ipAdd = ""; // DeviceInfo.getIpAddress()
+  let model = ""; // DeviceInfo.getModel()
 
   return {
-    name: device,
-    deviceId: deviceId,
+    brand     : deviceBrand,
+    deviceId  : deviceId,
     deviceName: deviceName,
-    brand: deviceBrand,
-    os: deviceOS,
-    osVersion: deviceOSVersion,
-    ipAdd: ipAdd,
-    model: model,
+    ipAdd     : ipAdd,
+    model     : model,
+    name      : device,
+    os        : deviceOS,
+    osVersion : deviceOSVersion,
   };
 };

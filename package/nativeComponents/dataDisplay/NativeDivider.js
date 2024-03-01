@@ -1,16 +1,16 @@
-import React from 'react';
-import {SCDivider} from '../../styledComponents/dataDisplay/SCDivider.js';
-import {UtilityClasses} from '@wrappid/styles';
+import { SCDivider } from "../../styledComponents/dataDisplay/SCDivider.js";
 
 export default function NativeDivider(props) {
-  const {orientation, variant, styleClasses, style, ...restProps} = props;
+  // eslint-disable-next-line no-unused-vars
+  const { orientation, variant, styleClasses, style, ...restProps } = props;
 
   const getVariantProps = () => {
     let variantProps = {};
-    if (variant === 'inset') {
-      variantProps['leftInset'] = true;
-    } else if (variant === 'middle') {
-      variantProps['horizontalInset'] = true;
+
+    if (variant === "inset") {
+      variantProps["leftInset"] = true;
+    } else if (variant === "middle") {
+      variantProps["horizontalInset"] = true;
     }
     return variantProps;
   };
@@ -20,12 +20,12 @@ export default function NativeDivider(props) {
       {...restProps}
       {...getVariantProps}
       style={
-        orientation === 'vertical'
+        orientation === "vertical"
           ? {
-              ...(style | {}),
-              padding: 0.5,
-              height: '100%',
-            }
+            ...(style | {}),
+            height : "100%",
+            padding: 0.5,
+          }
           : style
       }
     />

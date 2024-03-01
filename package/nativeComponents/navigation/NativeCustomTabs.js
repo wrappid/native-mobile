@@ -1,11 +1,13 @@
 import React from "react";
-import { nativeUseLocation } from "../helper/routerHelper";
+
 import NativeTab from "./NativeTab";
 import NativeTabs from "./NativeTabs";
+import { nativeUseLocation } from "../helper/routerHelper";
 
 export default function NativeCustomTabs(props) {
   const location = nativeUseLocation();
   const { tabsContent, preHandleChangeHook, postHandleChangeHook } = props;
+  // eslint-disable-next-line no-unused-vars
   const [tabValue, setTabValue] = React.useState(tabsContent[0]?.id || 0);
 
   React.useEffect(() => {
@@ -21,11 +23,13 @@ export default function NativeCustomTabs(props) {
     }
   }, [tabsContent, location]);
 
-  const handleChange = (e, value) => {
-    preHandleChangeHook && preHandleChangeHook(e, value);
+  // eslint-disable-next-line no-unused-vars
+  const handleChange = (ele, value) => {
+    preHandleChangeHook && preHandleChangeHook(ele, value);
     setTabValue(value);
-    postHandleChangeHook && postHandleChangeHook(e, value);
+    postHandleChangeHook && postHandleChangeHook(ele, value);
   };
+
   return (
     <NativeTabs>
       {tabsContent?.map((tabContent, tabIndex) => {

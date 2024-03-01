@@ -1,4 +1,3 @@
-import React from "react";
 import { SCCardMedia } from "../../styledComponents/surfaces/SCCardMedia";
 
 export default function NativeCardMedia(props) {

@@ -1,8 +1,11 @@
-import React, { useState } from "react";
-import NativeSpan from "../../layouts/NativeSpan";
-import NativeTypography from "../NativeTypography";
-import NativeLink from "../../navigation/NativeLink";
+import { useState } from "react";
+
+// eslint-disable-next-line import/no-unresolved
 import { UtilityClasses } from "@wrappid/styles";
+
+import NativeSpan from "../../layouts/NativeSpan";
+import NativeLink from "../../navigation/NativeLink";
+import NativeTypography from "../NativeTypography";
 
 export default function NativeTypographyCaption(props) {
   const { hideSeeMore = false, limitChars, styleClasses } = props;
@@ -21,6 +24,7 @@ export default function NativeTypographyCaption(props) {
             : props?.children.slice(0, limitChars) + "..."
           : props?.children}
       </NativeSpan>
+
       {!hideSeeMore && limitChars < props?.children?.length && (
         <NativeLink
           styleClasses={[UtilityClasses.MARGIN.ML1]}

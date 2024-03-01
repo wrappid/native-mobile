@@ -1,5 +1,6 @@
-import React from "react";
 import { useState } from "react";
+
+// eslint-disable-next-line import/named
 import { NativeInput } from "./NativeInput";
 import { SCInput } from "../../styledComponents/inputs/SCInput";
 

@@ -1,4 +1,3 @@
-import React from "react";
 import NativeTab from "./NativeTab";
 import NativeTabs from "./NativeTabs";
 import NativeFlatList from "../dataDisplay/NativeFlatList";

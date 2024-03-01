@@ -1,5 +1,5 @@
-import React from "react";
 import { useState } from "react";
+
 import NativeInput from "./NativeInput";
 import { SCInput } from "../../styledComponents/inputs/SCInput";
 

@@ -1,12 +1,14 @@
-import React, {useState, useEffect} from 'react';
-// https://www.npmjs.com/package/@react-native-voice/voice?activeTab=readme#api
-import Voice from '@react-native-voice/voice';
-import NativeIconButton from '../NativeIconButton';
-import NativeIcon from '../../dataDisplay/NativeIcon';
-import NativeFullModal from '../../utils/NativeFullModal';
-import NativeBox from '../../layouts/NativeBox';
-import NativeTypographyBody1 from '../../dataDisplay/paragraph/NativeTypographyBody1';
-import {UtilityClasses} from '@wrappid/styles';
+import { useState, useEffect } from "react";
+
+import Voice from "@react-native-voice/voice";
+// eslint-disable-next-line import/no-unresolved
+import { UtilityClasses } from "@wrappid/styles";
+
+import NativeIcon from "../../dataDisplay/NativeIcon";
+import NativeTypographyBody1 from "../../dataDisplay/paragraph/NativeTypographyBody1";
+import NativeBox from "../../layouts/NativeBox";
+import NativeFullModal from "../../utils/NativeFullModal";
+import NativeIconButton from "../NativeIconButton";
 
 const NativeSpeechToText = props => {
   const {
@@ -32,9 +34,12 @@ const NativeSpeechToText = props => {
     children,
   } = props;
 
-  const [pitch, setPitch] = useState('');
+  const [pitch, setPitch] = useState("");
   const [error, setError] = useState(null);
+
+  // eslint-disable-next-line no-unused-vars
   const [end, setEnd] = useState(false);
+
   const [started, setStarted] = useState(false);
   const [results, setResults] = useState([]);
   const [partialResults, setPartialResults] = useState([]);
@@ -58,98 +63,93 @@ const NativeSpeechToText = props => {
 
   useEffect(() => {
     if (results && results?.length > 0) {
-      console.log('DYNAMIC FORM CALL', results);
       generateCoreForm([...results]);
     }
   }, [results]);
 
-  const onSpeechStart = e => {
+  const onSpeechStart = event => {
     //Invoked when .start() is called without error
-    console.log('onSpeechStart: ', e);
-    if (afterSpeechStart && typeof afterSpeechStart === 'function') {
-      afterSpeechStart(e);
+    if (afterSpeechStart && typeof afterSpeechStart === "function") {
+      afterSpeechStart(event);
     }
   };
 
-  const onSpeechEnd = async e => {
+  const onSpeechEnd = async event => {
     //Invoked when SpeechRecognizer stops recognition
-    console.log('onSpeechEnd: ', e);
-    if (beforeSpeechEnd && typeof beforeSpeechEnd === 'function') {
-      beforeSpeechStart(e);
+    if (beforeSpeechEnd && typeof beforeSpeechEnd === "function") {
+      beforeSpeechStart(event);
     }
 
     setEnd(true);
     setStarted(false);
-    if (afterSpeechEnd && typeof afterSpeechEnd === 'function') {
-      afterSpeechStart(e);
+    if (afterSpeechEnd && typeof afterSpeechEnd === "function") {
+      afterSpeechStart(event);
     }
   };
 
-  const onSpeechError = e => {
+  const onSpeechError = event => {
     //Invoked when an error occurs.
-    console.log('onSpeechError: ', e);
-    if (beforeSpeechError && typeof beforeSpeechError === 'function') {
-      beforeSpeechError(e);
+    if (beforeSpeechError && typeof beforeSpeechError === "function") {
+      beforeSpeechError(event);
     }
-    setError(JSON.stringify(e.error));
+    setError(JSON.stringify(event.error));
     setEnd(false);
-    if (afterSpeechError && typeof afterSpeechError === 'function') {
-      afterSpeechError(e);
+    if (afterSpeechError && typeof afterSpeechError === "function") {
+      afterSpeechError(event);
     }
   };
 
-  const onSpeechResults = e => {
+  const onSpeechResults = event => {
     //Invoked when SpeechRecognizer is finished recognizing
-    console.log('onSpeechResults: ', e);
-    let value = e.value;
-    if (beforeSpeechResults && typeof beforeSpeechResults === 'function') {
+    let value = event.value;
+
+    if (beforeSpeechResults && typeof beforeSpeechResults === "function") {
       value = beforeSpeechResults(value);
     }
     setResults(value);
-    if (afterSpeechResults && typeof afterSpeechResults === 'function') {
+    if (afterSpeechResults && typeof afterSpeechResults === "function") {
       value = afterSpeechResults(value);
     }
   };
 
-  const onSpeechPartialResults = e => {
+  const onSpeechPartialResults = event => {
     //Invoked when any results are computed
-    console.log('onSpeechPartialResults: ', e);
     if (
       beforeSpeechPartialResults &&
-      typeof beforeSpeechPartialResults === 'function'
+      typeof beforeSpeechPartialResults === "function"
     ) {
-      beforeSpeechPartialResults(e.value);
+      beforeSpeechPartialResults(event.value);
     }
-    setPartialResults(e.value);
+    setPartialResults(event.value);
     if (
       afterSpeechPartialResults &&
-      typeof afterSpeechPartialResults === 'function'
+      typeof afterSpeechPartialResults === "function"
     ) {
-      afterSpeechPartialResults(e.value);
+      afterSpeechPartialResults(event.value);
     }
   };
 
-  const onSpeechVolumeChanged = e => {
+  const onSpeechVolumeChanged = event => {
     //Invoked when pitch that is recognized changed
-    // console.log('onSpeechVolumeChanged: ', e);
+    // -- console.log('onSpeechVolumeChanged: ', event);
     if (
       beforeSpeechVolumeChange &&
-      typeof beforeSpeechVolumeChange === 'function'
+      typeof beforeSpeechVolumeChange === "function"
     ) {
-      beforeSpeechVolumeChange(e.value);
+      beforeSpeechVolumeChange(event.value);
     }
-    setPitch(e.value);
+    setPitch(event.value);
     if (
       afterSpeechVolumeChange &&
-      typeof afterSpeechVolumeChange === 'function'
+      typeof afterSpeechVolumeChange === "function"
     ) {
-      afterSpeechVolumeChange(e.value);
+      afterSpeechVolumeChange(event.value);
     }
   };
 
   const startRecognizing = async () => {
     //Starts listening for speech for a specific locale
-    console.log('Started');
+    // -- console.log("Started");
     Voice.onSpeechStart = onSpeechStart;
     Voice.onSpeechEnd = onSpeechEnd;
     Voice.onSpeechError = onSpeechError;
@@ -160,45 +160,46 @@ const NativeSpeechToText = props => {
       setModal(true);
       setEnd(false);
       setStarted(true);
-      setPitch('');
+      setPitch("");
       setError(null);
       setResults([]);
       setPartialResults([]);
-      if (beforeSpeechStart && typeof beforeSpeechStart === 'function') {
+      if (beforeSpeechStart && typeof beforeSpeechStart === "function") {
         beforeSpeechStart();
       }
-      await Voice.start(element?.speechToText?.locale || 'en-US');
-    } catch (e) {
-      console.error(e);
+      await Voice.start(element?.speechToText?.locale || "en-US");
+    } catch (event) {
+      // -- console.error(event);
     }
   };
 
   const stopRecognizing = async () => {
-    console.log('Stopped');
+    // -- console.log("Stopped");
     //Stops listening for speech
     try {
       setStarted(false);
       setEnd(false);
       await Voice.stop();
-    } catch (e) {
-      console.error(e);
+    } catch (event) {
+      // -- console.error(event);
     }
   };
 
+  // eslint-disable-next-line no-unused-vars
   const cancelRecognizing = async () => {
     //Cancels the speech recognition
     try {
       await Voice.cancel();
-    } catch (e) {
-      console.error(e);
+    } catch (event) {
+      // -- console.error(event);
     }
   };
 
   const destroyRecognizer = async () => {
     //Destroys the current SpeechRecognizer instance
-    console.log('Destroyed');
+    // -- console.log("Destroyed");
     setModal(false);
-    setPitch('');
+    setPitch("");
     setError(null);
     setStarted(false);
     setResults([]);
@@ -206,8 +207,8 @@ const NativeSpeechToText = props => {
     setEnd(false);
     try {
       await Voice.destroy();
-    } catch (e) {
-      console.error(e);
+    } catch (event) {
+      // -- console.error(event);
     }
   };
 
@@ -224,46 +225,47 @@ const NativeSpeechToText = props => {
           type="material-icons"
         />
       </NativeIconButton>
+
       <NativeFullModal
         open={open}
         onClose={destroyRecognizer}
         top={50}
         styleClasses={
-          !mode || mode === 'dark'
-            ? [
-                UtilityClasses?.BG?.BG_BLACK,
-                UtilityClasses?.OPACITY?.OPACITY_75,
-              ]
+          !mode || mode === "dark"
+            ? [UtilityClasses?.BG?.BG_BLACK, UtilityClasses?.OPACITY?.OPACITY_75]
             : [UtilityClasses?.BG?.BG_WHITE]
         }
         searchBox={false}>
         <NativeBox
-          style={{flex: 1}}
+          style={{ flex: 1 }}
           styleClasses={[UtilityClasses?.HEIGHT?.H_100]}>
           <NativeBox
             styleClasses={[UtilityClasses?.HEIGHT?.H_25]}
-            style={{flex: 2}}>
+            style={{ flex: 2 }}>
             {/* {started && !end && ( */}
             <NativeBox
               styleClasses={[UtilityClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER]}>
               <NativeTypographyBody1
                 styleClasses={[UtilityClasses?.TEXT?.TEXT_CENTER]}>
                 {error
-                  ? 'Try Again'
+                  ? "Try Again"
                   : started
-                  ? 'Listening...'
-                  : 'Tap to speak...'}
+                    ? "Listening..."
+                    : "Tap to speak..."}
               </NativeTypographyBody1>
+
               <NativeTypographyBody1
                 styleClasses={[UtilityClasses?.TEXT?.TEXT_CENTER]}>
                 {pitch}
               </NativeTypographyBody1>
+
               {error && (
                 <NativeTypographyBody1
                   styleClasses={[UtilityClasses?.TEXT?.TEXT_CENTER]}>
                   {error}
                 </NativeTypographyBody1>
               )}
+
               <NativeIconButton
                 size="large"
                 onClick={!started ? startRecognizing : stopRecognizing}>
@@ -271,10 +273,11 @@ const NativeSpeechToText = props => {
                   styleClasses={[UtilityClasses?.COLOR?.TEXT_PRIMARY]}
                   size="large"
                   childrenFlag={true}
-                  name={!started ? 'mic' : 'stop'}
+                  name={!started ? "mic" : "stop"}
                   type="material-icons"
                 />
               </NativeIconButton>
+
               <NativeBox>
                 {partialResults?.map((result, index) => {
                   return (
@@ -290,19 +293,17 @@ const NativeSpeechToText = props => {
 
             {results?.map((result, index) => (
               <NativeTypographyBody1
-                key={'results-' + index}
+                key={"results-" + index}
                 styleClasses={[UtilityClasses?.TEXT?.TEXT_CENTER]}>
                 {result}
               </NativeTypographyBody1>
             ))}
           </NativeBox>
+
           {
             <NativeBox
-              styleClasses={[
-                UtilityClasses?.HEIGHT?.H_75,
-                UtilityClasses?.PADDING?.P1,
-              ]}
-              style={{flex: 4}}>
+              styleClasses={[UtilityClasses?.HEIGHT?.H_75, UtilityClasses?.PADDING?.P1]}
+              style={{ flex: 4 }}>
               {children}
             </NativeBox>
           }

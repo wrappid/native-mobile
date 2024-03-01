@@ -1,11 +1,15 @@
-import NativeFullModal from '../utils/NativeFullModal';
-import React from 'react';
+import NativeFullModal from "../utils/NativeFullModal";
 
 function NativeDataTableDetailsPaneContainer(props) {
-  const {onClose, open, ...rest} = props;
+  // eslint-disable-next-line no-unused-vars
+  const { onClose, open, ...rest } = props;
 
   return (
-    <NativeFullModal noClose={true} open={open} onClose={onClose} searchBox={false}>
+    <NativeFullModal
+      noClose={true}
+      open={open}
+      onClose={onClose}
+      searchBox={false}>
       {props.children}
     </NativeFullModal>
   );

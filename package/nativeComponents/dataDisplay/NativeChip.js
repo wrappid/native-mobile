@@ -1,10 +1,14 @@
-import React from 'react';
-import {variantMap} from '../../helper/componentUtil';
-import {SCChip} from '../../styledComponents/dataDisplay/SCChip';
-import {useTheme} from 'react-native-paper';
+import React from "react";
+
+import { useTheme } from "react-native-paper";
+
+import { variantMap } from "../../helper/componentUtil";
+import { SCChip } from "../../styledComponents/dataDisplay/SCChip";
 
 export default function NativeChip(props) {
-  const {label, variant, onClick, icon, styleClasses, avatar, ...restProps} =
+  const {
+    label, variant, onClick, icon, styleClasses, avatar, ...restProps
+  } =
     props;
 
   const theme = useTheme();
@@ -24,10 +28,7 @@ export default function NativeChip(props) {
     if (React.isValidElement(avatar)) {
       return React.cloneElement(avatar, {
         ...avatarProps,
-        styleClasses: [
-          ...(avatar.props.styleClasses || styleClasses || []),
-          'avatarSmall',
-        ],
+        styleClasses: [...(avatar.props.styleClasses || styleClasses || []), "avatarSmall"],
       });
     } else {
       return null;

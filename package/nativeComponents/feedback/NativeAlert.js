@@ -1,4 +1,3 @@
-import React from "react";
 import { SCAlert } from "../../styledComponents/feedback/SCAlert";
 
 export default function NativeAlert(props) {

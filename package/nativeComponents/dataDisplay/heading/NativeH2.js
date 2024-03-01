@@ -1,5 +1,4 @@
-import React from 'react';
-import NativeH from './NativeH';
+import NativeH from "./NativeH";
 
 export default function NativeH2(props) {
   return (

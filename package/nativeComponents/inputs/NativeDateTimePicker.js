@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import NativeBox from "../layouts/NativeBox";
-import { SCInput } from "../../styledComponents/inputs/SCInput";
-import { SCDatePicker } from "../../styledComponents/inputs/SCDatePicker";
-import { SCTimePicker } from "../../styledComponents/inputs/SCTimePicker";
 
+// eslint-disable-next-line import/no-unresolved
 import moment from "moment";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
+// eslint-disable-next-line import/named
 import { NativeInput } from "./NativeInput";
+import { SCDatePicker } from "../../styledComponents/inputs/SCDatePicker";
+import { SCInput } from "../../styledComponents/inputs/SCInput";
+import { SCTimePicker } from "../../styledComponents/inputs/SCTimePicker";
+import NativeBox from "../layouts/NativeBox";
 
 export default function NativeDateTimePicker(props) {
   const {
@@ -15,6 +18,7 @@ export default function NativeDateTimePicker(props) {
     id,
     formik,
     value,
+    // eslint-disable-next-line no-unused-vars
     label = "Pick Date Time",
     ...restProps
   } = props;
@@ -59,8 +63,6 @@ export default function NativeDateTimePicker(props) {
   const onConfirmTime = React.useCallback(
     (params) => {
       setVisibleTime(false);
-      //   formik?.setFieldValue(id, hours + ':' + minutes);
-      //   onChange(hours + ':' + minutes);
       setTime(params?.hours + ":" + params?.minutes);
     },
     [setVisibleTime]
@@ -83,6 +85,7 @@ export default function NativeDateTimePicker(props) {
             />
           }
         />
+
         <SCDatePicker
           {...restProps}
           locale="en"
@@ -92,6 +95,7 @@ export default function NativeDateTimePicker(props) {
           date={date}
           onConfirm={onConfirmDate}
         />
+
         <SCTimePicker
           {...restProps}
           visible={visibleTime}

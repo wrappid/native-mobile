@@ -1,24 +1,26 @@
 import React from "react";
-import NativeFormHelperText from "./NativeFormHelperText";
+
+// eslint-disable-next-line import/no-unresolved
 import { UtilityClasses } from "@wrappid/styles";
-import NativeBox from "../layouts/NativeBox";
-import NativeLabel from "../dataDisplay/paragraph/NativeLabel";
-import NativeGrid from "../layouts/NativeGrid";
+// eslint-disable-next-line import/no-unresolved
 import moment from "moment";
+
+import NativeFormHelperText from "./NativeFormHelperText";
 import NativeIconButton from "./NativeIconButton";
-import NativeIcon from "../dataDisplay/NativeIcon";
 import NativeTimePicker from "./NativeTimePicker";
+import NativeIcon from "../dataDisplay/NativeIcon";
+import NativeLabel from "../dataDisplay/paragraph/NativeLabel";
+import NativeBox from "../layouts/NativeBox";
+import NativeGrid from "../layouts/NativeGrid";
 
 export default function NativeMultiTimeRangePicker(props) {
-  const { id, label, onChange, value, formik, ampm } = props;
+  const { label, value, formik } = props;
   const [timeRanges, setTimeRanges] = React.useState([
     {
+      endTime  : null,
       startTime: null,
-      endTime: null,
     },
   ]);
-
-  // console.log("Timeranges", timeRanges, value);
 
   React.useEffect(() => {
     if (value && Array.isArray(value)) {
@@ -27,80 +29,77 @@ export default function NativeMultiTimeRangePicker(props) {
   }, []);
 
   const addRange = () => {
-    var x = [...timeRanges];
-    x.push({
+    let timeRangesArr = [...timeRanges];
+
+    timeRangesArr.push({
+      endTime  : null,
       startTime: null,
-      endTime: null,
     });
-    console.log();
-    setTimeRanges(x);
+    setTimeRanges(timeRangesArr);
   };
 
-  const deleteRange = (i) => {
-    var x = [...timeRanges];
-    let y = x.slice(0, i).concat(x.slice(i + 1));
-    setTimeRanges(y);
+  const deleteRange = (index) => {
+    let timeRangesArr = [...timeRanges];
+    let val = timeRangesArr.slice(0, index).concat(timeRangesArr.slice(index + 1));
+
+    setTimeRanges(val);
   };
 
-  const _handleChange = (i, v, type) => {
-    var x = [...timeRanges];
-    x[i][type] = v.format("LLL");
-    formik.setFieldValue(props.id, x);
+  const _handleChange = (index, event, type) => {
+    let timeRangesArr = [...timeRanges];
+
+    timeRangesArr[index][type] = event.format("LLL");
+    formik.setFieldValue(props.id, timeRangesArr);
   };
 
-  // console.log("END VALUE", id, spValue, value);
+  // // -- console.log("END VALUE", id, spValue, value);
 
   return (
     <NativeBox>
       <NativeLabel>{label}</NativeLabel>
-      {timeRanges.map((timeRange, i) => (
-        <NativeGrid>
+
+      {timeRanges.map((timeRange, index) => (
+        <NativeGrid key={`timeRange-${index}`}>
           <NativeTimePicker
             readOnly={props.readOnly}
-            gridProps={{
-              gridSize: 5,
-            }}
+            gridProps={{ gridSize: 5 }}
             label={props.startTimeLabel ? props.startTimeLabel : "Start Time"}
             inputFormat={props.ampm ? "hh:mm" : "HH:MM"}
             ampm={props.ampm ? true : false}
             value={timeRange.startTime ? moment(timeRange.startTime) : null}
-            onChange={(v) => {
-              _handleChange(i, v, "startTime");
+            onChange={(event) => {
+              _handleChange(index, event, "startTime");
             }}
             touched={props.touched}
             error={props.error}
           />
+
           <NativeTimePicker
             readOnly={props.readOnly}
-            gridProps={{
-              gridSize: 5,
-            }}
+            gridProps={{ gridSize: 5 }}
             label={props.endTimeLabel ? props.endTimeLabel : "End Time"}
             inputFormat={props.ampm ? "hh:mm" : "HH:MM"}
             ampm={props.ampm ? true : false}
             value={timeRange.endTime ? moment(timeRange.endTime) : null}
-            onChange={(v) => {
-              _handleChange(i, v, "endTime");
+            onChange={(event) => {
+              _handleChange(index, event, "endTime");
             }}
             touched={props.touched}
             error={props.error}
           />
-          {i < 1 ? (
+
+          {index < 1 ? (
             <NativeIconButton
-              gridProps={{
-                gridSize: 2,
-              }}
+              gridProps={{ gridSize: 2 }}
               onClick={addRange}
             >
               <NativeIcon>add</NativeIcon>
             </NativeIconButton>
           ) : (
             <NativeIconButton
-              gridProps={{
-                gridSize: 2,
-              }}
+              gridProps={{ gridSize: 2 }}
               onClick={() => {
-                deleteRange(i);
+                deleteRange(index);
               }}
             >
               <NativeIcon>delete_outline</NativeIcon>
@@ -108,6 +107,7 @@ export default function NativeMultiTimeRangePicker(props) {
           )}
         </NativeGrid>
       ))}
+
       <NativeFormHelperText styleClasses={[UtilityClasses.LAYOUT.NO_MARGIN_P]}>
         {props.helperText}
       </NativeFormHelperText>

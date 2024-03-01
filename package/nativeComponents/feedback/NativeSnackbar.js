@@ -1,4 +1,3 @@
-import React from "react";
 import { SCSnackbar } from "../../styledComponents/feedback/SCSnackbar";
 
 export default function NativeSnackbar(props) {

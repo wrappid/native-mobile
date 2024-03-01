@@ -1,12 +1,17 @@
-import React, {useRef, useState} from 'react';
-import {TouchableOpacity} from 'react-native';
-import NativeChip from '../../dataDisplay/NativeChip';
-import NativeTypographyBody1 from '../../dataDisplay/paragraph/NativeTypographyBody1';
-import NativeFlatList from '../../dataDisplay/NativeFlatList';
-import NativeFullModal from '../../utils/NativeFullModal';
-import NativeBox from '../../layouts/NativeBox';
-import {UtilityClasses} from '@wrappid/styles';
-import {CoreClasses} from '@wrappid/core';
+import React, { useRef, useState } from "react";
+
+// eslint-disable-next-line import/no-unresolved
+import { CoreClasses } from "@wrappid/core";
+// eslint-disable-next-line import/no-unresolved
+import { UtilityClasses } from "@wrappid/styles";
+// eslint-disable-next-line import/namespace
+import { TouchableOpacity } from "react-native";
+
+import NativeChip from "../../dataDisplay/NativeChip";
+import NativeFlatList from "../../dataDisplay/NativeFlatList";
+import NativeTypographyBody1 from "../../dataDisplay/paragraph/NativeTypographyBody1";
+import NativeBox from "../../layouts/NativeBox";
+import NativeFullModal from "../../utils/NativeFullModal";
 
 export default function NativeMedicineSelector(props) {
   const {
@@ -35,11 +40,9 @@ export default function NativeMedicineSelector(props) {
     reloadOption(inputValue);
     if (scrollRef?.current) {
       try {
-        scrollRef?.current?.scrollToEnd({
-          animated: true,
-        });
+        scrollRef?.current?.scrollToEnd({ animated: true });
       } catch (err) {
-        console.log('Not scrolling');
+        // -- console.log("Not scrolling");
       }
     }
     if (value?.length === 7) {
@@ -47,8 +50,9 @@ export default function NativeMedicineSelector(props) {
     }
   }, [value]);
 
-  const reloadOption = async v => {
-    let ops = await loadOptions(v);
+  const reloadOption = async val => {
+    let ops = await loadOptions(val);
+
     setFilteredOptions(ops);
   };
 
@@ -73,7 +77,9 @@ export default function NativeMedicineSelector(props) {
           label={data.label}
           closeIcon="close-circle"
           onClose={() => {
-            let items = value?.filter((v, i) => i !== index);
+            // eslint-disable-next-line no-unused-vars
+            let items = value?.filter((val, i) => i !== index);
+
             onChange(items);
           }}
         />
@@ -85,11 +91,13 @@ export default function NativeMedicineSelector(props) {
     return data?.id;
   };
 
+  // eslint-disable-next-line no-unused-vars
   const renderMedicineOption = (option, index) => {
     return (
       <TouchableOpacity
         onPress={() => {
           let newValue = [...value, option];
+
           onChange(newValue);
         }}>
         {
@@ -109,6 +117,7 @@ export default function NativeMedicineSelector(props) {
     return data?.id;
   };
 
+  // eslint-disable-next-line no-unused-vars
   const onEndReached = page => {};
 
   const viewInput = () => {
@@ -152,6 +161,7 @@ export default function NativeMedicineSelector(props) {
           listRef={scrollRef}
         />
       </NativeBox>
+
       {getMedicineMask()}
 
       {/* All options like medicines */}
