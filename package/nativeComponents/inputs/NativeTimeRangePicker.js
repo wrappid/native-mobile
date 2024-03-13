@@ -1,3 +1,4 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React, { useEffect } from "react";
 
 import { SafeAreaProvider } from "react-native-safe-area-context";

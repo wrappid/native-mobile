@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React, { useEffect, useRef } from "react";
 
 // eslint-disable-next-line import/namespace
 import { Animated } from "react-native";

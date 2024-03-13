@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React, { useEffect, useState } from "react";
 
 // eslint-disable-next-line import/namespace
 import { PermissionsAndroid } from "react-native";
-import DocumentPicker from "react-native-document-picker";
+import * as DocumentPicker from "react-native-document-picker";
 
 import NativeInput from "./NativeInput";
 import { SCInput } from "../../styledComponents/inputs/SCInput";
@@ -15,10 +16,9 @@ export default function NativeFilePicker(props) {
 
   useEffect(() => {
     if (value) {
-      if(formik){
+      if (formik) {
         formik?.setFieldValue(id, value);
-      }
-      else{
+      } else {
         if (onChange) {
           onChange(value);
         }
@@ -55,7 +55,7 @@ export default function NativeFilePicker(props) {
       // -- console.warn(err);
     }
   };
-  
+
   const requestFilesPermission = async () => {
     try {
       const granted = await PermissionsAndroid.request(

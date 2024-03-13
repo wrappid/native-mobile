@@ -164,7 +164,8 @@ function NativeAutocomplete(props) {
         onPress={() => {
           onOpen();
           onFocus();
-        }}>
+        }}
+      >
         {value ? (
           <>
             {checkValue() ? (
@@ -227,7 +228,8 @@ function NativeAutocomplete(props) {
 
               <NativeBox
                 styleClasses={[UtilityClasses.FLEX.DIRECTION_ROW, UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_FLEX_END]}
-                gridProps={{ gridSize: 2 }}>
+                gridProps={{ gridSize: 2 }}
+              >
                 {_getEndAdornment()}
               </NativeBox>
             </NativeGrid>
@@ -249,14 +251,17 @@ function NativeAutocomplete(props) {
           presentationStyle="overFullScreen"
           supportedOrientations={supportedOrientations}
           //@ts-ignore
-          statusBarTranslucent={true}>
+          statusBarTranslucent={true}
+        >
           <>
             <NativeBox
               style={[StyleSheet.absoluteFill, styles.modalRoot]}
-              pointerEvents="box-none">
+              pointerEvents="box-none"
+            >
               <NativeBox
                 styleClasses={[UtilityClasses?.PADDING?.P1]}
-                style={[styles.modalContent, { backgroundColor: theme.colors.surface }, dimensions.width > 650 ? styles.modalContentBig : null]}>
+                style={[styles.modalContent, { backgroundColor: theme.colors.surface }, dimensions.width > 650 ? styles.modalContentBig : null]}
+              >
                 <NativeBox style={{ alignItems: "flex-end" }}>
                   <NativeIconButton onClick={onClose}>
                     <NativeIcon
@@ -270,7 +275,7 @@ function NativeAutocomplete(props) {
                 <NativeInput
                   styleClasses={[UtilityClasses?.MARGIN?.MB4]}
                   value={_inputValue}
-                  handleChange={val => onInputChange({}, val)}
+                  handleChange={(val) => onInputChange({}, val)}
                   label="Search here"
                 />
 
@@ -285,7 +290,8 @@ function NativeAutocomplete(props) {
                           if (_formik) {
                             _formik.setFieldTouched(id, true, true);
                           }
-                        }}>
+                        }}
+                      >
                         {renderOption(
                           {
                             OnClick: () => {

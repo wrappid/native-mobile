@@ -1,3 +1,4 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
 import { SCIconButton } from "../../styledComponents/inputs/SCIconButton";
@@ -18,8 +19,8 @@ export default function NativeIconButton(props) {
     small : 24,
   };
 
-  const childrenWithProps = childProps =>
-    React.Children.map(children, child => {
+  const childrenWithProps = (childProps) =>
+    React.Children.map(children, (child) => {
       // Checking isValidElement is the safe way and avoids a
       // typescript error too.
       if (React.isValidElement(child)) {
@@ -36,7 +37,7 @@ export default function NativeIconButton(props) {
         mode={mode || "default"}
         onPress={restProps.onClick}
         size={isNaN(size) ? sizeMap[size] || sizeMap.small : size}
-        icon={iconProps =>
+        icon={(iconProps) =>
           childrenWithProps({
             ...iconProps,
             styleClasses: restProps.styleClasses,
@@ -52,6 +53,6 @@ export default function NativeIconButton(props) {
    * @todo native tooltip should be wrapped when title present
    * but click is going away when tool tip is used
    */
-  
+
   return title ? getIconButton() : getIconButton();
 }

@@ -1,3 +1,6 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
 import NativeFullModal from "../utils/NativeFullModal";
 
 function NativeDataTableDetailsPaneContainer(props) {
@@ -9,7 +12,8 @@ function NativeDataTableDetailsPaneContainer(props) {
       noClose={true}
       open={open}
       onClose={onClose}
-      searchBox={false}>
+      searchBox={false}
+    >
       {props.children}
     </NativeFullModal>
   );

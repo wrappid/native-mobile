@@ -1,4 +1,5 @@
-import { isValidElement, cloneElement } from "react";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React, { isValidElement, cloneElement } from "react";
 
 import { useTheme } from "react-native-paper";
 
@@ -41,9 +42,7 @@ export default function NativeButton(props) {
       mode={variant ? variant : "contained"}
       size={size}
       disabled={disabled}
-      style={
-        variant === "outlined" && { borderColor: theme?.colors?.primary }
-      }
+      style={variant === "outlined" && { borderColor: theme?.colors?.primary }}
       icon={(iconProps) =>
         startIcon || endIcon ? childrenWithProps(iconProps) : null
       }

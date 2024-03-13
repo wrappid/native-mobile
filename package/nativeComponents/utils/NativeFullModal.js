@@ -1,5 +1,5 @@
-// eslint-disable-next-line import/no-unresolved
-import { useEffect, useState } from "react";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React, { useEffect, useState } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeIcon, NativeIconButton } from "@wrappid/native";
@@ -111,7 +111,8 @@ export default function NativeFullModal(props) {
           onPress={() => {
             if (onOpen) onOpen();
             if (onFocus) onFocus();
-          }}>
+          }}
+        >
           {checkValue() ? (
             <NativeLabel>{label}</NativeLabel>
           ) : (
@@ -132,7 +133,8 @@ export default function NativeFullModal(props) {
           onRequestClose={onClose}
           presentationStyle="overFullScreen"
           supportedOrientations={supportedOrientations}
-          statusBarTranslucent={true}>
+          statusBarTranslucent={true}
+        >
           <NativeBox
             styleClasses={styleClasses}
             style={
@@ -140,14 +142,16 @@ export default function NativeFullModal(props) {
                 ? [StyleSheet.absoluteFill, styles.modalRoot, { top }]
                 : [StyleSheet.absoluteFill, styles.modalRoot]
             }
-            pointerEvents="box-none">
+            pointerEvents="box-none"
+          >
             <NativeBox
               styleClasses={[UtilityClasses?.PADDING?.P1, ...(styleClasses || [])]}
               style={
                 !styleClasses
                   ? [styles.modalContent, { backgroundColor: theme.colors.surface }, dimensions.width > 650 ? styles.modalContentBig : null]
                   : [styles.modalContent, dimensions.width > 650 ? styles.modalContentBig : null]
-              }>
+              }
+            >
               {!noClose && (
                 <NativeBox style={{ alignItems: "flex-end" }}>
                   <NativeIconButton onClick={onClose}>
@@ -171,7 +175,8 @@ export default function NativeFullModal(props) {
 
               <ScrollView keyboardShouldPersistTaps={"always"}>
                 <KeyboardAvoidingView
-                  behavior={keyboardStatus ? "padding" : ""}>
+                  behavior={keyboardStatus ? "padding" : ""}
+                >
                   {props.children}
                 </KeyboardAvoidingView>
               </ScrollView>

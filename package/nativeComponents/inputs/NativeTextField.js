@@ -1,3 +1,4 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
 import { TextInput } from "react-native-paper";
@@ -74,8 +75,9 @@ export default function NativeTextField(props) {
                       <NativeIconButton onClick={openMenu}>
                         <NativeIcon name="keyboard-arrow-down" />
                       </NativeIconButton>
-                    }>
-                    {endAdornment?.props?.children?.filter(elem => elem)}
+                    }
+                  >
+                    {endAdornment?.props?.children?.filter((elem) => elem)}
                   </NativeDropDown>
                 )
               ) : (

@@ -1,3 +1,6 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
 import { SCAccordion } from "../../styledComponents/surfaces/SCAccordion";
 
 export default function NativeAccordion(props) {

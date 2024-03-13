@@ -1,3 +1,4 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React, { useRef, useState } from "react";
 
 // eslint-disable-next-line import/no-unresolved
@@ -50,7 +51,7 @@ export default function NativeMedicineSelector(props) {
     }
   }, [value]);
 
-  const reloadOption = async val => {
+  const reloadOption = async (val) => {
     let ops = await loadOptions(val);
 
     setFilteredOptions(ops);
@@ -64,7 +65,7 @@ export default function NativeMedicineSelector(props) {
     setOpen(false);
   };
 
-  const _onInputChange = async _inputValue => {
+  const _onInputChange = async (_inputValue) => {
     reloadOption(_inputValue);
     onInputChange(_inputValue);
   };
@@ -72,7 +73,8 @@ export default function NativeMedicineSelector(props) {
   const renderMedicineOb = (data, index) => {
     return (
       <NativeBox
-        styleClasses={[CoreClasses?.MARGIN?.MR1, CoreClasses?.MARGIN?.MY1]}>
+        styleClasses={[CoreClasses?.MARGIN?.MR1, CoreClasses?.MARGIN?.MY1]}
+      >
         <NativeChip
           label={data.label}
           closeIcon="close-circle"
@@ -87,7 +89,7 @@ export default function NativeMedicineSelector(props) {
     );
   };
 
-  const getKey = data => {
+  const getKey = (data) => {
     return data?.id;
   };
 
@@ -99,7 +101,8 @@ export default function NativeMedicineSelector(props) {
           let newValue = [...value, option];
 
           onChange(newValue);
-        }}>
+        }}
+      >
         {
           // components?.Option ? (
           //   components?.Option(option)
@@ -113,12 +116,12 @@ export default function NativeMedicineSelector(props) {
     );
   };
 
-  const getKeyOption = data => {
+  const getKeyOption = (data) => {
     return data?.id;
   };
 
   // eslint-disable-next-line no-unused-vars
-  const onEndReached = page => {};
+  const onEndReached = (page) => {};
 
   const viewInput = () => {
     if (value && Array.isArray(value)) {
@@ -149,7 +152,8 @@ export default function NativeMedicineSelector(props) {
       inputValue={inputValue}
       viewInput={viewInput}
       multiple={true}
-      value={value}>
+      value={value}
+    >
       {/* Current medicine components */}
 
       <NativeBox>

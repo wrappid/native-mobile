@@ -1,4 +1,5 @@
-import { isValidElement, cloneElement } from "react";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React, { isValidElement, cloneElement } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { CoreBox } from "@wrappid/core";

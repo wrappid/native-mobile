@@ -1,3 +1,6 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
 import { SCSwitch } from "../../styledComponents/inputs/SCSwitch";
 
 export default function NativeSwitch(props) {

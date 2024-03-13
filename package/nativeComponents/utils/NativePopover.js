@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React, { useEffect, useRef } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { UtilityClasses } from "@wrappid/styles";
@@ -54,9 +55,7 @@ export default function NativePopover(props) {
               <NativeBox
                 styleClasses={[UtilityClasses.DISPLAY?.FLEX, UtilityClasses.ALIGNMENT?.ALIGN_ITEMS_END]}
               >
-                <NativeIconButton
-                  onClick={() => onClose && onClose()}
-                >
+                <NativeIconButton onClick={() => onClose && onClose()}>
                   <NativeIcon name="close" type="material-icon">
                     close
                   </NativeIcon>

@@ -1,3 +1,6 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
 // eslint-disable-next-line import/namespace
 import { ScrollView, Dimensions } from "react-native";
 
@@ -30,7 +33,10 @@ export default function NativePageContainer(props) {
           : [coreClasses.LAYOUT.LOGGED_OUT_PAGE_CONTAINER]
       }
     >
-      <ScrollView keyboardShouldPersistTaps={"always"} contentContainerStyle={{ flexGrow: 1 }}>
+      <ScrollView
+        keyboardShouldPersistTaps={"always"}
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
         {props.children}
       </ScrollView>
     </NativeBox>

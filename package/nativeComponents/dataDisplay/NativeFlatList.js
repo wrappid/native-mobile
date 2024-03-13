@@ -1,3 +1,6 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
 import { SCFlatList } from "../../styledComponents/dataDisplay/SCFlatList";
 import NativeBox from "../layouts/NativeBox";
 
@@ -15,7 +18,7 @@ export default function NativeFlatList(props) {
     horizontal,
     listRef,
     boundingBox,
-    listHeight
+    listHeight,
   } = props;
 
   const flatList = () => {

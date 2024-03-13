@@ -1,3 +1,6 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
 // eslint-disable-next-line import/namespace
 import { TouchableOpacity } from "react-native";
 
@@ -21,7 +24,7 @@ export default function NativeInput(props) {
       styleClasses={[...(props.styleClasses || [])]}
       value={props.value ? String(props.value) : ""}
       secureTextEntry={props.secureTextEntry}
-      onChangeText={text => {
+      onChangeText={(text) => {
         props.formik
           ? props.formik.setFieldValue(props.id, text)
           : props.handleChange(text);
@@ -60,7 +63,8 @@ export default function NativeInput(props) {
     <TouchableOpacity
       onPress={() => {
         props.onFormFocus(props.editId);
-      }}>
+      }}
+    >
       {inputComponent}
     </TouchableOpacity>
   ) : (

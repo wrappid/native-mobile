@@ -1,4 +1,5 @@
-import { useState } from "react";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React, { useState } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { UtilityClasses, StyledComponentsClasses } from "@wrappid/styles";
@@ -21,14 +22,14 @@ export default function NativeDataTableToolbar(props) {
     setPopover(!open);
   };
 
-  const showStack = stack => {
+  const showStack = (stack) => {
     if (!stack.hideInApp) {
       if (menuRenderFunction) {
-        let visibleItems = stack?.filter(element => !element.hideInApp);
+        let visibleItems = stack?.filter((element) => !element.hideInApp);
 
         return menuRenderFunction(visibleItems);
       } else {
-        return stack?.map(element =>
+        return stack?.map((element) =>
           element?.comp && !element.hideInApp
             ? typeof element?.comp === "function"
               ? element.comp(element.propsApp)
@@ -43,23 +44,25 @@ export default function NativeDataTableToolbar(props) {
 
   return (
     <>
-      {allTools?.map(row => (
+      {allTools?.map((row) => (
         // eslint-disable-next-line react/jsx-key
         <NativeGrid
-          styleClasses={[...(styleClasses || []), StyledComponentsClasses.DATA_DISPLAY.MOBILE_TABLE_TOOLBAR]}>
+          styleClasses={[...(styleClasses || []), StyledComponentsClasses.DATA_DISPLAY.MOBILE_TABLE_TOOLBAR]}
+        >
           {!row.hideInApp && (
             <NativeBox gridProps={{ gridSize: 11 }}>
               {row?.leftPanel &&
                 !row?.leftPanel?.hideInApp &&
                 row?.leftPanel?.stacks &&
-                row?.leftPanel?.stacks?.map(stack => showStack(stack))}
+                row?.leftPanel?.stacks?.map((stack) => showStack(stack))}
             </NativeBox>
           )}
 
           {!row.hideInApp && (
             <NativeBox
               gridProps={{ gridSize: 1 }}
-              styleClasses={[UtilityClasses?.FLEX?.DIRECTION_ROW, UtilityClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER, UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_CENTER]}>
+              styleClasses={[UtilityClasses?.FLEX?.DIRECTION_ROW, UtilityClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER, UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_CENTER]}
+            >
               {row?.rightPanel &&
                 !row?.rightPanel?.hideInApp &&
                 row?.rightPanel?.stacks && (
@@ -73,8 +76,9 @@ export default function NativeDataTableToolbar(props) {
                     <NativeIconButton onClick={onMore}>
                       <NativeIcon name="more-vert" />
                     </NativeIconButton>
-                  }>
-                  {row?.rightPanel?.stacks?.map(stack => showStack(stack))}
+                  }
+                >
+                  {row?.rightPanel?.stacks?.map((stack) => showStack(stack))}
                 </NativeDropDown>
               )}
             </NativeBox>

@@ -1,3 +1,6 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
 import { useTheme } from "react-native-paper";
 
 import { SCDropDown } from "../../styledComponents/utils/SCDropDown";
@@ -15,7 +18,8 @@ export default function NativeDropDown(props) {
       visible={visible}
       onDismiss={onDismiss}
       anchorPosition="bottom"
-      anchor={anchor}>
+      anchor={anchor}
+    >
       {props?.children}
     </SCDropDown>
   );
