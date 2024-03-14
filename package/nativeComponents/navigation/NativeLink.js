@@ -1,3 +1,4 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React, { isValidElement, useEffect, useState } from "react";
 
 // eslint-disable-next-line import/no-unresolved
@@ -42,16 +43,17 @@ export default function NativeLink(props) {
     if (typeof restProps.children === "string") {
       return (
         <NativeTypography
-          styleClasses={[...linkStyles, restProps.styleClasses]}>
+          styleClasses={[...linkStyles, restProps.styleClasses]}
+        >
           {restProps.children}
         </NativeTypography>
       );
     } else {
-      /** 
+      /**
        * copying styleclasses to child like typography
        */
       if (restProps.children && Array.isArray(restProps.children)) {
-        return restProps.children?.map(child => {
+        return restProps.children?.map((child) => {
           if (isValidElement(child)) {
             return React.cloneElement(child, {
               ...(child.props || {}),

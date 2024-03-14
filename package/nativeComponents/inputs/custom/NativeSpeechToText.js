@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React, { useState, useEffect } from "react";
 
 import Voice from "@react-native-voice/voice";
 // eslint-disable-next-line import/no-unresolved
@@ -10,7 +11,7 @@ import NativeBox from "../../layouts/NativeBox";
 import NativeFullModal from "../../utils/NativeFullModal";
 import NativeIconButton from "../NativeIconButton";
 
-const NativeSpeechToText = props => {
+const NativeSpeechToText = (props) => {
   const {
     element,
     beforeSpeechStart,
@@ -67,14 +68,14 @@ const NativeSpeechToText = props => {
     }
   }, [results]);
 
-  const onSpeechStart = event => {
+  const onSpeechStart = (event) => {
     //Invoked when .start() is called without error
     if (afterSpeechStart && typeof afterSpeechStart === "function") {
       afterSpeechStart(event);
     }
   };
 
-  const onSpeechEnd = async event => {
+  const onSpeechEnd = async (event) => {
     //Invoked when SpeechRecognizer stops recognition
     if (beforeSpeechEnd && typeof beforeSpeechEnd === "function") {
       beforeSpeechStart(event);
@@ -87,7 +88,7 @@ const NativeSpeechToText = props => {
     }
   };
 
-  const onSpeechError = event => {
+  const onSpeechError = (event) => {
     //Invoked when an error occurs.
     if (beforeSpeechError && typeof beforeSpeechError === "function") {
       beforeSpeechError(event);
@@ -99,7 +100,7 @@ const NativeSpeechToText = props => {
     }
   };
 
-  const onSpeechResults = event => {
+  const onSpeechResults = (event) => {
     //Invoked when SpeechRecognizer is finished recognizing
     let value = event.value;
 
@@ -112,7 +113,7 @@ const NativeSpeechToText = props => {
     }
   };
 
-  const onSpeechPartialResults = event => {
+  const onSpeechPartialResults = (event) => {
     //Invoked when any results are computed
     if (
       beforeSpeechPartialResults &&
@@ -129,7 +130,7 @@ const NativeSpeechToText = props => {
     }
   };
 
-  const onSpeechVolumeChanged = event => {
+  const onSpeechVolumeChanged = (event) => {
     //Invoked when pitch that is recognized changed
     // -- console.log('onSpeechVolumeChanged: ', event);
     if (
@@ -217,7 +218,8 @@ const NativeSpeechToText = props => {
       <NativeIconButton
         styleClasses={buttonStyle}
         disabled={disabled}
-        onClick={startRecognizing}>
+        onClick={startRecognizing}
+      >
         <NativeIcon
           styleClasses={buttonStyle}
           childrenFlag={true}
@@ -235,18 +237,23 @@ const NativeSpeechToText = props => {
             ? [UtilityClasses?.BG?.BG_BLACK, UtilityClasses?.OPACITY?.OPACITY_75]
             : [UtilityClasses?.BG?.BG_WHITE]
         }
-        searchBox={false}>
+        searchBox={false}
+      >
         <NativeBox
           style={{ flex: 1 }}
-          styleClasses={[UtilityClasses?.HEIGHT?.H_100]}>
+          styleClasses={[UtilityClasses?.HEIGHT?.H_100]}
+        >
           <NativeBox
             styleClasses={[UtilityClasses?.HEIGHT?.H_25]}
-            style={{ flex: 2 }}>
+            style={{ flex: 2 }}
+          >
             {/* {started && !end && ( */}
             <NativeBox
-              styleClasses={[UtilityClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER]}>
+              styleClasses={[UtilityClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER]}
+            >
               <NativeTypographyBody1
-                styleClasses={[UtilityClasses?.TEXT?.TEXT_CENTER]}>
+                styleClasses={[UtilityClasses?.TEXT?.TEXT_CENTER]}
+              >
                 {error
                   ? "Try Again"
                   : started
@@ -255,20 +262,23 @@ const NativeSpeechToText = props => {
               </NativeTypographyBody1>
 
               <NativeTypographyBody1
-                styleClasses={[UtilityClasses?.TEXT?.TEXT_CENTER]}>
+                styleClasses={[UtilityClasses?.TEXT?.TEXT_CENTER]}
+              >
                 {pitch}
               </NativeTypographyBody1>
 
               {error && (
                 <NativeTypographyBody1
-                  styleClasses={[UtilityClasses?.TEXT?.TEXT_CENTER]}>
+                  styleClasses={[UtilityClasses?.TEXT?.TEXT_CENTER]}
+                >
                   {error}
                 </NativeTypographyBody1>
               )}
 
               <NativeIconButton
                 size="large"
-                onClick={!started ? startRecognizing : stopRecognizing}>
+                onClick={!started ? startRecognizing : stopRecognizing}
+              >
                 <NativeIcon
                   styleClasses={[UtilityClasses?.COLOR?.TEXT_PRIMARY]}
                   size="large"
@@ -283,7 +293,8 @@ const NativeSpeechToText = props => {
                   return (
                     <NativeTypographyBody1
                       styleClasses={[UtilityClasses?.TEXT?.TEXT_CENTER]}
-                      key={`partial-result-${index}`}>
+                      key={`partial-result-${index}`}
+                    >
                       {result}
                     </NativeTypographyBody1>
                   );
@@ -294,7 +305,8 @@ const NativeSpeechToText = props => {
             {results?.map((result, index) => (
               <NativeTypographyBody1
                 key={"results-" + index}
-                styleClasses={[UtilityClasses?.TEXT?.TEXT_CENTER]}>
+                styleClasses={[UtilityClasses?.TEXT?.TEXT_CENTER]}
+              >
                 {result}
               </NativeTypographyBody1>
             ))}
@@ -303,7 +315,8 @@ const NativeSpeechToText = props => {
           {
             <NativeBox
               styleClasses={[UtilityClasses?.HEIGHT?.H_75, UtilityClasses?.PADDING?.P1]}
-              style={{ flex: 4 }}>
+              style={{ flex: 4 }}
+            >
               {children}
             </NativeBox>
           }

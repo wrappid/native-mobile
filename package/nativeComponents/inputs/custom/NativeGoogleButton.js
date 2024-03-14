@@ -1,29 +1,28 @@
-import { useState, useEffect } from "react";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React, { useState, useEffect } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import {
   GoogleSignin,
   GoogleSigninButton,
   statusCodes
-// eslint-disable-next-line import/no-unresolved
+  // eslint-disable-next-line import/no-unresolved
 } from "@react-native-google-signin/google-signin";
 
 // eslint-disable-next-line import/named
 import { NativeBox } from "../../layouts/NativeBox";
 
 export default function NativeGoogleButton() {
-
   // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useState({});
 
   useEffect(() => {
     GoogleSignin.configure({
-      
       // if you want to access Google API on behalf of the user FROM YOUR SERVER
-      forceCodeForRefreshToken: true, 
-      
+      forceCodeForRefreshToken: true,
+
       // client ID of type WEB for your server (needed to verify user ID and offline access)
-      offlineAccess: true, 
+      offlineAccess: true,
       webClientId:
         "781832069302-vi38c2as26m639ap30pji5i72tj4u8da.apps.googleusercontent.com",
     });
@@ -72,10 +71,10 @@ export default function NativeGoogleButton() {
   };
 
   return (
-  // eslint-disable-next-line no-undef
+    // eslint-disable-next-line no-undef
     <NativeBox style={styles.logIncontainer}>
       <GoogleSigninButton
-      // eslint-disable-next-line no-undef
+        // eslint-disable-next-line no-undef
         style={styles.googleButtonStyle}
         size={GoogleSigninButton.Size.Wide}
         color={GoogleSigninButton.Color.Dark}

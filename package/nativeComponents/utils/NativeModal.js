@@ -1,3 +1,4 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
@@ -15,11 +16,11 @@ export default function NativeModal(props) {
   // eslint-disable-next-line no-unused-vars
   const { /*open, onClose, */ ...restProps } = props;
   const dispatch = useDispatch();
-  const open = useSelector(state => state.modal?.modalOpen || false);
-  const modalData = useSelector(state => state.modal.modalData);
+  const open = useSelector((state) => state.modal?.modalOpen || false);
+  const modalData = useSelector((state) => state.modal.modalData);
   // eslint-disable-next-line no-unused-vars
-  const modalStyle = useSelector(state => state.modal.modalStyle);
-  const modalClose = useSelector(state => state.modal.modalClose);
+  const modalStyle = useSelector((state) => state.modal.modalStyle);
+  const modalClose = useSelector((state) => state.modal.modalClose);
   const HandleModalClose = () => {
     dispatch(props.toggleModalState(null));
   };
@@ -30,10 +31,12 @@ export default function NativeModal(props) {
         noClose={true}
         open={open}
         onClose={modalClose}
-        searchBox={false}>
+        searchBox={false}
+      >
         <NativeBox>
           <NativeBox
-            styleClasses={[UtilityClasses?.FLEX?.DIRECTION_ROW, UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_SPACE_BETWEEN]}>
+            styleClasses={[UtilityClasses?.FLEX?.DIRECTION_ROW, UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_SPACE_BETWEEN]}
+          >
             <NativeH6>{modalData?.heading ? modalData.heading : ""}</NativeH6>
 
             <NativeIconButton onClick={HandleModalClose}>

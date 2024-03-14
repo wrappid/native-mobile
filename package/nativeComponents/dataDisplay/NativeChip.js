@@ -1,3 +1,4 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
 import { useTheme } from "react-native-paper";
@@ -7,13 +8,13 @@ import { SCChip } from "../../styledComponents/dataDisplay/SCChip";
 
 export default function NativeChip(props) {
   const {
-    label, variant, onClick, icon, styleClasses, avatar, ...restProps
+    label, variant, onClick, icon, styleClasses, avatar, ...restProps 
   } =
     props;
 
   const theme = useTheme();
 
-  const iconWithProps = iconProps => {
+  const iconWithProps = (iconProps) => {
     if (React.isValidElement(icon)) {
       return React.cloneElement(icon, {
         ...iconProps,
@@ -24,7 +25,7 @@ export default function NativeChip(props) {
     }
   };
 
-  const avatarWithProps = avatarProps => {
+  const avatarWithProps = (avatarProps) => {
     if (React.isValidElement(avatar)) {
       return React.cloneElement(avatar, {
         ...avatarProps,
@@ -43,7 +44,8 @@ export default function NativeChip(props) {
       mode={variantMap[variant]}
       onPress={onClick ? onClick : () => {}}
       //intentionaly icon props used for avatar avatar props not working
-      avatar={avatarWithProps({})}>
+      avatar={avatarWithProps({})}
+    >
       {label}
     </SCChip>
   ) : icon ? (
@@ -53,7 +55,8 @@ export default function NativeChip(props) {
       styleClasses={styleClasses || []}
       mode={variantMap[variant]}
       onPress={onClick ? onClick : () => {}}
-      icon={iconProps => iconWithProps(iconProps)}>
+      icon={(iconProps) => iconWithProps(iconProps)}
+    >
       {label}
     </SCChip>
   ) : (
@@ -62,7 +65,8 @@ export default function NativeChip(props) {
       theme={theme}
       styleClasses={styleClasses || []}
       mode={variantMap[variant]}
-      onPress={onClick ? onClick : () => {}}>
+      onPress={onClick ? onClick : () => {}}
+    >
       {label}
     </SCChip>
   );

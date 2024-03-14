@@ -1,3 +1,5 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
 
 // eslint-disable-next-line import/namespace
 import { StatusBar } from "react-native";
@@ -26,7 +28,8 @@ export default function NativeAppContainer(props) {
           uid
             ? { backgroundColor: theme?.colors?.background, height: "92%" }
             : { backgroundColor: theme?.colors?.onPrimaryContainer }
-        }>
+        }
+      >
         {leftDrawer()}
 
         {props.children}

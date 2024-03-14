@@ -1,3 +1,4 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 // eslint-disable-next-line import/namespace
 import { Linking } from "react-native";
 import {

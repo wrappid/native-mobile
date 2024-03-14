@@ -1,4 +1,7 @@
-import { useEffect, useState } from "react";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React, { useEffect, useState } from "react";
+
+// eslint-disable-next-line import/namespace
 
 // eslint-disable-next-line import/no-unresolved
 import { NativeGrid, NativeTypographyBody1 } from "@wrappid/native";
@@ -8,7 +11,7 @@ import { SCDialog } from "@wrappid/native/styledComponents/feedback/SCDialog";
 import { UtilityClasses } from "@wrappid/styles";
 // eslint-disable-next-line import/namespace
 import { TouchableOpacity, PermissionsAndroid, Modal as RNModal } from "react-native";
-import ImagePicker from "react-native-image-crop-picker";
+import * as ImagePicker from "react-native-image-crop-picker";
 import { Portal } from "react-native-paper";
 
 import NativeIconButton from "./NativeIconButton";
@@ -19,7 +22,7 @@ import NativeBox from "../layouts/NativeBox";
 
 export default function NativeImagePicker(props) {
   const {
-    onChange, id, formik, value, styleClasses, defaultImage
+    onChange, id, formik, value, styleClasses, defaultImage 
   } = props;
 
   const [localValue, setLocalvalue] = useState(value);
@@ -132,7 +135,7 @@ export default function NativeImagePicker(props) {
         height       : 400,
         includeBase64: true,
         width        : 300,
-      }).then(image => {
+      }).then((image) => {
         // -- console.log(image);
         setLocalvalue(image);
       });
@@ -143,12 +146,12 @@ export default function NativeImagePicker(props) {
         includeBase64: true,
         width        : 300,
       })
-        .then(image => {
+        .then((image) => {
           // -- console.log(image);
           setLocalvalue(image);
         })
-      // eslint-disable-next-line no-unused-vars
-        .catch(err => {
+        // eslint-disable-next-line no-unused-vars
+        .catch((err) => {
           // -- console.log(err);
           requestImagePermission();
         });
@@ -165,9 +168,11 @@ export default function NativeImagePicker(props) {
             visible={modalOpen}
             onDismiss={() => {
               setModalOpen(false);
-            }}>
+            }}
+          >
             <NativeTypographyBody1
-              styleClasses={[UtilityClasses?.TEXT?.TEXT_CENTER, UtilityClasses?.TEXT?.TEXT_WEIGHT_BOLD]}>
+              styleClasses={[UtilityClasses?.TEXT?.TEXT_CENTER, UtilityClasses?.TEXT?.TEXT_WEIGHT_BOLD]}
+            >
               Take/Pick a image
             </NativeTypographyBody1>
 
@@ -179,7 +184,8 @@ export default function NativeImagePicker(props) {
                   size="large"
                   onClick={() => {
                     pickImage("camera");
-                  }}>
+                  }}
+                >
                   <NativeIcon
                     styleClasses={[UtilityClasses?.COLOR?.TEXT_PRIMARY_DARK]}
                     size="medium"
@@ -195,7 +201,8 @@ export default function NativeImagePicker(props) {
                   size="large"
                   onClick={() => {
                     pickImage("gallery");
-                  }}>
+                  }}
+                >
                   <NativeIcon
                     styleClasses={[UtilityClasses?.COLOR?.TEXT_PRIMARY_DARK]}
                     size="medium"
@@ -215,11 +222,13 @@ export default function NativeImagePicker(props) {
           styleClasses?.includes(
             UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_CENTER
           ) && [UtilityClasses?.FLEX?.DIRECTION_ROW, UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_CENTER, UtilityClasses?.PADDING?.PB1]
-        }>
+        }
+      >
         <TouchableOpacity
           onPress={() => {
             setModalOpen(true);
-          }}>
+          }}
+        >
           <NativeAvatar
             styleClasses={styleClasses}
             src={

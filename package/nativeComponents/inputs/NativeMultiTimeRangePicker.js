@@ -1,3 +1,4 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
@@ -40,7 +41,9 @@ export default function NativeMultiTimeRangePicker(props) {
 
   const deleteRange = (index) => {
     let timeRangesArr = [...timeRanges];
-    let val = timeRangesArr.slice(0, index).concat(timeRangesArr.slice(index + 1));
+    let val = timeRangesArr
+      .slice(0, index)
+      .concat(timeRangesArr.slice(index + 1));
 
     setTimeRanges(val);
   };
@@ -89,10 +92,7 @@ export default function NativeMultiTimeRangePicker(props) {
           />
 
           {index < 1 ? (
-            <NativeIconButton
-              gridProps={{ gridSize: 2 }}
-              onClick={addRange}
-            >
+            <NativeIconButton gridProps={{ gridSize: 2 }} onClick={addRange}>
               <NativeIcon>add</NativeIcon>
             </NativeIconButton>
           ) : (

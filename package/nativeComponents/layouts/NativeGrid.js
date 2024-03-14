@@ -1,4 +1,5 @@
-import { Children, useState, useEffect, useContext } from "react";
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React, { Children, useState, useEffect, useContext } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { ThemeContext } from "@wrappid/styles";
@@ -18,14 +19,14 @@ export default function NativeGrid(props) {
   const [containerId, setContainerId] = useState(null);
   const theme = useContext(ThemeContext);
 
-  useEffect(()=>{
+  useEffect(() => {
     setUuid(getUUID());
     setContainerId(props?.coreId ? "gc_" + props.coreId : "gc_" + _uuid);
   }, []);
 
   let windowWidth = Dimensions.get("window").width;
 
-  const gridToWidth = gridProps => {
+  const gridToWidth = (gridProps) => {
     const sizeProps = getGridSizeProps(gridProps);
     let gridSize = sizeProps.xs;
 
@@ -55,8 +56,13 @@ export default function NativeGrid(props) {
       key={containerId}
       container={props?.container || true}
       item={props?.item || false}
-      style={{ flexDirection: "row", flexWrap: "wrap", marginLeft: -1 * padding }}
-      styleClasses={props?.styleClasses || []}>
+      style={{
+        flexDirection: "row",
+        flexWrap     : "wrap",
+        marginLeft   : -1 * padding,
+      }}
+      styleClasses={props?.styleClasses || []}
+    >
       {props.children &&
         Children.toArray(props.children).map((child, index) => (
           <SCGridItem
@@ -66,7 +72,8 @@ export default function NativeGrid(props) {
               ...(gridToWidth(child?.props?.gridProps?.gridSize) || {}),
               paddingLeft: padding,
               paddingTop : padding,
-            }}>
+            }}
+          >
             {child}
           </SCGridItem>
         ))}

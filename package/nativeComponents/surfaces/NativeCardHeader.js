@@ -1,3 +1,4 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
 // eslint-disable-next-line import/no-unresolved
@@ -10,8 +11,9 @@ import NativeGrid from "../layouts/NativeGrid";
 
 export default function NativeCardHeader(props) {
   const {
-    title, subheader, action, avatar, _tableAction, styleClasses
-  } = props;
+    title, subheader, action, avatar, _tableAction, styleClasses 
+  } =
+    props;
   const childrenWithProps = (child, childProps) => {
     // Checking isValidElement is the safe way and avoids a
     // typescript error too.
@@ -28,7 +30,8 @@ export default function NativeCardHeader(props) {
         _tableAction
           ? [UtilityClasses?.MARGIN?.MB1]
           : [UtilityClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER, UtilityClasses?.MARGIN?.MB1]
-      }>
+      }
+    >
       {avatar && (
         <NativeBox gridProps={{ gridSize: 2 }}>
           {childrenWithProps(avatar, { styleClasses: styleClasses })}
@@ -49,7 +52,8 @@ export default function NativeCardHeader(props) {
               : action
                 ? { gridSize: 10 }
                 : { gridSize: 12 }
-        }>
+        }
+      >
         {title && <NativeH6>{title}</NativeH6>}
 
         {subheader && (
@@ -60,7 +64,8 @@ export default function NativeCardHeader(props) {
       {action && (
         <NativeBox
           styleClasses={[UtilityClasses?.FLEX?.DIRECTION_ROW, UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_FLEX_END, UtilityClasses?.ALIGNMENT?.ALIGN_ITEMS_CENTER]}
-          gridProps={_tableAction ? { gridSize: 9 } : { gridSize: 2 }}>
+          gridProps={_tableAction ? { gridSize: 9 } : { gridSize: 2 }}
+        >
           {childrenWithProps(action, { styleClasses: styleClasses })}
         </NativeBox>
       )}

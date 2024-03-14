@@ -1,13 +1,16 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
 import OtpInputs from "react-native-otp-inputs";
 import { useTheme } from "react-native-paper";
 
 export default function NativeOtpInput(props) {
   const {
-    onChange, formik, value, numInputs = 6, id, ...restProps
+    onChange, formik, value, numInputs = 6, id, ...restProps 
   } = props;
   const theme = useTheme();
 
-  const handleChange = otpValue => {
+  const handleChange = (otpValue) => {
     formik?.setFieldValue(id, otpValue);
     if (onChange) {
       onChange(otpValue);
@@ -16,7 +19,7 @@ export default function NativeOtpInput(props) {
 
   return (
     <OtpInputs
-      handleChange={otpValue => {
+      handleChange={(otpValue) => {
         // -- console.log(`otpValue=${otpValue}`);
         handleChange(otpValue);
       }}
