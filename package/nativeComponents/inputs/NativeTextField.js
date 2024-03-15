@@ -1,22 +1,23 @@
-import React from 'react';
-// import {getUUID} from '../../../utils/appUtils';
-import {SCInput} from '../../styledComponents/inputs/SCInput';
-import {TextInput} from 'react-native-paper';
-import NativeIcon from '../dataDisplay/NativeIcon';
-import NativeIconButton from './NativeIconButton';
-import NativeDropDown from '../utils/NativeDropDown';
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
+import { TextInput } from "react-native-paper";
+
+import NativeIconButton from "./NativeIconButton";
+import { SCInput } from "../../styledComponents/inputs/SCInput";
+import NativeIcon from "../dataDisplay/NativeIcon";
+import NativeDropDown from "../utils/NativeDropDown";
 
 export default function NativeTextField(props) {
-  // const {NativeId = getUUID()} = props;
   const endAdornment = props?.InputProps?.endAdornment;
-  const {noAdornment} = props;
+  const { noAdornment } = props;
   const [visible, setVisible] = React.useState(false);
 
   const openMenu = () => setVisible(true);
 
   const closeMenu = () => setVisible(false);
 
-  console.log('NATIVE TEXTFIELD', endAdornment?.props?.children);
+  // -- console.log("NATIVE TEXTFIELD", endAdornment?.props?.children);
 
   return (
     <SCInput
@@ -24,7 +25,7 @@ export default function NativeTextField(props) {
       label={props.label}
       type={props.type}
       styleClasses={[...(props.styleClasses || [])]}
-      value={props.value || ''}
+      value={props.value || ""}
       secureTextEntry={props.secureTextEntry}
       onChangeText={props.onChange}
       required={props.formik ? false : props.required}
@@ -46,12 +47,12 @@ export default function NativeTextField(props) {
       onFocus={
         props.onFormFocus && props.editId && props.readOnly
           ? () => {
-              console.log('CLICKED');
-              props.onFormFocus(props.editId);
-            }
+            // -- console.log("CLICKED");
+            props.onFormFocus(props.editId);
+          }
           : () => {
-              console.log('CLICKED else');
-            }
+            // -- console.log("CLICKED else");
+          }
       }
       left={
         !noAdornment && endAdornment?.props?.children?.length === 2 ? (
@@ -74,8 +75,9 @@ export default function NativeTextField(props) {
                       <NativeIconButton onClick={openMenu}>
                         <NativeIcon name="keyboard-arrow-down" />
                       </NativeIconButton>
-                    }>
-                    {endAdornment?.props?.children?.filter(elem => elem)}
+                    }
+                  >
+                    {endAdornment?.props?.children?.filter((elem) => elem)}
                   </NativeDropDown>
                 )
               ) : (
@@ -86,7 +88,7 @@ export default function NativeTextField(props) {
         ) : null
       }
       {...props}
-      style={{ ...(props.style||{}), paddingHorizontal: 0}}
+      style={{ ...(props.style || {}), paddingHorizontal: 0 }}
     />
     //   <NativeFormErrorText>{props.touched && props.error}</NativeFormErrorText>
     //   <NativeFormHelperText>{props.helperText}</NativeFormHelperText>

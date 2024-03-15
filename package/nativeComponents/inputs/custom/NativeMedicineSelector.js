@@ -1,12 +1,18 @@
-import React, {useRef, useState} from 'react';
-import {TouchableOpacity} from 'react-native';
-import NativeChip from '../../dataDisplay/NativeChip';
-import NativeTypographyBody1 from '../../dataDisplay/paragraph/NativeTypographyBody1';
-import NativeFlatList from '../../dataDisplay/NativeFlatList';
-import NativeFullModal from '../../utils/NativeFullModal';
-import NativeBox from '../../layouts/NativeBox';
-import {UtilityClasses} from '@wrappid/styles';
-import {CoreClasses} from '@wrappid/core';
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React, { useRef, useState } from "react";
+
+// eslint-disable-next-line import/no-unresolved
+import { CoreClasses } from "@wrappid/core";
+// eslint-disable-next-line import/no-unresolved
+import { UtilityClasses } from "@wrappid/styles";
+// eslint-disable-next-line import/namespace
+import { TouchableOpacity } from "react-native";
+
+import NativeChip from "../../dataDisplay/NativeChip";
+import NativeFlatList from "../../dataDisplay/NativeFlatList";
+import NativeTypographyBody1 from "../../dataDisplay/paragraph/NativeTypographyBody1";
+import NativeBox from "../../layouts/NativeBox";
+import NativeFullModal from "../../utils/NativeFullModal";
 
 export default function NativeMedicineSelector(props) {
   const {
@@ -35,11 +41,9 @@ export default function NativeMedicineSelector(props) {
     reloadOption(inputValue);
     if (scrollRef?.current) {
       try {
-        scrollRef?.current?.scrollToEnd({
-          animated: true,
-        });
+        scrollRef?.current?.scrollToEnd({ animated: true });
       } catch (err) {
-        console.log('Not scrolling');
+        // -- console.log("Not scrolling");
       }
     }
     if (value?.length === 7) {
@@ -47,8 +51,9 @@ export default function NativeMedicineSelector(props) {
     }
   }, [value]);
 
-  const reloadOption = async v => {
-    let ops = await loadOptions(v);
+  const reloadOption = async (val) => {
+    let ops = await loadOptions(val);
+
     setFilteredOptions(ops);
   };
 
@@ -60,7 +65,7 @@ export default function NativeMedicineSelector(props) {
     setOpen(false);
   };
 
-  const _onInputChange = async _inputValue => {
+  const _onInputChange = async (_inputValue) => {
     reloadOption(_inputValue);
     onInputChange(_inputValue);
   };
@@ -68,12 +73,15 @@ export default function NativeMedicineSelector(props) {
   const renderMedicineOb = (data, index) => {
     return (
       <NativeBox
-        styleClasses={[CoreClasses?.MARGIN?.MR1, CoreClasses?.MARGIN?.MY1]}>
+        styleClasses={[CoreClasses?.MARGIN?.MR1, CoreClasses?.MARGIN?.MY1]}
+      >
         <NativeChip
           label={data.label}
           closeIcon="close-circle"
           onClose={() => {
-            let items = value?.filter((v, i) => i !== index);
+            // eslint-disable-next-line no-unused-vars
+            let items = value?.filter((val, i) => i !== index);
+
             onChange(items);
           }}
         />
@@ -81,17 +89,20 @@ export default function NativeMedicineSelector(props) {
     );
   };
 
-  const getKey = data => {
+  const getKey = (data) => {
     return data?.id;
   };
 
+  // eslint-disable-next-line no-unused-vars
   const renderMedicineOption = (option, index) => {
     return (
       <TouchableOpacity
         onPress={() => {
           let newValue = [...value, option];
+
           onChange(newValue);
-        }}>
+        }}
+      >
         {
           // components?.Option ? (
           //   components?.Option(option)
@@ -105,11 +116,12 @@ export default function NativeMedicineSelector(props) {
     );
   };
 
-  const getKeyOption = data => {
+  const getKeyOption = (data) => {
     return data?.id;
   };
 
-  const onEndReached = page => {};
+  // eslint-disable-next-line no-unused-vars
+  const onEndReached = (page) => {};
 
   const viewInput = () => {
     if (value && Array.isArray(value)) {
@@ -140,7 +152,8 @@ export default function NativeMedicineSelector(props) {
       inputValue={inputValue}
       viewInput={viewInput}
       multiple={true}
-      value={value}>
+      value={value}
+    >
       {/* Current medicine components */}
 
       <NativeBox>
@@ -152,6 +165,7 @@ export default function NativeMedicineSelector(props) {
           listRef={scrollRef}
         />
       </NativeBox>
+
       {getMedicineMask()}
 
       {/* All options like medicines */}

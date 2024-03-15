@@ -1,11 +1,8 @@
-import React from 'react';
-import NativeTableCell from './NativeTableCell';
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
+import NativeTableCell from "./NativeTableCell";
 
 export default function NativeTableBodyCell(props) {
-  return (
-    <NativeTableCell {...props}>
-      {/* <NativeTypographyBody1 lineLimit={2}>{props.children}</NativeTypographyBody1> */}
-      {props.children}
-    </NativeTableCell>
-  );
+  return <NativeTableCell {...props}>{props.children}</NativeTableCell>;
 }

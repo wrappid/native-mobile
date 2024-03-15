@@ -1,12 +1,17 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React, { useEffect } from "react";
+
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import NativeBox from "../layouts/NativeBox";
-import { SCTimePicker } from "../../styledComponents/inputs/SCTimePicker";
+
+// eslint-disable-next-line import/named
 import { NativeInput } from "./NativeInput";
 import { SCInput } from "../../styledComponents/inputs/SCInput";
+import { SCTimePicker } from "../../styledComponents/inputs/SCTimePicker";
+import NativeBox from "../layouts/NativeBox";
 
 export default function NativeTimeRangePicker(props) {
   const {
+    // eslint-disable-next-line no-unused-vars
     label = "Pick Time Range",
     ampm,
     onChange,
@@ -30,7 +35,7 @@ export default function NativeTimeRangePicker(props) {
 
   useEffect(() => {
     if (startTime && endTime) {
-      onChange({ startTime: startTime, endTime: endTime });
+      onChange({ endTime: endTime, startTime: startTime });
     }
   }, [startTime, endTime]);
 
@@ -90,6 +95,7 @@ export default function NativeTimeRangePicker(props) {
             />
           }
         />
+
         <SCTimePicker
           {...restProps}
           label="Select Start Time"
@@ -100,6 +106,7 @@ export default function NativeTimeRangePicker(props) {
           minutes={startMinutes ? Number(startMinutes) : 0}
           use24HourClock={ampm ? false : true}
         />
+
         <SCTimePicker
           {...restProps}
           label="Select End Time"

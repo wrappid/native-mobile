@@ -1,4 +1,6 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
+
 import { SCFlatList } from "../../styledComponents/dataDisplay/SCFlatList";
 import NativeBox from "../layouts/NativeBox";
 
@@ -7,6 +9,7 @@ const END_REACH_THRESHOLD = 3;
 export default function NativeFlatList(props) {
   const {
     tableData,
+    // eslint-disable-next-line no-unused-vars
     query,
     renderItem,
     keyExtractor,
@@ -15,7 +18,7 @@ export default function NativeFlatList(props) {
     horizontal,
     listRef,
     boundingBox,
-    listHeight
+    listHeight,
   } = props;
 
   const flatList = () => {
@@ -30,8 +33,8 @@ export default function NativeFlatList(props) {
         onEndReached={
           onEndReached
             ? () => {
-                onEndReached(page + 1);
-              }
+              onEndReached(page + 1);
+            }
             : null
         }
         onEndReachedThreshold={END_REACH_THRESHOLD}

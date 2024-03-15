@@ -1,8 +1,13 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React, { isValidElement, cloneElement } from "react";
-import { SCStack } from "../../styledComponents/layouts/SCStack";
-import { UtilityClasses } from "@wrappid/styles";
-import NativeDivider from "../dataDisplay/NativeDivider";
+
+// eslint-disable-next-line import/no-unresolved
 import { CoreBox } from "@wrappid/core";
+// eslint-disable-next-line import/no-unresolved
+import { UtilityClasses } from "@wrappid/styles";
+
+import { SCStack } from "../../styledComponents/layouts/SCStack";
+import NativeDivider from "../dataDisplay/NativeDivider";
 
 export default function NativeStack(props) {
   // direction
@@ -19,6 +24,7 @@ export default function NativeStack(props) {
   // | string
 
   const {
+    // eslint-disable-next-line no-unused-vars
     component,
     direction = "column",
     divider,
@@ -27,6 +33,7 @@ export default function NativeStack(props) {
      * @todo need to implment whenever it is required
      */
     // useFlexGap,
+    // eslint-disable-next-line no-unused-vars
     flexWrap,
     styleClasses,
     children,
@@ -60,7 +67,7 @@ export default function NativeStack(props) {
       Array.isArray(children) &&
       children?.map((child, index) => {
         if (child && isValidElement(child)) {
-          const { styleClasses, ...restChildProps } = child?.props;
+          const { styleClasses, ...restChildProps } = child?.props || {};
           let childStyleClasses =
             index > 0
               ? [...(styleClasses || []), ...marginClasses]
@@ -69,9 +76,11 @@ export default function NativeStack(props) {
             ...restChildProps,
             styleClasses: childStyleClasses,
           });
+
           return (
             <>
               {newChild}
+
               {divider && index < children?.length - 1 && (
                 <CoreBox styleClasses={marginClasses}>
                   <NativeDivider

@@ -1,18 +1,18 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
-import { SCListItem } from "../../styledComponents/layouts//SCListItem";
 
+import { SCListItem } from "../../styledComponents/layouts//SCListItem";
+import NativeTypographyBody1 from "../dataDisplay/paragraph/NativeTypographyBody1";
 import NativeCard from "../surfaces/NativeCard";
 import NativeCardContent from "../surfaces/NativeCardContent";
-import NativeTypographyBody1 from "../dataDisplay/paragraph/NativeTypographyBody1";
 
 export default function NativeListItem(props) {
   return (
     <SCListItem
       {...props}
-      onPress={(e) => {
-        // console.log('LLLLLLLLLLL', props, e, props.option);
+      onPress={(ele) => {
         if (props.OnClick) {
-          props.OnClick(e, props?.option);
+          props.OnClick(ele, props?.option);
           props.onClose && props.onClose();
         }
       }}

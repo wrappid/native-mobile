@@ -1,5 +1,7 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
-import { SCAlertTitle } from "../../styledComponents/feedback/SCAlertTitle";
+
+import { SCAlert } from "../../styledComponents/feedback/SCAlert";
 
 export default function NativeAlert(props) {
   return <SCAlert {...props}>{props.children}</SCAlert>;

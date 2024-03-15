@@ -1,16 +1,19 @@
-import React from 'react';
-// import {getUUID} from '../../../utils/appUtils';
-import {SCInput} from '../../styledComponents/inputs/SCInput';
-import {TouchableOpacity} from 'react-native';
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
+// eslint-disable-next-line import/namespace
+import { TouchableOpacity } from "react-native";
+
+import { SCInput } from "../../styledComponents/inputs/SCInput";
 
 export default function NativeInput(props) {
   // const {NativeId = getUUID()} = props;
-  console.log('NATIVE INPUT PROPS', props);
+  // -- console.log("NATIVE INPUT PROPS", props);
   const typeMap = {
-    number: 'numeric',
-    text: 'text',
-    email: 'email',
-    phone: 'tel',
+    email : "email",
+    number: "numeric",
+    phone : "tel",
+    text  : "text",
   };
 
   const inputComponent = (
@@ -19,9 +22,9 @@ export default function NativeInput(props) {
       label={props.label}
       type={props.type}
       styleClasses={[...(props.styleClasses || [])]}
-      value={props.value? String(props.value) : ''}
+      value={props.value ? String(props.value) : ""}
       secureTextEntry={props.secureTextEntry}
-      onChangeText={text => {
+      onChangeText={(text) => {
         props.formik
           ? props.formik.setFieldValue(props.id, text)
           : props.handleChange(text);
@@ -42,17 +45,17 @@ export default function NativeInput(props) {
       onFocus={
         props.onFormFocus && props.editId && props.readOnly
           ? () => {
-              console.log('CLICKED');
-              props.onFormFocus(props.editId);
-            }
+            // -- console.log("CLICKED");
+            props.onFormFocus(props.editId);
+          }
           : () => {
-              console.log('CLICKED else');
-            }
+            // -- console.log("CLICKED else");
+          }
       }
       readOnly={props.readOnly}
       keyboardType={typeMap[props.type]}
       right={props?.right || props.endAdornment}
-      style={{ ...(props.style||{}), paddingHorizontal: 0}}
+      style={{ ...(props.style || {}), paddingHorizontal: 0 }}
     />
   );
 
@@ -60,7 +63,8 @@ export default function NativeInput(props) {
     <TouchableOpacity
       onPress={() => {
         props.onFormFocus(props.editId);
-      }}>
+      }}
+    >
       {inputComponent}
     </TouchableOpacity>
   ) : (

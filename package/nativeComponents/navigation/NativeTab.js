@@ -1,17 +1,23 @@
-import React from 'react';
-import {SCTab} from '../../styledComponents/navigation/SCTab';
-import {UtilityClasses} from '@wrappid/styles';
-import NativeTypographyBody2 from '../dataDisplay/paragraph/NativeTypographyBody2';
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
+// eslint-disable-next-line import/no-unresolved
+import { UtilityClasses } from "@wrappid/styles";
+
+import { SCTab } from "../../styledComponents/navigation/SCTab";
+import NativeTypographyBody2 from "../dataDisplay/paragraph/NativeTypographyBody2";
 
 export default function NativeTab(props) {
-  const {label, value, icon, disabled, onClick, currentTab, tabIndex, tabRef} =
+  const {
+    label, value, disabled, onClick, currentTab, tabIndex, tabRef 
+  } =
     props;
 
   const onTabChange = () => {
-    console.log('TAB REF', tabRef, tabIndex);
+    // -- console.log("TAB REF", tabRef, tabIndex);
     tabRef?.current?.scrollToIndex({
-      index: tabIndex,
-      animated: true,
+      animated    : true,
+      index       : tabIndex,
       viewPosition: 0.2,
     });
     onClick({}, value);
@@ -22,19 +28,15 @@ export default function NativeTab(props) {
       active={currentTab === value}
       disabled={disabled}
       onPress={onTabChange}
-      styleClasses={[UtilityClasses.MARGIN.MR2]}>
+      styleClasses={[UtilityClasses.MARGIN.MR2]}
+    >
       <NativeTypographyBody2
         styleClasses={
           currentTab === value
-            ? [
-                UtilityClasses?.COLOR?.TEXT_PRIMARY,
-                UtilityClasses?.TEXT?.TEXT_WEIGHT_BOLD,
-              ]
-            : [
-                UtilityClasses?.TEXT?.TEXT_WEIGHT_BOLD,
-                UtilityClasses?.COLOR?.TEXT_SECONDARY_DARK,
-              ]
-        }>
+            ? [UtilityClasses?.COLOR?.TEXT_PRIMARY, UtilityClasses?.TEXT?.TEXT_WEIGHT_BOLD]
+            : [UtilityClasses?.TEXT?.TEXT_WEIGHT_BOLD, UtilityClasses?.COLOR?.TEXT_SECONDARY_DARK]
+        }
+      >
         {label}
       </NativeTypographyBody2>
     </SCTab>

@@ -1,5 +1,7 @@
-import React from 'react';
-import NativeTypography from '../NativeTypography';
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
+import NativeTypography from "../NativeTypography";
 
 export default function NativeH(props) {
   //DONT use this directly instead use NativeH1 to NativeH6
@@ -8,7 +10,8 @@ export default function NativeH(props) {
     <NativeTypography
       {...props}
       component={props.__level}
-      variant={props.variant ? props.variant : props.__level}>
+      variant={props.variant ? props.variant : props.__level}
+    >
       {props.children}
     </NativeTypography>
   );

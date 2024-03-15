@@ -1,17 +1,21 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React, { useCallback, useEffect, useState } from "react";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+
+// eslint-disable-next-line import/no-unresolved
 import moment from "moment";
-import NativeBox from "../layouts/NativeBox";
-import NativeOutlinedButton from "./NativeOutlinedButton";
-import NativeTypographyBody1 from "../dataDisplay/paragraph/NativeTypographyBody1";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
+// eslint-disable-next-line import/named
 import { NativeInput } from "./NativeInput";
-import { SCInput } from "../../styledComponents/inputs/SCInput";
 import { SCDatePicker } from "../../styledComponents/inputs/SCDatePicker";
+import { SCInput } from "../../styledComponents/inputs/SCInput";
 import { SCTimePicker } from "../../styledComponents/inputs/SCTimePicker";
+import NativeBox from "../layouts/NativeBox";
 
 export default function NativeDateTimeRangePicker(props) {
   const {
     value,
+    // eslint-disable-next-line no-unused-vars
     label = "Pick Date Time Range",
     onChange,
     id,
@@ -48,13 +52,13 @@ export default function NativeDateTimeRangePicker(props) {
   useEffect(() => {
     if (startDate && startTime && endDate && endTime) {
       formik?.setFieldValue(id, {
+        endDate  : endDate + " " + endTime,
         startDate: startDate + " " + startTime,
-        endDate: endDate + " " + endTime,
       });
       if (onChange) {
         onChange({
+          endDate  : endDate + " " + endTime,
           startDate: startDate + " " + startTime,
-          endDate: endDate + " " + endTime,
         });
       }
     }
@@ -134,6 +138,7 @@ export default function NativeDateTimeRangePicker(props) {
             />
           }
         />
+
         <SCDatePicker
           label="Start Date"
           {...restProps}
@@ -144,6 +149,7 @@ export default function NativeDateTimeRangePicker(props) {
           date={startDate}
           onConfirm={onConfirmStartDate}
         />
+
         <SCTimePicker
           label="Start Time"
           {...restProps}
@@ -154,6 +160,7 @@ export default function NativeDateTimeRangePicker(props) {
           minutes={startMinutes ? Number(startMinutes) : 0}
           use24HourClock={ampm ? false : true}
         />
+
         <SCDatePicker
           label="End Date"
           {...restProps}
@@ -164,6 +171,7 @@ export default function NativeDateTimeRangePicker(props) {
           date={endDate}
           onConfirm={onConfirmEndDate}
         />
+
         <SCTimePicker
           label="End Time"
           {...restProps}

@@ -1,4 +1,6 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
+
 import { SCCheckbox } from "../../styledComponents/inputs/SCCheckbox";
 
 export default function NativeCheckbox(props) {
@@ -14,6 +16,7 @@ export default function NativeCheckbox(props) {
   } = props;
 
   const checked = formik ? value : props.checked;
+
   return (
     <SCCheckbox
       {...restProps}
@@ -25,9 +28,9 @@ export default function NativeCheckbox(props) {
       onPress={
         onChange && !formik
           ? onChange
-          : (v) => {
-              formik?.setFieldValue(id, v.target.checked);
-            }
+          : (val) => {
+            formik?.setFieldValue(id, val.target.checked);
+          }
       }
     />
   );

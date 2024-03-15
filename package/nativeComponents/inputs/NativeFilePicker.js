@@ -1,20 +1,24 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React, { useEffect, useState } from "react";
-import DocumentPicker from "react-native-document-picker";
+
+// eslint-disable-next-line import/namespace
+import { PermissionsAndroid } from "react-native";
+import * as DocumentPicker from "react-native-document-picker";
+
 import NativeInput from "./NativeInput";
 import { SCInput } from "../../styledComponents/inputs/SCInput";
-import {PermissionsAndroid} from 'react-native';
 
 export default function NativeFilePicker(props) {
+  // eslint-disable-next-line no-unused-vars
   const { label = "Pick Document", formik, id, onChange } = props;
 
   const [value, setValue] = useState();
 
   useEffect(() => {
     if (value) {
-      if(formik){
+      if (formik) {
         formik?.setFieldValue(id, value);
-      }
-      else{
+      } else {
         if (onChange) {
           onChange(value);
         }
@@ -23,8 +27,8 @@ export default function NativeFilePicker(props) {
   }, [value]);
 
   useEffect(() => {
-    requestCameraPermission()
-    requestFilesPermission()
+    requestCameraPermission();
+    requestFilesPermission();
   }, []);
 
   const requestCameraPermission = async () => {
@@ -32,67 +36,70 @@ export default function NativeFilePicker(props) {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.CAMERA,
         {
-          title: 'Allow Camera Permission',
+          buttonNegative: "Cancel",
+          buttonNeutral : "Ask Me Later",
+          buttonPositive: "OK",
           message:
-            'Allow access to your camera ' +
-            'so you can take awesome pictures.',
-          buttonNeutral: 'Ask Me Later',
-          buttonNegative: 'Cancel',
-          buttonPositive: 'OK',
-        },
+            "Allow access to your camera " +
+            "so you can take awesome pictures.",
+          title: "Allow Camera Permission",
+        }
       );
+
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log('You can use the camera');
+        // -- console.log("You can use the camera");
       } else {
-        console.log('Camera permission denied');
+        // -- console.log("Camera permission denied");
       }
     } catch (err) {
-      console.warn(err);
+      // -- console.warn(err);
     }
   };
-  
+
   const requestFilesPermission = async () => {
     try {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
         {
-          title: 'Allow files Permission',
+          buttonNegative: "Cancel",
+          buttonNeutral : "Ask Me Later",
+          buttonPositive: "OK",
           message:
-            'Allow needs access to your files ' +
-            'so you can take awesome files.',
-          buttonNeutral: 'Ask Me Later',
-          buttonNegative: 'Cancel',
-          buttonPositive: 'OK',
-        },
+            "Allow needs access to your files " +
+            "so you can take awesome files.",
+          title: "Allow files Permission",
+        }
       );
+
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log('You can use the images');
+        // -- console.log("You can use the images");
       } else {
-        console.log('images permission denied');
+        // -- console.log("images permission denied");
       }
     } catch (err) {
-      console.warn(err);
+      // -- console.warn(err);
     }
     try {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
         {
-          title: 'Allow files Permission',
+          buttonNegative: "Cancel",
+          buttonNeutral : "Ask Me Later",
+          buttonPositive: "OK",
           message:
-            'Allow needs access to your files ' +
-            'so you can take awesome files.',
-          buttonNeutral: 'Ask Me Later',
-          buttonNegative: 'Cancel',
-          buttonPositive: 'OK',
-        },
+            "Allow needs access to your files " +
+            "so you can take awesome files.",
+          title: "Allow files Permission",
+        }
       );
+
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log('You can use the files');
+        // -- console.log("You can use the files");
       } else {
-        console.log('files permission denied');
+        // -- console.log("files permission denied");
       }
     } catch (err) {
-      console.warn(err);
+      // -- console.warn(err);
     }
   };
 
@@ -109,8 +116,9 @@ export default function NativeFilePicker(props) {
       .then((file) => {
         setValue(file);
       })
+      // eslint-disable-next-line no-unused-vars
       .catch((err) => {
-        console.log("Error to pick document", err);
+        // -- console.log("Error to pick document", err);
       });
   };
 

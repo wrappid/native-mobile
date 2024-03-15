@@ -1,13 +1,17 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
-import NativeBox from "../layouts/NativeBox";
-import { UtilityClasses } from "@wrappid/styles";
-import { SCAvatarText } from "../../styledComponents/dataDisplay/SCAvatarText";
 
+// eslint-disable-next-line import/no-unresolved
+import { UtilityClasses } from "@wrappid/styles";
+
+import { SCAvatarText } from "../../styledComponents/dataDisplay/SCAvatarText";
 import { destructureAvatarSizeFromStyles } from "../dataDisplay/NativeAvatar";
+import NativeBox from "../layouts/NativeBox";
 
 const DEFAULT_MAX_AVATARS = 5;
 
 export default function NativeAvatarGroup(props) {
+  // eslint-disable-next-line no-unused-vars
   const { max, total, children, ...restProps } = props;
 
   const renderAvatars = (children) => {
@@ -96,6 +100,7 @@ export default function NativeAvatarGroup(props) {
      *
      *
      */
+    // eslint-disable-next-line etc/no-commented-out-code
     // if(renderableChildrenLength > props.max && renderableChildrenLength > props.total){
     //   renderableChildren.push(
     //     React.createElement(SCAvatarText, {
@@ -107,23 +112,15 @@ export default function NativeAvatarGroup(props) {
     //   );
     // };
 
+    // eslint-disable-next-line no-unused-vars
     return renderableChildren.reverse().map((child, index) => {
-      return React.cloneElement(child, {
-        styleClasses: [
-          UtilityClasses.MARGIN.MR_N1,
-          UtilityClasses.BORDER.BORDER_WHITE,
-          UtilityClasses.BG.BG_GREY_500,
-        ],
-      });
+      return React.cloneElement(child, { styleClasses: [UtilityClasses.MARGIN.MR_N1, UtilityClasses.BORDER.BORDER_WHITE, UtilityClasses.BG.BG_GREY_500] });
     });
   };
 
   return (
     <NativeBox
-      styleClasses={[
-        UtilityClasses.DISPLAY.FLEX,
-        UtilityClasses.FLEX.DIRECTION_ROW_REVERSE,
-      ]}
+      styleClasses={[UtilityClasses.DISPLAY.FLEX, UtilityClasses.FLEX.DIRECTION_ROW_REVERSE]}
     >
       {renderAvatars(props.children)}
     </NativeBox>

@@ -1,8 +1,10 @@
-import React from 'react';
-import NativeBox from '../layouts/NativeBox';
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
+
+import NativeBox from "../layouts/NativeBox";
 
 export default function NativeTabPanel(props) {
-  const {children, value, index, ...other} = props;
+  const { children, value, index, ...other } = props;
 
   return (
     <NativeBox
@@ -10,7 +12,8 @@ export default function NativeTabPanel(props) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
-      {...other}>
+      {...other}
+    >
       {value === index && <>{children}</>}
     </NativeBox>
   );

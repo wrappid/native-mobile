@@ -1,6 +1,8 @@
-import styled from "styled-components/native";
-import { View as MenuList } from "react-native";
+// eslint-disable-next-line import/no-unresolved
 import { getEffectiveStyle, StyledComponentsClasses } from "@wrappid/styles";
+// eslint-disable-next-line import/namespace
+import { View as MenuList } from "react-native";
+import styled from "styled-components/native";
 
 const defaultStyleClasses = [StyledComponentsClasses.NAVIGATION.MENU_LIST];
 
@@ -9,8 +11,5 @@ export const SCMenuList = styled(
   {}
 )((props) => ({
   backgroundColor: "#fff",
-  ...getEffectiveStyle([
-    ...defaultStyleClasses,
-    ...(props?.styleClasses || []),
-  ]),
+  ...getEffectiveStyle([...defaultStyleClasses, ...(props?.styleClasses || [])]),
 }));

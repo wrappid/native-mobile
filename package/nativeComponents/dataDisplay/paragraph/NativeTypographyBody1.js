@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
+// eslint-disable-next-line import/no-unresolved
 import { UtilityClasses } from "@wrappid/styles";
-import NativeTypography from "../NativeTypography";
+
 import NativeSpan from "../../layouts/NativeSpan";
 import NativeLink from "../../navigation/NativeLink";
+import NativeTypography from "../NativeTypography";
 
 function NativeTypographyBody1(props) {
   const { hideSeeMore = false, limitChars } = props;
@@ -13,6 +16,7 @@ function NativeTypographyBody1(props) {
 
   return props?.limitChars ? (
     <NativeTypography {...props} variant="body1" gutterBottom>
+      {/* eslint-disable-next-line no-undef */}
       <NativeSpan styleClasses={[...(styleClasses || [])]}>
         {typeof props?.children === "string" && seeMore
           ? limitChars > props?.children?.length
@@ -20,6 +24,7 @@ function NativeTypographyBody1(props) {
             : props?.children.slice(0, limitChars) + "..."
           : props?.children}
       </NativeSpan>
+
       {!hideSeeMore && limitChars < props?.children?.length && (
         <NativeLink
           styleClasses={[UtilityClasses.MARGIN.ML1]}

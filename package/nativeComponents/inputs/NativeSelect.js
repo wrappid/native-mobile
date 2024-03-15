@@ -1,4 +1,6 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React, { useState } from "react";
+
 import { SCSelect } from "../../styledComponents/inputs/SCSelect";
 
 export default function NativeSelect(props) {

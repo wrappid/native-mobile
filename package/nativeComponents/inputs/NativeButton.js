@@ -1,6 +1,9 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React, { isValidElement, cloneElement } from "react";
-import { SCButton } from "../../styledComponents/inputs/SCButton";
+
 import { useTheme } from "react-native-paper";
+
+import { SCButton } from "../../styledComponents/inputs/SCButton";
 
 export default function NativeButton(props) {
   const {
@@ -14,20 +17,21 @@ export default function NativeButton(props) {
     startIcon,
     children,
     endIcon,
+    // eslint-disable-next-line no-unused-vars
     ...restProps
   } = props;
-  console.log("btn OnClick", OnClick);
 
-  const UserActionLogging = () => {
-    // alert("BUTTON CLICK");
-  };
+  // -- console.log("btn OnClick", OnClick);
+
+  const UserActionLogging = () => {};
   const theme = useTheme();
   const childrenWithProps = (childProps) => {
     let icon = endIcon ? endIcon : startIcon;
+
     if (isValidElement(icon)) {
       return cloneElement(icon, { style: childProps, ...(icon?.props || {}) });
     } else {
-      console.log("Not valid element");
+      // -- console.log("Not valid element");
     }
   };
 
@@ -38,18 +42,14 @@ export default function NativeButton(props) {
       mode={variant ? variant : "contained"}
       size={size}
       disabled={disabled}
-      style={
-        variant === "outlined" && {
-          borderColor: theme?.colors?.primary,
-        }
-      }
+      style={variant === "outlined" && { borderColor: theme?.colors?.primary }}
       icon={(iconProps) =>
         startIcon || endIcon ? childrenWithProps(iconProps) : null
       }
-      onPress={(e) => {
+      onPress={(ele) => {
         UserActionLogging();
         if (OnClick && typeof OnClick === "function") {
-          OnClick(e);
+          OnClick(ele);
         }
       }}
     >

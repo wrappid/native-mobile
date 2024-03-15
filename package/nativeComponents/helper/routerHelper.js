@@ -1,3 +1,6 @@
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+// eslint-disable-next-line import/namespace
+import { Linking } from "react-native";
 import {
   Routes as NativeDomRoutes,
   Route as NativeDomRoute,
@@ -5,13 +8,14 @@ import {
   useNavigate as nativeUseNavigate,
   useLocation as nativeUseLocation,
   useParams as nativeUseParams,
-  useSearchParams as nativeUseSearchParams,
+  useSearchParams as nativeUseSearchParams
 } from "react-router-native";
-import { Linking } from "react-native";
 
+// eslint-disable-next-line no-unused-vars
 async function nativeOpenUrl(url) {
+  // eslint-disable-next-line no-unused-vars
   Linking.openURL(url).catch((err) => {
-    console.error("Failed opening page because: ", err);
+    // -- console.error("Failed opening page because: ", err);
     alert("Failed to open page");
   });
 }
@@ -24,5 +28,5 @@ export {
   NativeDomNavigate,
   nativeUseParams,
   nativeUseSearchParams,
-  nativeOpenUrl,
+  nativeOpenUrl
 };

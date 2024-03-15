@@ -1,4 +1,3 @@
-import React from "react";
 import { variantMap } from "../../../helper/componentUtil";
 import { SCTypography } from "../../../styledComponents/dataDisplay/SCTypography";
 
