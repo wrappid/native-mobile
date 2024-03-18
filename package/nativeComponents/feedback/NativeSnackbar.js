@@ -6,16 +6,14 @@ import { Snackbar } from "react-native-paper";
 
 import { SCSnackbar } from "../../styledComponents/feedback/SCSnackbar";
 
-function nativeDuration(autoHideDuration) {
-  if (autoHideDuration <= 5000) {
+function barDuration(autoHideDuration) {
+  if (autoHideDuration <= 4000) {
     return Snackbar.DURATION_SHORT;
-  } else if(autoHideDuration > 5000){
+  } else if(autoHideDuration <= 7000){
+    return Snackbar.DURATION_MEDIUM;
+  } else {
     return Snackbar.DURATION_LONG;
   }
-  else {
-    return Snackbar.DURATION_INDEFINITE;
-  }
-  
 }
 
 export default function NativeSnackbar(props) {
@@ -25,7 +23,7 @@ export default function NativeSnackbar(props) {
 
   return <SCSnackbar
     visible={open}
-    duration={Snackbar.DURATION_LONG}
+    duration={barDuration(autoHideDuration)}
     onDismiss={onClose}
     {...restProps}>{children}</SCSnackbar>;
 }
