@@ -55,7 +55,7 @@ function NativeAutocomplete(props) {
     _editId,
     _onFormFocus,
     onFocus,
-    _getEndAdornment,
+    /* _getEndAdornment, */
     _formik,
     loading,
     freeSolo,
@@ -230,7 +230,8 @@ function NativeAutocomplete(props) {
                 styleClasses={[UtilityClasses.FLEX.DIRECTION_ROW, UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_FLEX_END]}
                 gridProps={{ gridSize: 2 }}
               >
-                {_getEndAdornment()}
+                {/* eslint-disable-next-line etc/no-commented-out-code */}
+                {/* {_getEndAdornment()} */}
               </NativeBox>
             </NativeGrid>
           </>
