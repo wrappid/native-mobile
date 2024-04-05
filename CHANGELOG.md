@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.241](https://github.com/wrappid/native-mobile/compare/v0.0.240...v0.0.241) (2024-04-05)
+
+
+### Bug Fixes
+
+* **core:** :art: native app container fix ([3efdced](https://github.com/wrappid/native-mobile/commit/3efdced4c2cf8b323e9f6d665d275d49304018af)), closes [#61](https://github.com/wrappid/native-mobile/issues/61)
+
 ### [0.0.240](https://github.com/wrappid/native-mobile/compare/v0.0.239...v0.0.240) (2024-03-30)
 
 
