@@ -32,7 +32,7 @@
     "@react-native-voice/voice": "^3.2.4",
     "core-js": "^3.30.0",
     "react": "18.2.0",
-    "react-native": "0.71.6",
+    "react-native": "0.73.0",
     "react-native-document-picker": "^8.2.0",
     "@react-native-community/netinfo": "^11.3.1",
     "react-native-image-crop-picker": "^0.40.0",
