@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.242](https://github.com/wrappid/native-mobile/compare/v0.0.241...v0.0.242) (2024-04-06)
+
+
+### Bug Fixes
+
+* **core:** :zap: react-native update version ([54c8f51](https://github.com/wrappid/native-mobile/commit/54c8f5152d4ee25665122f31b0585f978c2f180e)), closes [#61](https://github.com/wrappid/native-mobile/issues/61)
+
 ### [0.0.241](https://github.com/wrappid/native-mobile/compare/v0.0.240...v0.0.241) (2024-04-05)
 
 
