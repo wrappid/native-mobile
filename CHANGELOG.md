@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.245](https://github.com/wrappid/native-mobile/compare/v0.0.244...v0.0.245) (2024-05-13)
+
+
+### Bug Fixes
+
+* **config:** 📦 version changes in package.json file ([e505063](https://github.com/wrappid/native-mobile/commit/e5050631a4dfedcf65d7db3f99e1c41b664f08f6)), closes [#71](https://github.com/wrappid/native-mobile/issues/71)
+
 ### [0.0.244](https://github.com/wrappid/native-mobile/compare/v0.0.243...v0.0.244) (2024-05-06)
 
 
