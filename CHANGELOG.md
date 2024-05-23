@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.246](https://github.com/wrappid/native-mobile/compare/v0.0.245...v0.0.246) (2024-05-23)
+
+
+### Bug Fixes
+
+* **config:** :pushpin: pin some dependecies ([41358c9](https://github.com/wrappid/native-mobile/commit/41358c946c3ddc687fe07a6a946895a0b45969ad))
+
 ### [0.0.245](https://github.com/wrappid/native-mobile/compare/v0.0.244...v0.0.245) (2024-05-13)
 
 
