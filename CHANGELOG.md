@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.247](https://github.com/wrappid/native-mobile/compare/v0.0.246...v0.0.247) (2024-06-15)
+
+
+### Bug Fixes
+
+* **config:** :package: package dependency issue ([71d7ae4](https://github.com/wrappid/native-mobile/commit/71d7ae433eb785b19ed952550f32f23ffcb2dc4a)), closes [#73](https://github.com/wrappid/native-mobile/issues/73)
+
 ### [0.0.246](https://github.com/wrappid/native-mobile/compare/v0.0.245...v0.0.246) (2024-05-23)
 
 
