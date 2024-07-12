@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+// eslint-disable-next-line no-unused-vars, unused-imports/no-unused-imports
+import React, { useEffect, useState } from "react";
 
 import { addEventListener } from "@react-native-community/netinfo";
 

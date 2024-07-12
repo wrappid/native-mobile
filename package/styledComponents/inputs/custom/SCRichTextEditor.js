@@ -1,3 +1,6 @@
+// eslint-disable-next-line no-unused-vars, unused-imports/no-unused-imports
+import React from "react";
+
 // eslint-disable-next-line import/no-unresolved
 import { StyledComponentsClasses, getEffectiveStyle } from "@wrappid/styles";
 import { TextInput as Input } from "react-native-paper";
