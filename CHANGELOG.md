@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.249](https://github.com/wrappid/native-mobile/compare/v0.0.248...v0.0.249) (2024-07-12)
+
 ### [0.0.248](https://github.com/wrappid/native-mobile/compare/v0.0.247...v0.0.248) (2024-07-11)
 
 ### [0.0.247](https://github.com/wrappid/native-mobile/compare/v0.0.246...v0.0.247) (2024-06-15)
