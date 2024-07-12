@@ -1,3 +1,6 @@
+// eslint-disable-next-line no-unused-vars, unused-imports/no-unused-imports
+import React from "react";
+
 // eslint-disable-next-line import/no-unresolved
 import { getEffectiveStyle } from "@wrappid/styles";
 import { List } from "react-native-paper";
@@ -8,4 +11,4 @@ const defaultStyleClasses = [];
 export const SCSection = styled(
   List.Section,
   {}
-)(props => ({ ...getEffectiveStyle([...defaultStyleClasses, ...(props?.styleClasses || [])]) }));
+)((props) => ({ ...getEffectiveStyle([...defaultStyleClasses, ...(props?.styleClasses || [])]) }));
