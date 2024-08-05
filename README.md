@@ -1,2 +1,4 @@
-# native-mobile
-This repository is combined packages of all the Styled Components for react-native hybrid mobile project.
+## Wrappid native-mobile package [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/wrappid/native-mobile/blob/main/LICENSE) ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2Fwrappid%2Fnative-mobile%2Freleases%2Flatest&query=tag_name&label=%40wrappid%2Fnative-mobile) [![Release - CI](https://github.com/wrappid/native-mobile/actions/workflows/create-release.yml/badge.svg?branch=development)](https://github.com/wrappid/native-mobile/actions/workflows/create-release.yml)   
+This package is a part of wrappid framework for wrappid-app projects made for mobile runtime of [wrappid/wrappid-app](https://github.com/wrappid/wrappid-app) projects initialised by wrappid/toolkit.   
+
+This package contains hybrid react-native components, styled using [wrappid/styles](https://github.com/wrappid/styles) package, this package is used by [wrappid/core](https://github.com/wrappid/core) package.
