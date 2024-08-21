@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.252](https://github.com/wrappid/native-mobile/compare/v0.0.251...v0.0.252) (2024-08-21)
+
+
+### Features
+
+* **core:** :zap: new utility function added ([c3085be](https://github.com/wrappid/native-mobile/commit/c3085be3881984c3969e7845661984e47de02b8f)), closes [#84](https://github.com/wrappid/native-mobile/issues/84)
+
 ### [0.0.251](https://github.com/wrappid/native-mobile/compare/v0.0.250...v0.0.251) (2024-08-19)
 
 
