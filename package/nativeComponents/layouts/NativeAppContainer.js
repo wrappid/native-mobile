@@ -1,26 +1,26 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
 import React from "react";
 
+// eslint-disable-next-line import/no-unresolved
+import { WrappidDataContext } from "@wrappid/styles";
 // eslint-disable-next-line import/namespace
 import { StatusBar } from "react-native";
-import { useTheme } from "react-native-paper";
 
 import NativeBox from "./NativeBox";
 
 export default function NativeAppContainer(props) {
   const { appBar, leftDrawer, rightDrawer, footer } = props;
-  const theme = useTheme();
+
+  const { themes = {}, pageThemeID } = React.useContext(WrappidDataContext);
+  const theme = Object.keys(themes).includes(pageThemeID);
 
   return (
     <>
-      <StatusBar
-        backgroundColor={theme.palette.primary.main}
-        barStyle="light-content"
-      />
+      <StatusBar barStyle="dark-content" backgroundColor={theme.palette.background.default}/>
 
       {appBar()}
 
-      <NativeBox style={{ backgroundColor: theme.palette.primary.main, height: "92%" }}>
+      <NativeBox style={{ backgroundColor: theme.palette.background.default, height: "92%" }}>
         {leftDrawer()}
 
         {props.children}

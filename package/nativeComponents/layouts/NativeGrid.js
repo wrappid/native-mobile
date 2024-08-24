@@ -73,6 +73,7 @@ export default function NativeGrid(props) {
               paddingLeft: padding,
               paddingTop : padding,
             }}
+            styleClasses={child.props?.gridProps?.styleClasses || []}
           >
             {child}
           </SCGridItem>

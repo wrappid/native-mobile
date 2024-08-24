@@ -8,7 +8,7 @@ import { SCButton } from "../../styledComponents/inputs/SCButton";
 export default function NativeButton(props) {
   const {
     label,
-    OnClick,
+    onClick,
     variant,
     innerRef,
     type,
@@ -48,8 +48,8 @@ export default function NativeButton(props) {
       }
       onPress={(ele) => {
         UserActionLogging();
-        if (OnClick && typeof OnClick === "function") {
-          OnClick(ele);
+        if (onClick && typeof onClick === "function") {
+          onClick(ele);
         }
       }}
     >
