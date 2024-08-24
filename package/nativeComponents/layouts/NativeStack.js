@@ -1,5 +1,5 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
-import React, { isValidElement, cloneElement } from "react";
+import React, { cloneElement, isValidElement } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { CoreBox } from "@wrappid/core";
@@ -10,25 +10,13 @@ import { SCStack } from "../../styledComponents/layouts/SCStack";
 import NativeDivider from "../dataDisplay/NativeDivider";
 
 export default function NativeStack(props) {
-  // direction
-  //   'column-reverse'
-  // | 'column'
-  // | 'row-reverse'
-  // | 'row'
-  // divider	node
-  // spacing
-  //   Array<number
-  // | string>
-  // | number
-  // | object
-  // | string
 
   const {
     // eslint-disable-next-line no-unused-vars
     component,
     direction = "column",
     divider,
-    spacing = 0,
+    // spacing = 0,
     /**
      * @todo need to implment whenever it is required
      */
@@ -51,8 +39,9 @@ export default function NativeStack(props) {
 
   const childrenWithProps = () => {
     let marginClasses = [];
-    let marginString = "M";
-
+    
+    // eslint-disable-next-line etc/no-commented-out-code
+    // let marginString = "M";
     // if (direction.includes("column")) {
     //   marginString += "T" + spacing;
     //   marginString = marginString.toUpperCase();

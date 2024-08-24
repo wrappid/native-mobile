@@ -1,16 +1,17 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 
-// eslint-disable-next-line import/namespace
-import { CoreClasses } from "@wrappid/core";
+// eslint-disable-next-line import/no-unresolved
 import { nativeUseLocation } from "@wrappid/native";
-import { WrappidDataContext } from "@wrappid/styles";
+// eslint-disable-next-line import/no-unresolved
+import { UtilityClasses, WrappidDataContext } from "@wrappid/styles";
 import {
-  ScrollView,
+  BackHandler,
   Dimensions,
   KeyboardAvoidingView,
   Platform,
-  BackHandler
+  ScrollView
+  // eslint-disable-next-line import/namespace
 } from "react-native";
 
 import NativeBox from "./NativeBox";
@@ -19,7 +20,7 @@ import { nativeUseNavigate } from "../helper/routerHelper";
 export default function NativePageContainer(props) {
   const config = useContext(WrappidDataContext)?.config;
   const location = nativeUseLocation();
-  const { coreClasses, uid } = props;
+  const { uid } = props;
   /**
    * @todo scroll view is used in page container should be removed
    * when flatlist used but this is causing children in pages being
@@ -57,7 +58,7 @@ export default function NativePageContainer(props) {
         contentContainerStyle={{ flexGrow: 1 }}
       >
         <NativeBox
-          styleClasses={[CoreClasses?.BG?.BG_WHITE, CoreClasses?.HEIGHT?.H_100]}
+          styleClasses={[UtilityClasses?.BG?.BG_WHITE, UtilityClasses?.HEIGHT?.H_100]}
         >
           {props.children}
         </NativeBox>
