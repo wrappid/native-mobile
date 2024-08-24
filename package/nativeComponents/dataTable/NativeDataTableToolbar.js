@@ -25,7 +25,7 @@ export default function NativeDataTableToolbar(props) {
   const showStack = (stack) => {
     if (!stack.hideInApp) {
       if (menuRenderFunction) {
-        let visibleItems = stack?.filter((element) => !element.hideInApp);
+        let visibleItems = stack?.filter((element) => !element.hideInApp && element.comp);
 
         return menuRenderFunction(visibleItems);
       } else {

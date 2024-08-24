@@ -69,7 +69,7 @@ export default function NativeDialog(props) {
             {!dialog.noCancelButton && (
               <NativeTextButton
                 label={dialog?.cancelButtonLabel || "Cancel"}
-                OnClick={() => {
+                onClick={() => {
                   if (
                     dialog.cancelButton &&
                     typeof dialog.cancelButton === "function"
@@ -84,7 +84,7 @@ export default function NativeDialog(props) {
             {!dialog.noDoneButton && (
               <NativeTextButton
                 label={dialog?.doneButtonLabel || "Done"}
-                OnClick={() => {
+                onClick={() => {
                   if (
                     dialog.doneButton &&
                     typeof dialog.doneButton === "function"

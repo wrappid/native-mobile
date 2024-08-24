@@ -53,14 +53,14 @@ export default function NativeStack(props) {
     let marginClasses = [];
     let marginString = "M";
 
-    if (direction.includes("column")) {
-      marginString += "T" + spacing;
-      marginString = marginString.toUpperCase();
-      marginClasses.push(UtilityClasses?.MARGIN[marginString]);
-    } else {
-      marginString += "L" + spacing;
-      marginClasses.push(UtilityClasses?.MARGIN[marginString]);
-    }
+    // if (direction.includes("column")) {
+    //   marginString += "T" + spacing;
+    //   marginString = marginString.toUpperCase();
+    //   marginClasses.push(UtilityClasses?.MARGIN[marginString]);
+    // } else {
+    //   marginString += "L" + spacing;
+    //   marginClasses.push(UtilityClasses?.MARGIN[marginString]);
+    // }
 
     let newChildren =
       children &&
@@ -70,7 +70,7 @@ export default function NativeStack(props) {
           const { styleClasses, ...restChildProps } = child?.props || {};
           let childStyleClasses =
             index > 0
-              ? [...(styleClasses || []), ...marginClasses]
+              ? [...(styleClasses || [])]
               : styleClasses;
           let newChild = cloneElement(child, {
             ...restChildProps,

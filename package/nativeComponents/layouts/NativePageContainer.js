@@ -1,12 +1,24 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 // eslint-disable-next-line import/namespace
-import { ScrollView, Dimensions } from "react-native";
+import { CoreClasses } from "@wrappid/core";
+import { nativeUseLocation } from "@wrappid/native";
+import { WrappidDataContext } from "@wrappid/styles";
+import {
+  ScrollView,
+  Dimensions,
+  KeyboardAvoidingView,
+  Platform,
+  BackHandler
+} from "react-native";
 
 import NativeBox from "./NativeBox";
+import { nativeUseNavigate } from "../helper/routerHelper";
 
 export default function NativePageContainer(props) {
+  const config = useContext(WrappidDataContext)?.config;
+  const location = nativeUseLocation();
   const { coreClasses, uid } = props;
   /**
    * @todo scroll view is used in page container should be removed
@@ -19,26 +31,37 @@ export default function NativePageContainer(props) {
   // eslint-disable-next-line no-unused-vars
   const DEFAULT_APP_BAR_HEIGHT = 64;
 
+  const navigate = nativeUseNavigate();
+
+  useEffect(() => {
+    BackHandler.addEventListener("hardwareBackPress", handleBackButtonClick);
+    return () => {
+      BackHandler.removeEventListener("hardwareBackPress", handleBackButtonClick);
+    };
+  }, []);
+
+  const handleBackButtonClick = () => {
+    if(uid && location?.pathname !== "/" + config?.defaultAuthenticatedRoute){
+      navigate("/" + config?.defaultAuthenticatedRoute);
+      return true;
+    }
+  };
+
   return (
-    <NativeBox
-      // eslint-disable-next-line etc/no-commented-out-code
-      // style={{
-      //   height  : uid ? windowHeight - DEFAULT_APP_BAR_HEIGHT : windowHeight,
-      //   height  : uid ? windowHeight - DEFAULT_APP_BAR_HEIGHT : "100%",
-      //   position: uid ? "absolute" : "relative",
-      // }}
-      styleClasses={
-        uid
-          ? [coreClasses.LAYOUT.PAGE_CONTAINER]
-          : [coreClasses.LAYOUT.LOGGED_OUT_PAGE_CONTAINER]
-      }
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <ScrollView
         keyboardShouldPersistTaps={"always"}
         contentContainerStyle={{ flexGrow: 1 }}
       >
-        {props.children}
+        <NativeBox
+          styleClasses={[CoreClasses?.BG?.BG_WHITE, CoreClasses?.HEIGHT?.H_100]}
+        >
+          {props.children}
+        </NativeBox>
       </ScrollView>
-    </NativeBox>
+    </KeyboardAvoidingView>
   );
 }
