@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.254](https://github.com/wrappid/native-mobile/compare/v0.0.253...v0.0.254) (2024-08-24)
+
+
+### Bug Fixes
+
+* **core:** :bug: grid full width ([8eba4e7](https://github.com/wrappid/native-mobile/commit/8eba4e7b1feb79ae841af66cac192dd28b4472b4)), closes [#71](https://github.com/wrappid/native-mobile/issues/71)
+
 ### [0.0.253](https://github.com/wrappid/native-mobile/compare/v0.0.252...v0.0.253) (2024-08-24)
 
 
