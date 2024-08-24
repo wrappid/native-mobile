@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.253](https://github.com/wrappid/native-mobile/compare/v0.0.252...v0.0.253) (2024-08-24)
+
+
+### Bug Fixes
+
+* **core:** :bug: mobile working related change ([bce4b3e](https://github.com/wrappid/native-mobile/commit/bce4b3e006eb2c5a423b21d1dd3ad997a9587d05)), closes [#71](https://github.com/wrappid/native-mobile/issues/71)
+* **core:** :rotating_light: lint warning resolve ([1af6bb5](https://github.com/wrappid/native-mobile/commit/1af6bb57f16ef7cc27b75152b7c9e46b230a93ed)), closes [#71](https://github.com/wrappid/native-mobile/issues/71)
+
 ### [0.0.252](https://github.com/wrappid/native-mobile/compare/v0.0.251...v0.0.252) (2024-08-21)
 
 
