@@ -1,5 +1,5 @@
 // eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
-import React, { Children, useState, useEffect, useContext } from "react";
+import React, { Children, useContext, useEffect, useState } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import { ThemeContext } from "@wrappid/styles";
@@ -44,7 +44,7 @@ export default function NativeGrid(props) {
     }
     let width_percent = gridSizeToPercentage(gridSize);
 
-    return { width: width_percent };
+    return { minWidth: width_percent, width: width_percent };
   };
 
   const gridSizeToPercentage = (gridSize = 12) => {
