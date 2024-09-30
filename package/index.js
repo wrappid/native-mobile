@@ -10,6 +10,7 @@ import NativeH5 from "./nativeComponents/dataDisplay/heading/NativeH5";
 import NativeH6 from "./nativeComponents/dataDisplay/heading/NativeH6";
 import NativeAvatar from "./nativeComponents/dataDisplay/NativeAvatar";
 import NativeAvatarGroup from "./nativeComponents/dataDisplay/NativeAvatarGroup.js";
+import NativeLinkedInAuthComponent from "./nativeComponents/inputs/custom/NativeLinkedInAuthComponent.js";
 import NativeBadge from "./nativeComponents/dataDisplay/NativeBadge";
 import NativeChip from "./nativeComponents/dataDisplay/NativeChip";
 import NativeDivider from "./nativeComponents/dataDisplay/NativeDivider";
@@ -167,7 +168,7 @@ export {
   NativeH6, NativeIcon, NativeIconButton, NativeImage, NativeImageBackground, NativeImagePicker, NativeInput, NativeInputAdornment, NativeInputLabel, NativeInputPassword, NativeJSONEditor, NativeJSONInput, NativeLabel, NativeLinearProgress, NativeLink, NativeList, NativeListItem, NativeListItemButton, NativeListItemIcon, NativeListItemText, NativeMedicineSelector, NativeMenuItem, NativeMenuList, NativeModal, NativeMultiTimeRangePicker, NativeNavigation, nativeOpenUrl, NativeOtpInput, NativeOutlinedButton, NativePageContainer, NativePaper, NativePhone, NativePopover, NativeRating, NativeReactSelectInput, NativeRichTextEditor, NativeRightDrawer, NativeScrollTop, NativeSection, NativeSelect, NativeSkeleton, NativeSnackbar,
   // NativeGridItem,
   NativeSpan, NativeSpeechToText, NativeStack, nativeStorage, NativeSwitch, NativeTab,
-  NativeTabHead, NativeTable, NativeTableBody, NativeTableBodyCell, NativeTableCell, NativeTableContainer, NativeTableFooter, NativeTableHead, NativeTableHeadCell, NativeTableHeadRow, NativeTablePagination, NativeTableRow, NativeTableSortLabel, NativeTabPanel, NativeTabs, NativeTextarea, NativeTextButton, NativeTextField, NativeThemeProvider, NativeTimePicker, NativeTimeRangePicker, NativeToolbar, NativeTooltip, NativeTypography, NativeTypographyBody1, NativeTypographyBody2, NativeTypographyButton, NativeTypographyCaption, NativeTypographyOverline, NativeTypographySubtitle1, NativeTypographySubtitle2, nativeUseLocation, nativeUseNavigate, nativeUseParams, nativeUseScrollTrigger,
+  NativeTabHead, NativeTable, NativeTableBody, NativeTableBodyCell, NativeTableCell, NativeTableContainer, NativeTableFooter, NativeTableHead, NativeTableHeadCell, NativeTableHeadRow, NativeTablePagination, NativeTableRow, NativeTableSortLabel, NativeTabPanel, NativeTabs, NativeTextarea, NativeTextButton, NativeTextField, NativeThemeProvider, NativeTimePicker, NativeTimeRangePicker, NativeToolbar, NativeTooltip, NativeTypography, NativeTypographyBody1, NativeTypographyBody2, NativeTypographyButton, NativeTypographyCaption, NativeTypographyOverline, NativeTypographySubtitle1, NativeTypographySubtitle2, nativeUseLocation, nativeUseNavigate, nativeUseParams, nativeUseScrollTrigger,NativeLinkedInAuthComponent,
   /**
    * NATIVE EXPORTS
    */
