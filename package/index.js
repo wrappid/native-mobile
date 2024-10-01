@@ -151,6 +151,7 @@ import NativeCssBaseline from "./theme/NativeCssBaseline";
 import NativeThemeProvider from "./theme/NativeThemeProvider";
 import { native_copyToClipboard } from "./utils/app.utils.js";
 import { useNetworkStatus } from "./utils/network.utils.js";
+import NativeFacebookAuthComponent from "./nativeComponents/inputs/custom/NativeFacebookAuthComponent.js";
 
 export {
   DevNativeDataTable,
@@ -173,6 +174,6 @@ export {
    */
   nativeUseSearchParams,
   // Network status custom hook
-  useNetworkStatus
+  useNetworkStatus, NativeFacebookAuthComponent
 };
 
