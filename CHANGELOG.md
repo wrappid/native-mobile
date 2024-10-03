@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.255](https://github.com/wrappid/native-mobile/compare/v0.0.254...v0.0.255) (2024-10-03)
+
+
+### Features
+
+* :sparkles: facebook auth component for mobile ([07f476b](https://github.com/wrappid/native-mobile/commit/07f476b9dd93743c1b5a10707e328c4bdf73fa9d)), closes [#88](https://github.com/wrappid/native-mobile/issues/88)
+
+
+### Bug Fixes
+
+* **global:** :recycle: code lint fix ([6e92402](https://github.com/wrappid/native-mobile/commit/6e924025ba4fa52e1dc1d120c4f524330e3d6411)), closes [#88](https://github.com/wrappid/native-mobile/issues/88)
+
 ### [0.0.254](https://github.com/wrappid/native-mobile/compare/v0.0.253...v0.0.254) (2024-08-24)
 
 
