@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.256](https://github.com/wrappid/native-mobile/compare/v0.0.255...v0.0.256) (2024-10-10)
+
+
+### Features
+
+* :sparkles: adds the github auth component in the native mobile ([5dd3430](https://github.com/wrappid/native-mobile/commit/5dd34300d0d5639faa8b44352531df795485d0ad)), closes [#89](https://github.com/wrappid/native-mobile/issues/89)
+* :sparkles: mobile code with login with linkedIn ([0cee1f4](https://github.com/wrappid/native-mobile/commit/0cee1f40d9b79c2b9c1bd225bfa8d50b910e7677)), closes [#90](https://github.com/wrappid/native-mobile/issues/90)
+
+
+### Bug Fixes
+
+* **core:** :bug: linting error fixes ([8d721b9](https://github.com/wrappid/native-mobile/commit/8d721b9570766fa52f5d22fc750d09e0d2c8091f)), closes [#90](https://github.com/wrappid/native-mobile/issues/90)
+* **core:** :sparkles: linting  fix ([067b197](https://github.com/wrappid/native-mobile/commit/067b1978e30c6c40004a68054ea387afbcbc4482)), closes [#89](https://github.com/wrappid/native-mobile/issues/89)
+
 ### [0.0.255](https://github.com/wrappid/native-mobile/compare/v0.0.254...v0.0.255) (2024-10-03)
 
 
