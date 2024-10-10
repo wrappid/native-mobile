@@ -1,7 +1,8 @@
-import React from 'react'
-import { NativeButton } from '../../../../../native-web/package'
+// eslint-disable-next-line unused-imports/no-unused-imports, no-unused-vars
+import React from "react";
 
 export default function NativeLinkedInAuthComponent(props){
-    const { children } = props;
+  const { children } = props;
+
   return (<div>{children}</div>);
-}   
+}
