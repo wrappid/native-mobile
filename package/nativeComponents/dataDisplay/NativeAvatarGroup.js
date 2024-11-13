@@ -114,7 +114,7 @@ export default function NativeAvatarGroup(props) {
 
     // eslint-disable-next-line no-unused-vars
     return renderableChildren.reverse().map((child, index) => {
-      return React.cloneElement(child, { styleClasses: [UtilityClasses.MARGIN.MR_N1, UtilityClasses.BORDER.BORDER_WHITE, UtilityClasses.BG.BG_GREY_500] });
+      return React.cloneElement(child, { styleClasses: [UtilityClasses.MARGIN.MR_N1, UtilityClasses.BORDER.BORDER_COLOR_WHITE, UtilityClasses.BG.BG_GREY_500] });
     });
   };
 
