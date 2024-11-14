@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.258](https://github.com/wrappid/native-mobile/compare/v0.0.257...v0.0.258) (2024-11-14)
+
+
+### Bug Fixes
+
+* **global:** :bug: some border style property name changed, update this to resolve style changes ([c78cca7](https://github.com/wrappid/native-mobile/commit/c78cca767a255b1f41e2ec850af200e9c2368a95))
+
 ### [0.0.257](https://github.com/wrappid/native-mobile/compare/v0.0.256...v0.0.257) (2024-11-08)
 
 
