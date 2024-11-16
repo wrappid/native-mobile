@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.259](https://github.com/wrappid/native-mobile/compare/v0.0.258...v0.0.259) (2024-11-16)
+
+
+### Bug Fixes
+
+* **global:** :bug: fixed theme loading ([6b9d6f2](https://github.com/wrappid/native-mobile/commit/6b9d6f2ec1c3994e3bf69225a21fce050fa352fa)), closes [#99](https://github.com/wrappid/native-mobile/issues/99)
+
 ### [0.0.258](https://github.com/wrappid/native-mobile/compare/v0.0.257...v0.0.258) (2024-11-14)
 
 
