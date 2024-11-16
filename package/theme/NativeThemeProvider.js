@@ -31,7 +31,7 @@ export default function NativeThemeProvider(props) {
         secondary           : props?.theme?.palette?.secondary?.main,
         secondaryContainer  : props?.theme?.palette?.secondary?.light,
         surface             : props?.theme?.palette?.background?.default,
-        surfaceVariant      : "transparent?",
+        surfaceVariant      : "transparent",
       },
       roundness: props?.theme?.shape?.borderRadius
         ? props.theme.shape.borderRadius / 4
@@ -43,7 +43,7 @@ export default function NativeThemeProvider(props) {
 
   React.useEffect(() => {
     setPaperThemeObject();
-  }, []);
+  }, [props?.theme]);
 
   return <Provider theme={paperTheme}>{props.children}</Provider>;
 }
