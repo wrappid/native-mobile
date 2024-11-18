@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.261](https://github.com/wrappid/native-mobile/compare/v0.0.260...v0.0.261) (2024-11-18)
+
+
+### Bug Fixes
+
+* **core:** :bug: fix basic auth related changes handle ([a22856f](https://github.com/wrappid/native-mobile/commit/a22856f128421a94989470cc88c15e3cfc0b20ad))
+
 ### [0.0.260](https://github.com/wrappid/native-mobile/compare/v0.0.259...v0.0.260) (2024-11-18)
 
 
