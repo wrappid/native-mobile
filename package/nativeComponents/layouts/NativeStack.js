@@ -2,12 +2,11 @@
 import React, { cloneElement, isValidElement } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import { CoreBox } from "@wrappid/core";
-// eslint-disable-next-line import/no-unresolved
 import { UtilityClasses } from "@wrappid/styles";
 
 import { SCStack } from "../../styledComponents/layouts/SCStack";
 import NativeDivider from "../dataDisplay/NativeDivider";
+import NativeBox from "../layouts/NativeBox";
 
 export default function NativeStack(props) {
 
@@ -16,11 +15,11 @@ export default function NativeStack(props) {
     component,
     direction = "column",
     divider,
-    // spacing = 0,
+    spacing = 0,
     /**
      * @todo need to implment whenever it is required
      */
-    // useFlexGap,
+    useFlexGap = false,
     // eslint-disable-next-line no-unused-vars
     flexWrap,
     styleClasses,
@@ -32,9 +31,37 @@ export default function NativeStack(props) {
     UtilityClasses.FLEX[
       `DIRECTION_${direction.replace("-", "_").toUpperCase()}`
     ],
-    UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_FLEX_START,
+    // eslint-disable-next-line etc/no-commented-out-code
+    // UtilityClasses?.ALIGNMENT?.JUSTIFY_CONTENT_FLEX_START,
     UtilityClasses?.FLEX?.FLEX_WRAP_WRAP,
-    ...(styleClasses || []),
+    ...(styleClasses || []).filter(
+      (cls) =>
+        ![
+          "alignItemsStart",
+          "alignItemsEnd",
+          "alignItemsCenter",
+          "alignItemsBaseline",
+          "alignItemsStretch",
+          "alignContentStart",
+          "alignContentEnd",
+          "alignContentCenter",
+          "alignContentBetween",
+          "alignContentAround",
+          "alignContentStretch",
+          "alignSelfAuto",
+          "alignSelfStart",
+          "alignSelfEnd",
+          "alignSelfCenter",
+          "alignSelfBaseline",
+          "alignSelfStretch",
+          "justifyContentCenter",
+          "justifyContentFlexStart",
+          "justifyContentFlexEnd",
+          "justifyContentSpaceBetween",
+          "justifyContentSpaceAround",
+          "justifyContentSpaceEvenly",
+        ].includes(cls)
+    ),
   ];
 
   const childrenWithProps = () => {
@@ -49,6 +76,14 @@ export default function NativeStack(props) {
     // } else {
     //   marginString += "L" + spacing;
     //   marginClasses.push(UtilityClasses?.MARGIN[marginString]);
+    // }
+
+    // if (!useFlexGap && spacing > 0) {
+    //   const marginType = direction.includes("column") ? "MT" : "ML";
+
+    //   marginClasses.push(
+    //     UtilityClasses.MARGIN[`${marginType}${spacing}`.toUpperCase()]
+    //   );
     // }
 
     let newChildren =
@@ -71,13 +106,13 @@ export default function NativeStack(props) {
               {newChild}
 
               {divider && index < children?.length - 1 && (
-                <CoreBox styleClasses={marginClasses}>
+                <NativeBox styleClasses={marginClasses}>
                   <NativeDivider
                     orientation={
                       direction === "column" ? "horizontal" : "vertical"
                     }
                   />
-                </CoreBox>
+                </NativeBox>
               )}
             </>
           );
@@ -90,7 +125,7 @@ export default function NativeStack(props) {
   };
 
   return (
-    <SCStack {...restProps} styleClasses={preparedStyleClasses}>
+    <SCStack {...restProps} styleClasses={preparedStyleClasses} style={useFlexGap ? { gap: spacing } : undefined}>
       {childrenWithProps()}
     </SCStack>
   );
