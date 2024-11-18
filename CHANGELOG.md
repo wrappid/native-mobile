@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.260](https://github.com/wrappid/native-mobile/compare/v0.0.259...v0.0.260) (2024-11-18)
+
+
+### Bug Fixes
+
+* **global:** :bug: fix NativeAppContainer ([fe71ef5](https://github.com/wrappid/native-mobile/commit/fe71ef5c4a0fd117f8996b78e3149a4c799c7cd8)), closes [#101](https://github.com/wrappid/native-mobile/issues/101)
+* **global:** :bug: fixed some NativeStack props ([8cea3e8](https://github.com/wrappid/native-mobile/commit/8cea3e8e275a957dc4e3df6af8c7aac16e47bd04)), closes [#101](https://github.com/wrappid/native-mobile/issues/101)
+
 ### [0.0.259](https://github.com/wrappid/native-mobile/compare/v0.0.258...v0.0.259) (2024-11-16)
 
 
