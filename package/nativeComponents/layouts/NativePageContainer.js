@@ -18,9 +18,9 @@ import NativeBox from "./NativeBox";
 import { nativeUseNavigate } from "../helper/routerHelper";
 
 export default function NativePageContainer(props) {
-  const config = useContext(WrappidDataContext)?.config;
+  const { config } = useContext(WrappidDataContext);
   const location = nativeUseLocation();
-  const { uid } = props;
+  const { authenticated } = props;
   /**
    * @todo scroll view is used in page container should be removed
    * when flatlist used but this is causing children in pages being
@@ -42,7 +42,7 @@ export default function NativePageContainer(props) {
   }, []);
 
   const handleBackButtonClick = () => {
-    if(uid && location?.pathname !== "/" + config?.defaultAuthenticatedRoute){
+    if(authenticated && location?.pathname !== "/" + config?.defaultAuthenticatedRoute){
       navigate("/" + config?.defaultAuthenticatedRoute);
       return true;
     }
@@ -58,7 +58,7 @@ export default function NativePageContainer(props) {
         contentContainerStyle={{ flexGrow: 1 }}
       >
         <NativeBox
-          styleClasses={[UtilityClasses?.BG?.BG_WHITE, UtilityClasses?.HEIGHT?.H_100]}
+          styleClasses={[UtilityClasses?.HEIGHT?.H_100]}
         >
           {props.children}
         </NativeBox>
