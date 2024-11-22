@@ -11,4 +11,7 @@ const defaultStyleClasses = [StyledComponentsClasses.SURFACES.APP_BAR];
 export const SCAppBar = styled(
   Appbar.Header,
   {}
-)((props) => ({ ...getEffectiveStyle([...defaultStyleClasses, ...(props?.styleClasses || [])]) }));
+)((props) => ({
+  ...getEffectiveStyle([...defaultStyleClasses, ...(props?.styleClasses || [])]),
+  paddingHorizontal: 0 /** @todo this is temporary fix, that need to resolve in future */
+}));
