@@ -10,7 +10,7 @@ import { StatusBar } from "react-native";
 import NativeBox from "./NativeBox";
 
 export default function NativeAppContainer(props) {
-  const { appBar, leftDrawer, rightDrawer, footer, coreClasses } = props;
+  const { appBar, leftDrawer, rightDrawer, footer } = props;
 
   const { themes = {}, pageThemeID } = React.useContext(WrappidDataContext) || {};
   // const theme = Object.keys(themes).includes(pageThemeID);
@@ -28,7 +28,7 @@ export default function NativeAppContainer(props) {
 
       <NativeBox
         component="main"
-        styleClasses={[coreClasses.LAYOUT.CONTENT_CONTAINER]}
+        // styleClasses={[coreClasses.LAYOUT.CONTENT_CONTAINER]}
       >
 
         {props.children}
