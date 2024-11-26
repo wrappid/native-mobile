@@ -10,8 +10,13 @@ export default function NativeAccordion(props) {
   return (
     <SCAccordion
       title={props.children && props.children[0] ? props.children[0] : null}
+      // onPress={(ele) => {
+      //   onChange(ele);
+      // }}
       onPress={(ele) => {
-        onChange(ele);
+        if (typeof onChange === "function") {
+          onChange(ele);
+        }
       }}
       {...props}
     >

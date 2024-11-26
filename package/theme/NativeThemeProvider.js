@@ -30,7 +30,7 @@ export default function NativeThemeProvider(props) {
         primaryContainer    : props?.theme?.palette?.primary?.light,
         secondary           : props?.theme?.palette?.secondary?.main,
         secondaryContainer  : props?.theme?.palette?.secondary?.light,
-        surface             : props?.theme?.palette?.background?.default,
+        surface             : props?.theme?.palette?.primary?.main,
         surfaceVariant      : "transparent",
       },
       roundness: props?.theme?.shape?.borderRadius
