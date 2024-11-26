@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.262](https://github.com/wrappid/native-mobile/compare/v0.0.261...v0.0.262) (2024-11-26)
+
+
+### Bug Fixes
+
+* **core:** :bug: fixed appbar in mobile ([fa66da5](https://github.com/wrappid/native-mobile/commit/fa66da5b7cb0fe2fbfa5de8d450c966a3225db8c)), closes [#101](https://github.com/wrappid/native-mobile/issues/101)
+* **core:** :bug: mobile related changes ([f2f6c1e](https://github.com/wrappid/native-mobile/commit/f2f6c1ed4d19252e893846fa153dc50443b1666f)), closes [#101](https://github.com/wrappid/native-mobile/issues/101)
+* **global:** :bug: fix to solve mobile related issue ([01909da](https://github.com/wrappid/native-mobile/commit/01909da682570339b017cabcbe7fc4b1a39053ee)), closes [#101](https://github.com/wrappid/native-mobile/issues/101)
+
 ### [0.0.261](https://github.com/wrappid/native-mobile/compare/v0.0.260...v0.0.261) (2024-11-18)
 
 
