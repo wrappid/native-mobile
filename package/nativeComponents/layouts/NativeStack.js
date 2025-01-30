@@ -36,31 +36,7 @@ export default function NativeStack(props) {
     UtilityClasses?.FLEX?.FLEX_WRAP_WRAP,
     ...(styleClasses || []).filter(
       (cls) =>
-        ![
-          "alignItemsStart",
-          "alignItemsEnd",
-          "alignItemsCenter",
-          "alignItemsBaseline",
-          "alignItemsStretch",
-          "alignContentStart",
-          "alignContentEnd",
-          "alignContentCenter",
-          "alignContentBetween",
-          "alignContentAround",
-          "alignContentStretch",
-          "alignSelfAuto",
-          "alignSelfStart",
-          "alignSelfEnd",
-          "alignSelfCenter",
-          "alignSelfBaseline",
-          "alignSelfStretch",
-          "justifyContentCenter",
-          "justifyContentFlexStart",
-          "justifyContentFlexEnd",
-          "justifyContentSpaceBetween",
-          "justifyContentSpaceAround",
-          "justifyContentSpaceEvenly",
-        ].includes(cls)
+        !["displayFlex"].includes(cls)
     ),
   ];
 

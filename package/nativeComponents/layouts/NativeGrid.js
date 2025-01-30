@@ -12,7 +12,7 @@ import { SCGrid } from "../../styledComponents/layouts/SCGrid";
 import { SCGridItem } from "../../styledComponents/layouts/SCGridItem";
 
 export default function NativeGrid(props) {
-  const { spacing } = props;
+  const { spacing, ...restProps } = props;
   let padding = spacing !== null && spacing !== undefined ? spacing * 4 : 4;
 
   const [_uuid, setUuid] = useState(null);
@@ -53,12 +53,13 @@ export default function NativeGrid(props) {
 
   return (
     <SCGrid
+      {...restProps}
       key={containerId}
       container={props?.container || true}
       item={props?.item || false}
       style={{
         flexDirection: "row",
-        flexWrap     : "wrap",
+        flexWrap     : props.wrap || "wrap",
         marginLeft   : -1 * padding,
       }}
       styleClasses={props?.styleClasses || []}
