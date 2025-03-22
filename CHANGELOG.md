@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.263](https://github.com/wrappid/native-mobile/compare/v0.0.262...v0.0.263) (2025-03-22)
+
+
+### Bug Fixes
+
+* **config:** :lock: fix vulnerable dependencies ([b4d574e](https://github.com/wrappid/native-mobile/commit/b4d574eb0a6fbc40b85a7bb6e2d8e5e25b182a35)), closes [#106](https://github.com/wrappid/native-mobile/issues/106)
+* **global:** :bug: alert is fixed, now it works on mobile as well ([493c921](https://github.com/wrappid/native-mobile/commit/493c9214e256dd24f68e05ac44cdd1a6a1d7a96d)), closes [#107](https://github.com/wrappid/native-mobile/issues/107)
+
 ### [0.0.262](https://github.com/wrappid/native-mobile/compare/v0.0.261...v0.0.262) (2024-11-26)
 
 
